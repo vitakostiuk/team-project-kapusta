@@ -1,11 +1,12 @@
 import React from 'react';
 import Header from '../Header';
+import Balance from 'components/Balance';
 
 const Home = () => {
   return (
     <div>
       <Header />
-      <div>Home</div>
+      <Balance />
     </div>
   );
 };
