@@ -62,6 +62,7 @@
   text-transform: uppercase;
   color: rgba(82, 85, 95, 0.7);
   background-color: #f2f5fc;
+  cursor: pointer;
 }
 
 .button {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import Section from '../common/Section';
+// import Section from '../common/Section';
 import s from './Balance.module.css';
+import Container from '../Container/Container';
 
 const Balance = () => {
   const [balance, setBalance] = useState('00.00 UAH');
@@ -27,7 +28,7 @@ const Balance = () => {
 
   return (
     <>
-      <Section>
+      <Container>
         <div className={s.container}>
           <form className={s.form} onSubmit={handleSubmit}>
             <label htmlFor="balance" className={s.label}>
@@ -66,7 +67,7 @@ const Balance = () => {
             </div>
           )}
         </div>
-      </Section>
+      </Container>
     </>
   );
 };

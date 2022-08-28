@@ -8,14 +8,26 @@
 }
 
 .modal {
-  width: 100vw;
-  height: 100vh;
-  width: 100%;
-  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 380px;
+  height: 194px;
+
+  background-color: #ffffff;
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  border-radius: 30px;
+  padding: 20px;
   background-color: #f8f8f7;
 }
 
-.closeModal {
+.closeModalBtn {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -23,11 +35,47 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
-  width: 40px;
-  height: 40px;
-  background-color: #ffffff;
-  border-radius: 10px;
+  background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.text {
+  margin: 0;
+  margin-bottom: 20px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.02em;
+  color: var(--text-color-gray);
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  width: 125px;
+  height: 44px;
+  margin-right: 15px;
+  border: 2px solid #f5f6fb;
+  border-radius: 16px;
+  cursor: pointer;
+  background-color: transparent;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-color-gray);
+}
+
+.btn:hover,
+.btn:focus {
+  border: none;
+  background-color: var(--accent-color);
+  color: #fff;
 }
