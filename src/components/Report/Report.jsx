@@ -1,4 +1,5 @@
 import React from 'react';
+import Balance from './Balance';
 import Period from './Period';
 import BalanceChange from './BalanceChange';
 import Categories from './Categories';
@@ -7,12 +8,13 @@ import * as Styled from './Report.styled';
 
 const Report = () => {
   return (
-    <Styled.Container>
+    <Styled.Section>
       <Period />
+      <Balance />
       <BalanceChange />
       <Categories />
       <Statistic />
-    </Styled.Container>
+    </Styled.Section>
   );
 };
 
