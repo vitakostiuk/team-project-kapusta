@@ -4,14 +4,14 @@ import * as Styled from './BalanseChange.styled';
 const BalanceChange = () => {
   return (
     <Styled.Container>
-      <Styled.IncrementWrapper>
-        <Styled.Subtitle>Витрати:</Styled.Subtitle>
-        <Styled.Decrement></Styled.Decrement>
-      </Styled.IncrementWrapper>
       <Styled.DecrementWrapper>
-        <Styled.Subtitle>Доходи:</Styled.Subtitle>
-        <Styled.Increment></Styled.Increment>
+        <Styled.Subtitle>Витрати:</Styled.Subtitle>
+        <Styled.Decrement>- Some value</Styled.Decrement>
       </Styled.DecrementWrapper>
+      <Styled.IncrementWrapper>
+        <Styled.Subtitle>Доходи:</Styled.Subtitle>
+        <Styled.Increment>+ Some value</Styled.Increment>
+      </Styled.IncrementWrapper>
     </Styled.Container>
   );
 };
