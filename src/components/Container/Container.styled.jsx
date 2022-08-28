@@ -5,6 +5,7 @@ export const Div = styled.div`
   padding-right: 10px;
   margin: 0 auto;
   max-width: 320px;
+  border: 1px solid green;
 
   @media screen and (min-width: 768px) {
     padding-left: 51px;

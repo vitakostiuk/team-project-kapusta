@@ -23,3 +23,16 @@ export const MenuUl = styled.ul`
   margin: 0;
   list-style: none;
 `;
+
+export const ExitBtn = styled.button`
+  display: block;
+  text-decoration: underline;
+  border: none;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: var(--text-color-gray);
+  background-color: transparent;
+  cursor: pointer;
+`;
