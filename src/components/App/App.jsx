@@ -5,10 +5,11 @@ import ReportPage from '../../pages/ReportPage';
 
 import Header from '../Header';
 import MainPage from '../MainPage';
+import s from './App.module.css';
 
 function App() {
   return (
-    <>
+    <div className={s.layout}>
       <Header />
       <MainPage>
         <Routes>
@@ -17,7 +18,7 @@ function App() {
           <Route path="report" element={<ReportPage />} />
         </Routes>
       </MainPage>
-    </>
+    </div>
   );
 }
 

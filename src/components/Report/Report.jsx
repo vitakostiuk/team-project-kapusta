@@ -1,12 +1,20 @@
 import React from 'react';
-import Header from '../Header';
+import Balance from './Balance';
+import Period from './Period';
+import BalanceChange from './BalanceChange';
+import Categories from './Categories';
+import Statistic from './Statistic';
+import * as Styled from './Report.styled';
 
 const Report = () => {
   return (
-    <div>
-      <Header />
-      <div>Report</div>
-    </div>
+    <Styled.Section>
+      <Period />
+      <Balance />
+      <BalanceChange />
+      <Categories />
+      <Statistic />
+    </Styled.Section>
   );
 };
 
