@@ -1,0 +1,114 @@
+.container {
+  position: relative;
+
+  display: block;
+  margin: 0 auto;
+  width: 334px;
+  height: 44px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.label {
+  margin-right: 20px;
+
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+
+  color: rgba(82, 85, 95, 0.7);
+}
+
+.input {
+  width: 123px;
+  height: 42px;
+  margin-right: 16px;
+  padding: 12px 0;
+  padding-right: 20px;
+  text-align: right;
+
+  border: 2px solid #ffffff;
+  border-radius: 16px;
+  outline: none;
+  background-color: #f2f5fc; /* временно */
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.buttonDisabled {
+  width: 123px;
+  height: 42px;
+
+  border: 2px solid #ffffff;
+  border-radius: 16px;
+  background-color: #f2f5fc; /* временно */
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(82, 85, 95, 0.7);
+  background-color: #f2f5fc;
+}
+
+.button {
+  composes: buttonDisabled;
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+}
+
+.popUpContainer {
+  position: absolute;
+  top: 44px;
+  left: 23%;
+
+  padding-top: 40px;
+  padding-left: 29.6px;
+
+  width: 288px;
+  height: 163px;
+  background-image: url('../../images/pop-up.svg');
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 41%;
+}
+
+.popUpText {
+  margin: 0;
+
+  padding: 0;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+  color: #ffffff;
+}
+
+.popUpTextBottom {
+  composes: popUpText;
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 1.33;
+}
