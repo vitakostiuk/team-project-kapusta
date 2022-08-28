@@ -1,9 +1,12 @@
 import React from 'react';
+import Header from '../Header';
+import Balance from 'components/Balance';
 
 const Home = () => {
   return (
     <div>
-      <div>Home</div>
+      <Header />
+      <Balance />
     </div>
   );
 };
