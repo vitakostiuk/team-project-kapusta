@@ -1,20 +1,11 @@
 import styled from 'styled-components';
 
-export const MainSt = styled.main`
-  display: flex;
-  justify-content: center;
+export const MainSt = styled.div`
   width: 100%;
-  min-height: calc(100vh - 60px);
-  background: url(../../images/background_img.png) no-repeat;
-  background-size: cover;
-
-  @media (min-width: 1280px) {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    min-height: calc(100vh - 60px);
-    background: url(../../images/background_img.png) no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+  background: url(../../images/mainImg/down.svg) top 104px right -35px no-repeat,
+    url(../../images/mainImg/rightTop.svg) bottom 5px left 35px no-repeat;
+  background-size: 83px;
+  position: relative;
+  padding-bottom: 60px;
   }
 `;

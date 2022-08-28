@@ -4,16 +4,19 @@ import HomePage from '../../pages/HomePage';
 import ReportPage from '../../pages/ReportPage';
 
 import Header from '../Header';
+import MainPage from '../MainPage';
 
 function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="report" element={<ReportPage />} />
-      </Routes>
+      <MainPage>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="report" element={<ReportPage />} />
+        </Routes>
+      </MainPage>
     </>
   );
 }
