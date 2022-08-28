@@ -1,22 +1,22 @@
 import React from 'react';
+import ButtonGoHome from '../ButtonGoHome';
 import * as Styled from './Period.styled';
 import Arrow from '../Arrow';
-import BigArrow from '../../../images/arrow-left.svg';
 
 const Period = () => {
   return (
     <Styled.Container>
-      <Styled.Button>
-        <Styled.BigArrow src={BigArrow} />
-      </Styled.Button>
-      <Styled.SubText>Поточний період:</Styled.SubText>
+      <ButtonGoHome />
+
+      <Styled.Period>Current period:</Styled.Period>
       <Styled.PeriodWrapper>
         <Arrow />
-
+        <Styled.Date>
+          <Styled.Month>NOVEMBER</Styled.Month>
+          <Styled.Year>2020</Styled.Year>
+        </Styled.Date>
         <Arrow rotate="true" />
       </Styled.PeriodWrapper>
-      <Styled.SubText>Баланс:</Styled.SubText>
-      <Styled.Balance></Styled.Balance>
     </Styled.Container>
   );
 };
