@@ -30,7 +30,8 @@
   width: 123px;
   height: 42px;
   margin-right: 16px;
-  padding: 12px 20px;
+  padding: 12px 0;
+  padding-right: 20px;
   text-align: right;
 
   border: 2px solid #ffffff;
@@ -46,7 +47,7 @@
   color: #000000;
 }
 
-.button {
+.buttonDisabled {
   width: 123px;
   height: 42px;
 
@@ -60,6 +61,13 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: rgba(82, 85, 95, 0.7);
+  background-color: #f2f5fc;
+}
+
+.button {
+  composes: buttonDisabled;
+  background-color: var(--accent-color);
+  color: #fff;
 }
 
 .backdrop {
