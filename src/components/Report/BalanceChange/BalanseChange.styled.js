@@ -13,13 +13,14 @@ export const SumWrapper = styled.div`
   text-align: center;
   position: relative;
 
-  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
-  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
   width: 280px;
   padding: 20px 10px 25px 10px;
 
-  font-size: 14px;
-  font-weight: 700;
+  background-color: #ffffff;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 20px;
 
   @media screen and (min-width: 772px) {
     width: 704px;

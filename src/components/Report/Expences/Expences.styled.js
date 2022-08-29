@@ -21,6 +21,9 @@ export const Text = styled.p`
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 0.02em;
+
+  margin-left: 16px;
+  margin-right: 16px;
 `;
 
 export const Categories = styled.ul``;

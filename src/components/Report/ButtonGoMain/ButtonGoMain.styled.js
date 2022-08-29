@@ -20,4 +20,4 @@ export const Text = styled.p`
 
 export const BigArrow = styled.img``;
 
-export const Button = styled.button``;
+export const Link = styled.a``;

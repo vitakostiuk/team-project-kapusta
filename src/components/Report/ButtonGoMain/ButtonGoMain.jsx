@@ -5,9 +5,9 @@ import BigArrow from '../../../images/arrow-left.svg';
 const ButtonGoMain = () => {
   return (
     <Styled.Container>
-      <Styled.Button>
+      <Styled.Link>
         <Styled.BigArrow src={BigArrow} />
-      </Styled.Button>
+      </Styled.Link>
       <Styled.Text>Main page</Styled.Text>
     </Styled.Container>
   );
