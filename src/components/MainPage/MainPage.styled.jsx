@@ -30,4 +30,11 @@ export const TopAuth = styled.div`
 
   background-size: 83px;
   background-color: #f5f6fb;
+
+  @media screen and (min-width: 768px) {
+    height: 530px;
+  }
+  @media screen and (min-width: 1280px) {
+    height: 580px;
+  }
 `;
