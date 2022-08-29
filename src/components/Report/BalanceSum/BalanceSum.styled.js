@@ -3,10 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
   text-align: center;
   position: relative;
-
-  /* padding-left: 20px;
-  padding-right: 20px; */
-
   margin-bottom: 32px;
 
   @media screen and (min-width: 772px) {
@@ -33,6 +29,7 @@ export const Balance = styled.p`
 
   @media screen and (min-width: 772px) {
     margin-right: 20px;
+    margin-bottom: 0px;
   }
 `;
 
@@ -44,6 +41,10 @@ export const Money = styled.p`
   border: 2px solid #ffffff;
   border-radius: 22px;
   background-color: #f5f6fb;
+
+  @media screen and (min-width: 772px) {
+    width: 125px;
+  }
 
   @media screen and (min-width: 1280px) {
     margin-right: 16px;
@@ -58,6 +59,10 @@ export const Confirm = styled.button`
   border: 2px solid #ffffff;
   border-radius: 22px;
   background-color: #f5f6fb;
+
+  @media screen and (min-width: 772px) {
+    width: 125px;
+  }
 
   @media screen and (max-width: 1279px) {
     display: none;
