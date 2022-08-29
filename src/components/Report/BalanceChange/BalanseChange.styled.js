@@ -82,8 +82,9 @@ export const SumWrapper = styled.div`
       flex-direction: column;
       justify-content: center;
 
-    @media screen and (min-width: 772px) {
-      height: 36px;
+      @media screen and (min-width: 772px) {
+        height: 36px;
+      }
     }
   }
 `;
