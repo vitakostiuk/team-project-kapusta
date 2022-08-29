@@ -23,9 +23,7 @@ const Statistic = () => {
 
   const customTick = (...props) => {
     const { x, y, width, height, type, fill, index, payload } = props[0];
-    console.log(props[0]);
-    const { value } = payload;
-    const axis = (x * value) / maxValue;
+    const axis = (x * payload.value) / maxValue;
     return (
       <Text
         type={type}
