@@ -8,8 +8,10 @@ const BalanceContainer = () => {
   return (
     <Styled.Container>
       <ButtonGoMain />
-      <BalanceSum />
-      <Period />
+      <Styled.Balance>
+        <Period />
+        <BalanceSum />
+      </Styled.Balance>
     </Styled.Container>
   );
 };
