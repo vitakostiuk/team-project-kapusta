@@ -19,6 +19,27 @@ export const MainSt = styled.div`
   }
 `;
 
+export const MainAuth = styled.div`
+  width: 100%;
+  background-size: 83px;
+  position: relative;
+  padding-bottom: 60px;
+
+  @media screen and (min-width: 768px) {
+    min-height: 1024px;
+    width: 100%;
+    background: url(${down}) top 104px right -35px no-repeat,
+      url(${two}) bottom 100px right 90px no-repeat;
+    background-size: 83px, 160px;
+    position: relative;
+  }
+
+  @media screen and (min-width: 1280px) {
+    min-height: 850px;
+    background: url(${group}) bottom 0px left repeat-x;
+  }
+`;
+
 export const TopAuth = styled.div`
   position: absolute;
   top: 0;
@@ -36,5 +57,22 @@ export const TopAuth = styled.div`
   }
   @media screen and (min-width: 1280px) {
     height: 580px;
+  }
+`;
+
+export const Top = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width: 100%;
+  height: 313px;
+  border-bottom-left-radius: 100px;
+  background: #f5f6fb;
+
+  @media screen and (min-width: 768px) {
+    background-color: #f5f6fb;
+    height: 530px;
+    box-shadow: none;
   }
 `;
