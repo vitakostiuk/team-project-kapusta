@@ -1,7 +1,7 @@
 import { useState } from 'react';
-// import Section from '../common/Section';
+import { ReactComponent as Diagram } from '../../images/diagram.svg';
+import { Link } from 'react-router-dom';
 import s from './Balance.module.css';
-import Container from '../Container/Container';
 
 const Balance = () => {
   const [balance, setBalance] = useState('00.00 UAH');
@@ -28,12 +28,18 @@ const Balance = () => {
 
   return (
     <>
-      <Container>
-        <div className={s.container}>
-          <form className={s.form} onSubmit={handleSubmit}>
-            <label htmlFor="balance" className={s.label}>
-              Balance:
-            </label>
+      <div className={s.formContainer}>
+        <div className={s.reportContainer}>
+          <Link to="report" className={s.reportLink} type="button">
+            Reports
+          </Link>
+          <Diagram />
+        </div>
+        <form className={s.form} onSubmit={handleSubmit}>
+          <label htmlFor="balance" className={s.label}>
+            Balance:
+          </label>
+          <div className={s.btnsContainer}>
             <input
               id="#balance"
               className={s.input}
@@ -54,20 +60,19 @@ const Balance = () => {
             >
               Confirm
             </button>
-          </form>
-          {balance === '00.00 UAH' && (
-            <div className={s.popUpContainer}>
-              <p className={s.popUpText}>
-                Hello! To get started, enter the current balance of your
-                account!
-              </p>
-              <p className={s.popUpTextBottom}>
-                You can't spend money until you have it :&#41;
-              </p>
-            </div>
-          )}
-        </div>
-      </Container>
+          </div>
+        </form>
+        {balance === '00.00 UAH' && (
+          <div className={s.popUpContainer}>
+            <p className={s.popUpText}>
+              Hello! To get started, enter the current balance of your account!
+            </p>
+            <p className={s.popUpTextBottom}>
+              You can't spend money until you have it :&#41;
+            </p>
+          </div>
+        )}
+      </div>
     </>
   );
 };

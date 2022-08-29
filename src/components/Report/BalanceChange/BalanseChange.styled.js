@@ -62,9 +62,29 @@ export const SumWrapper = styled.div`
     height: 70px;
     border: 1px solid #e0e5eb;
     background-color: #e0e5eb;
+    margin: 32px auto 0;
+    background: #fff;
+    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+    border-radius: 20px;
+    padding: 7px 0 7.5px;
+    min-height: 85px;
+    align-items: stretch;
 
-    @media screen and (min-width: 772px) {
-      height: 36px;
+    font-size: 14px;
+    font-weight: 700;
+
+    & p {
+      margin: 0;
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      @media screen and (min-width: 772px) {
+        height: 36px;
+      }
     }
   }
 `;
