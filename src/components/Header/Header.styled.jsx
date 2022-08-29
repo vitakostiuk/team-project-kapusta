@@ -24,6 +24,44 @@ export const MenuUl = styled.ul`
   list-style: none;
 `;
 
+export const UserDiv = styled.div`
+  display: flex;
+  height: 36px;
+`;
+
+export const UserData = styled.div`
+  align-items: center;
+  display: flex;
+  margin-top: 22px;
+`;
+
+export const UserEmail = styled.p`
+  display: none;
+  @media (min-width: 768px) {
+    font-size: 16px;
+    line-height: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: #52555f;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    margin-left: 16px;
+  }
+`;
+
+export const Span = styled.span`
+  display: none;
+  @media (min-width: 768px) {
+    height: 36px;
+    border-right: 1px solid #e0e5eb;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    display: flex;
+  }
+`;
+
 export const ExitBtn = styled.button`
   display: none;
 
@@ -31,13 +69,14 @@ export const ExitBtn = styled.button`
     display: block;
     text-decoration: underline;
     border: none;
-    font-weight: 400;
-    font-size: 12px;
+    font-weight: 500;
+    font-size: 16px;
     line-height: 1.17;
     letter-spacing: 0.04em;
     color: var(--text-color-gray);
     background-color: transparent;
     cursor: pointer;
+    margin-top: 18px;
   }
 `;
 
