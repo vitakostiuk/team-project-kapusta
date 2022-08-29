@@ -5,18 +5,14 @@ const BalanceChange = () => {
   return (
     <Styled.Container>
       <Styled.SumWrapper>
-        <Styled.IncrementWrapper>
-          <Styled.Subtitle>
-            Expences:
-            <Styled.Decrement>- 10 000000000 uah</Styled.Decrement>
-          </Styled.Subtitle>
-        </Styled.IncrementWrapper>
         <Styled.DecrementWrapper>
-          <Styled.Subtitle>
-            Income:
-            <Styled.Increment>+ 10 00000000 uah</Styled.Increment>
-          </Styled.Subtitle>
+          <Styled.Subtitle>Expenses:</Styled.Subtitle>
+          <Styled.Decrement>- 10 000.00 uah.</Styled.Decrement>
         </Styled.DecrementWrapper>
+        <Styled.IncrementWrapper>
+          <Styled.Subtitle>Income:</Styled.Subtitle>
+          <Styled.Increment>+ 10 000.00 uah.</Styled.Increment>
+        </Styled.IncrementWrapper>
       </Styled.SumWrapper>
     </Styled.Container>
   );
