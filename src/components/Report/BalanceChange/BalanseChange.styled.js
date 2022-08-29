@@ -31,25 +31,26 @@ export const SumWrapper = styled.div`
     height: 70px;
     border: 1px solid #e0e5eb;
     background-color: #e0e5eb;
-  margin: 32px auto 0;
-  background: #fff;
-  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
-  border-radius: 20px;
-  padding: 7px 0 7.5px;
-  min-height: 85px;
-  align-items: stretch;
+    margin: 32px auto 0;
+    background: #fff;
+    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+    border-radius: 20px;
+    padding: 7px 0 7.5px;
+    min-height: 85px;
+    align-items: stretch;
 
-  font-size: 14px;
-  font-weight: 700;
+    font-size: 14px;
+    font-weight: 700;
 
-  & p {
-    margin: 0;
-  }
+    & p {
+      margin: 0;
+    }
 
-  & > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    & > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 `;
 
@@ -111,16 +112,16 @@ export const Decrement = styled.p`
 //   }
 // }
 
-export const Subtitle = styled.p`
-  color: #52555f;
-`;
+// export const Subtitle = styled.p`
+//   color: #52555f;
+// `;
 
-export const Increment = styled.p`
-  color: #407946;
-  letter-spacing: 0.04em;
-`;
+// export const Increment = styled.p`
+//   color: #407946;
+//   letter-spacing: 0.04em;
+// `;
 
-export const Decrement = styled.p`
-  color: #e53935;
-  letter-spacing: 0.04em;
-`;
+// export const Decrement = styled.p`
+//   color: #e53935;
+//   letter-spacing: 0.04em;
+// `;
