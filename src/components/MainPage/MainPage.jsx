@@ -1,13 +1,13 @@
 // import { useSelector } from 'react-redux';
 // import authSelectors from '../../Redux/auth/auth-selectors';
 import PropTypes from 'prop-types';
-import { MainSt, TopAuth } from './MainPage.styled';
+import { MainSt, Top } from './MainPage.styled';
 import Container from '../Container';
 
 const MainPage = ({ children }) => {
   return (
     <MainSt>
-      <TopAuth></TopAuth>
+      <Top></Top>
       <Container>{children}</Container>
     </MainSt>
   );
