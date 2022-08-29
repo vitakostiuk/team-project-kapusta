@@ -24,7 +24,7 @@ const Header = () => {
           <Avatar
             sx={{ bgcolor: deepOrange[400] }}
             // alt={}
-            src="../../images/mainImg/defaultUserPhoto.jpg"
+            // src="../../images/mainImg/defaultUserPhoto.jpg"
           >
             Y
           </Avatar>
