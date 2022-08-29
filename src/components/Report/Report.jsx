@@ -1,18 +1,16 @@
 import React from 'react';
-import Balance from './Balance';
-import Period from './Period';
+import BalanceContainer from './BalanceContainer';
 import BalanceChange from './BalanceChange';
-import Categories from './Categories';
+import Expences from './Expences';
 import Statistic from './Statistic';
 import * as Styled from './Report.styled';
 
 const Report = () => {
   return (
     <Styled.Section>
-      <Period />
-      <Balance />
+      <BalanceContainer />
       <BalanceChange />
-      <Categories />
+      <Expences />
       <Statistic />
     </Styled.Section>
   );

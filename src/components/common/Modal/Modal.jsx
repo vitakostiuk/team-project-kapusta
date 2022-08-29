@@ -5,11 +5,11 @@ import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ onClose, children }) => {
+const Modal = ({ onClick, text }) => {
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
-        onClose();
+        onClick();
       }
     };
 
@@ -18,21 +18,29 @@ const Modal = ({ onClose, children }) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [onClose]);
+  }, [onClick]);
 
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
-      onClose();
+      onClick();
     }
   };
 
   return createPortal(
     <div className={s.backdrop} onClick={handleBackdropClick}>
       <div className={s.modal}>
-        <button type="button" className={s.closeModal} onClick={onClose}>
+        <button type="button" className={s.closeModalBtn} onClick={onClick}>
           <CloseModal />
         </button>
-        {children}
+        <p className={s.text}>{text}</p>
+        <div className={s.btnContainer}>
+          <button className={s.btn} type="button" onClick={onClick}>
+            yes
+          </button>
+          <button className={s.btn} type="button" onClick={onClick}>
+            no
+          </button>
+        </div>
       </div>
     </div>,
     modalRoot,
