@@ -1,22 +1,25 @@
 {
   "files": {
-    "main.css": "/team-project-kapusta/static/css/main.83ba81d4.css",
-    "main.js": "/team-project-kapusta/static/js/main.cd3f56a8.js",
+    "main.css": "/team-project-kapusta/static/css/main.ebbad0b6.css",
+    "main.js": "/team-project-kapusta/static/js/main.7a0a2695.js",
     "static/media/kapusta_background.png": "/team-project-kapusta/static/media/kapusta_background.8d475dd61cb62ca1a1b1.png",
     "static/media/two.svg": "/team-project-kapusta/static/media/two.3e9b51598196b0d57182023e239ab7d2.svg",
     "static/media/rightTop.svg": "/team-project-kapusta/static/media/rightTop.5b87f84018284c2097f7c8ab4b23ab36.svg",
     "static/media/logo.svg": "/team-project-kapusta/static/media/logo.9a1219fa7b0c5ccef923ebbd77f9ee7b.svg",
+    "static/media/calendar.svg": "/team-project-kapusta/static/media/calendar.fcea09cc92ad5bc80f06cc6eef6d3cb9.svg",
+    "static/media/calculator.svg": "/team-project-kapusta/static/media/calculator.548cfa77d066c8000a1216da93e9d1fb.svg",
     "static/media/pop-up.svg": "/team-project-kapusta/static/media/pop-up.6d34d84e5d1cd1481dc8.svg",
     "index.html": "/team-project-kapusta/index.html",
     "static/media/logout.svg": "/team-project-kapusta/static/media/logout.9845e79fa1b222d17d55ea6dbb93bb80.svg",
     "static/media/close.svg": "/team-project-kapusta/static/media/close.725652eddfe0bd34d7c252763578a80c.svg",
+    "static/media/diagram.svg": "/team-project-kapusta/static/media/diagram.01eb2c99257cab8967a7fa04c508be1d.svg",
     "static/media/arrow-left.svg": "/team-project-kapusta/static/media/arrow-left.420a10fd9c9a52c9b30cbb0be1b001bf.svg",
     "static/media/arrow-small-left.svg": "/team-project-kapusta/static/media/arrow-small-left.ed65ae738f78a2df12fa63ecf435fb95.svg",
-    "main.83ba81d4.css.map": "/team-project-kapusta/static/css/main.83ba81d4.css.map",
-    "main.cd3f56a8.js.map": "/team-project-kapusta/static/js/main.cd3f56a8.js.map"
+    "main.ebbad0b6.css.map": "/team-project-kapusta/static/css/main.ebbad0b6.css.map",
+    "main.7a0a2695.js.map": "/team-project-kapusta/static/js/main.7a0a2695.js.map"
   },
   "entrypoints": [
-    "static/css/main.83ba81d4.css",
-    "static/js/main.cd3f56a8.js"
+    "static/css/main.ebbad0b6.css",
+    "static/js/main.7a0a2695.js"
   ]
 }
