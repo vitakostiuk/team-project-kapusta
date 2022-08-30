@@ -1,5 +1,5 @@
 import React from 'react';
-import { BarChart, YAxis, XAxis, Bar, Text, Cell, Label } from 'recharts';
+import { BarChart, YAxis, XAxis, Bar, Text } from 'recharts';
 import * as Styled from './Statistic.styled';
 
 const data = [
@@ -20,6 +20,22 @@ const Statistic = () => {
     (acc, el) => (el.value > acc ? el.value : acc),
     0,
   );
+
+  const customTick = ({ x, y, width, height, type, fill, index, payload }) => {
+    const axis = (x * payload.value) / maxValue;
+    return (
+      <Text
+        type={type}
+        fill={fill}
+        width={width * 2}
+        height={height}
+        x={axis - 70 + index * 18}
+        y={y - 12}
+      >
+        {payload.value}
+      </Text>
+    );
+  };
 
   return (
     <Styled.Container>
@@ -55,9 +71,7 @@ const Statistic = () => {
           tickLine={false}
           orientation="right"
           mirror
-          tick={{
-            transform: `translate(-40, -18)`,
-          }}
+          tick={customTick}
         />
         <Bar dataKey="value" fill="#FF751D" />
       </BarChart>

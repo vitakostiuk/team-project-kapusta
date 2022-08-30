@@ -1,0 +1,40 @@
+.tabsBlock {
+  margin-top: 8px;
+}
+
+.tabs {
+  display: flex;
+  font-family: 'Roboto';
+  font-weight: 700;
+  line-height: 1.17;
+  text-transform: uppercase;
+}
+
+.tabThamb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 138px;
+  height: 40px;
+  border-radius: 16px 16px 0 0;
+  background-color: #fafbfd;
+}
+
+.tabThambActive {
+  background-color: #fefefe;
+}
+
+.tab {
+  color: #000000;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.tab:hover {
+  color: #ff751d;
+}
+
+.tabActive {
+  color: #ff751d;
+}
