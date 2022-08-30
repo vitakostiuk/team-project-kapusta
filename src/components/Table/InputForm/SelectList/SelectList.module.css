@@ -1,0 +1,21 @@
+.selectList {
+  width: 169px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #c7ccdc;
+  border: 2px solid #f6f7fc;
+  border-left: none;
+}
+
+.selectList:hover,
+.selectList:focus {
+  border-color: #f6f7fc;
+  outline: 0;
+}
+
+.selectItem:hover {
+  background-color: #f5f6fb;
+  color: #52555f;
+}

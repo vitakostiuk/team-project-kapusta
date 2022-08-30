@@ -1,0 +1,114 @@
+.inputForm {
+  display: flex;
+  width: 1098px;
+  padding: 32px;
+  border-radius: 0 30px 0 0;
+  background-color: #fff;
+}
+
+.label,
+.sum {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: #c7ccdc;
+}
+
+.sum {
+  display: flex;
+  position: relative;
+  margin-right: 32px;
+}
+
+.inputArea {
+  width: 290px;
+  height: 44px;
+  padding-left: 19px;
+  border: 2px solid #f6f7fc;
+  border-radius: 16px 0 0 0;
+  color: #52555f;
+}
+
+.sumInputArea {
+  width: 121px;
+  height: 44px;
+  padding-right: 31px;
+  border: 2px solid #f6f7fc;
+  border-left: 0;
+  border-radius: 0 16px 16px 0;
+  color: #52555f;
+  text-align: right;
+}
+
+.inputArea::placeholder,
+.sumInputArea::placeholder {
+  color: #c7ccdc;
+}
+
+.inputArea:hover,
+.inputArea:focus,
+.sumInputArea:hover,
+.sumInputArea:focus {
+  border-color: #f6f7fc;
+  outline: 0;
+}
+
+.calendarBox {
+  display: flex;
+  align-items: center;
+  width: 136px;
+}
+
+.calendarPic {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.CalcPic {
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+}
+
+.inputBtn,
+.clearBtn {
+  margin-right: 16px;
+  width: 136px;
+  height: 44px;
+  border-radius: 16px;
+  border: none;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #fff;
+  background-color: #ff751d;
+}
+
+.clearBtn {
+  margin-right: 0;
+  border: 2px solid #f6f7fc;
+  color: #52555f;
+  background-color: #fff;
+}
+
+.inputBtn:hover,
+.inputBtn:focus {
+  color: #52555f;
+  border: 2px solid #f6f7fc;
+}
+
+.clearBtn:hover,
+.clearBtn:focus {
+  color: #ff751d;
+  background-color: #f6f7fc;
+}
