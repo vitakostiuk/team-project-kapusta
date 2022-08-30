@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
-  padding-left: 20px;
+  /* padding-left: 20px;
   padding-right: 20px;
 
   @media screen and (min-width: 772px) {
@@ -12,5 +12,5 @@ export const Section = styled.section`
   @media screen and (min-width: 1280px) {
     padding-left: 123px;
     padding-right: 123px;
-  }
+  } */
 `;

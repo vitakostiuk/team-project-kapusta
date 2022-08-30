@@ -16,6 +16,7 @@ export const SumWrapper = styled.div`
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
   border-radius: 20px;
   width: 280px;
+  height: 85px;
   padding: 20px 10px 25px 10px;
 
   font-size: 14px;
@@ -39,10 +40,8 @@ export const SumWrapper = styled.div`
     right: 50%;
     left: 50%;
     height: 70px;
-    border: 1px solid #e0e5eb;
+    width: 1px;
     background-color: #e0e5eb;
-
-    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
 
     font-size: 14px;
     font-weight: 700;
