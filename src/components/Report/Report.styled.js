@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
 export const Section = styled.section`
+  margin-top: 22px;
+
+  @media (min-width: 768px) {
+    margin-top: 40px;
+  }
   /* padding-left: 20px;
   padding-right: 20px;
 
