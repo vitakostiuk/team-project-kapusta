@@ -17,7 +17,7 @@ export const SumWrapper = styled.div`
   border-radius: 20px;
   width: 280px;
   height: 85px;
-  padding: 20px 10px 25px 10px;
+  /* padding: 20px 10px 25px 10px; */
 
   font-size: 14px;
   font-weight: 700;
@@ -56,7 +56,7 @@ export const IncrementWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 10px;
+  margin: 0 auto;
 
   line-height: 16px;
 
@@ -71,8 +71,7 @@ export const DecrementWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 15px;
-
+  margin: 0 auto;
   line-height: 16px;
 
   @media screen and (min-width: 772px) {
