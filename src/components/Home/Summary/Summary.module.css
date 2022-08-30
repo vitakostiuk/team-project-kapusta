@@ -1,0 +1,66 @@
+.container {
+  display: none;
+  visibility: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    display: block;
+    visibility: visible;
+    width: 230px;
+    height: 278px;
+    background: #f5f6fb;
+    border: 2px solid #ffffff;
+    border-radius: 16px;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 230px;
+  height: 38px;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 230px;
+  height: 38px;
+
+  padding-left: 22px;
+  padding-right: 20px;
+  border-top: 2px solid #ffffff;
+}
+
+.month {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: #52555f;
+}
+
+.sum {
+  composes: month;
+}
