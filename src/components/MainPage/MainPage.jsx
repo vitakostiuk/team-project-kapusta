@@ -1,15 +1,25 @@
-// import { useSelector } from 'react-redux';
-// import authSelectors from '../../Redux/auth/auth-selectors';
+import { useSelector } from 'react-redux';
+import authSelectors from '../../redux/feature/auth-selectors';
 import PropTypes from 'prop-types';
-import { MainSt, Top } from './MainPage.styled';
+import * as Styled from './MainPage.styled';
 import Container from '../Container';
 
 const MainPage = ({ children }) => {
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+
   return (
-    <MainSt>
-      <Top></Top>
-      <Container>{children}</Container>
-    </MainSt>
+    <>
+      {isLoggedIn && (
+        <Styled.MainAuth>
+          <Styled.TopAuth></Styled.TopAuth>
+          <Container>{children}</Container>
+        </Styled.MainAuth>
+      )}
+      <Styled.MainSt>
+        <Styled.Top></Styled.Top>
+        <Container>{children}</Container>
+      </Styled.MainSt>
+    </>
   );
 };
 
