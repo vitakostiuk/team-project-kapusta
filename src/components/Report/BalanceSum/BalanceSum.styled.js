@@ -37,7 +37,8 @@ export const Money = styled.p`
   font-weight: 700;
   font-size: 12px;
   width: 183px;
-  padding: 15px 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   border: 2px solid #ffffff;
   border-radius: 22px;
   background-color: #f5f6fb;
@@ -47,7 +48,7 @@ export const Money = styled.p`
   }
 
   @media screen and (min-width: 1280px) {
-    margin-right: 16px;
+    margin-right: 15px;
   }
 `;
 
