@@ -31,3 +31,11 @@ ul {
 li {
   list-style: none;
 }
+
+a {
+  text-decoration: none;
+}
+
+button {
+  padding: 0;
+}
