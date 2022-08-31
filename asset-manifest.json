@@ -1,7 +1,15 @@
 {
   "files": {
-    "main.css": "/team-project-kapusta/static/css/main.041c0e90.css",
-    "main.js": "/team-project-kapusta/static/js/main.8e3483d0.js",
+    "main.css": "/team-project-kapusta/static/css/main.829d47ec.css",
+    "main.js": "/team-project-kapusta/static/js/main.2c7886aa.js",
+    "LoginPage.js": "/team-project-kapusta/static/js/LoginPage.4cce801a.chunk.js",
+    "HomePage.css": "/team-project-kapusta/static/css/HomePage.e581d5f3.chunk.css",
+    "HomePage.js": "/team-project-kapusta/static/js/HomePage.f845446e.chunk.js",
+    "ReportPage.css": "/team-project-kapusta/static/css/ReportPage.3fd914e1.chunk.css",
+    "ReportPage.js": "/team-project-kapusta/static/js/ReportPage.fc2c3ee2.chunk.js",
+    "NotFoundPage.js": "/team-project-kapusta/static/js/NotFoundPage.8bcbf7ec.chunk.js",
+    "static/js/712.6011ee2a.chunk.js": "/team-project-kapusta/static/js/712.6011ee2a.chunk.js",
+    "static/js/68.b9009ea1.chunk.js": "/team-project-kapusta/static/js/68.b9009ea1.chunk.js",
     "static/media/kapusta_background.png": "/team-project-kapusta/static/media/kapusta_background.8d475dd61cb62ca1a1b1.png",
     "static/media/two.svg": "/team-project-kapusta/static/media/two.3e9b51598196b0d57182023e239ab7d2.svg",
     "static/media/products.svg": "/team-project-kapusta/static/media/products.9b498fa56e41d62ed9ca21fbbcc47f0f.svg",
@@ -26,11 +34,19 @@
     "static/media/diagram.svg": "/team-project-kapusta/static/media/diagram.01eb2c99257cab8967a7fa04c508be1d.svg",
     "static/media/arrow-left.svg": "/team-project-kapusta/static/media/arrow-left.420a10fd9c9a52c9b30cbb0be1b001bf.svg",
     "static/media/arrow-small-left.svg": "/team-project-kapusta/static/media/arrow-small-left.ed65ae738f78a2df12fa63ecf435fb95.svg",
-    "main.041c0e90.css.map": "/team-project-kapusta/static/css/main.041c0e90.css.map",
-    "main.8e3483d0.js.map": "/team-project-kapusta/static/js/main.8e3483d0.js.map"
+    "main.829d47ec.css.map": "/team-project-kapusta/static/css/main.829d47ec.css.map",
+    "main.2c7886aa.js.map": "/team-project-kapusta/static/js/main.2c7886aa.js.map",
+    "LoginPage.4cce801a.chunk.js.map": "/team-project-kapusta/static/js/LoginPage.4cce801a.chunk.js.map",
+    "HomePage.e581d5f3.chunk.css.map": "/team-project-kapusta/static/css/HomePage.e581d5f3.chunk.css.map",
+    "HomePage.f845446e.chunk.js.map": "/team-project-kapusta/static/js/HomePage.f845446e.chunk.js.map",
+    "ReportPage.3fd914e1.chunk.css.map": "/team-project-kapusta/static/css/ReportPage.3fd914e1.chunk.css.map",
+    "ReportPage.fc2c3ee2.chunk.js.map": "/team-project-kapusta/static/js/ReportPage.fc2c3ee2.chunk.js.map",
+    "NotFoundPage.8bcbf7ec.chunk.js.map": "/team-project-kapusta/static/js/NotFoundPage.8bcbf7ec.chunk.js.map",
+    "712.6011ee2a.chunk.js.map": "/team-project-kapusta/static/js/712.6011ee2a.chunk.js.map",
+    "68.b9009ea1.chunk.js.map": "/team-project-kapusta/static/js/68.b9009ea1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.041c0e90.css",
-    "static/js/main.8e3483d0.js"
+    "static/css/main.829d47ec.css",
+    "static/js/main.2c7886aa.js"
   ]
 }

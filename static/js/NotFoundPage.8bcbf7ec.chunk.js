@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkteam_project_kapusta=self.webpackChunkteam_project_kapusta||[]).push([[754],{8863:function(e,t,a){a.r(t);var n=a(184);t.default=function(){return(0,n.jsx)("div",{style:{paddingTop:"80px"},children:(0,n.jsx)("h2",{children:"Page Not Found"})})}}}]);
+//# sourceMappingURL=NotFoundPage.8bcbf7ec.chunk.js.map
