@@ -27,7 +27,7 @@ const NotFoundPage = lazy(() =>
 
 function App() {
   console.log(useFetchCurrentUserQuery());
-  const { data, isSuccess, isLoading } = useFetchCurrentUserQuery();
+  const { data, isSuccess } = useFetchCurrentUserQuery();
   const dispatch = useDispatch();
 
   console.log(refreshUser());
