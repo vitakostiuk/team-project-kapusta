@@ -25,12 +25,6 @@ const Balance = () => {
   //       console.log(data);
   //       // dispatch(refreshUser(data));
   //       // dispatch(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   getBalance();
-  // }, [AUTH_TOKEN]);
 
   const handleChange = e => {
     setBalance(e.target.value);

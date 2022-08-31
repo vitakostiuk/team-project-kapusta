@@ -8,5 +8,7 @@ const balanceSlice = createSlice({
   },
 });
 
-export const { setBalance, refreshUser } = balanceSlice.actions;
+
+export const { setBalance } = balanceSlice.actions;
+
 export default balanceSlice.reducer;
