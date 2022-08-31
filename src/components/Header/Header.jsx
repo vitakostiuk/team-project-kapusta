@@ -1,4 +1,5 @@
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import authSelectors from '../../redux/feature/auth-selectors';
 import { useState } from 'react';
 import * as Styled from './Header.styled';
 import Modal from 'components/common/Modal';
@@ -8,9 +9,12 @@ import Avatar from '@mui/material/Avatar';
 import { deepOrange } from '@mui/material/colors';
 
 const Header = () => {
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const userEmail = useSelector(authSelectors.getUserEmail);
+
   const [isShowModal, setIsShowModal] = useState(false);
 
-  const toggleModal = () => {
+  const handleClick = () => {
     setIsShowModal(prevIsShowModal => !prevIsShowModal);
   };
 
@@ -19,24 +23,24 @@ const Header = () => {
       <Styled.StyleLink to="/" alt="homepage">
         <Styled.Img src={logo} alt="logo" />
       </Styled.StyleLink>
-      <Styled.UserDiv>
-        <Styled.UserData>
-          <Avatar
-            sx={{ bgcolor: deepOrange[400] }}
-            // alt={}
-            // src="../../images/mainImg/defaultUserPhoto.jpg"
-          >
-            Y
-          </Avatar>
-          <Styled.UserEmail>UserEmail</Styled.UserEmail>
-        </Styled.UserData>
-        <Styled.Span></Styled.Span>
-        <Styled.LogoutSvg src={logoutSvg} onClick={toggleModal} />
-        <Styled.ExitBtn onClick={toggleModal}>Exit</Styled.ExitBtn>
-        {isShowModal && (
-          <Modal onClick={toggleModal} text="Do you really want to leave?" />
-        )}
-      </Styled.UserDiv>
+      {isLoggedIn && (
+        <Styled.UserDiv>
+          <Styled.UserData>
+            <Avatar
+              sx={{ bgcolor: deepOrange[400] }}
+              alt={userEmail}
+              src="/broken-image.jpg"
+            ></Avatar>
+            <Styled.UserEmail>{userEmail}</Styled.UserEmail>
+          </Styled.UserData>
+          <Styled.Span></Styled.Span>
+          <Styled.LogoutSvg src={logoutSvg} onClick={handleClick} />
+          <Styled.ExitBtn onClick={handleClick}>Exit</Styled.ExitBtn>
+          {isShowModal && (
+            <Modal onClick={handleClick} text="Do you really want to leave?" />
+          )}
+        </Styled.UserDiv>
+      )}
     </Styled.MenuUl>
   );
 };

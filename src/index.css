@@ -22,3 +22,20 @@ code {
 p {
   margin: 0;
 }
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  padding: 0;
+}
