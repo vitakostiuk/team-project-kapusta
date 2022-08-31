@@ -20,7 +20,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Text = styled.a`
+export const Text = styled.p`
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
@@ -35,6 +35,6 @@ export const Text = styled.a`
 
 export const BigArrow = styled.img``;
 
-export const Link = styled.p`
+export const Button = styled.p`
   width: 100px;
 `;
