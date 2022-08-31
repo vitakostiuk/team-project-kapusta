@@ -50,7 +50,7 @@ function App() {
             <Route
               path="login"
               element={
-                isLoggedIn ? <HomePage /> : <LoginPage to="login" replace />
+                isLoggedIn ? <HomePage to="/public" replace /> : <LoginPage />
               }
             />
 

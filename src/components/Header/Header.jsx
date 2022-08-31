@@ -34,10 +34,14 @@ const Header = () => {
             <Styled.UserEmail>{userEmail}</Styled.UserEmail>
           </Styled.UserData>
           <Styled.Span></Styled.Span>
-          <Styled.LogoutSvg src={logoutSvg} onClick={handleClick} />
+          <Styled.LogoutSvg src={logoutSvg} />
           <Styled.ExitBtn onClick={handleClick}>Exit</Styled.ExitBtn>
           {isShowModal && (
-            <Modal onClick={handleClick} text="Do you really want to leave?" />
+            <Modal
+              onClick={handleClick}
+              text="Do you really want to leave?"
+              isShowModal={setIsShowModal}
+            />
           )}
         </Styled.UserDiv>
       )}

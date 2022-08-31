@@ -8,7 +8,7 @@ import { logOut } from 'redux/feature/authSlice';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ onClick, text }) => {
+const Modal = ({ onClick, text, isShowModal }) => {
   const [logout] = useLogoutMutation();
   const dispatch = useDispatch();
 
@@ -35,6 +35,7 @@ const Modal = ({ onClick, text }) => {
       const result = await logout();
       console.log(result);
       dispatch(logOut());
+      isShowModal();
     } catch (err) {
       console.log(err);
     }
