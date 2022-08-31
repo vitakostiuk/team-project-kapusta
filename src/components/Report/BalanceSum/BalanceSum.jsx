@@ -6,7 +6,7 @@ const BalanceSum = () => {
     <Styled.Container>
       <Styled.MoneyWrapper>
         <Styled.Balance>Balance:</Styled.Balance>
-        <Styled.Money>55 000</Styled.Money>
+        <Styled.Money>55 000 uah</Styled.Money>
         <Styled.Confirm>CONFIRM</Styled.Confirm>
       </Styled.MoneyWrapper>
     </Styled.Container>

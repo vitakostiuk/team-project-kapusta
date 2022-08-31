@@ -16,7 +16,8 @@ export const SumWrapper = styled.div`
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
   border-radius: 20px;
   width: 280px;
-  padding: 20px 10px 25px 10px;
+  height: 85px;
+  /* padding: 20px 10px 25px 10px; */
 
   font-size: 14px;
   font-weight: 700;
@@ -39,10 +40,8 @@ export const SumWrapper = styled.div`
     right: 50%;
     left: 50%;
     height: 70px;
-    border: 1px solid #e0e5eb;
+    width: 1px;
     background-color: #e0e5eb;
-
-    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
 
     font-size: 14px;
     font-weight: 700;
@@ -57,7 +56,7 @@ export const IncrementWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 10px;
+  margin: 0 auto;
 
   line-height: 16px;
 
@@ -72,8 +71,7 @@ export const DecrementWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 15px;
-
+  margin: 0 auto;
   line-height: 16px;
 
   @media screen and (min-width: 772px) {

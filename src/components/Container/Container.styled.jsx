@@ -1,21 +1,21 @@
 import styled from 'styled-components';
 
 export const Div = styled.div`
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin: 0 auto;
   max-width: 320px;
   border: 1px solid green;
 
   @media screen and (min-width: 768px) {
-    padding-left: 51px;
-    padding-right: 52px;
+    padding-left: 32px;
+    padding-right: 32px;
     max-width: 768px;
   }
 
   @media screen and (min-width: 1280px) {
-    padding-left: 110px;
-    padding-right: 110px;
+    padding-left: 123px;
+    padding-right: 123px;
     max-width: 1280px;
   }
 `;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Arrow = styled.button`
   vertical-align: center;
-  padding: 5px 10px;
+  /* padding: 5px 10px; */
   background-color: transparent;
   border: none;
 `;
