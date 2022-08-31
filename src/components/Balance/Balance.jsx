@@ -1,11 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import { ReactComponent as Diagram } from '../../images/diagram.svg';
 import { Link } from 'react-router-dom';
 import s from './Balance.module.css';
 
+//vitagrebennik@gmail.com
+
 const Balance = () => {
   const [balance, setBalance] = useState('00.00 UAH');
   const [isDisabledBtn, setIsDisabledBtn] = useState(true);
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   const getBalance = () => {
+  //     try {
+  //       const { data } = axios.get('http://localhost:3000/api/users/balance');
+  //       console.log(data);
+  //       dispatch(data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getBalance();
+  // }, []);
 
   const handleChange = e => {
     setBalance(e.target.value);
