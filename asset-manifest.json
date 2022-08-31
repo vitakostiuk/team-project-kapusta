@@ -1,13 +1,24 @@
 {
   "files": {
-    "main.css": "/team-project-kapusta/static/css/main.a7e89d25.css",
-    "main.js": "/team-project-kapusta/static/js/main.85ba77d2.js",
+    "main.css": "/team-project-kapusta/static/css/main.041c0e90.css",
+    "main.js": "/team-project-kapusta/static/js/main.8e3483d0.js",
     "static/media/kapusta_background.png": "/team-project-kapusta/static/media/kapusta_background.8d475dd61cb62ca1a1b1.png",
     "static/media/two.svg": "/team-project-kapusta/static/media/two.3e9b51598196b0d57182023e239ab7d2.svg",
+    "static/media/products.svg": "/team-project-kapusta/static/media/products.9b498fa56e41d62ed9ca21fbbcc47f0f.svg",
     "static/media/rightTop.svg": "/team-project-kapusta/static/media/rightTop.5b87f84018284c2097f7c8ab4b23ab36.svg",
+    "static/media/sports-hobbies.svg": "/team-project-kapusta/static/media/sports-hobbies.e0b93396ed48421845cc3d6ea88580f2.svg",
+    "static/media/cocktail.svg": "/team-project-kapusta/static/media/cocktail.c923f34f02d8d5ab93980bfd57090848.svg",
+    "static/media/tools.svg": "/team-project-kapusta/static/media/tools.9c0daad1716fce077418dc7a0ca1d0e2.svg",
     "static/media/logo.svg": "/team-project-kapusta/static/media/logo.9a1219fa7b0c5ccef923ebbd77f9ee7b.svg",
+    "static/media/hands-holding-heart.svg": "/team-project-kapusta/static/media/hands-holding-heart.cff2117f90173d1985774a084206d039.svg",
+    "static/media/communal.svg": "/team-project-kapusta/static/media/communal.d1ef5bbf5986a6fa57a693ff73a2e21f.svg",
     "static/media/calendar.svg": "/team-project-kapusta/static/media/calendar.fcea09cc92ad5bc80f06cc6eef6d3cb9.svg",
+    "static/media/other.svg": "/team-project-kapusta/static/media/other.8dc3183b2d2f4abd5cbf2b8c53b0f0d7.svg",
+    "static/media/car.svg": "/team-project-kapusta/static/media/car.b762be89b8f5d319e057c2870cae4630.svg",
+    "static/media/housing.svg": "/team-project-kapusta/static/media/housing.1e12f1d4632935e8be3f023f6670f851.svg",
     "static/media/calculator.svg": "/team-project-kapusta/static/media/calculator.548cfa77d066c8000a1216da93e9d1fb.svg",
+    "static/media/entertainment.svg": "/team-project-kapusta/static/media/entertainment.dbd33aa4fd441af934cf9ebea146c54c.svg",
+    "static/media/book.svg": "/team-project-kapusta/static/media/book.87ad40c45cdd03bea614e4d39c536ec9.svg",
     "static/media/pop-up.svg": "/team-project-kapusta/static/media/pop-up.6d34d84e5d1cd1481dc8.svg",
     "index.html": "/team-project-kapusta/index.html",
     "static/media/logout.svg": "/team-project-kapusta/static/media/logout.9845e79fa1b222d17d55ea6dbb93bb80.svg",
@@ -15,11 +26,11 @@
     "static/media/diagram.svg": "/team-project-kapusta/static/media/diagram.01eb2c99257cab8967a7fa04c508be1d.svg",
     "static/media/arrow-left.svg": "/team-project-kapusta/static/media/arrow-left.420a10fd9c9a52c9b30cbb0be1b001bf.svg",
     "static/media/arrow-small-left.svg": "/team-project-kapusta/static/media/arrow-small-left.ed65ae738f78a2df12fa63ecf435fb95.svg",
-    "main.a7e89d25.css.map": "/team-project-kapusta/static/css/main.a7e89d25.css.map",
-    "main.85ba77d2.js.map": "/team-project-kapusta/static/js/main.85ba77d2.js.map"
+    "main.041c0e90.css.map": "/team-project-kapusta/static/css/main.041c0e90.css.map",
+    "main.8e3483d0.js.map": "/team-project-kapusta/static/js/main.8e3483d0.js.map"
   },
   "entrypoints": [
-    "static/css/main.a7e89d25.css",
-    "static/js/main.85ba77d2.js"
+    "static/css/main.041c0e90.css",
+    "static/js/main.8e3483d0.js"
   ]
 }
