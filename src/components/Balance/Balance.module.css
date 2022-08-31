@@ -121,12 +121,12 @@
 .popUpContainer {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: -5px;
   z-index: 10;
 
   padding-top: 40px;
   padding-left: 25px;
-  /* width: 280px; */
+  width: 289px;
   height: 163px;
   background-image: url('../../images/pop-up.svg');
   background-repeat: no-repeat;
