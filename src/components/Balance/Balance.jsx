@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import authSelectors from '../../redux/feature/auth-selectors';
-import axios from 'axios';
+import { useState } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import authSelectors from '../../redux/feature/auth-selectors';
+// import axios from 'axios';
 import { ReactComponent as Diagram } from '../../images/diagram.svg';
 import { Link } from 'react-router-dom';
 import s from './Balance.module.css';
@@ -12,7 +12,7 @@ const Balance = () => {
   const [balance, setBalance] = useState('00.00 UAH');
   const [isDisabledBtn, setIsDisabledBtn] = useState(true);
   // const dispatch = useDispatch();
-  const AUTH_TOKEN = useSelector(authSelectors.getToken);
+  // const AUTH_TOKEN = useSelector(authSelectors.getToken);
 
   // useEffect(() => {
   //   const { data, isSuccess, isLoading } = useFetchCurrentUserQuery();

@@ -2,14 +2,15 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { ReactComponent as CloseModal } from 'images/close.svg';
 import s from './Modal.module.css';
-// import { useDispatch } from 'react-redux';
-// import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useLogoutMutation } from 'redux/authorization/authApi';
+import { logOut } from 'redux/feature/authSlice';
 
 const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ onClick, text }) => {
   const [logout] = useLogoutMutation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleKeyDown = e => {
@@ -17,15 +18,11 @@ const Modal = ({ onClick, text }) => {
         onClick();
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
-
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClick]);
-
-  // const dispatch = useDispatch();
 
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
@@ -33,15 +30,14 @@ const Modal = ({ onClick, text }) => {
     }
   };
 
-  // const [isShowModal, setIsShowModal] = useState(false);
-
-  // const toggleModal = () => {
-  //   setIsShowModal(prevIsShowModal => !prevIsShowModal);
-  // };
-
-  const handleLogOut = () => {
-    logout();
-    // toggleModal();
+  const handleLogOut = async () => {
+    try {
+      const result = await logout();
+      console.log(result);
+      dispatch(logOut());
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return createPortal(

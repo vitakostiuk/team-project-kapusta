@@ -14,7 +14,7 @@ const Header = () => {
 
   const [isShowModal, setIsShowModal] = useState(false);
 
-  const toggleModal = () => {
+  const handleClick = () => {
     setIsShowModal(prevIsShowModal => !prevIsShowModal);
   };
 
@@ -34,10 +34,10 @@ const Header = () => {
             <Styled.UserEmail>{userEmail}</Styled.UserEmail>
           </Styled.UserData>
           <Styled.Span></Styled.Span>
-          <Styled.LogoutSvg src={logoutSvg} onClick={toggleModal} />
-          <Styled.ExitBtn onClick={toggleModal}>Exit</Styled.ExitBtn>
+          <Styled.LogoutSvg src={logoutSvg} onClick={handleClick} />
+          <Styled.ExitBtn onClick={handleClick}>Exit</Styled.ExitBtn>
           {isShowModal && (
-            <Modal onClick={toggleModal} text="Do you really want to leave?" />
+            <Modal onClick={handleClick} text="Do you really want to leave?" />
           )}
         </Styled.UserDiv>
       )}
