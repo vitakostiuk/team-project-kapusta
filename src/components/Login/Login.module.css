@@ -1,0 +1,115 @@
+.forma {
+  border-radius: 30px;
+  background-color: white;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  /* text-align: center; */
+  letter-spacing: 0.04em;
+  color: #52555f;
+  height: 500px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.topGoogleRegText {
+  padding-top: 40px;
+  margin-bottom: 16px;
+  width: 220px;
+  text-align: center;
+}
+
+.buttonGoogleRegText {
+  margin-top: 32px;
+}
+
+.emailLabel {
+  display: flex;
+  margin-top: 16px;
+  margin-bottom: 12px;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.04em;
+  color: #000000;
+}
+
+.passwordLabel {
+  display: flex;
+  padding-top: 20px;
+  margin-bottom: 12px;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.04em;
+  color: #000000;
+}
+
+.input {
+  width: 240px;
+  height: 52px;
+  padding: 17px;
+  background: #f6f7fb;
+  border: none;
+  border-radius: 30px;
+  margin-bottom: 5px;
+}
+
+.error {
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.04em;
+  color: red;
+  text-align: center;
+}
+
+.divButton {
+  display: flex;
+  margin-top: 40px;
+  padding-bottom: 40px;
+  justify-content: space-between;
+}
+
+.Btn {
+  border: none;
+  width: 116px;
+  height: 44px;
+  background: #f5f6fb;
+  border-radius: 16px;
+  color: #52555f;
+}
+
+.Btn:focus {
+  background: #ff751d;
+  color: #ffffff;
+}
+
+.btn:hover {
+  background: #ff751d;
+  color: #ffffff;
+}
+
+.GoogleBtn {
+  border: none;
+  width: 116px;
+  height: 44px;
+  background: #f5f6fb;
+  border-radius: 16px;
+  color: #52555f;
+  display: block;
+  margin: 0 auto;
+}
+
+.textunderLogo {
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+
+  color: #52555f;
+}
+
+.logoDiv {
+  margin-top: 86px;
+  margin-bottom: 50px;
+}
