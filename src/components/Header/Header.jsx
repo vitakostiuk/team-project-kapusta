@@ -29,7 +29,7 @@ const Header = () => {
             <Avatar
               sx={{ bgcolor: deepOrange[400] }}
               alt={userEmail}
-              // src="../../images/mainImg/defaultUserPhoto.jpg"
+              src="/broken-image.jpg"
             ></Avatar>
             <Styled.UserEmail>{userEmail}</Styled.UserEmail>
           </Styled.UserData>
