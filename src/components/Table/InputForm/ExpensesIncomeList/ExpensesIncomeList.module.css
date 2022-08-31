@@ -1,0 +1,76 @@
+.thamb {
+  display: flex;
+  max-width: 280px;
+  height: 138px;
+  margin: 63px 0 0 0;
+  padding: 0 10px;
+}
+
+.expensesIncomeList,
+.expensesIncomeSum,
+.expensesIncomeDel {
+  width: 150px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  list-style: none;
+}
+
+.expensesIncomeSum {
+  width: 90px;
+}
+
+.expensesIncomeDel {
+  width: 40px;
+}
+
+.item,
+.itemSum,
+.itemDel {
+  height: 30px;
+  margin-bottom: 16px;
+}
+
+.itemDate,
+.itemCategory {
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 1.12;
+}
+
+.itemDate {
+  padding-right: 20px;
+}
+
+.line {
+  border: 1px solid #f5f6fb;
+  margin: 8px 0;
+  width: 280px;
+}
+
+.itemSum {
+  text-align: right;
+  color: #e7192e;
+}
+
+.itemSum:last-child {
+  color: #407946;
+}
+
+.deleteBtn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: transparent;
+}
+
+.deleteBtn:hover,
+.deleteBtn:focus {
+  background-color: #f5f6fb;
+  border-radius: 50%;
+}

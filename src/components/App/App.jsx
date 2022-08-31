@@ -44,6 +44,7 @@ function App() {
     <>
       <Header />
       <MainPage>
+
         <Suspense>
           <Routes>
             {/* NOT AUTH */}
@@ -70,6 +71,7 @@ function App() {
             <Route path="=login" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
+
       </MainPage>
     </>
   );
