@@ -1,5 +1,5 @@
 .calendar {
-  width: 106px;
+  width: 74px;
   height: 44px;
   border: none;
 
@@ -8,5 +8,12 @@
   font-weight: 900;
   font-size: 12px;
 
+  background-color: transparent;
   color: #52555f;
+}
+
+@media screen and (min-width: 768px) {
+  .calendar {
+    width: 106px;
+  }
 }

@@ -1,21 +1,45 @@
 .selectList {
-  width: 169px;
+  width: 280px;
+  height: 44px;
+  padding-left: 20px;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
+  background-color: transparent;
   color: #c7ccdc;
-  border: 2px solid #f6f7fc;
-  border-left: none;
+  border: 2px solid #fff;
+  border-radius: 0 0 16px 0;
+  border-top: none;
 }
 
 .selectList:hover,
 .selectList:focus {
-  border-color: #f6f7fc;
+  border-color: #fff;
   outline: 0;
 }
 
 .selectItem:hover {
-  background-color: #f5f6fb;
+  background-color: #fff;
   color: #52555f;
+}
+
+@media screen and (min-width: 768px) {
+  .selectList {
+    width: 169px;
+    color: #c7ccdc;
+    border: 2px solid #f6f7fc;
+    border-radius: 0;
+    border-left: none;
+  }
+  .selectList:hover,
+  .selectList:focus {
+    border-color: #f6f7fc;
+    outline: 0;
+  }
+
+  .selectItem:hover {
+    background-color: #f5f6fb;
+    color: #52555f;
+  }
 }

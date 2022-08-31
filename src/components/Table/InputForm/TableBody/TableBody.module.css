@@ -1,0 +1,140 @@
+.tableThamb {
+  height: 130px;
+  width: 280px;
+  background-color: transparent;
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .tableThamb {
+    height: 382px;
+    width: 624px;
+    background-color: #f5f6fb;
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .tableThamb {
+    height: 400px;
+    width: 746px;
+    background-color: #f5f6fb;
+    border-radius: 16px;
+  }
+}
+
+.table {
+  width: inherit;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+  border-collapse: collapse;
+}
+
+.tableHeader {
+  height: 40px;
+  color: #000000;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.tableRow {
+  height: 40px;
+  background-color: #fff;
+  color: #52555f;
+  font-weight: 400;
+  border: none;
+}
+
+.tableCell,
+.tableCellSum,
+.tableHeaderCell {
+  padding: 0;
+  border-bottom: 2px solid #f5f6fb;
+  padding-left: 20px;
+}
+
+.tableCell:first-child,
+.tableHeaderCell:first-child {
+  width: 111px;
+  padding-right: 5px;
+}
+
+.tableHeaderCell:first-child {
+  padding-left: 28px;
+}
+
+.tableCell:first-child {
+  border-left: 2px solid #f5f6fb;
+}
+
+.tableCell:nth-child(2),
+.tableHeaderCell:nth-child(2) {
+  width: 198px;
+}
+
+@media screen and (min-width: 1280px) {
+  .tableCell:nth-child(2),
+  .tableHeaderCell:nth-child(2) {
+    width: 223px;
+    padding-right: 15px;
+  }
+}
+
+.tableCell:nth-child(3),
+.tableHeaderCell:nth-child(3) {
+  width: 124px;
+  padding-left: 0;
+  text-align: center;
+}
+
+@media screen and (min-width: 1280px) {
+  .tableCell:nth-child(3),
+  .tableHeaderCell:nth-child(3) {
+    width: 167px;
+    padding-right: 31px;
+    text-align: center;
+  }
+}
+
+.tableCellSum,
+.tableHeaderCell:nth-child(4) {
+  width: 114px;
+  padding: 0;
+  text-align: center;
+}
+
+@media screen and (min-width: 1280px) {
+  .tableCellSum,
+  .tableHeaderCell:nth-child(4) {
+    width: 147px;
+    padding-right: 23px;
+    text-align: center;
+  }
+}
+
+.tableCell:last-child {
+  border-right: 2px solid #f5f6fb;
+}
+
+.tableCellSum {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #e7192e;
+}
+
+.deleteBtn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: transparent;
+}
+
+.deleteBtn:hover,
+.deleteBtn:focus {
+  background-color: #f5f6fb;
+  border-radius: 50%;
+}

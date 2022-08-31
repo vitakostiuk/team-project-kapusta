@@ -1,5 +1,47 @@
+.calendarBox {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  width: 136px;
+  padding-top: 40px;
+  padding-left: 30px;
+}
+
+.calendarPic {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .calendarBox {
+    display: none;
+  }
+  .calendarPic {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    display: none;
+  }
+}
+
 .tabsBlock {
-  margin-top: 8px;
+  margin-top: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .tabsBlock {
+    margin-top: 60px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .tabsBlock {
+    margin-top: 8px;
+  }
 }
 
 .tabs {
@@ -7,6 +49,7 @@
   font-family: 'Roboto';
   font-weight: 700;
   line-height: 1.17;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
@@ -15,14 +58,30 @@
   justify-content: center;
   align-items: center;
 
-  width: 138px;
-  height: 40px;
-  border-radius: 16px 16px 0 0;
-  background-color: #fafbfd;
+  width: 149px;
+  height: 53px;
+  background-color: #f5f6fb;
+}
+
+@media screen and (max-width: 767px) {
+  .tabThamb:hover,
+  .tabThamb:focus {
+    background-color: #ff751d;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tabThamb {
+    width: 138px;
+    height: 40px;
+    border-radius: 16px 16px 0 0;
+    background-color: #fafbfd;
+  }
 }
 
 .tabThambActive {
   background-color: #fefefe;
+  color: #ff751d;
 }
 
 .tab {
@@ -31,8 +90,19 @@
   text-decoration: none;
 }
 
-.tab:hover {
-  color: #ff751d;
+.tab:first-child {
+  margin-right: 2px;
+}
+
+.tab:hover,
+.tab:focus {
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .tab:hover {
+    color: #ff751d;
+  }
 }
 
 .tabActive {

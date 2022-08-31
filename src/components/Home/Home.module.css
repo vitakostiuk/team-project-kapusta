@@ -1,0 +1,43 @@
+.descktop,
+.tablet {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .tablet {
+    display: block;
+  }
+
+  .descktop,
+  .mobile {
+    display: none;
+  }
+
+  .tableThamb {
+    width: 704px;
+    background-color: #fff;
+    margin-bottom: 40px;
+    padding: 48px 40px 42px;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .descktop {
+    display: block;
+  }
+
+  .tablet,
+  .mobile {
+    display: none;
+  }
+
+  .tableThamb {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+    width: 1098px;
+    padding: 28px 32px 61px;
+  }
+}
