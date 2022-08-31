@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import authSelectors from '../../redux/feature/auth-selectors';
 import axios from 'axios';
 import { ReactComponent as Diagram } from '../../images/diagram.svg';
 import { Link } from 'react-router-dom';
@@ -11,19 +12,19 @@ const Balance = () => {
   const [balance, setBalance] = useState('00.00 UAH');
   const [isDisabledBtn, setIsDisabledBtn] = useState(true);
   // const dispatch = useDispatch();
+  const AUTH_TOKEN = useSelector(authSelectors.getToken);
 
   // useEffect(() => {
+  //   const { data, isSuccess, isLoading } = useFetchCurrentUserQuery();
+  //   const dispatch = useDispatch();
   //   const getBalance = () => {
   //     try {
-  //       const { data } = axios.get('http://localhost:3000/api/users/balance');
+  //       axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+  //       axios.defaults.baseURL = 'http://localhost:3000';
+  //       const { data } = axios.get('/api/users/balance');
   //       console.log(data);
-  //       dispatch(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   getBalance();
-  // }, []);
+  //       // dispatch(refreshUser(data));
+  //       // dispatch(data);
 
   const handleChange = e => {
     setBalance(e.target.value);

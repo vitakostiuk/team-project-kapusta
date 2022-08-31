@@ -1,7 +1,9 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import authSelectors from '../../redux/feature/auth-selectors';
+import { useFetchCurrentUserQuery } from '../../redux/authorization/authApi';
+import { refreshUser } from '../../redux/feature/authSlice';
 // import LoginPage from '../../pages/LoginPage';
 // import HomePage from '../../pages/HomePage';
 // import ReportPage from '../../pages/ReportPage';
@@ -24,6 +26,18 @@ const NotFoundPage = lazy(() =>
 );
 
 function App() {
+  console.log(useFetchCurrentUserQuery());
+  const { data, isSuccess, isLoading } = useFetchCurrentUserQuery();
+  const dispatch = useDispatch();
+
+  console.log(refreshUser());
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(refreshUser(data));
+    }
+  }, [data, dispatch, isSuccess]);
+
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   console.log(isLoggedIn);
   return (
@@ -36,7 +50,7 @@ function App() {
             <Route
               path="login"
               element={
-                isLoggedIn ? <LoginPage /> : <LoginPage to="login" replace />
+                isLoggedIn ? <HomePage /> : <LoginPage to="login" replace />
               }
             />
 

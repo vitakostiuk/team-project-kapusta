@@ -47,7 +47,7 @@ export const authApi = createApi({
         }
 
         const result = await baseQuery({
-          url: 'api/auth/current',
+          url: 'api/users/current',
           method: 'GET',
           headers: { authorization: `Bearer ${persistedState}` },
         });
