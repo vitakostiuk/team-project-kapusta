@@ -38,6 +38,15 @@ export const authApi = createApi({
         },
       }),
     }),
+    googleLogin: builder.mutation({
+      query: () => ({
+        url: 'api/auth/google',
+        method: 'GET',
+        headers: {
+          authorization: '',
+        },
+      }),
+    }),
     fetchCurrentUser: builder.query({
       async queryFn(_arg, { getState }, _extraOptions, baseQuery) {
         const persistedState = getState().auth.token;
@@ -63,4 +72,5 @@ export const {
   useLoginMutation,
   useLogoutMutation,
   useFetchCurrentUserQuery,
+  useGoogleLoginMutation,
 } = authApi;
