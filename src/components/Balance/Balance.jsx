@@ -1,47 +1,69 @@
-import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import authSelectors from '../../redux/feature/auth-selectors';
-// import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as Diagram } from '../../images/diagram.svg';
 import { Link } from 'react-router-dom';
+import {
+  useGetBalanceQuery,
+  useChangeBalanceMutation,
+} from 'redux/user/userApi';
+import { setBalance } from 'redux/Balance/balanceSlice';
+// import authSelectors from 'redux/feature/auth-selectors';
 import s from './Balance.module.css';
 
-//vitagrebennik@gmail.com
-
 const Balance = () => {
-  const [balance, setBalance] = useState('00.00 UAH');
+  const balance = useSelector(state => state.balance);
+  const { data, error, isLoading } = useGetBalanceQuery();
+  const [value, setValue] = useState(balance);
   const [isDisabledBtn, setIsDisabledBtn] = useState(true);
-  // const dispatch = useDispatch();
-  // const AUTH_TOKEN = useSelector(authSelectors.getToken);
+  const dispatch = useDispatch();
+  const [changeBalance] = useChangeBalanceMutation();
 
-  // useEffect(() => {
-  //   const { data, isSuccess, isLoading } = useFetchCurrentUserQuery();
-  //   const dispatch = useDispatch();
-  //   const getBalance = () => {
-  //     try {
-  //       axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-  //       axios.defaults.baseURL = 'http://localhost:3000';
-  //       const { data } = axios.get('/api/users/balance');
-  //       console.log(data);
-  //       // dispatch(refreshUser(data));
-  //       // dispatch(data);
+  useEffect(() => {
+    dispatch(
+      setBalance(
+        Number(data)
+          .toLocaleString('cs-CZ', {
+            style: 'currency',
+            currency: 'UAH',
+          })
+          .replace(',', '.'),
+      ),
+    );
+  }, [data, dispatch]);
 
   const handleChange = e => {
-    setBalance(e.target.value);
+    setValue(e.target.value);
     setIsDisabledBtn(false);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
-    setBalance(
-      Number(balance)
+    setValue(
+      Number(value)
         .toLocaleString('cs-CZ', {
           style: 'currency',
           currency: 'UAH',
         })
         .replace(',', '.'),
     );
+
+    try {
+      const { data } = await changeBalance({ balance: Number(value) });
+      dispatch(
+        setBalance(
+          Number(data.balance)
+            .toLocaleString('cs-CZ', {
+              style: 'currency',
+              currency: 'UAH',
+            })
+            .replace(',', '.'),
+        ),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+
     setIsDisabledBtn(true);
   };
 
@@ -64,13 +86,14 @@ const Balance = () => {
               className={s.input}
               type="text"
               name="balance"
-              value={balance}
+              value={value}
+              // placeholder={balance}
               onChange={handleChange}
               minLength="1"
               pattern="^[0-9]+$"
               title="Field may contain only numbers from 0 to 9"
               required
-              onFocus={() => setBalance('')}
+              onFocus={() => setValue('')}
             />
             <button
               type="submit"
@@ -81,7 +104,7 @@ const Balance = () => {
             </button>
           </div>
         </form>
-        {balance === '00.00 UAH' && (
+        {balance === '0.00 UAH' && (
           <div className={s.popUpContainer}>
             <p className={s.popUpText}>
               Hello! To get started, enter the current balance of your account!

@@ -13,6 +13,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import authReducer from './feature/authSlice';
 import { authApi } from './authorization/authApi';
+import { userApi } from './user/userApi';
 import balanceReducer from './Balance/balanceSlice';
 import logger from 'redux-logger';
 
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   [authApi.reducerPath]: authApi.reducer,
   balance: balanceReducer,
+  [userApi.reducerPath]: userApi.reducer,
 });
 
 export const store = configureStore({
@@ -38,6 +40,7 @@ export const store = configureStore({
       },
     })
       .concat(authApi.middleware)
+      .concat(userApi.middleware)
       .concat(logger),
 });
 

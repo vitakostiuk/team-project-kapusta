@@ -26,11 +26,8 @@ const NotFoundPage = lazy(() =>
 );
 
 function App() {
-  console.log(useFetchCurrentUserQuery());
   const { data, isSuccess } = useFetchCurrentUserQuery();
   const dispatch = useDispatch();
-
-  console.log(refreshUser());
 
   useEffect(() => {
     if (isSuccess) {
@@ -39,12 +36,10 @@ function App() {
   }, [data, dispatch, isSuccess]);
 
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  console.log(isLoggedIn);
   return (
     <>
       <Header />
       <MainPage>
-
         <Suspense>
           <Routes>
             {/* NOT AUTH */}
@@ -71,7 +66,6 @@ function App() {
             <Route path="=login" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
-
       </MainPage>
     </>
   );
