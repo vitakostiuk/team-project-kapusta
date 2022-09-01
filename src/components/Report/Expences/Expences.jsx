@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Styled from './Expences.styled';
+import s from './Expences.module.css';
 import Arrow from '../Arrow';
 import products from '../../../images/products.svg';
 import hobbies from '../../../images/sports-hobbies.svg';
@@ -15,70 +15,71 @@ import other from '../../../images/other.svg';
 
 const Expences = () => {
   return (
-    <Styled.Container>
-      <Styled.Title>
+    <div className={s.container}>
+      <div className={s.title}>
         <Arrow />
-        <Styled.Text>EXPENSES</Styled.Text>
+        <p className={s.text}>EXPENSES</p>
         <Arrow rotate="true" />
-      </Styled.Title>
-      <Styled.Categories>
-        <Styled.Category>
-          <Styled.Sum>3 000.00</Styled.Sum>
-          <Styled.Picture src={products} />
-          <Styled.NameOfCategory>PRODUCTS</Styled.NameOfCategory>
-        </Styled.Category>
-        <Styled.Category>
-          <Styled.Sum>5 000.00</Styled.Sum>
-          <Styled.Picture src={alcohol} />
-          <Styled.NameOfCategory>ALCOHOL</Styled.NameOfCategory>
-        </Styled.Category>
-        <Styled.Category>
-          <Styled.Sum>3 000.00</Styled.Sum>
-          <Styled.Picture src={entertainment} />
-          <Styled.NameOfCategory>ENTERTAINMENT</Styled.NameOfCategory>
-        </Styled.Category>
-        <Styled.Category>
-          <Styled.Sum>3 000.00</Styled.Sum>
-          <Styled.Picture src={health} />
-          <Styled.NameOfCategory>PRODUCTS</Styled.NameOfCategory>
-        </Styled.Category>
-        <Styled.Category>
-          <Styled.Sum>3 000.00</Styled.Sum>
-          <Styled.Picture src={transport} />
-          <Styled.NameOfCategory>PRODUCTS</Styled.NameOfCategory>
-        </Styled.Category>
-        <Styled.Category>
-          <Styled.Sum>3 000.00</Styled.Sum>
-          <Styled.Picture src={housing} />
-          <Styled.NameOfCategory>PRODUCTS</Styled.NameOfCategory>
-        </Styled.Category>
-        <Styled.Category>
-          <Styled.Sum>3 000.00</Styled.Sum>
-          <Styled.Picture src={technique} />
-          <Styled.NameOfCategory>PRODUCTS</Styled.NameOfCategory>
-        </Styled.Category>
-        <Styled.Category>
-          <Styled.Sum>3 000.00</Styled.Sum>
-          <Styled.Picture src={communal} />
-          <Styled.NameOfCategory>PRODUCTS</Styled.NameOfCategory>
-        </Styled.Category>
-        <Styled.Category>
-          <Styled.Sum>3 000.00</Styled.Sum>
-          <Styled.Picture src={hobbies} />
-          <Styled.NameOfCategory>PRODUCTS</Styled.NameOfCategory>
-        </Styled.Category>
-        <Styled.Category>
-          <Styled.Sum>3 000.00</Styled.Sum>
-          <Styled.Picture src={education} />
-          <Styled.NameOfCategory>PRODUCTS</Styled.NameOfCategory>
-        </Styled.Category>
-        <Styled.Category>
-          <Styled.Sum>3 000.00</Styled.Sum>
-          <Styled.Picture src={other} />
-          <Styled.NameOfCategory>PRODUCTS</Styled.NameOfCategory>
-        </Styled.Category>
-      </Styled.Categories>
-    </Styled.Container>
+      </div>
+
+      <ul className={s.categories}>
+        <li className={s.category}>
+          <p className={s.sum}>3 000.00</p>
+          <img className={s.picture} src={products} alt="products" />
+          <p className={s.nameOfCategory}>PRODUCTS</p>
+        </li>
+        <li className={s.category}>
+          <p className={s.sum}>5 000.00</p>
+          <img className={s.picture} src={alcohol} alt="alcohol" />
+          <p className={s.nameOfCategory}>ALCOHOL</p>
+        </li>
+        <li className={s.category}>
+          <p className={s.sum}>3 000.00</p>
+          <img className={s.picture} src={entertainment} alt="entertainment" />
+          <p className={s.nameOfCategory}>ENTERTAINMENT</p>
+        </li>
+        <li className={s.category}>
+          <p className={s.sum}>3 000.00</p>
+          <img className={s.picture} src={health} alt="health" />
+          <p className={s.nameOfCategory}>PRODUCTS</p>
+        </li>
+        <li className={s.category}>
+          <p className={s.sum}>3 000.00</p>
+          <img className={s.picture} src={transport} alt="transport" />
+          <p className={s.nameOfCategory}>PRODUCTS</p>
+        </li>
+        <li className={s.category}>
+          <p className={s.sum}>3 000.00</p>
+          <img className={s.picture} src={housing} alt="housing" />
+          <p className={s.nameOfCategory}>PRODUCTS</p>
+        </li>
+        <li className={s.category}>
+          <p className={s.sum}>3 000.00</p>
+          <img className={s.picture} src={technique} alt="technique" />
+          <p className={s.nameOfCategory}>PRODUCTS</p>
+        </li>
+        <li className={s.category}>
+          <p className={s.sum}>3 000.00</p>
+          <img className={s.picture} src={communal} alt="communal" />
+          <p className={s.nameOfCategory}>PRODUCTS</p>
+        </li>
+        <li className={s.category}>
+          <p className={s.sum}>3 000.00</p>
+          <img className={s.picture} src={hobbies} alt="hobbies" />
+          <p className={s.nameOfCategory}>PRODUCTS</p>
+        </li>
+        <li className={s.category}>
+          <p className={s.sum}>3 000.00</p>
+          <img className={s.picture} src={education} alt="education" />
+          <p className={s.nameOfCategory}>PRODUCTS</p>
+        </li>
+        <li className={s.category}>
+          <p className={s.sum}>3 000.00</p>
+          <img className={s.picture} src={other} alt="other" />
+          <p className={s.nameOfCategory}>PRODUCTS</p>
+        </li>
+      </ul>
+    </div>
   );
 };
 
