@@ -7,28 +7,21 @@ import {
   useChangeBalanceMutation,
 } from 'redux/user/userApi';
 import { setBalance } from 'redux/Balance/balanceSlice';
+import { getNormalizedSum } from 'helpers/getNormalizedSum';
 // import authSelectors from 'redux/feature/auth-selectors';
 import s from './Balance.module.css';
 
 const Balance = () => {
   const balance = useSelector(state => state.balance);
   const { data, error, isLoading } = useGetBalanceQuery();
-  const [value, setValue] = useState(balance);
+  const [value, setValue] = useState('');
   const [isDisabledBtn, setIsDisabledBtn] = useState(true);
   const dispatch = useDispatch();
   const [changeBalance] = useChangeBalanceMutation();
 
   useEffect(() => {
-    dispatch(
-      setBalance(
-        Number(data)
-          .toLocaleString('cs-CZ', {
-            style: 'currency',
-            currency: 'UAH',
-          })
-          .replace(',', '.'),
-      ),
-    );
+    dispatch(setBalance(getNormalizedSum(data)));
+    setValue(getNormalizedSum(data));
   }, [data, dispatch]);
 
   const handleChange = e => {
@@ -39,27 +32,11 @@ const Balance = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    setValue(
-      Number(value)
-        .toLocaleString('cs-CZ', {
-          style: 'currency',
-          currency: 'UAH',
-        })
-        .replace(',', '.'),
-    );
+    setValue(getNormalizedSum(value));
 
     try {
       const { data } = await changeBalance({ balance: Number(value) });
-      dispatch(
-        setBalance(
-          Number(data.balance)
-            .toLocaleString('cs-CZ', {
-              style: 'currency',
-              currency: 'UAH',
-            })
-            .replace(',', '.'),
-        ),
-      );
+      dispatch(setBalance(getNormalizedSum(data.balance)));
     } catch (error) {
       console.log(error);
     }
