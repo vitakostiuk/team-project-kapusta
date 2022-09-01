@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import {
   useLoginMutation,
   useRegisterMutation,
+  useGoogleLoginMutation,
 } from 'redux/authorization/authApi';
 import { logIn, registerUser } from '../../redux/feature/authSlice';
 
@@ -29,6 +30,7 @@ export const Login = () => {
   const dispatch = useDispatch();
   const [login] = useLoginMutation();
   const [registration] = useRegisterMutation();
+  const [google] = useGoogleLoginMutation();
 
   return (
     <div>
@@ -63,7 +65,18 @@ export const Login = () => {
             <p className={styles.topGoogleRegText}>
               You can log in with your Google Account:
             </p>
-            <button type="button" className={styles.GoogleBtn}>
+            <button
+              type="button"
+              onClick={async () => {
+                try {
+                  const user = await google();
+                  // dispatch(registerUser(user));
+                } catch (err) {
+                  console.log(err);
+                }
+              }}
+              className={styles.GoogleBtn}
+            >
               Google
             </button>
             <p className={styles.buttonGoogleRegText}>

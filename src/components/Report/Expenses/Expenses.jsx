@@ -12,8 +12,12 @@ import education from '../../../images/book.svg';
 import technique from '../../../images/tools.svg';
 import housing from '../../../images/housing.svg';
 import other from '../../../images/other.svg';
+import { useGetTransactionsQuery } from 'redux/report/transactionsApi';
 
-const Expences = () => {
+const Expenses = () => {
+  const { data, refetch } = useGetTransactionsQuery();
+  console.log(data);
+
   return (
     <div className={s.container}>
       <div className={s.title}>
@@ -83,4 +87,4 @@ const Expences = () => {
   );
 };
 
-export default Expences;
+export default Expenses;
