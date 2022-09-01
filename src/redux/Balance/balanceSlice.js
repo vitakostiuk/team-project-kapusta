@@ -5,7 +5,6 @@ const balanceSlice = createSlice({
   initialState: '',
   reducers: {
     setBalance: (_, action) => {
-      // console.log('action.payload', action.payload);
       return action.payload;
     },
   },
