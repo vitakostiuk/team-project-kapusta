@@ -2,12 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const balanceSlice = createSlice({
   name: 'balance',
-  initialState: '00.00 UAH',
+  initialState: '',
   reducers: {
-    setBalance: (_, action) => action.payload,
+    setBalance: (_, action) => {
+      // console.log('action.payload', action.payload);
+      return action.payload;
+    },
   },
 });
-
 
 export const { setBalance } = balanceSlice.actions;
 
