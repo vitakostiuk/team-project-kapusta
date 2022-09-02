@@ -17,6 +17,7 @@ const Balance = () => {
   const balance = useSelector(state => state.balance);
   const {
     data,
+    isSuccess,
     // error,
     // isLoading
   } = useGetBalanceQuery();
@@ -30,9 +31,11 @@ const Balance = () => {
   const [changeBalance] = useChangeBalanceMutation();
 
   useEffect(() => {
-    dispatch(setBalance(getNormalizedSum(data)));
-    setValue(getNormalizedSum(data));
-  }, [data, dispatch]);
+    if (isSuccess) {
+      dispatch(setBalance(getNormalizedSum(data)));
+      setValue(getNormalizedSum(data));
+    }
+  }, [data, dispatch, isSuccess]);
 
   const handleChange = e => {
     setValue(e.target.value);
