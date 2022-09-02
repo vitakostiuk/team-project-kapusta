@@ -23,8 +23,18 @@ export const transactionsApi = createApi({
       query: params =>
         `/api/transactions/?month=${params.month}&year=${params.year}`,
     }),
+    getTransactionsByExpense: builder.query({
+      query: () => '/api/transactions/expense',
+    }),
+    getTransactionsByIncome: builder.query({
+      query: () => '/api/transactions/income',
+    }),
   }),
 });
 
-export const { useGetTransactionsQuery, useFullTransactionsQuery } =
-  transactionsApi;
+export const {
+  useGetTransactionsQuery,
+  useFullTransactionsQuery,
+  useGetTransactionsByExpenseQuery,
+  useGetTransactionsByIncomeQuery,
+} = transactionsApi;

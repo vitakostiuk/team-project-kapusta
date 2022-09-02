@@ -1,6 +1,10 @@
 import style from './SelectList.module.css';
+// import { useState, useEffect } from 'react';
+import { useGetTransactionsQuery } from 'redux/report/transactionsApi';
 
 const SelectList = () => {
+  const { data } = useGetTransactionsQuery();
+
   return (
     <select
       className={style.selectList}
@@ -8,27 +12,15 @@ const SelectList = () => {
       title="Select an item from the list"
       required
     >
-      <option className={style.selectItem} value="">
+      <option className={style.selectItem} value="Product category">
         Product category
       </option>
-      <option className={style.selectItem} value="1">
-        1
-      </option>
-      <option className={style.selectItem} value="2">
-        2
-      </option>
-      <option className={style.selectItem} value="3">
-        3
-      </option>
-      <option className={style.selectItem} value="4">
-        4
-      </option>
-      <option className={style.selectItem} value="5">
-        5
-      </option>
-      <option className={style.selectItem} value="6">
-        6
-      </option>
+      {data &&
+        data.data?.map(({ _id, title }) => (
+          <option key={_id} value={title} className={style.selectItem}>
+            {title}
+          </option>
+        ))}
     </select>
   );
 };
