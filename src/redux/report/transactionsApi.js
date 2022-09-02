@@ -3,7 +3,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 export const transactionsApi = createApi({
   reducerPath: 'transactionsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://team-project-kapusta.herokuapp.com',
+    baseUrl: 'http://localhost:3000',
+    // baseUrl: 'https://team-project-kapusta.herokuapp.com',
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
 
@@ -18,7 +19,12 @@ export const transactionsApi = createApi({
     getTransactions: builder.query({
       query: () => '/api/categories/',
     }),
+    fullTransactions: builder.query({
+      query: params =>
+        `/api/transactions/?month=${params.month}&year=${params.year}`,
+    }),
   }),
 });
 
-export const { useGetTransactionsQuery } = transactionsApi;
+export const { useGetTransactionsQuery, useFullTransactionsQuery } =
+  transactionsApi;

@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as Diagram } from '../../images/diagram.svg';
 import { Link } from 'react-router-dom';
+import PopUp from 'components/common/PopUp';
 import {
   useGetBalanceQuery,
   useChangeBalanceMutation,
 } from 'redux/user/userApi';
+import { useFullTransactionsQuery } from 'redux/report/transactionsApi';
 import { setBalance } from 'redux/Balance/balanceSlice';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
 // import authSelectors from 'redux/feature/auth-selectors';
@@ -13,9 +15,17 @@ import s from './Balance.module.css';
 
 const Balance = () => {
   const balance = useSelector(state => state.balance);
-  const { data, error, isLoading } = useGetBalanceQuery();
+  const {
+    data,
+    // error,
+    // isLoading
+  } = useGetBalanceQuery();
+  console.log('balance from api', data);
+  const result = useFullTransactionsQuery({ month: 2, year: 2022 });
+  console.log('transactions', result.data);
   const [value, setValue] = useState('');
   const [isDisabledBtn, setIsDisabledBtn] = useState(true);
+  const [isShowPopUp, setIsShowPopUp] = useState(true);
   const dispatch = useDispatch();
   const [changeBalance] = useChangeBalanceMutation();
 
@@ -33,14 +43,13 @@ const Balance = () => {
     e.preventDefault();
 
     setValue(getNormalizedSum(value));
-
+    setIsShowPopUp(false);
     try {
       const { data } = await changeBalance({ balance: Number(value) });
       dispatch(setBalance(getNormalizedSum(data.balance)));
     } catch (error) {
       console.log(error);
     }
-
     setIsDisabledBtn(true);
   };
 
@@ -64,13 +73,17 @@ const Balance = () => {
               type="text"
               name="balance"
               value={value}
-              // placeholder={balance}
               onChange={handleChange}
               minLength="1"
               pattern="^[0-9]+$"
               title="Field may contain only numbers from 0 to 9"
               required
-              onFocus={() => setValue('')}
+              onFocus={() => {
+                if (data === 0) {
+                  setValue('');
+                }
+              }}
+              readOnly={data !== 0}
             />
             <button
               type="submit"
@@ -81,16 +94,7 @@ const Balance = () => {
             </button>
           </div>
         </form>
-        {balance === '0.00 UAH' && (
-          <div className={s.popUpContainer}>
-            <p className={s.popUpText}>
-              Hello! To get started, enter the current balance of your account!
-            </p>
-            <p className={s.popUpTextBottom}>
-              You can't spend money until you have it :&#41;
-            </p>
-          </div>
-        )}
+        {data === 0 && isShowPopUp && <PopUp />}
       </div>
     </>
   );
