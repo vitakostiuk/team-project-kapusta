@@ -1,17 +1,16 @@
 import React from 'react';
-import * as Styled from './ButtonGoMain.styled';
+import { Link } from 'react-router-dom';
 import s from './ButtonGoMain.module.css';
 import BigArrow from '../../../images/arrow-left.svg';
-import { Link } from 'react-router-dom';
 
 const ButtonGoMain = () => {
   return (
-    <Styled.Container>
-      <Link to="../" className={s.link} type="button">
-        <Styled.BigArrow src={BigArrow} />
-        <Styled.Text>Main page</Styled.Text>
+    <div className={s.container}>
+      <Link to="../" className={s.link}>
+        <img src={BigArrow} alt="big arrow" />
+        <p className={s.text}>Main page</p>
       </Link>
-    </Styled.Container>
+    </div>
   );
 };
 

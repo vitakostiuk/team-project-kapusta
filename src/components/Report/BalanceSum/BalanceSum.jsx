@@ -1,15 +1,15 @@
 import React from 'react';
-import * as Styled from './BalanceSum.styled';
+import s from './BalanceSum.module.css';
 
 const BalanceSum = () => {
   return (
-    <Styled.Container>
-      <Styled.MoneyWrapper>
-        <Styled.Balance>Balance:</Styled.Balance>
-        <Styled.Money>55 000 uah</Styled.Money>
-        <Styled.Confirm>CONFIRM</Styled.Confirm>
-      </Styled.MoneyWrapper>
-    </Styled.Container>
+    <div className={s.container}>
+      <div className={s.moneyWrapper}>
+        <p className={s.balance}>Balance:</p>
+        <p className={s.money}>55 000 uah</p>
+        <button className={s.confirm}>CONFIRM</button>
+      </div>
+    </div>
   );
 };
 
