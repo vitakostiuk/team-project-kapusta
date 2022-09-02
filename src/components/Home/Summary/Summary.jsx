@@ -1,5 +1,8 @@
 // import { useState, useEffect } from 'react';
-// import axios from 'axios';
+// import {
+//   useGetTransactionsByExpenseQuery,
+//   useGetTransactionsByIncomeQuery,
+// } from 'redux/report/transactionsApi';
 import s from './Summary.module.css';
 
 const months = {
@@ -17,15 +20,13 @@ const months = {
   // 12: 'December',
 };
 const values = Object.values(months);
-console.log(values);
+// console.log(values);
 
 const Summary = () => {
-  // useEffect(() => {
-  //   const getMonths = async () => {
-  //     const months = axios.get('http://localhost:3000');
-  //   };
-  //   getMonths();
-  // }, []);
+  // const expence = useGetTransactionsByExpenseQuery();
+  // console.log('expence', expence.data.transactions);
+  // const income = useGetTransactionsByIncomeQuery();
+  // console.log('income', income.data.transactions);
   return (
     <div className={s.container}>
       <p className={s.title}>Summary</p>

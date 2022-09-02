@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ReactComponent as Diagram } from '../../images/diagram.svg';
 import { Link } from 'react-router-dom';
 import PopUp from 'components/common/PopUp';
@@ -7,23 +7,22 @@ import {
   useGetBalanceQuery,
   useChangeBalanceMutation,
 } from 'redux/user/userApi';
-import { useFullTransactionsQuery } from 'redux/report/transactionsApi';
+// import { useFullTransactionsQuery } from 'redux/report/transactionsApi';
 import { setBalance } from 'redux/Balance/balanceSlice';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
-// import authSelectors from 'redux/feature/auth-selectors';
 import s from './Balance.module.css';
 
 const Balance = () => {
-  const balance = useSelector(state => state.balance);
+  // const balance = useSelector(state => state.balance);
   const {
     data,
     isSuccess,
     // error,
     // isLoading
   } = useGetBalanceQuery();
-  console.log('balance from api', data);
-  const result = useFullTransactionsQuery({ month: 2, year: 2022 });
-  console.log('transactions', result.data);
+  // console.log('balance from api', data);
+  // const result = useFullTransactionsQuery({ month: 2, year: 2022 });
+  // console.log('transactions', result.data);
   const [value, setValue] = useState('');
   const [isDisabledBtn, setIsDisabledBtn] = useState(true);
   const [isShowPopUp, setIsShowPopUp] = useState(true);
