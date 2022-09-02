@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './Expences.module.css';
+import s from './Expenses.module.css';
 import Arrow from '../Arrow';
 import products from '../../../images/products.svg';
 import hobbies from '../../../images/sports-hobbies.svg';
