@@ -48,7 +48,7 @@ const InputForm = ({ onFillTable }) => {
     const tableValues = {
       date: normalizedDate,
       description,
-      sum,
+      sum: normalizedSum,
       category,
     };
 

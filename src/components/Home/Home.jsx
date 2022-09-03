@@ -27,13 +27,7 @@ const Home = () => {
         <Tabs />
         <InputForm onFillTable={onFillTable} />
         <div className={style.tableThamb}>
-          <TableBody
-            date={tableDate}
-            description={tableDescription}
-            sum={tableSum}
-            category={tableCategory}
-            dataTable={dataTable}
-          />
+          <TableBody dataTable={dataTable} />
           <Summary />
         </div>
       </div>
@@ -43,13 +37,7 @@ const Home = () => {
         <Tabs />
         <InputForm onFillTable={onFillTable} />
         <div className={style.tableThamb}>
-          <TableBody
-            date={tableDate}
-            description={tableDescription}
-            sum={tableSum}
-            category={tableCategory}
-            dataTable={dataTable}
-          />
+          <TableBody dataTable={dataTable} />
         </div>
         <Summary />
       </div>

@@ -2,8 +2,7 @@ import style from './TableBody.module.css';
 import { ReactComponent as DeletePic } from '../../../../images/delete.svg';
 import EllipsisText from 'react-ellipsis-text';
 
-const TableBody = ({ date, description, sum, category, dataTable }) => {
-  console.log('date', date);
+const TableBody = ({ dataTable }) => {
   return (
     <div className={style.tableThamb}>
       <table className={style.table}>
@@ -13,8 +12,8 @@ const TableBody = ({ date, description, sum, category, dataTable }) => {
           <th className={style.tableHeaderCell}>category</th>
           <th className={style.tableHeaderCell}>Sum</th>
         </tr>
-        {dataTable.map(({ date, description, category, sum }) => (
-          <tr className={style.tableRow}>
+        {dataTable.map(({ date, description, category, sum }, index) => (
+          <tr key={index} className={style.tableRow}>
             <td className={style.tableCell}>{date}</td>
             <td className={style.tableCell}>
               <EllipsisText text={`${description}`} length={'29'} />

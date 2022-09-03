@@ -40,7 +40,7 @@
   text-align: left;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 768px) {
   .tableHeader {
     display: flex;
     justify-content: space-between;
@@ -57,13 +57,21 @@
   border: none;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 768px) {
   .tableRow {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 624px;
+    border-bottom: 2px solid #f5f6fb;
+    border-left: 2px solid #f5f6fb;
+    border-right: 2px solid #f5f6fb;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .tableRow {
     width: 746px;
-    border: 1px solid red;
   }
 }
 
@@ -72,9 +80,7 @@
 .tableHeaderCell {
   text-align: left;
   padding: 0;
-  border-bottom: 2px solid #f5f6fb;
   padding-left: 20px;
-  border: 1px solid green;
 }
 
 .tableCell:first-child,
@@ -85,10 +91,6 @@
 
 .tableHeaderCell:first-child {
   padding-left: 28px;
-}
-
-.tableCell:first-child {
-  border-left: 2px solid #f5f6fb;
 }
 
 .tableCell:nth-child(2),
@@ -134,10 +136,6 @@
     padding-right: 23px;
     text-align: center;
   }
-}
-
-.tableCell:last-child {
-  border-right: 2px solid #f5f6fb;
 }
 
 .tableCellSum {
