@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import s from './ButtonGoMain.module.css';
-import BigArrow from '../../../images/arrow-left.svg';
+import BigArrow from '../../../../images/arrow-left.svg';
 
 const ButtonGoMain = () => {
   return (
