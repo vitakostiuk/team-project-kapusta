@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import s from './Period.module.css';
-import Arrow from '../Arrow';
+import Arrow from '../../Arrow';
 
 const Period = () => {
   const [month, setMonth] = useState('');

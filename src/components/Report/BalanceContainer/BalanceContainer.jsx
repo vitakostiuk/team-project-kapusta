@@ -1,7 +1,7 @@
 import React from 'react';
-import ButtonGoMain from '../ButtonGoMain';
-import BalanceSum from '../BalanceSum';
-import Period from '../Period';
+import ButtonGoMain from './ButtonGoMain';
+import BalanceSum from './BalanceSum';
+import Period from './Period';
 import * as Styled from './BalanceContainer.styled';
 
 const BalanceContainer = () => {
