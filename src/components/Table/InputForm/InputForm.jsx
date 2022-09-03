@@ -14,6 +14,7 @@ const InputForm = ({ onFillTable }) => {
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
   const [category, setCategory] = useState('');
+  const [idOfCategory, setIdOfCategory] = useState('');
 
   const onChangeDate = date => {
     setStartDate(date);
@@ -21,6 +22,10 @@ const InputForm = ({ onFillTable }) => {
 
   const onChangeCategory = data => {
     setCategory(data);
+  };
+
+  const onChangeId = id => {
+    setIdOfCategory(id);
   };
 
   const handleChange = event => {
@@ -102,7 +107,10 @@ const InputForm = ({ onFillTable }) => {
             />
           </label>
 
-          <SelectList onChangeCategory={onChangeCategory} />
+          <SelectList
+            onChangeCategory={onChangeCategory}
+            onChangeId={onChangeId}
+          />
 
           <label className={style.sum}>
             <input
