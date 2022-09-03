@@ -1,18 +1,18 @@
 import React from 'react';
 import BalanceContainer from './BalanceContainer';
 import BalanceChange from './BalanceChange';
-import Expenses from './Expenses';
+import ExpIncContainer from './ExpIncContainer';
 // import Statistic from './Statistic';
-import * as Styled from './Report.styled';
+import s from './Report.module.css';
 
 const Report = () => {
   return (
-    <Styled.Section>
+    <section>
       <BalanceContainer />
       <BalanceChange />
-      <Expenses />
+      <ExpIncContainer />
       {/* <Statistic /> */}
-    </Styled.Section>
+    </section>
   );
 };
 
