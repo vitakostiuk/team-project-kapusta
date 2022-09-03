@@ -14,7 +14,7 @@ const Expenses = () => {
 
   // const { data, refetch } = useGetTransactionsQuery();
   const { data, refetch } = useGetTransactionsByExpenseQuery();
-  console.log(data);
+  // console.log(data);
 
   const incExpChange = () => {
     switch (incExp) {
@@ -30,66 +30,38 @@ const Expenses = () => {
     }
   };
 
-  // useEffect(() => {
-  // const trans = data.transactions
-  // let tr = []
-  // console.log(trans)
+  useEffect(() => {
+    const result = data?.transactions.reduce((acc, el) => {
+      const { description, value, categories } = el;
+      const res = acc;
 
-  // trans.reduce((prevTransaction, transaction) => {
-  //   // prevTransaction.categories !== transaction.categories ?
-  //   // setCategories(prevState => [...prevState, transaction]) :
-  //   // setCategories(prevState => [...prevState, ])
-  //   if(prevTransaction.categories !== transaction.categories) {
-  //     tr.push(transaction)
-  //   } else {
-  //     Number(prevTransaction.price + transaction.price)
-  //   }
-  // })
-  // console.log(tr)
+      if (!res[categories]) res[categories] = {};
 
-  // setCategories(data.transactions)
-  // categories.forEach(category => {
-  //   if(category.categories !== data.transactions.categories) {
-  //     setCategories(data.transactions)
-  //   } else {
-  //     return category.price + data.transactions.price
-  //   }})
+      res[categories].sum = res[categories].sum
+        ? res[categories].sum + value
+        : value;
 
-  // }, [categories, data])
+      if (!res[categories].sub) res[categories].sub = {};
 
-  // const oneCategory = (transaction) => {
-  //   categories.forEach(category => {
-  //     if(category.categories !== transaction.categories) {
-  //       setCategories(transaction)
-  //     } else {
-  //       return category.price + transaction.price
-  //     }})
-  // }
+      res[categories].sub[description] = res[categories].sub[description]
+        ? res[categories].sub[description] + value
+        : value;
 
-  //   prevState.categories === data.transactions.categories ?
-  //   prevState.price + data.transactions.price :
-  //   data.transactions))
+      return res;
+    }, {});
+    setCategories(result);
+    console.log(result);
+  }, [data]);
 
-  // oneCategory(data.transactions)
-
-  console.log(categories);
   return (
     <div className={s.container}>
       <IncomeExpensesChange onChange={incExpChange} incExp={incExp} />
-
-      {/* {data && (
-        <ul className={s.categories}>
-          {data.data?.map(({ _id, title }) => (
-            <Category key={_id} name={title} />
-          ))}
-        </ul>
-      )} */}
-
       {data && (
         <ul className={s.categories}>
-          {data.transactions?.map(({ _id, price, categories }) => (
-            <Category key={_id} price={price} categories={categories} />
-          ))}
+          {categories &&
+            Object.entries(categories).map((el, idx) => (
+              <Category key={idx} details={el[1]} categories={el[0]} />
+            ))}
         </ul>
       )}
     </div>

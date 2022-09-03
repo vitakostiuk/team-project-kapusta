@@ -3,12 +3,13 @@ import React from 'react';
 import s from './Category.module.css';
 import Icons from '../../../../images/report/sprite-icons.svg';
 
-const Category = ({ price, categories }) => {
+const Category = ({ details, categories }) => {
   const handleBtnClick = () => {};
+  const subs = details.sub;
 
   return (
     <li className={s.category}>
-      <p className={s.sum}>{price}</p>
+      <p className={s.sum}>{details.sum}</p>
       <button className={s.btn} onClick={handleBtnClick}>
         <svg className={s.picture}>
           <use xlinkHref={`${Icons}#icon-${categories}`} />
