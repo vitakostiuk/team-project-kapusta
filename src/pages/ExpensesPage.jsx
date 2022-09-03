@@ -1,10 +1,14 @@
 import React from 'react';
 import InputForm from 'components/Table/InputForm/InputForm';
+import TableBody from 'components/Table/InputForm/TableBody/TableBody';
+import Home from 'components/Home';
 
 const ExpensesPage = () => {
   return (
     <div>
-      <InputForm />
+      <Home />
+      {/* <InputForm />
+      <TableBody /> */}
     </div>
   );
 };

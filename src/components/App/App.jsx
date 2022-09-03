@@ -4,10 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import authSelectors from '../../redux/feature/auth-selectors';
 import { useFetchCurrentUserQuery } from '../../redux/authorization/authApi';
 import { refreshUser } from '../../redux/feature/authSlice';
-// import LoginPage from '../../pages/LoginPage';
-// import HomePage from '../../pages/HomePage';
-// import ReportPage from '../../pages/ReportPage';
-
 import Header from '../Header';
 import MainPage from '../MainPage';
 
@@ -19,6 +15,12 @@ const HomePage = lazy(() =>
 );
 const ReportPage = lazy(() =>
   import('../../pages/ReportPage' /* webpackChunkName: 'ReportPage' */),
+);
+const ExpensesPage = lazy(() =>
+  import('../../pages/ExpensesPage' /* webpackChunkName: 'ExpensesPage' */),
+);
+const IncomePage = lazy(() =>
+  import('../../pages/IncomePage' /* webpackChunkName: 'IncomePage' */),
 );
 
 const NotFoundPage = lazy(() =>
@@ -61,6 +63,22 @@ function App() {
               path="report"
               element={
                 !isLoggedIn ? <LoginPage to="login" replace /> : <ReportPage />
+              }
+            />
+            <Route
+              path="expenses"
+              element={
+                !isLoggedIn ? (
+                  <LoginPage to="login" replace />
+                ) : (
+                  <ExpensesPage />
+                )
+              }
+            />
+            <Route
+              path="income"
+              element={
+                !isLoggedIn ? <LoginPage to="login" replace /> : <IncomePage />
               }
             />
             <Route path="=login" element={<NotFoundPage />} />
