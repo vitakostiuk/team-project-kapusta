@@ -7,9 +7,19 @@ import SelectList from '../InputForm/SelectList/SelectList';
 import Calendar from './Calendar/Calendar';
 import style from './InputForm.module.css';
 
-const InputForm = () => {
+const InputForm = ({ onFillTable }) => {
+  const [startDate, setStartDate] = useState(new Date());
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
+  const [category, setCategory] = useState('');
+
+  const onChangeDate = date => {
+    setStartDate(date);
+  };
+
+  const onChangeCategory = data => {
+    setCategory(data);
+  };
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -24,14 +34,16 @@ const InputForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    setSum(
-      Number(sum)
-        .toLocaleString('cs-CZ', {
-          style: 'currency',
-          currency: 'UAH',
-        })
-        .replace(',', '.'),
-    );
+    onFillTable(startDate, description, category, sum);
+
+    // setSum(
+    //   Number(sum)
+    //     .toLocaleString('cs-CZ', {
+    //       style: 'currency',
+    //       currency: 'UAH',
+    //     })
+    //     .replace(',', '.'),
+    // );
 
     reset();
   };
@@ -43,14 +55,14 @@ const InputForm = () => {
 
   return (
     <>
-      <form className={style.inputForm}>
+      <form className={style.inputForm} onSubmit={handleSubmit}>
         <div className={style.inputThamb}>
           <div className={style.calendarBox}>
             <div className={style.calendarPic}>
               <CalendarPic />
             </div>
 
-            <Calendar />
+            <Calendar onChangeDate={onChangeDate} startDate={startDate} />
           </div>
 
           <div className={style.backBtnThamb}>
@@ -73,7 +85,7 @@ const InputForm = () => {
             />
           </label>
 
-          <SelectList />
+          <SelectList onChangeCategory={onChangeCategory} />
 
           <label className={style.sum}>
             <input
@@ -95,8 +107,8 @@ const InputForm = () => {
         <div className={style.btnThamb}>
           <button
             type="submit"
-            onSubmit={handleSubmit}
             className={style.inputBtn}
+            onClick={handleSubmit}
           >
             Input
           </button>

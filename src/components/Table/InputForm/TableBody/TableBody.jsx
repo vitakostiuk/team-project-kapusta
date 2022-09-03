@@ -2,7 +2,7 @@ import style from './TableBody.module.css';
 import { ReactComponent as DeletePic } from '../../../../images/delete.svg';
 import EllipsisText from 'react-ellipsis-text';
 
-const TableBody = () => {
+const TableBody = ({ date, description, sum, category }) => {
   return (
     <div className={style.tableThamb}>
       <table className={style.table}>
@@ -13,22 +13,19 @@ const TableBody = () => {
           <th className={style.tableHeaderCell}>Sum</th>
         </tr>
         <tr className={style.tableRow}>
-          <td className={style.tableCell}>05.09.2019</td>
+          <td className={style.tableCell}>{date}</td>
           <td className={style.tableCell}>
-            <EllipsisText
-              text={'Metro (Lorem ipsum dolor dolor dolor dolorsit)'}
-              length={'29'}
-            />
+            <EllipsisText text={`${description}`} length={'29'} />
           </td>
-          <td className={style.tableCell}>Transport</td>
-          <td className={style.tableCellSum}>- 30.00 грн.</td>
+          <td className={style.tableCell}>{category}</td>
+          <td className={style.tableCellSum}>{sum}</td>
           <td className={style.tableCell}>
             <button type="button" className={style.deleteBtn}>
               <DeletePic />
             </button>
           </td>
         </tr>
-        <tr className={style.tableRow}>
+        {/* <tr className={style.tableRow}>
           <td className={style.tableCell}>05.09.2019</td>
           <td className={style.tableCell}>
             <EllipsisText text={'Bananas'} length={'29'} />
@@ -40,7 +37,7 @@ const TableBody = () => {
               <DeletePic />
             </button>
           </td>
-        </tr>
+        </tr> */}
       </table>
     </div>
   );

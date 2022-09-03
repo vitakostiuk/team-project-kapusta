@@ -1,8 +1,8 @@
 import style from './SelectList.module.css';
-// import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useGetTransactionsQuery } from 'redux/report/transactionsApi';
 
-const SelectList = () => {
+const SelectList = ({ onChangeCategory }) => {
   const { data } = useGetTransactionsQuery();
 
   return (
@@ -10,6 +10,7 @@ const SelectList = () => {
       className={style.selectList}
       name="category"
       title="Select an item from the list"
+      onChange={e => onChangeCategory(e.target.value)}
       required
     >
       <option className={style.selectItem} value="Product category">
