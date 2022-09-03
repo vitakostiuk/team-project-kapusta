@@ -1,5 +1,4 @@
 import style from './SelectList.module.css';
-import { useState } from 'react';
 import { useGetTransactionsQuery } from 'redux/report/transactionsApi';
 
 const SelectList = ({ onChangeCategory }) => {

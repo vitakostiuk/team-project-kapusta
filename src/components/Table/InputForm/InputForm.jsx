@@ -5,6 +5,8 @@ import { ReactComponent as CalcPic } from '../../../images/calculator.svg';
 import { ReactComponent as BackPic } from '../../../images/arrow-left.svg';
 import SelectList from '../InputForm/SelectList/SelectList';
 import Calendar from './Calendar/Calendar';
+// import { useSetTransactionExpenseMutation } from 'redux/report/transactionsApi';
+// import { useGetTransactionsQuery } from 'redux/report/transactionsApi';
 import style from './InputForm.module.css';
 
 const InputForm = ({ onFillTable }) => {

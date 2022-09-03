@@ -7,13 +7,11 @@ import {
   useGetBalanceQuery,
   useChangeBalanceMutation,
 } from 'redux/user/userApi';
-// import { useFullTransactionsQuery } from 'redux/report/transactionsApi';
 import { setBalance } from 'redux/Balance/balanceSlice';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
 import s from './Balance.module.css';
 
 const Balance = () => {
-  // const balance = useSelector(state => state.balance);
   const {
     data,
     isSuccess,
@@ -21,8 +19,6 @@ const Balance = () => {
     // isLoading
   } = useGetBalanceQuery();
   // console.log('balance from api', data);
-  // const result = useFullTransactionsQuery({ month: 2, year: 2022 });
-  // console.log('transactions', result.data);
   const [value, setValue] = useState('');
   const [isDisabledBtn, setIsDisabledBtn] = useState(true);
   const [isShowPopUp, setIsShowPopUp] = useState(true);
