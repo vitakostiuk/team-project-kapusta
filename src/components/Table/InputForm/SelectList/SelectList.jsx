@@ -54,13 +54,13 @@ const SelectList = ({ onChangeCategory, onChangeId }) => {
       </option>
       {type === '/expenses' &&
         categoriesExpense.map(({ _id, title }) => (
-          <option key={_id} value={title} className={style.selectItem}>
+          <option key={title} value={title} className={style.selectItem}>
             {title}
           </option>
         ))}
       {type === '/income' &&
         categoriesIncome.map(({ _id, title }) => (
-          <option key={_id} value={title} className={style.selectItem}>
+          <option key={title} value={title} className={style.selectItem}>
             {title}
           </option>
         ))}
