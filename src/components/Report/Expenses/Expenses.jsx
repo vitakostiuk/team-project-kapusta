@@ -1,20 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import s from './Expenses.module.css';
+import IncomeExpensesChange from './IncomeExpensesChange';
 import Category from './Category';
-import Arrow from '../Arrow';
+// import Statistic from '../Statistic';
 import { useGetTransactionsQuery } from 'redux/report/transactionsApi';
 
 const Expenses = () => {
+  const [incExp, setIncExp] = useState('EXPENSES');
+
   const { data, refetch } = useGetTransactionsQuery();
   console.log(data);
 
+  const incExpChange = () => {
+    switch (incExp) {
+      case 'EXPENSES':
+        setIncExp('INCOME');
+        break;
+      case 'INCOME':
+        setIncExp('EXPENSES');
+        break;
+
+      default:
+        return;
+    }
+  };
+
   return (
     <div className={s.container}>
-      <div className={s.title}>
-        <Arrow />
-        <p className={s.text}>EXPENSES</p>
-        <Arrow rotate="true" />
-      </div>
+      <IncomeExpensesChange onChange={incExpChange} incExp={incExp} />
 
       {data && (
         <ul className={s.categories}>
@@ -23,6 +36,8 @@ const Expenses = () => {
           ))}
         </ul>
       )}
+
+      {/* <Statistic /> */}
     </div>
   );
 };

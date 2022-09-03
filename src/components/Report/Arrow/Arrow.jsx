@@ -4,9 +4,9 @@ import arrowSmall from '../../../images/arrow-small-left.svg';
 
 const Arrow = ({ rotate }) => {
   return (
-    <Styled.Arrow>
+    <>
       <Styled.Image rotate={rotate} src={arrowSmall} />
-    </Styled.Arrow>
+    </>
   );
 };
 
