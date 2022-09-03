@@ -7,16 +7,18 @@ import TableBody from 'components/Table/InputForm/TableBody/TableBody';
 import style from './Home.module.css';
 
 const Home = () => {
-  const [date, setStartDate] = useState('');
-  const [description, setDescription] = useState('');
-  const [sum, setSum] = useState('');
-  const [category, setCategory] = useState('');
+  const [dataTable, setDataTable] = useState([]);
+  const [tableDate, setTableDate] = useState('');
+  const [tableDescription, setTableDescription] = useState('');
+  const [tableSum, setTableSum] = useState('');
+  const [tableCategory, setTableCategory] = useState('');
 
-  const onFillTable = (date, description, sum, category) => {
-    setStartDate(date);
-    setDescription(description);
-    setSum(sum);
-    setCategory(category);
+  const onFillTable = (date, description, sum, category, tableValues) => {
+    setTableDate(date);
+    setTableDescription(description);
+    setTableSum(sum);
+    setTableCategory(category);
+    setDataTable(prevDataTable => [tableValues, ...prevDataTable]);
   };
   return (
     <>
@@ -25,12 +27,7 @@ const Home = () => {
         <Tabs />
         <InputForm onFillTable={onFillTable} />
         <div className={style.tableThamb}>
-          <TableBody
-            date={date}
-            description={description}
-            sum={sum}
-            category={category}
-          />
+          <TableBody dataTable={dataTable} />
           <Summary />
         </div>
       </div>
@@ -40,12 +37,7 @@ const Home = () => {
         <Tabs />
         <InputForm onFillTable={onFillTable} />
         <div className={style.tableThamb}>
-          <TableBody
-            date={date}
-            description={description}
-            sum={sum}
-            category={category}
-          />
+          <TableBody dataTable={dataTable} />
         </div>
         <Summary />
       </div>
