@@ -34,16 +34,31 @@ const InputForm = ({ onFillTable }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    onFillTable(startDate, description, category, sum);
+    const year = startDate.getFullYear();
+    const month = String(startDate.getMonth()).padStart(2, '0');
+    const day = String(startDate.getDate()).padStart(2, '0');
+    const normalizedDate = `${day}.${month}.${year}`;
+    const normalizedSum = Number(sum)
+      .toLocaleString('cs-CZ', {
+        style: 'currency',
+        currency: 'UAH',
+      })
+      .replace(',', '.');
 
-    // setSum(
-    //   Number(sum)
-    //     .toLocaleString('cs-CZ', {
-    //       style: 'currency',
-    //       currency: 'UAH',
-    //     })
-    //     .replace(',', '.'),
-    // );
+    const tableValues = {
+      date: normalizedDate,
+      description,
+      sum,
+      category,
+    };
+
+    onFillTable(
+      normalizedDate,
+      description,
+      category,
+      normalizedSum,
+      tableValues,
+    );
 
     reset();
   };
