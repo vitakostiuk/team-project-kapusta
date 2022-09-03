@@ -5,6 +5,8 @@ import { ReactComponent as CalcPic } from '../../../images/calculator.svg';
 import { ReactComponent as BackPic } from '../../../images/arrow-left.svg';
 import SelectList from '../InputForm/SelectList/SelectList';
 import Calendar from './Calendar/Calendar';
+// import { useSetTransactionExpenseMutation } from 'redux/report/transactionsApi';
+// import { useGetTransactionsQuery } from 'redux/report/transactionsApi';
 import style from './InputForm.module.css';
 
 const InputForm = ({ onFillTable }) => {
@@ -34,16 +36,31 @@ const InputForm = ({ onFillTable }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    onFillTable(startDate, description, category, sum);
+    const year = startDate.getFullYear();
+    const month = String(startDate.getMonth()).padStart(2, '0');
+    const day = String(startDate.getDate()).padStart(2, '0');
+    const normalizedDate = `${day}.${month}.${year}`;
+    const normalizedSum = Number(sum)
+      .toLocaleString('cs-CZ', {
+        style: 'currency',
+        currency: 'UAH',
+      })
+      .replace(',', '.');
 
-    // setSum(
-    //   Number(sum)
-    //     .toLocaleString('cs-CZ', {
-    //       style: 'currency',
-    //       currency: 'UAH',
-    //     })
-    //     .replace(',', '.'),
-    // );
+    const tableValues = {
+      date: normalizedDate,
+      description,
+      sum: normalizedSum,
+      category,
+    };
+
+    onFillTable(
+      normalizedDate,
+      description,
+      category,
+      normalizedSum,
+      tableValues,
+    );
 
     reset();
   };

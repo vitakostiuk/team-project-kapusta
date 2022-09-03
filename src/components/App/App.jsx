@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import authSelectors from '../../redux/feature/auth-selectors';
 import { useFetchCurrentUserQuery } from '../../redux/authorization/authApi';
 import { refreshUser } from '../../redux/feature/authSlice';
-import { PrivateRoute } from 'utils/PrivateRoute';
-import { PublicRoute } from 'utils/PublicRoute';
+import { PrivateRoute } from '../../utils/PrivateRoute';
+import { PublicRoute } from '../../utils/PublicRoute';
 import Header from '../Header';
 import MainPage from '../MainPage';
 
@@ -68,6 +68,10 @@ function App() {
 
             <Route element={<PrivateRoute redirectTo="/" />}>
               <Route path="/report" element={<ReportPage />} />
+            </Route>
+
+            <Route element={<PublicRoute redirectTo="/expenses" />}>
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </Suspense>

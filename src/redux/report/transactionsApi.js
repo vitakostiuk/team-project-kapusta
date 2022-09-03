@@ -29,6 +29,13 @@ export const transactionsApi = createApi({
     getTransactionsByIncome: builder.query({
       query: () => '/api/transactions/income',
     }),
+    setTransactionExpense: builder.mutation({
+      query: newTransaction => ({
+        url: '/api/transactions/expense',
+        method: 'POST',
+        body: newTransaction,
+      }),
+    }),
   }),
 });
 
@@ -37,4 +44,5 @@ export const {
   useFullTransactionsQuery,
   useGetTransactionsByExpenseQuery,
   useGetTransactionsByIncomeQuery,
+  useSetTransactionExpenseMutation,
 } = transactionsApi;
