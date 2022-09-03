@@ -2,7 +2,7 @@ import React from 'react';
 import BalanceContainer from './BalanceContainer';
 import BalanceChange from './BalanceChange';
 import Expenses from './Expenses';
-import Statistic from './Statistic';
+// import Statistic from './Statistic';
 import * as Styled from './Report.styled';
 
 const Report = () => {
@@ -11,7 +11,7 @@ const Report = () => {
       <BalanceContainer />
       <BalanceChange />
       <Expenses />
-      <Statistic />
+      {/* <Statistic /> */}
     </Styled.Section>
   );
 };

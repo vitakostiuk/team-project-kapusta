@@ -2,19 +2,15 @@ import React, { useState, useEffect } from 'react';
 import s from './Expenses.module.css';
 import IncomeExpensesChange from './IncomeExpensesChange';
 import Category from './Category';
-// import Statistic from '../Statistic';
-import {
-  useGetTransactionsQuery,
-  useGetTransactionsByExpenseQuery,
-} from 'redux/report/transactionsApi';
+import Statistic from '../Statistic';
+import { useGetTransactionsByExpenseQuery } from 'redux/report/transactionsApi';
 
 const Expenses = () => {
   const [incExp, setIncExp] = useState('EXPENSES');
   const [categories, setCategories] = useState([]);
+  const [statsCategory, setStatsCategory] = useState([]);
 
-  // const { data, refetch } = useGetTransactionsQuery();
   const { data, refetch } = useGetTransactionsByExpenseQuery();
-  // console.log(data);
 
   const incExpChange = () => {
     switch (incExp) {
@@ -49,22 +45,36 @@ const Expenses = () => {
 
       return res;
     }, {});
+
     setCategories(result);
-    console.log(result);
   }, [data]);
 
+  const handleSubmit = category => {
+    setStatsCategory(category);
+  };
+
   return (
-    <div className={s.container}>
-      <IncomeExpensesChange onChange={incExpChange} incExp={incExp} />
-      {data && (
-        <ul className={s.categories}>
-          {categories &&
-            Object.entries(categories).map((el, idx) => (
-              <Category key={idx} details={el[1]} categories={el[0]} />
-            ))}
-        </ul>
-      )}
-    </div>
+    <>
+      <div className={s.container}>
+        <IncomeExpensesChange onChange={incExpChange} incExp={incExp} />
+
+        {data && (
+          <ul className={s.categories}>
+            {categories &&
+              Object.entries(categories).map((el, idx) => (
+                <Category
+                  key={idx}
+                  details={el[1]}
+                  categories={el[0]}
+                  onSubmit={handleSubmit}
+                />
+              ))}
+          </ul>
+        )}
+      </div>
+
+      <Statistic category={statsCategory} />
+    </>
   );
 };
 
