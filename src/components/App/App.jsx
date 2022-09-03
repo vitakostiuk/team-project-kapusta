@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import authSelectors from '../../redux/feature/auth-selectors';
 import { useFetchCurrentUserQuery } from '../../redux/authorization/authApi';
 import { refreshUser } from '../../redux/feature/authSlice';
+import { PrivateRoute } from 'utils/PrivateRoute';
+import { PublicRoute } from 'utils/PublicRoute';
 import Header from '../Header';
 import MainPage from '../MainPage';
 
@@ -38,50 +40,35 @@ function App() {
   }, [data, dispatch, isSuccess]);
 
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+
   return (
     <>
       <Header />
       <MainPage>
         <Suspense>
           <Routes>
-            {/* NOT AUTH */}
-            <Route
-              path="login"
-              element={
-                isLoggedIn ? <HomePage to="/public" replace /> : <LoginPage />
-              }
-            />
+            <Route element={<PublicRoute redirectTo="/expenses" restricted />}>
+              <Route index element={<LoginPage />} />
+            </Route>
 
-            {/* AUTH */}
             <Route
               path="/"
               element={
-                !isLoggedIn ? <LoginPage to="login" replace /> : <HomePage />
+                !isLoggedIn ? <PrivateRoute redirectTo="/" /> : <HomePage />
               }
-            />
-            <Route
-              path="report"
-              element={
-                !isLoggedIn ? <LoginPage to="login" replace /> : <ReportPage />
-              }
-            />
-            <Route
-              path="expenses"
-              element={
-                !isLoggedIn ? (
-                  <LoginPage to="login" replace />
-                ) : (
-                  <ExpensesPage />
-                )
-              }
-            />
-            <Route
-              path="income"
-              element={
-                !isLoggedIn ? <LoginPage to="login" replace /> : <IncomePage />
-              }
-            />
-            <Route path="=login" element={<NotFoundPage />} />
+            >
+              <Route element={<PrivateRoute redirectTo="/" />}>
+                <Route path="/expenses" element={<ExpensesPage />} />
+              </Route>
+
+              <Route element={<PrivateRoute redirectTo="/" />}>
+                <Route path="/income" element={<IncomePage />} />
+              </Route>
+            </Route>
+
+            <Route element={<PrivateRoute redirectTo="/" />}>
+              <Route path="/report" element={<ReportPage />} />
+            </Route>
           </Routes>
         </Suspense>
       </MainPage>
