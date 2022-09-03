@@ -43,6 +43,7 @@ export const store = configureStore({
     })
       .concat(authApi.middleware)
       .concat(userApi.middleware)
+      .concat(transactionsApi.middleware)
       .concat(logger),
 });
 
