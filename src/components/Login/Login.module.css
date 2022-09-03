@@ -1,4 +1,6 @@
 .forma {
+  /* display: flex;
+  flex-direction: column; */
   border-radius: 30px;
   background-color: white;
   font-family: 'Roboto';
@@ -8,17 +10,48 @@
   line-height: 14px;
   /* text-align: center; */
   letter-spacing: 0.04em;
+
+  /* height: 500px;
+  */
   color: #52555f;
-  height: 500px;
   padding-left: 20px;
   padding-right: 20px;
 }
 
-.topGoogleRegText {
+.GoogleEmblem {
+  display: flex;
+  width: 18px;
+  align-items: baseline;
+  justify-content: center;
+}
+.GoogleBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  width: 116px;
+  height: 44px;
+  background: #f5f6fb;
+  border-radius: 16px;
+  color: #52555f;
+
+  margin: 0 auto;
+  padding: 10px 20px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+}
+
+.topGoogleRegTextspan {
+  padding-left: 3px;
+}
+.topTextDiv {
   padding-top: 40px;
-  margin-bottom: 16px;
-  width: 220px;
-  text-align: center;
+  flex-direction: column;
+  display: flex;
+  margin-bottom: 40px;
+  align-items: center;
 }
 
 .buttonGoogleRegText {
@@ -89,27 +122,75 @@
   color: #ffffff;
 }
 
-.GoogleBtn {
-  border: none;
-  width: 116px;
-  height: 44px;
-  background: #f5f6fb;
-  border-radius: 16px;
-  color: #52555f;
-  display: block;
-  margin: 0 auto;
-}
-
 .textunderLogo {
   font-size: 13px;
   line-height: 15px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-
   color: #52555f;
+  padding-right: 100px;
+  margin: 0 auto;
+}
+.logo {
+  width: 183px;
 }
 
 .logoDiv {
-  margin-top: 86px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-top: 86px;
   margin-bottom: 50px;
+}
+
+@media screen and (min-width: 768px) {
+  .textunderLogo {
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.18em;
+  }
+  .logo {
+    width: 306px;
+  }
+  .forma {
+    width: 426px;
+    margin: 0 auto;
+  }
+
+  .loginDiv {
+    margin-left: 170px;
+    margin-right: 170px;
+  }
+
+  .topGoogleRegTextspan {
+    display: inline-flex;
+  }
+  .topTextDiv {
+    align-items: baseline;
+    justify-content: center;
+    flex-direction: row;
+  }
+  .forma {
+    padding-left: 84px;
+    padding-right: 84px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .logo {
+    width: 377px;
+  }
+  .loginDiv {
+    padding-top: 117px;
+    display: flex;
+    align-items: center;
+  }
+  .logoDiv {
+    padding-left: 107px;
+    margin-right: 157px;
+  }
+  .loginDiv {
+    padding: 0;
+    margin: 0;
+    padding-top: 117px;
+  }
 }

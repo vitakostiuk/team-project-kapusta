@@ -1,5 +1,6 @@
 import React from 'react';
 import kapustaSvg from '../../images/loginPageKAPUSTA.svg';
+import GoogleEmbl from '../../images/GoogleEmlem.svg';
 import styles from './Login.module.css';
 // import Header from '../Header';
 
@@ -17,6 +18,7 @@ import { logIn, registerUser } from '../../redux/feature/authSlice';
 import { Form, Field, Formik } from 'formik';
 import * as Yup from 'yup';
 import { Label } from 'recharts';
+import { serializeStyles } from '@emotion/serialize';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -33,9 +35,9 @@ export const Login = () => {
   const [google] = useGoogleLoginMutation();
 
   return (
-    <div>
+    <div className={styles.loginDiv}>
       <div className={styles.logoDiv}>
-        <img src={kapustaSvg}></img>
+        <img className={styles.logo} src={kapustaSvg}></img>
         <p className={styles.textunderLogo}>Smart Finance</p>
       </div>
 
@@ -62,9 +64,12 @@ export const Login = () => {
       >
         {({ errors, touched, isValid, dirty }) => (
           <Form className={styles.forma}>
-            <p className={styles.topGoogleRegText}>
-              You can log in with your Google Account:
-            </p>
+            <div className={styles.topTextDiv}>
+              <p className={styles.topGoogleRegText}>
+                You can log in with your Google
+              </p>
+              <span className={styles.topGoogleRegTextspan}> Account:</span>
+            </div>
             <button
               type="button"
               onClick={async () => {
@@ -77,6 +82,7 @@ export const Login = () => {
               }}
               className={styles.GoogleBtn}
             >
+              <img src={GoogleEmbl} className={serializeStyles.GoogleEmblem} />
               Google
             </button>
             <p className={styles.buttonGoogleRegText}>
