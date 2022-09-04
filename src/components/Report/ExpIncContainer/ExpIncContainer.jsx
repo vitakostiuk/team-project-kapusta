@@ -29,12 +29,11 @@ const ExpIncContainer = () => {
 
   useEffect(() => {
     if (!expensesByData) return;
-    const incomeIdx = expensesByData.transactions.findIndex(
-      el => el._id.income,
+    const incomeIdx = expensesByData?.transactions?.findIndex(el => el.income);
+    const expensesIdx = expensesByData?.transactions?.findIndex(
+      el => !el.income,
     );
-    const expensesIdx = expensesByData.transactions.findIndex(
-      el => !el._id.income,
-    );
+
     dispatch(setIncome(expensesByData.transactions[incomeIdx]?.total || 0));
     dispatch(setExpenses(expensesByData.transactions[expensesIdx]?.total || 0));
 
