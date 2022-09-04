@@ -1,7 +1,4 @@
-import React from 'react';
-//додав Денис \
-import { useSelector } from 'react-redux';
-//додав Денис /
+import React, { useEffect, useState } from 'react';
 import {
   BarChart,
   YAxis,
@@ -12,27 +9,41 @@ import {
 } from 'recharts';
 import * as Styled from './Statistic.styled';
 
-const data = [
-  { label: 'meet', value: 5000 },
-  { label: 'fish', value: 3200 },
-  { label: 'chicken', value: 4000 },
-  { label: 'shirts', value: 1200 },
-  { label: 'shoes', value: 2320 },
-  { label: 'skirts', value: 2500 },
-  { label: 'coffee', value: 120 },
-  { label: 'tea', value: 7000 },
-  { label: 'beer', value: 800 },
-  { label: 'water', value: 1500 },
-];
+// const data = [
+//   { label: 'meet', value: 5000 },
+//   { label: 'fish', value: 3200 },
+//   { label: 'chicken', value: 4000 },
+//   { label: 'shirts', value: 1200 },
+//   { label: 'shoes', value: 2320 },
+//   { label: 'skirts', value: 2500 },
+//   { label: 'coffee', value: 120 },
+//   { label: 'tea', value: 7000 },
+//   { label: 'beer', value: 800 },
+//   { label: 'water', value: 1500 },
+// ];
 
 const Statistic = ({ list }) => {
-  //додав Денис \
-  const stateCategory = useSelector(state => state.report.category);
-  // console.log(stateCategory);
-  console.log(list);
-  //додав Денис /
+  const [arr, setArr] = useState([]);
 
-  const maxValue = data.reduce(
+  useEffect(() => {
+    const data = Object.entries(list).reduce((acc, el) => {
+      let label = el[0].split(' ')[0];
+      if (label.length > 8) {
+        label = label.slice(0, 8);
+      }
+      return [
+        {
+          label: label,
+          value: el[1],
+        },
+        ...acc,
+      ];
+    }, []);
+    console.log(data);
+    setArr(data);
+  }, [list]);
+
+  const maxValue = arr.reduce(
     (acc, el) => (el.value > acc ? el.value : acc),
     0,
   );
@@ -40,14 +51,14 @@ const Statistic = ({ list }) => {
   const customTick = ({ x, y, width, height, type, fill, index, payload }) => {
     const axis = x / maxValue;
     const delta = maxValue - payload.value;
-    const position = x - delta * axis + index * 19 - 80;
+    const position = x - delta * axis - 50;
     return (
       <Text
         type={type}
         fill={fill}
         width={width}
         height={height}
-        x={position >= x ? x : position}
+        x={position >= x ? x : position < x * 0.3 ? x * 0.3 : position}
         y={y - 12}
       >
         {payload.value}
@@ -58,7 +69,7 @@ const Statistic = ({ list }) => {
   const customVerticalTick = ({ x, y, width, height, type, fill, payload }) => {
     const axis = y / maxValue;
     const delta = maxValue - payload.value;
-    const position = y + delta * axis * 7 + 40;
+    const position = y + delta * axis * 7;
     return (
       <Text
         type={type}
@@ -78,7 +89,7 @@ const Statistic = ({ list }) => {
       <Styled.Container>
         <ResponsiveContainer width={'130%'} height={440}>
           <BarChart
-            data={data.sort((a, b) => b.value - a.value)}
+            data={arr.sort((a, b) => b.value - a.value)}
             layout="vertical"
             barSize={15}
             barCategoryGap={200}
@@ -120,7 +131,7 @@ const Statistic = ({ list }) => {
       <Styled.Container>
         <ResponsiveContainer width={'100%'} height={422}>
           <BarChart
-            data={data.sort((a, b) => b.value - a.value)}
+            data={arr.sort((a, b) => b.value - a.value)}
             barSize={38}
             barCategoryGap={100}
             barGap={25}

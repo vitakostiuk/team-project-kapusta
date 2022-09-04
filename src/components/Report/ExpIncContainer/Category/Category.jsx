@@ -6,10 +6,11 @@ import Icons from '../../../../images/report/sprite-icons.svg';
 
 import { setCategories } from 'redux/report/categorySlice';
 
-const Category = ({ details, categories }) => {
+const Category = ({ details, categories, onChange }) => {
   const dispatch = useDispatch();
 
   const handleBtnClick = () => {
+    onChange(categories);
     const subs = details.sub;
     dispatch(setCategories(subs));
   };
