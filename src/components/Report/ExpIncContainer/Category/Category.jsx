@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import s from './Category.module.css';
 import Icons from '../../../../images/report/sprite-icons.svg';
 
-import { setCategories } from 'redux/report/reportSlice';
+import { setCategories } from 'redux/report/categorySlice';
 
 const Category = ({ details, categories }) => {
   const dispatch = useDispatch();

@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import s from './BalanceChange.module.css';
 
 const BalanceChange = () => {
-  const expenses = useSelector(state => state.report.expenses);
-  // console.log(stateExpenses)
+  const expenses = useSelector(state => state.expenses);
+  console.log(expenses);
+  // const income = useSelector(state => state.report);
 
   return (
     <div className={s.container}>
@@ -16,7 +17,7 @@ const BalanceChange = () => {
         </div>
         <div className={s.incrementWrapper}>
           <p className={s.subtitle}>Income:</p>
-          <p className={s.increment}>+ 10 000.00 uah.</p>
+          {/* <p className={s.increment}>{`+ ${income} uah.`}</p> */}
         </div>
       </div>
     </div>
