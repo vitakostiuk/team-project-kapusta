@@ -19,10 +19,14 @@ const ReportPage = lazy(() =>
   import('../../pages/ReportPage' /* webpackChunkName: 'ReportPage' */),
 );
 const ExpensesPage = lazy(() =>
-  import('../../pages/ExpensesPage' /* webpackChunkName: 'ExpensesPage' */),
+  import(
+    '../../pages/ExpensesPage/ExpensesPage' /* webpackChunkName: 'ExpensesPage' */
+  ),
 );
 const IncomePage = lazy(() =>
-  import('../../pages/IncomePage' /* webpackChunkName: 'IncomePage' */),
+  import(
+    '../../pages/IncomePage/IncomePage' /* webpackChunkName: 'IncomePage' */
+  ),
 );
 
 const NotFoundPage = lazy(() =>

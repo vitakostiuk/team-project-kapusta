@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as CalendarPic } from '../../../images/calendar.svg';
 import Calendar from '../InputForm/Calendar/Calendar';
-import ExpensesIncomeList from '../InputForm/ExpensesIncomeList/ExpensesIncomeList';
+import TransactionsListMobile from '../InputForm/TransactionsListMobile/TransactionsListMobile';
 import style from './Tabs.module.css';
 
 const Tabs = () => {
@@ -15,13 +15,13 @@ const Tabs = () => {
       </div>
 
       <div className={style.list}>
-        <ExpensesIncomeList />
+        <TransactionsListMobile />
       </div>
 
       <div className={style.tabsBlock}>
         <nav className={style.tabs}>
           <NavLink
-            to="expenses"
+            to="/expenses"
             className={({ isActive }) =>
               isActive ? style.tabActive : style.tab
             }
@@ -30,7 +30,7 @@ const Tabs = () => {
           </NavLink>
           <NavLink
             replace
-            to="income"
+            to="/income"
             className={({ isActive }) =>
               isActive ? style.tabActive : style.tab
             }

@@ -77,53 +77,64 @@ const TableBody = ({ dataTable }) => {
   return (
     <div className={style.tableThamb}>
       <table className={style.table}>
-        <tr className={style.tableHeader}>
-          <th className={style.tableHeaderCell}>Date</th>
-          <th className={style.tableHeaderCell}>Description</th>
-          <th className={style.tableHeaderCell}>category</th>
-          <th className={style.tableHeaderCell}>Sum</th>
-        </tr>
-        {type === '/expenses' &&
-          expenseArr.map(({ date, description, category, sum, id }, index) => (
-            <tr key={index} className={style.tableRow}>
-              <td className={style.tableCell}>{date}</td>
-              <td className={style.tableCell}>
-                <EllipsisText text={`${description}`} length={'29'} />
-              </td>
-              <td className={style.tableCell}>{category}</td>
-              <td className={style.tableCellSum}>{sum}</td>
-              <td className={style.tableCell}>
-                <button
-                  type="button"
-                  onClick={() => handleDelete(id)}
-                  className={style.deleteBtn}
-                >
-                  <DeletePic />
-                </button>
-              </td>
-            </tr>
-          ))}
+        <thead>
+          <tr className={style.tableHeader}>
+            <th className={style.tableHeaderCell}>Date</th>
+            <th className={style.tableHeaderCell}>Description</th>
+            <th className={style.tableHeaderCell}>category</th>
+            <th className={style.tableHeaderCell}>Sum</th>
+            <th className={style.tableHeaderCell}></th>
+          </tr>
+        </thead>
+        <tbody>
+          <div className={style.tableBody}>
+            {type === '/expenses' &&
+              expenseArr.map(
+                ({ date, description, category, sum, id }, index) => (
+                  <tr key={index} className={style.tableRow}>
+                    <td className={style.tableCell}>{date}</td>
+                    <td className={style.tableCell}>
+                      <EllipsisText text={`${description}`} length={'29'} />
+                    </td>
+                    <td className={style.tableCell}>{category}</td>
+                    <td className={style.tableCellSumExpense}>{sum}</td>
+                    <td className={style.tableCell}>
+                      <button
+                        type="button"
+                        onClick={() => handleDelete(id)}
+                        className={style.deleteBtn}
+                      >
+                        <DeletePic />
+                      </button>
+                    </td>
+                  </tr>
+                ),
+              )}
 
-        {type === '/income' &&
-          incomeArr.map(({ date, description, category, sum, id }, index) => (
-            <tr key={index} className={style.tableRow}>
-              <td className={style.tableCell}>{date}</td>
-              <td className={style.tableCell}>
-                <EllipsisText text={`${description}`} length={'29'} />
-              </td>
-              <td className={style.tableCell}>{category}</td>
-              <td className={style.tableCellSum}>{sum}</td>
-              <td className={style.tableCell}>
-                <button
-                  type="button"
-                  onClick={() => handleDelete(id)}
-                  className={style.deleteBtn}
-                >
-                  <DeletePic />
-                </button>
-              </td>
-            </tr>
-          ))}
+            {type === '/income' &&
+              incomeArr.map(
+                ({ date, description, category, sum, id }, index) => (
+                  <tr key={index} className={style.tableRow}>
+                    <td className={style.tableCell}>{date}</td>
+                    <td className={style.tableCell}>
+                      <EllipsisText text={`${description}`} length={'29'} />
+                    </td>
+                    <td className={style.tableCell}>{category}</td>
+                    <td className={style.tableCellSumIncome}>{sum}</td>
+                    <td className={style.tableCell}>
+                      <button
+                        type="button"
+                        onClick={() => handleDelete(id)}
+                        className={style.deleteBtn}
+                      >
+                        <DeletePic />
+                      </button>
+                    </td>
+                  </tr>
+                ),
+              )}
+          </div>
+        </tbody>
       </table>
     </div>
   );
