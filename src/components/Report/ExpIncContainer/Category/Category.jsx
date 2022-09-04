@@ -16,6 +16,7 @@ const Category = ({
   return (
     <li className={s.category}>
       <p className={s.sum}>{details}</p>
+
       <button
         className={active ? s.btn_active : s.btn}
         onClick={handleBtnClick}
@@ -24,6 +25,7 @@ const Category = ({
           <use xlinkHref={`${Icons}#icon-${nameOfCategory}`} />
         </svg>
       </button>
+
       <p className={s.nameOfCategory}>{nameOfCategory}</p>
     </li>
   );
