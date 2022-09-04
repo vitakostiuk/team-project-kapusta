@@ -1,40 +1,45 @@
-// import { useState, useEffect } from 'react';
-// import {
-//   useGetTransactionsByExpenseQuery,
-//   useGetTransactionsByIncomeQuery,
-// } from 'redux/report/transactionsApi';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useGetSummaryTransactionsQuery } from 'redux/report/transactionsApi';
 import s from './Summary.module.css';
 
-const months = {
-  1: 'January',
-  2: 'February',
-  3: 'March',
-  4: 'April',
-  5: 'May',
-  6: 'June',
-  // 7: 'July',
-  // 8: 'August',
-  // 9: 'September',
-  // 10: 'October',
-  // 11: 'November',
-  // 12: 'December',
-};
-const values = Object.values(months);
-// console.log(values);
+function changeMonthNumberToName(array) {
+  const months = [];
+  const newData = [];
+
+  for (let i = 0; i < 12; i++) {
+    months.push(
+      new Date(2000, i, 1).toLocaleDateString('en-US', { month: 'long' }),
+    );
+  }
+
+  array?.forEach(element => {
+    const summaryObj = { name: months[element.month - 1], ...element };
+
+    newData.push(summaryObj);
+  });
+
+  return newData;
+}
 
 const Summary = () => {
-  // const expence = useGetTransactionsByExpenseQuery();
-  // console.log('expence', expence.data.transactions);
-  // const income = useGetTransactionsByIncomeQuery();
-  // console.log('income', income.data.transactions);
+  const currentLocation = useLocation();
+  const type = currentLocation?.pathname.slice(1);
+  const { data } = useGetSummaryTransactionsQuery(type);
+  const [summary, setSummary] = useState(null);
+
+  useEffect(() => {
+    setSummary(() => changeMonthNumberToName(data?.transactions));
+  }, [data]);
+
   return (
     <div className={s.container}>
       <p className={s.title}>Summary</p>
       <ul className={s.list}>
-        {values.map((month, index) => (
-          <li key={index} className={s.item}>
-            <p className={s.month}>{month}</p>
-            <p className={s.sum}>10 000.00</p>
+        {summary?.map(({ name, month, total }) => (
+          <li key={month} className={s.item}>
+            <p className={s.month}>{name}</p>
+            <p className={s.sum}>{total}</p>
           </li>
         ))}
       </ul>
