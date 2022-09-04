@@ -2,6 +2,7 @@
   border: none;
   background-color: inherit;
   cursor: pointer;
+  padding: 0.5em 1.5em;
 }
 
 .title {
@@ -17,4 +18,5 @@
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 0.02em;
+  width: 5em;
 }

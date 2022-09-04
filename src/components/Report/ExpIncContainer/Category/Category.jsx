@@ -1,35 +1,34 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
 import s from './Category.module.css';
 import Icons from '../../../../images/report/sprite-icons.svg';
 
-import { setCategories } from 'redux/report/categorySlice';
-
-const Category = ({ details, categories, onChange }) => {
-  const dispatch = useDispatch();
-
+const Category = ({
+  details,
+  categories,
+  onChange,
+  active,
+  nameOfCategory,
+}) => {
   const handleBtnClick = () => {
     onChange(categories);
-    const subs = details.sub;
-    dispatch(setCategories(subs));
   };
 
   return (
     <li className={s.category}>
-      <p className={s.sum}>{details.sum}</p>
-      <button className={s.btn} onClick={handleBtnClick}>
+      <p className={s.sum}>{details}</p>
+
+      <button
+        className={active ? s.btn_active : s.btn}
+        onClick={handleBtnClick}
+      >
         <svg className={s.picture}>
-          <use xlinkHref={`${Icons}#icon-${categories}`} />
+          <use xlinkHref={`${Icons}#icon-${nameOfCategory}`} />
         </svg>
       </button>
-      <p className={s.nameOfCategory}>{categories}</p>
+
+      <p className={s.nameOfCategory}>{nameOfCategory}</p>
     </li>
   );
 };
-
-// Category.propTypes = {
-//   name: PropTypes.string.isRequired,
-// };
 
 export default Category;

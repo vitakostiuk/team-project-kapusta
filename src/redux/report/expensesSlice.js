@@ -1,15 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const expensesSlice = createSlice({
-  name: 'expenses',
-  initialState: 0,
+  name: 'moneyMove',
+  initialState: { income: 0, expenses: 0 },
   reducers: {
-    setExpenses: (_, action) => {
-      return action.payload;
+    setExpenses: (state, action) => {
+      return { ...state, expenses: action.payload };
+    },
+    setIncome: (state, action) => {
+      return { ...state, income: action.payload };
     },
   },
 });
 
-export const { setExpenses } = expensesSlice.actions;
+export const { setExpenses, setIncome } = expensesSlice.actions;
 
 export default expensesSlice.reducer;
