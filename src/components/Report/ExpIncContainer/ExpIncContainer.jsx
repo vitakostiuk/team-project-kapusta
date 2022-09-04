@@ -10,7 +10,7 @@ import {
   useGetTransactionsByIncomeQuery,
   useGetTransactionsByExpenseQuery,
 } from 'redux/report/transactionsApi';
-import { setExpenses } from 'redux/report/reportSlice';
+// import { setExpenses } from 'redux/report/reportSlice';
 import { useDispatch } from 'react-redux';
 
 const ExpIncContainer = () => {
@@ -65,7 +65,6 @@ const ExpIncContainer = () => {
   }, [expenses, incExp, income]);
 
   useEffect(() => {
-    console.log(data);
     if (!data.transactions) return;
 
     const generalSum = data?.transactions.reduce((acc, el) => {
@@ -74,8 +73,9 @@ const ExpIncContainer = () => {
     }, 0);
 
     const result = transform(data);
+    console.log(result);
 
-    dispatch(setExpenses(generalSum));
+    // dispatch(setExpenses(generalSum));
     setObj(result);
   }, [data, dispatch]);
 
@@ -85,8 +85,8 @@ const ExpIncContainer = () => {
         <IncomeExpensesChange onChange={incExpChange} incExp={incExp} />
 
         {/* {incExp === 'EXPENSES' ? <Expenses /> : <Income />} */}
+        <Expenses data={obj} />
       </div>
-      <Statistic list={data.data} />
     </>
   );
 };
