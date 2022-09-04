@@ -4,7 +4,7 @@ import s from './Expenses.module.css';
 import Category from '../Category';
 // import { pullCategories } from 'helpers/pullCategories';
 import { useGetTransactionsByExpenseQuery } from 'redux/report/transactionsApi';
-import { setExpenses } from 'redux/report/reportSlice';
+import { setExpenses } from 'redux/report/expensesSlice';
 
 const Expenses = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,9 @@ const Expenses = () => {
     }, 0);
 
     dispatch(setExpenses(generalSum));
+  }, [data, dispatch]);
 
+  useEffect(() => {
     const result = data?.transactions.reduce((acc, el) => {
       const { description, value, categories } = el;
       const res = acc;

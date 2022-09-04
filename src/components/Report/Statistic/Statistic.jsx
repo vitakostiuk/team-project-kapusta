@@ -27,7 +27,7 @@ const data = [
 
 const Statistic = () => {
   //додав Денис \
-  const stateCategory = useSelector(state => state.report.category);
+  const stateCategory = useSelector(state => state.category);
   console.log(stateCategory);
   //додав Денис /
 
