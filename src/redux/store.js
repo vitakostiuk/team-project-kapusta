@@ -17,7 +17,7 @@ import { userApi } from './user/userApi';
 import { transactionsApi } from './report/transactionsApi';
 import balanceReducer from './Balance/balanceSlice';
 import expensesReducer from './report/expensesSlice';
-import categoryReducer from './report/categorySlice';
+import reportDateSlice from './report/reportDateSlice';
 import logger from 'redux-logger';
 
 const authPersistConfig = {
@@ -30,8 +30,8 @@ const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   [authApi.reducerPath]: authApi.reducer,
   balance: balanceReducer,
-  category: categoryReducer,
   expenses: expensesReducer,
+  dateReport: reportDateSlice,
   [userApi.reducerPath]: userApi.reducer,
   [transactionsApi.reducerPath]: transactionsApi.reducer,
 });
@@ -50,20 +50,5 @@ export const store = configureStore({
       .concat(transactionsApi.middleware),
   // .concat(logger),
 });
-
-// export const store = configureStore({
-//   reducer: {
-//     auth: persistReducer(authPersistConfig, authReducer),
-//     [authApi.reducerPath]: authApi.reducer,
-//   },
-//   middleware: getDefaultMiddleware =>
-//     getDefaultMiddleware({
-//       serializableCheck: {
-//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//       },
-//     })
-//       .concat(authApi.middleware)
-//       .concat(logger),
-// });
 
 export const persistor = persistStore(store);

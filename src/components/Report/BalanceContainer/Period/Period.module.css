@@ -36,6 +36,8 @@
   font-size: 14px;
   margin-left: 5px;
   margin-right: 5px;
+  width: 10em;
+  justify-content: center;
 }
 
 .year {
@@ -46,4 +48,5 @@
   border: none;
   background-color: inherit;
   cursor: pointer;
+  padding: 0.5em 1em;
 }

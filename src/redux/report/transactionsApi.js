@@ -64,4 +64,5 @@ export const {
   useSetTransactionIncomeMutation,
   useDeleteTransactionMutation,
   useGetSummaryTransactionsQuery,
+  useGetTransactionsByExpenseAndDataQuery,
 } = transactionsApi;
