@@ -1,20 +1,34 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as CalendarPic } from '../../../images/calendar.svg';
 import { ReactComponent as CalcPic } from '../../../images/calculator.svg';
 import { ReactComponent as BackPic } from '../../../images/arrow-left.svg';
 import SelectList from '../InputForm/SelectList/SelectList';
 import Calendar from './Calendar/Calendar';
-// import { useSetTransactionExpenseMutation } from 'redux/report/transactionsApi';
-// import { useGetTransactionsQuery } from 'redux/report/transactionsApi';
+import {
+  useSetTransactionExpenseMutation,
+  useSetTransactionIncomeMutation,
+} from 'redux/report/transactionsApi';
+import { addTransaction } from 'redux/report/transactionsSlice';
 import style from './InputForm.module.css';
+import { nanoid } from '@reduxjs/toolkit';
 
 const InputForm = ({ onFillTable }) => {
   const [startDate, setStartDate] = useState(new Date());
+  // const [year, setYear] = useState('');
+  // const [month, setMonth] = useState('');
+  // const [day, setDay] = useState('');
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
   const [category, setCategory] = useState('');
   const [idOfCategory, setIdOfCategory] = useState('');
+  const [addExpense] = useSetTransactionExpenseMutation();
+  const [addIncome] = useSetTransactionIncomeMutation();
+  const dispatch = useDispatch();
+
+  const type = useLocation().pathname;
+  // console.log('type', type);
 
   const onChangeDate = date => {
     setStartDate(date);
@@ -41,9 +55,13 @@ const InputForm = ({ onFillTable }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const year = startDate.getFullYear();
-    const month = String(startDate.getMonth()).padStart(2, '0');
+    const year = String(startDate.getFullYear());
+    const month = String(startDate.getMonth() + 1).padStart(2, '0');
     const day = String(startDate.getDate()).padStart(2, '0');
+
+    // setYear(String(startDate.getFullYear()));
+    // setMonth(String(startDate.getMonth()));
+    // setDay(String(startDate.getDate()));
     const normalizedDate = `${day}.${month}.${year}`;
     const normalizedSum = Number(sum)
       .toLocaleString('cs-CZ', {
@@ -57,7 +75,10 @@ const InputForm = ({ onFillTable }) => {
       description,
       sum: normalizedSum,
       category,
+      income: type === '/expenses' ? false : true,
+      id: nanoid(),
     };
+    dispatch(addTransaction(tableValues));
 
     onFillTable(
       normalizedDate,
@@ -66,8 +87,24 @@ const InputForm = ({ onFillTable }) => {
       normalizedSum,
       tableValues,
     );
+    const requestBody = {
+      date: {
+        day,
+        month,
+        year,
+      },
+      description,
+      categories: idOfCategory,
+      value: sum,
+    };
+    if (type === '/expenses') {
+      addExpense(requestBody);
+    }
+    if (type === '/income') {
+      addIncome(requestBody);
+    }
 
-    reset();
+    // reset();
   };
 
   const reset = () => {
