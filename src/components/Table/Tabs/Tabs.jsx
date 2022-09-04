@@ -1,14 +1,10 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { ReactComponent as CalendarPic } from '../../../images/calendar.svg';
 import Calendar from '../InputForm/Calendar/Calendar';
 import ExpensesIncomeList from '../InputForm/ExpensesIncomeList/ExpensesIncomeList';
 import style from './Tabs.module.css';
 
 const Tabs = () => {
-  const currentLocation = useLocation();
-
-  console.log(currentLocation);
-
   return (
     <>
       <div className={style.calendarBox}>
