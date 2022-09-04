@@ -15,13 +15,11 @@ const Expenses = ({ data }) => {
       setCategory(arr[0]._id);
       setSorted(arr);
     }
-    console.log(data);
   }, [data]);
 
   useEffect(() => {
     const arr = [...data]?.find(el => el._id === category);
     setSubs(arr?.data || []);
-    console.log(arr);
   }, [category]);
 
   return (
@@ -31,9 +29,10 @@ const Expenses = ({ data }) => {
           {sorted.map((el, idx) => (
             <Category
               key={idx}
-              active={el._id === category ? true : false}
+              active={el.categories === category ? true : false}
               details={el.summary}
               categories={el._id}
+              nameOfCategory={el.categories}
               onChange={setCategory}
             />
           ))}

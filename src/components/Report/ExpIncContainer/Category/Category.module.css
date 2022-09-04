@@ -63,7 +63,7 @@
 }
 
 .btn:hover .picture,
-.btn:hover .picture,
+.btn:focus .picture,
 .btn_active .picture,
 .btn_active:focus .picture,
 .btn_active:focus .picture {
