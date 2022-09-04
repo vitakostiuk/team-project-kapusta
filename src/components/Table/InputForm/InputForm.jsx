@@ -10,25 +10,19 @@ import {
   useSetTransactionExpenseMutation,
   useSetTransactionIncomeMutation,
 } from 'redux/report/transactionsApi';
-import { addTransaction } from 'redux/report/transactionsSlice';
 import style from './InputForm.module.css';
 import { nanoid } from '@reduxjs/toolkit';
 
 const InputForm = ({ onFillTable }) => {
   const [startDate, setStartDate] = useState(new Date());
-  // const [year, setYear] = useState('');
-  // const [month, setMonth] = useState('');
-  // const [day, setDay] = useState('');
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
   const [category, setCategory] = useState('');
   const [idOfCategory, setIdOfCategory] = useState('');
   const [addExpense] = useSetTransactionExpenseMutation();
   const [addIncome] = useSetTransactionIncomeMutation();
-  const dispatch = useDispatch();
 
   const type = useLocation().pathname;
-  // console.log('type', type);
 
   const onChangeDate = date => {
     setStartDate(date);
@@ -59,9 +53,6 @@ const InputForm = ({ onFillTable }) => {
     const month = String(startDate.getMonth() + 1).padStart(2, '0');
     const day = String(startDate.getDate()).padStart(2, '0');
 
-    // setYear(String(startDate.getFullYear()));
-    // setMonth(String(startDate.getMonth()));
-    // setDay(String(startDate.getDate()));
     const normalizedDate = `${day}.${month}.${year}`;
     const normalizedSum = Number(sum)
       .toLocaleString('cs-CZ', {
@@ -78,7 +69,6 @@ const InputForm = ({ onFillTable }) => {
       income: type === '/expenses' ? false : true,
       id: nanoid(),
     };
-    dispatch(addTransaction(tableValues));
 
     onFillTable(
       normalizedDate,

@@ -123,6 +123,7 @@
 }
 
 .tableCellSum,
+.tableCellSumIncome,
 .tableHeaderCell:nth-child(4) {
   width: 114px;
   padding: 0;
@@ -131,6 +132,7 @@
 
 @media screen and (min-width: 1280px) {
   .tableCellSum,
+  .tableCellSumIncome,
   .tableHeaderCell:nth-child(4) {
     width: 147px;
     padding-right: 23px;
@@ -142,6 +144,11 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #e7192e;
+}
+
+.tableCellSumIncome {
+  composes: tableCellSum;
+  color: #407946;
 }
 
 .deleteBtn {
