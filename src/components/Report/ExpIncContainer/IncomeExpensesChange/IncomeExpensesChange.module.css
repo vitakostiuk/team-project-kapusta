@@ -1,3 +1,9 @@
+.btn {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
 .title {
   display: flex;
   align-items: center;

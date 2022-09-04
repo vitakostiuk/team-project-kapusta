@@ -12,7 +12,6 @@ const ExpIncContainer = () => {
   console.log(data);
 
   const [incExp, setIncExp] = useState('EXPENSES');
-  const [statsCategory, setStatsCategory] = useState([]);
 
   const incExpChange = () => {
     switch (incExp) {
@@ -28,23 +27,14 @@ const ExpIncContainer = () => {
     }
   };
 
-  const handleSubmit = category => {
-    setStatsCategory(category);
-    // onSubmit(category)
-  };
-
   return (
     <>
       <div className={s.container}>
-        <IncomeExpensesChange
-          onChange={incExpChange}
-          incExp={incExp}
-          onSubmit={handleSubmit}
-        />
+        <IncomeExpensesChange onChange={incExpChange} incExp={incExp} />
 
         {incExp === 'EXPENSES' ? <Expenses /> : <Income />}
       </div>
-      <Statistic category={statsCategory} />
+      <Statistic />
     </>
   );
 };

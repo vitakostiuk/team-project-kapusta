@@ -1,12 +1,17 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import s from './Category.module.css';
 import Icons from '../../../../images/report/sprite-icons.svg';
 
-const Category = ({ details, categories, onSubmit }) => {
+import { setCategories } from 'redux/report/reportSlice';
+
+const Category = ({ details, categories }) => {
+  const dispatch = useDispatch();
+
   const handleBtnClick = () => {
     const subs = details.sub;
-    onSubmit(subs);
+    dispatch(setCategories(subs));
   };
 
   return (
