@@ -16,6 +16,7 @@ import { authApi } from './authorization/authApi';
 import { userApi } from './user/userApi';
 import { transactionsApi } from './report/transactionsApi';
 import balanceReducer from './Balance/balanceSlice';
+import transactionsReducer from './report/transactionsSlice';
 import logger from 'redux-logger';
 
 const authPersistConfig = {
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
   balance: balanceReducer,
   [userApi.reducerPath]: userApi.reducer,
   [transactionsApi.reducerPath]: transactionsApi.reducer,
+  transactions: transactionsReducer,
 });
 
 export const store = configureStore({

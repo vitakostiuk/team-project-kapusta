@@ -11,7 +11,7 @@ const SelectList = ({ onChangeCategory, onChangeId }) => {
   const { data } = useGetTransactionsQuery();
 
   const type = useLocation().pathname;
-  console.log('type', type);
+  // console.log('type', type);
 
   useEffect(() => {
     if (data) {
