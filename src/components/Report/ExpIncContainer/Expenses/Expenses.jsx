@@ -11,7 +11,6 @@ const Expenses = () => {
   const [categories, setCategories] = useState([]);
 
   const { data, refetch } = useGetTransactionsByExpenseQuery();
-  console.log(data);
 
   useEffect(() => {
     const generalSum = data?.transactions.reduce((acc, el) => {

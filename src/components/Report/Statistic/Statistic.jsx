@@ -25,10 +25,11 @@ const data = [
   { label: 'water', value: 1500 },
 ];
 
-const Statistic = () => {
+const Statistic = ({ list }) => {
   //додав Денис \
   const stateCategory = useSelector(state => state.report.category);
-  console.log(stateCategory);
+  // console.log(stateCategory);
+  console.log(list);
   //додав Денис /
 
   const maxValue = data.reduce(

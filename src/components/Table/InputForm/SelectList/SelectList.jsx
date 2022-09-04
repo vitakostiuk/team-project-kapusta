@@ -11,7 +11,7 @@ const SelectList = ({ onChangeCategory, onChangeId }) => {
   const { data } = useGetTransactionsQuery();
 
   const type = useLocation().pathname;
-  console.log('type', type);
+  // console.log('type', type);
 
   useEffect(() => {
     if (data) {
@@ -20,7 +20,7 @@ const SelectList = ({ onChangeCategory, onChangeId }) => {
         title,
         type,
       }));
-      console.log('categories', categories);
+      // console.log('categories', categories);
       setCategoriesExpense(
         categories.filter(category => category.type === 'expenses'),
       );

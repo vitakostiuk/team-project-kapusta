@@ -26,6 +26,8 @@ const Income = () => {
         ? res[categories].sub[description] + value
         : value;
 
+      console.log(res);
+
       return res;
     }, {});
 
