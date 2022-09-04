@@ -5,11 +5,11 @@ import { useLocation } from 'react-router-dom';
 import { ReactComponent as DeletePic } from '../../../../images/delete.svg';
 import EllipsisText from 'react-ellipsis-text';
 import { useDeleteTransactionMutation } from 'redux/report/transactionsApi';
-import { addTransaction } from 'redux/report/transactionsSlice';
 import {
   useGetTransactionsByExpenseQuery,
   useGetTransactionsByIncomeQuery,
 } from 'redux/report/transactionsApi';
+import { getNormalizedSum } from 'helpers/getNormalizedSum';
 
 const TableBody = ({ dataTable }) => {
   const [expenseArr, setExpenseArr] = useState([]);
@@ -17,9 +17,9 @@ const TableBody = ({ dataTable }) => {
   const [deleteTransaction] = useDeleteTransactionMutation();
   const type = useLocation().pathname;
   const expense = useGetTransactionsByExpenseQuery();
-  console.log('my expense transactions', expense.data);
+  // console.log('my expense transactions', expense.data);
   const income = useGetTransactionsByIncomeQuery();
-  console.log('my income transactions', income.data);
+  // console.log('my income transactions', income.data);
 
   useEffect(() => {
     setExpenseArr(dataTable.filter(({ income }) => income === false));
@@ -77,53 +77,61 @@ const TableBody = ({ dataTable }) => {
   return (
     <div className={style.tableThamb}>
       <table className={style.table}>
-        <tr className={style.tableHeader}>
-          <th className={style.tableHeaderCell}>Date</th>
-          <th className={style.tableHeaderCell}>Description</th>
-          <th className={style.tableHeaderCell}>category</th>
-          <th className={style.tableHeaderCell}>Sum</th>
-        </tr>
-        {type === '/expenses' &&
-          expenseArr.map(({ date, description, category, sum, id }, index) => (
-            <tr key={index} className={style.tableRow}>
-              <td className={style.tableCell}>{date}</td>
-              <td className={style.tableCell}>
-                <EllipsisText text={`${description}`} length={'29'} />
-              </td>
-              <td className={style.tableCell}>{category}</td>
-              <td className={style.tableCellSum}>{sum}</td>
-              <td className={style.tableCell}>
-                <button
-                  type="button"
-                  onClick={() => handleDelete(id)}
-                  className={style.deleteBtn}
-                >
-                  <DeletePic />
-                </button>
-              </td>
-            </tr>
-          ))}
+        <tbody>
+          <tr className={style.tableHeader}>
+            <th className={style.tableHeaderCell}>Date</th>
+            <th className={style.tableHeaderCell}>Description</th>
+            <th className={style.tableHeaderCell}>category</th>
+            <th className={style.tableHeaderCell}>Sum</th>
+          </tr>
+          {type === '/expenses' &&
+            expenseArr.map(
+              ({ date, description, category, sum, id }, index) => (
+                <tr key={index} className={style.tableRow}>
+                  <td className={style.tableCell}>{date}</td>
+                  <td className={style.tableCell}>
+                    <EllipsisText text={`${description}`} length={'29'} />
+                  </td>
+                  <td className={style.tableCell}>{category}</td>
+                  <td className={style.tableCellSum}>{`-${getNormalizedSum(
+                    sum,
+                  )}`}</td>
+                  <td className={style.tableCell}>
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(id)}
+                      className={style.deleteBtn}
+                    >
+                      <DeletePic />
+                    </button>
+                  </td>
+                </tr>
+              ),
+            )}
 
-        {type === '/income' &&
-          incomeArr.map(({ date, description, category, sum, id }, index) => (
-            <tr key={index} className={style.tableRow}>
-              <td className={style.tableCell}>{date}</td>
-              <td className={style.tableCell}>
-                <EllipsisText text={`${description}`} length={'29'} />
-              </td>
-              <td className={style.tableCell}>{category}</td>
-              <td className={style.tableCellSum}>{sum}</td>
-              <td className={style.tableCell}>
-                <button
-                  type="button"
-                  onClick={() => handleDelete(id)}
-                  className={style.deleteBtn}
-                >
-                  <DeletePic />
-                </button>
-              </td>
-            </tr>
-          ))}
+          {type === '/income' &&
+            incomeArr.map(({ date, description, category, sum, id }, index) => (
+              <tr key={index} className={style.tableRow}>
+                <td className={style.tableCell}>{date}</td>
+                <td className={style.tableCell}>
+                  <EllipsisText text={`${description}`} length={'29'} />
+                </td>
+                <td className={style.tableCell}>{category}</td>
+                <td className={style.tableCellSumIncome}>
+                  {getNormalizedSum(sum)}
+                </td>
+                <td className={style.tableCell}>
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(id)}
+                    className={style.deleteBtn}
+                  >
+                    <DeletePic />
+                  </button>
+                </td>
+              </tr>
+            ))}
+        </tbody>
       </table>
     </div>
   );
