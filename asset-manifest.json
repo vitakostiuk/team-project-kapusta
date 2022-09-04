@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/team-project-kapusta/static/css/main.829d47ec.css",
-    "main.js": "/team-project-kapusta/static/js/main.08636199.js",
+    "main.js": "/team-project-kapusta/static/js/main.aa7b00d5.js",
     "LoginPage.css": "/team-project-kapusta/static/css/LoginPage.4706c205.chunk.css",
     "LoginPage.js": "/team-project-kapusta/static/js/LoginPage.d08b0dc6.chunk.js",
-    "HomePage.css": "/team-project-kapusta/static/css/HomePage.74859cfb.chunk.css",
+    "HomePage.css": "/team-project-kapusta/static/css/HomePage.002d4102.chunk.css",
     "HomePage.js": "/team-project-kapusta/static/js/HomePage.29bd4f4a.chunk.js",
     "ReportPage.css": "/team-project-kapusta/static/css/ReportPage.ec59ce20.chunk.css",
-    "ReportPage.js": "/team-project-kapusta/static/js/ReportPage.d44d8f33.chunk.js",
-    "ExpensesPage.css": "/team-project-kapusta/static/css/ExpensesPage.d1f11886.chunk.css",
+    "ReportPage.js": "/team-project-kapusta/static/js/ReportPage.e7560bd8.chunk.js",
+    "ExpensesPage.css": "/team-project-kapusta/static/css/ExpensesPage.47c27655.chunk.css",
     "ExpensesPage.js": "/team-project-kapusta/static/js/ExpensesPage.85a35999.chunk.js",
-    "IncomePage.css": "/team-project-kapusta/static/css/IncomePage.d1f11886.chunk.css",
+    "IncomePage.css": "/team-project-kapusta/static/css/IncomePage.47c27655.chunk.css",
     "IncomePage.js": "/team-project-kapusta/static/js/IncomePage.7f306aab.chunk.js",
     "NotFoundPage.js": "/team-project-kapusta/static/js/NotFoundPage.8bcbf7ec.chunk.js",
     "static/css/942.2759553c.chunk.css": "/team-project-kapusta/static/css/942.2759553c.chunk.css",
@@ -18,7 +18,7 @@
     "static/js/981.a7071dba.chunk.js": "/team-project-kapusta/static/js/981.a7071dba.chunk.js",
     "static/js/712.4a57dd2a.chunk.js": "/team-project-kapusta/static/js/712.4a57dd2a.chunk.js",
     "static/js/668.1dc918c0.chunk.js": "/team-project-kapusta/static/js/668.1dc918c0.chunk.js",
-    "static/js/29.f83d580c.chunk.js": "/team-project-kapusta/static/js/29.f83d580c.chunk.js",
+    "static/js/29.a3850ca1.chunk.js": "/team-project-kapusta/static/js/29.a3850ca1.chunk.js",
     "static/media/sprite-icons.svg": "/team-project-kapusta/static/media/sprite-icons.f211b3d267a1875dff4651062c262fc2.svg",
     "static/media/kapusta_background.png": "/team-project-kapusta/static/media/kapusta_background.8d475dd61cb62ca1a1b1.png",
     "static/media/two.svg": "/team-project-kapusta/static/media/two.3e9b51598196b0d57182023e239ab7d2.svg",
@@ -37,16 +37,16 @@
     "static/media/arrow-left.svg": "/team-project-kapusta/static/media/arrow-left.420a10fd9c9a52c9b30cbb0be1b001bf.svg",
     "static/media/arrow-small-left.svg": "/team-project-kapusta/static/media/arrow-small-left.ed65ae738f78a2df12fa63ecf435fb95.svg",
     "main.829d47ec.css.map": "/team-project-kapusta/static/css/main.829d47ec.css.map",
-    "main.08636199.js.map": "/team-project-kapusta/static/js/main.08636199.js.map",
+    "main.aa7b00d5.js.map": "/team-project-kapusta/static/js/main.aa7b00d5.js.map",
     "LoginPage.4706c205.chunk.css.map": "/team-project-kapusta/static/css/LoginPage.4706c205.chunk.css.map",
     "LoginPage.d08b0dc6.chunk.js.map": "/team-project-kapusta/static/js/LoginPage.d08b0dc6.chunk.js.map",
-    "HomePage.74859cfb.chunk.css.map": "/team-project-kapusta/static/css/HomePage.74859cfb.chunk.css.map",
+    "HomePage.002d4102.chunk.css.map": "/team-project-kapusta/static/css/HomePage.002d4102.chunk.css.map",
     "HomePage.29bd4f4a.chunk.js.map": "/team-project-kapusta/static/js/HomePage.29bd4f4a.chunk.js.map",
     "ReportPage.ec59ce20.chunk.css.map": "/team-project-kapusta/static/css/ReportPage.ec59ce20.chunk.css.map",
-    "ReportPage.d44d8f33.chunk.js.map": "/team-project-kapusta/static/js/ReportPage.d44d8f33.chunk.js.map",
-    "ExpensesPage.d1f11886.chunk.css.map": "/team-project-kapusta/static/css/ExpensesPage.d1f11886.chunk.css.map",
+    "ReportPage.e7560bd8.chunk.js.map": "/team-project-kapusta/static/js/ReportPage.e7560bd8.chunk.js.map",
+    "ExpensesPage.47c27655.chunk.css.map": "/team-project-kapusta/static/css/ExpensesPage.47c27655.chunk.css.map",
     "ExpensesPage.85a35999.chunk.js.map": "/team-project-kapusta/static/js/ExpensesPage.85a35999.chunk.js.map",
-    "IncomePage.d1f11886.chunk.css.map": "/team-project-kapusta/static/css/IncomePage.d1f11886.chunk.css.map",
+    "IncomePage.47c27655.chunk.css.map": "/team-project-kapusta/static/css/IncomePage.47c27655.chunk.css.map",
     "IncomePage.7f306aab.chunk.js.map": "/team-project-kapusta/static/js/IncomePage.7f306aab.chunk.js.map",
     "NotFoundPage.8bcbf7ec.chunk.js.map": "/team-project-kapusta/static/js/NotFoundPage.8bcbf7ec.chunk.js.map",
     "942.2759553c.chunk.css.map": "/team-project-kapusta/static/css/942.2759553c.chunk.css.map",
@@ -54,10 +54,10 @@
     "981.a7071dba.chunk.js.map": "/team-project-kapusta/static/js/981.a7071dba.chunk.js.map",
     "712.4a57dd2a.chunk.js.map": "/team-project-kapusta/static/js/712.4a57dd2a.chunk.js.map",
     "668.1dc918c0.chunk.js.map": "/team-project-kapusta/static/js/668.1dc918c0.chunk.js.map",
-    "29.f83d580c.chunk.js.map": "/team-project-kapusta/static/js/29.f83d580c.chunk.js.map"
+    "29.a3850ca1.chunk.js.map": "/team-project-kapusta/static/js/29.a3850ca1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.829d47ec.css",
-    "static/js/main.08636199.js"
+    "static/js/main.aa7b00d5.js"
   ]
 }
