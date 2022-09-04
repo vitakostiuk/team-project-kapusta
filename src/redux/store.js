@@ -16,6 +16,7 @@ import { authApi } from './authorization/authApi';
 import { userApi } from './user/userApi';
 import { transactionsApi } from './report/transactionsApi';
 import balanceReducer from './Balance/balanceSlice';
+import transactionsReducer from './report/transactionsSlice';
 import expensesReducer from './report/expensesSlice';
 import categoryReducer from './report/categorySlice';
 import logger from 'redux-logger';
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   expenses: expensesReducer,
   [userApi.reducerPath]: userApi.reducer,
   [transactionsApi.reducerPath]: transactionsApi.reducer,
+  transactions: transactionsReducer,
 });
 
 export const store = configureStore({
