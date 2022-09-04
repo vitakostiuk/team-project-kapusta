@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkteam_project_kapusta=self.webpackChunkteam_project_kapusta||[]).push([[460],{3983:function(e,t,a){a.r(t);a(2791);var u=a(3728),s=a(184);t.default=function(){return(0,s.jsx)("div",{children:(0,s.jsx)(u.Z,{})})}}}]);
+//# sourceMappingURL=HomePage.19743cf6.chunk.js.map
