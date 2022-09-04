@@ -11,7 +11,6 @@ const BalanceContainer = () => {
       <Styled.Balance>
         <Period />
         <BalanceComp />
-        {/* <BalanceSum /> */}
       </Styled.Balance>
     </Styled.Container>
   );

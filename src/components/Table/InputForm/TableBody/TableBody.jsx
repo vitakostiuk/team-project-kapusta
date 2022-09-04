@@ -17,9 +17,7 @@ const TableBody = ({ dataTable }) => {
   const [deleteTransaction] = useDeleteTransactionMutation();
   const type = useLocation().pathname;
   const expense = useGetTransactionsByExpenseQuery();
-  console.log('my expense transactions', expense.data);
   const income = useGetTransactionsByIncomeQuery();
-  console.log('my income transactions', income.data);
 
   useEffect(() => {
     setExpenseArr(dataTable.filter(({ income }) => income === false));
