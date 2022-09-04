@@ -1,4 +1,7 @@
 import React from 'react';
+//додав Денис \
+import { useSelector } from 'react-redux';
+//додав Денис /
 import {
   BarChart,
   YAxis,
@@ -22,7 +25,13 @@ const data = [
   { label: 'water', value: 1500 },
 ];
 
-const Statistic = () => {
+const Statistic = ({ list }) => {
+  //додав Денис \
+  const stateCategory = useSelector(state => state.report.category);
+  // console.log(stateCategory);
+  console.log(list);
+  //додав Денис /
+
   const maxValue = data.reduce(
     (acc, el) => (el.value > acc ? el.value : acc),
     0,

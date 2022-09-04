@@ -29,6 +29,9 @@ export const transactionsApi = createApi({
     getTransactionsByIncome: builder.query({
       query: () => '/api/transactions/income',
     }),
+    getSummaryTransactions: builder.query({
+      query: type => `/api/transactions/reports/${type}`,
+    }),
     setTransactionExpense: builder.mutation({
       query: newTransaction => ({
         url: '/api/transactions/expense',
@@ -60,4 +63,5 @@ export const {
   useSetTransactionExpenseMutation,
   useSetTransactionIncomeMutation,
   useDeleteTransactionMutation,
+  useGetSummaryTransactionsQuery,
 } = transactionsApi;

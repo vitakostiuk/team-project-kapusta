@@ -1,15 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import s from './Expenses.module.css';
 import Category from '../Category';
-import Statistic from '../../Statistic';
 // import { pullCategories } from 'helpers/pullCategories';
 import { useGetTransactionsByExpenseQuery } from 'redux/report/transactionsApi';
+import { setExpenses } from 'redux/report/expensesSlice';
 
-const Expenses = ({ onSubmit }) => {
+const Expenses = () => {
+  const dispatch = useDispatch();
   const [categories, setCategories] = useState([]);
-  //   const [statsCategory, setStatsCategory] = useState([]);
 
   const { data, refetch } = useGetTransactionsByExpenseQuery();
+
+  useEffect(() => {
+    const generalSum = data?.transactions.reduce((acc, el) => {
+      const { value } = el;
+      return (acc += value);
+    }, 0);
+
+    dispatch(setExpenses(generalSum));
+  }, [data, dispatch]);
 
   useEffect(() => {
     const result = data?.transactions.reduce((acc, el) => {
@@ -32,31 +42,18 @@ const Expenses = ({ onSubmit }) => {
     }, {});
 
     setCategories(result);
-  }, [data]);
-
-  const handleSubmit = category => {
-    // setStatsCategory(category);
-    onSubmit(category);
-  };
+  }, [data, dispatch]);
 
   return (
     <>
-      {/* <div className={s.container}> */}
-
       {data && (
         <ul className={s.categories}>
           {categories &&
             Object.entries(categories).map((el, idx) => (
-              <Category
-                key={idx}
-                details={el[1]}
-                categories={el[0]}
-                onSubmit={handleSubmit}
-              />
+              <Category key={idx} details={el[1]} categories={el[0]} />
             ))}
         </ul>
       )}
-      {/* </div> */}
     </>
   );
 };

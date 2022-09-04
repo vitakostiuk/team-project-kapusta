@@ -6,7 +6,6 @@ import { useGetTransactionsByIncomeQuery } from 'redux/report/transactionsApi';
 
 const Income = () => {
   const [categories, setCategories] = useState([]);
-  const [statsCategory, setStatsCategory] = useState([]);
 
   const { data, refetch } = useGetTransactionsByIncomeQuery();
 
@@ -27,33 +26,24 @@ const Income = () => {
         ? res[categories].sub[description] + value
         : value;
 
+      console.log(res);
+
       return res;
     }, {});
 
     setCategories(result);
   }, [data]);
 
-  const handleSubmit = category => {
-    setStatsCategory(category);
-  };
-
   return (
     <>
-      {/* <div className={s.container}> */}
       {data && (
         <ul className={s.categories}>
           {categories &&
             Object.entries(categories).map((el, idx) => (
-              <Category
-                key={idx}
-                details={el[1]}
-                categories={el[0]}
-                onSubmit={handleSubmit}
-              />
+              <Category key={idx} details={el[1]} categories={el[0]} />
             ))}
         </ul>
       )}
-      {/* </div> */}
     </>
   );
 };

@@ -20,7 +20,7 @@ const SelectList = ({ onChangeCategory, onChangeId }) => {
         title,
         type,
       }));
-      console.log('categories', categories);
+      // console.log('categories', categories);
       setCategoriesExpense(
         categories.filter(category => category.type === 'expenses'),
       );

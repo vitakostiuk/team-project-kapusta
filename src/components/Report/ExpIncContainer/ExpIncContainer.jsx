@@ -5,22 +5,31 @@ import Expenses from './Expenses';
 import Income from './Income';
 import Statistic from '../Statistic';
 // import { pullCategories } from 'helpers/pullCategories';
-import { useGetTransactionsQuery } from 'redux/report/transactionsApi';
+import {
+  useGetTransactionsQuery,
+  useGetTransactionsByIncomeQuery,
+  useGetTransactionsByExpenseQuery,
+} from 'redux/report/transactionsApi';
+import { setExpenses } from 'redux/report/reportSlice';
+import { useDispatch } from 'react-redux';
 
 const ExpIncContainer = () => {
-  const { data, refetch } = useGetTransactionsQuery();
-  console.log(data);
-
   const [incExp, setIncExp] = useState('EXPENSES');
-  const [statsCategory, setStatsCategory] = useState([]);
+  const [obj, setObj] = useState({});
+  const [data, setData] = useState({});
+  const dispatch = useDispatch();
+  const { data: income } = useGetTransactionsByIncomeQuery();
+  const { data: expenses } = useGetTransactionsByExpenseQuery();
 
   const incExpChange = () => {
     switch (incExp) {
       case 'EXPENSES':
         setIncExp('INCOME');
+        console.log(income, expenses);
         break;
       case 'INCOME':
         setIncExp('EXPENSES');
+        console.log(income, expenses);
         break;
 
       default:
@@ -28,23 +37,56 @@ const ExpIncContainer = () => {
     }
   };
 
-  const handleSubmit = category => {
-    setStatsCategory(category);
-    // onSubmit(category)
+  const transform = object => {
+    const result = object?.transactions.reduce((acc, el) => {
+      const { description, value, categories } = el;
+      const res = acc;
+
+      if (!res[categories]) res[categories] = {};
+
+      res[categories].sum = res[categories].sum
+        ? res[categories].sum + value
+        : value;
+
+      if (!res[categories].sub) res[categories].sub = {};
+
+      res[categories].sub[description] = res[categories].sub[description]
+        ? res[categories].sub[description] + value
+        : value;
+
+      return res;
+    }, {});
+    return result;
   };
+
+  useEffect(() => {
+    if (incExp === 'INCOME' && income) setData(income);
+    if (incExp === 'EXPENSES' && expenses) setData(expenses);
+  }, [expenses, incExp, income]);
+
+  useEffect(() => {
+    console.log(data);
+    if (!data.transactions) return;
+
+    const generalSum = data?.transactions.reduce((acc, el) => {
+      const { value } = el;
+      return (acc += value);
+    }, 0);
+
+    const result = transform(data);
+
+    dispatch(setExpenses(generalSum));
+    setObj(result);
+  }, [data, dispatch]);
 
   return (
     <>
       <div className={s.container}>
-        <IncomeExpensesChange
-          onChange={incExpChange}
-          incExp={incExp}
-          onSubmit={handleSubmit}
-        />
+        <IncomeExpensesChange onChange={incExpChange} incExp={incExp} />
 
-        {incExp === 'EXPENSES' ? <Expenses /> : <Income />}
+        {/* {incExp === 'EXPENSES' ? <Expenses /> : <Income />} */}
       </div>
-      <Statistic category={statsCategory} />
+      <Statistic list={data.data} />
     </>
   );
 };
