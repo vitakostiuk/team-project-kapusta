@@ -54,29 +54,17 @@ const InputForm = ({ onFillTable }) => {
     const day = String(startDate.getDate()).padStart(2, '0');
 
     const normalizedDate = `${day}.${month}.${year}`;
-    const normalizedSum = Number(sum)
-      .toLocaleString('cs-CZ', {
-        style: 'currency',
-        currency: 'UAH',
-      })
-      .replace(',', '.');
 
     const tableValues = {
       date: normalizedDate,
       description,
-      sum: normalizedSum,
+      sum,
       category,
       income: type === '/expenses' ? false : true,
       id: nanoid(),
     };
 
-    onFillTable(
-      normalizedDate,
-      description,
-      category,
-      normalizedSum,
-      tableValues,
-    );
+    onFillTable(normalizedDate, description, category, sum, tableValues);
     const requestBody = {
       date: {
         day,
@@ -88,10 +76,10 @@ const InputForm = ({ onFillTable }) => {
       value: sum,
     };
     if (type === '/expenses') {
-      addExpense(requestBody);
+      return addExpense(requestBody);
     }
     if (type === '/income') {
-      addIncome(requestBody);
+      return addIncome(requestBody);
     }
 
     // reset();
