@@ -1,76 +1,51 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import s from './Expenses.module.css';
 import Category from '../Category';
 import Statistic from '../../Statistic';
-// import { pullCategories } from 'helpers/pullCategories';
-import { useGetTransactionsByExpenseQuery } from 'redux/report/transactionsApi';
-import { setExpenses } from 'redux/report/expensesSlice';
 
 const Expenses = ({ data }) => {
   const [category, setCategory] = useState('');
   const [sorted, setSorted] = useState([]);
-
-  // const dispatch = useDispatch();
-  // const [categories, setCategories] = useState([]);
-
-  // const { data, refetch } = useGetTransactionsByExpenseQuery();
-
-  // useEffect(() => {
-  //   const generalSum = data?.transactions.reduce((acc, el) => {
-  //     const { value } = el;
-  //     return (acc += value);
-  //   }, 0);
-
-  //   dispatch(setExpenses(generalSum));
-  // }, [data, dispatch]);
-
-  // useEffect(() => {
-  //   const result = data?.transactions.reduce((acc, el) => {
-  //     const { description, value, categories } = el;
-  //     const res = acc;
-
-  //     if (!res[categories]) res[categories] = {};
-
-  //     res[categories].sum = res[categories].sum
-  //       ? res[categories].sum + value
-  //       : value;
-
-  //     if (!res[categories].sub) res[categories].sub = {};
-
-  //     res[categories].sub[description] = res[categories].sub[description]
-  //       ? res[categories].sub[description] + value
-  //       : value;
-
-  //     return res;
-  //   }, {});
-
-  //   setCategories(result);
-  // }, [data, dispatch]);
+  const [subs, setSubs] = useState([]);
 
   useEffect(() => {
-    const arr = Object.entries(data)?.sort((a, b) => b[1].sum - a[1].sum);
+    if (!data?.length) return;
+    const arr = [...data].sort((a, b) => b.summary - a.summary);
     if (arr.length) {
-      setCategory(arr[0][0]);
+      setCategory(arr[0]._id);
       setSorted(arr);
     }
+    console.log(data);
   }, [data]);
+
+  useEffect(() => {
+    const arr = [...data]?.find(el => el._id === category);
+    setSubs(arr?.data || []);
+    console.log(arr);
+  }, [category]);
 
   return (
     <>
-      {sorted && (
+      {data && (
         <ul className={s.categories}>
           {sorted.map((el, idx) => (
             <Category
               key={idx}
-              details={el[1]}
-              categories={el[0]}
+              active={el._id === category ? true : false}
+              details={el.summary}
+              categories={el._id}
               onChange={setCategory}
             />
           ))}
         </ul>
       )}
-      {data[category] && <Statistic list={data[category].sub} />}
+      {data?.length > 0 ? (
+        <Statistic list={subs} />
+      ) : (
+        <div className={s.noData}>
+          There are no transactions for selected period.
+        </div>
+      )}
     </>
   );
 };

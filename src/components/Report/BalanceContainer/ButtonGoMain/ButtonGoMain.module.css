@@ -17,6 +17,7 @@
   letter-spacing: 0.04em;
   color: rgba(82, 85, 95, 0.7);
   margin-left: 15px;
+  width: 7em;
 }
 
 @media screen and (min-width: 772px) {

@@ -7,13 +7,15 @@
   color: #071f41;
 }
 
-.btn {
+.btn,
+.btn_active {
   position: relative;
   border: none;
   background-color: #ffffff;
 }
 
-.btn::before {
+.btn::before,
+.btn_active::before {
   content: '';
   position: absolute;
   width: 55px;
@@ -26,7 +28,13 @@
 }
 
 .btn:hover::before,
-.btn:focus::before {
+.btn:focus::before,
+.btn_active:hover::before,
+.btn_active:focus::before {
+  background-color: #ffdac0;
+}
+
+.btn_active::before {
   background-color: #ffdac0;
 }
 
@@ -55,7 +63,10 @@
 }
 
 .btn:hover .picture,
-.btn:focus .picture {
+.btn:hover .picture,
+.btn_active .picture,
+.btn_active:focus .picture,
+.btn_active:focus .picture {
   color: #ff751d;
 }
 

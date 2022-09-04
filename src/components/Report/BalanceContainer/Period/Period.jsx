@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import s from './Period.module.css';
 import Arrow from '../../Arrow';
+import { useDispatch } from 'react-redux';
+import { setData } from 'redux/report/reportDateSlice';
 
 const Period = () => {
-  const [month, setMonth] = useState('');
+  const [month, setMonth] = useState(0);
   const [year, setYear] = useState('');
+
+  const dispatch = useDispatch();
 
   const months = [
     'JANUARY',
@@ -22,7 +26,16 @@ const Period = () => {
   ];
 
   useEffect(() => {
-    const currentMonth = months[new Date().getMonth()];
+    dispatch(
+      setData({
+        month,
+        year,
+      }),
+    );
+  }, [dispatch, month, year]);
+
+  useEffect(() => {
+    const currentMonth = new Date().getMonth();
     setMonth(currentMonth);
 
     const currentYear = new Date().getFullYear();
@@ -30,21 +43,21 @@ const Period = () => {
   }, []);
 
   const prevMonth = () => {
-    if (month === 'JANUARY') {
+    if (month === 0) {
       setYear(year - 1);
-      setMonth('DECEMBER');
+      setMonth(11);
       return;
     }
-    setMonth(months[months.indexOf(month) - 1]);
+    setMonth(month - 1);
   };
 
   const nextMonth = () => {
-    if (month === 'DECEMBER') {
+    if (month === 11) {
       setYear(year + 1);
-      setMonth('JANUARY');
+      setMonth(0);
       return;
     }
-    setMonth(months[months.indexOf(month) + 1]);
+    setMonth(month + 1);
   };
 
   return (
@@ -56,7 +69,7 @@ const Period = () => {
         </button>
 
         <div className={s.date}>
-          <p className={s.month}>{month}</p>
+          <p className={s.month}>{months[month]}</p>
           <p className={s.year}>{year}</p>
         </div>
 
