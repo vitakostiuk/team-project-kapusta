@@ -26,7 +26,8 @@ const TableBody = ({ dataTable }) => {
     if (expense) {
       expense?.data?.transactions.forEach(
         ({ categories, description, value, date: { day, month, year }, _id }) =>
-          setExpenseArr(prevDataTable => [
+          setExpenseArr(prevExpenseArr => [
+            ...prevExpenseArr,
             {
               date: `${day}.${month}.${year}`,
               description,
@@ -35,7 +36,6 @@ const TableBody = ({ dataTable }) => {
               income: false,
               id: _id,
             },
-            ...prevDataTable,
           ]),
       );
     }
@@ -43,7 +43,8 @@ const TableBody = ({ dataTable }) => {
     if (income) {
       income?.data?.transactions.forEach(
         ({ categories, description, value, date: { day, month, year }, _id }) =>
-          setIncomeArr(prevDataTable => [
+          setIncomeArr(prevIncomeArr => [
+            ...prevIncomeArr,
             {
               date: `${day}.${month}.${year}`,
               description,
@@ -52,7 +53,6 @@ const TableBody = ({ dataTable }) => {
               income: true,
               id: _id,
             },
-            ...prevDataTable,
           ]),
       );
     }
@@ -86,61 +86,59 @@ const TableBody = ({ dataTable }) => {
         </thead>
         <tbody className={style.tableBody}>
           {expenseArr.length !== 0 ? (
-              type === '/expenses' &&
-              expenseArr.map(
-                ({ date, description, category, sum, id }, index) => (
-                  <tr key={index} className={style.tableRow}>
-                    <td className={style.tableCell}>{date}</td>
-                    <td className={style.tableCell}>
-                      <EllipsisText text={`${description}`} length={'29'} />
-                    </td>
-                    <td className={style.tableCell}>{category}</td>
-                    <td
-                      className={style.tableCellSumExpense}
-                    >{`-${getNormalizedSum(sum)}`}</td>
-                    <td className={style.tableCell}>
-                      <button
-                        type="button"
-                        onClick={() => handleDelete(id)}
-                        className={style.deleteBtn}
-                      >
-                        <DeletePic />
-                      </button>
-                    </td>
-                  </tr>
-                ),
-              )
-            ) : (
-              <span className={style.text}>There are no transactions yet.</span>
-            )}
-            {incomeArr.length !== 0 ? (
-              type === '/income' &&
-              incomeArr.map(
-                ({ date, description, category, sum, id }, index) => (
-                  <tr key={index} className={style.tableRow}>
-                    <td className={style.tableCell}>{date}</td>
-                    <td className={style.tableCell}>
-                      <EllipsisText text={`${description}`} length={'29'} />
-                    </td>
-                    <td className={style.tableCell}>{category}</td>
-                    <td className={style.tableCellSumIncome}>
-                      {getNormalizedSum(sum)}
-                    </td>
-                    <td className={style.tableCell}>
-                      <button
-                        type="button"
-                        onClick={() => handleDelete(id)}
-                        className={style.deleteBtn}
-                      >
-                        <DeletePic />
-                      </button>
-                    </td>
-                  </tr>
-                ),
-              )
-            ) : (
-              <span className={style.text}>There are no transactions yet.</span>
-            )}
+            type === '/expenses' &&
+            expenseArr.map(
+              ({ date, description, category, sum, id }, index) => (
+                <tr key={index} className={style.tableRow}>
+                  <td className={style.tableCell}>{date}</td>
+                  <td className={style.tableCell}>
+                    <EllipsisText text={`${description}`} length={'29'} />
+                  </td>
+                  <td className={style.tableCell}>{category}</td>
+                  <td
+                    className={style.tableCellSumExpense}
+                  >{`-${getNormalizedSum(sum)}`}</td>
+                  <td className={style.tableCell}>
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(id)}
+                      className={style.deleteBtn}
+                    >
+                      <DeletePic />
+                    </button>
+                  </td>
+                </tr>
+              ),
+            )
+          ) : (
+            <span className={style.text}>There are no transactions yet.</span>
+          )}
+          {incomeArr.length !== 0 ? (
+            type === '/income' &&
+            incomeArr.map(({ date, description, category, sum, id }, index) => (
+              <tr key={index} className={style.tableRow}>
+                <td className={style.tableCell}>{date}</td>
+                <td className={style.tableCell}>
+                  <EllipsisText text={`${description}`} length={'29'} />
+                </td>
+                <td className={style.tableCell}>{category}</td>
+                <td className={style.tableCellSumIncome}>
+                  {getNormalizedSum(sum)}
+                </td>
+                <td className={style.tableCell}>
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(id)}
+                    className={style.deleteBtn}
+                  >
+                    <DeletePic />
+                  </button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <span className={style.text}>There are no transactions yet.</span>
+          )}
         </tbody>
       </table>
     </div>
