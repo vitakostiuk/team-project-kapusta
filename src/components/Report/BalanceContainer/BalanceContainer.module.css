@@ -1,0 +1,17 @@
+@media screen and (min-width: 772px) {
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 32px;
+  }
+}
+
+@media screen and (min-width: 772px) {
+  .balance {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+}

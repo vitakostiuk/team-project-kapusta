@@ -9,37 +9,23 @@ import {
 } from 'recharts';
 import * as Styled from './Statistic.styled';
 
-// const data = [
-//   { label: 'meet', value: 5000 },
-//   { label: 'fish', value: 3200 },
-//   { label: 'chicken', value: 4000 },
-//   { label: 'shirts', value: 1200 },
-//   { label: 'shoes', value: 2320 },
-//   { label: 'skirts', value: 2500 },
-//   { label: 'coffee', value: 120 },
-//   { label: 'tea', value: 7000 },
-//   { label: 'beer', value: 800 },
-//   { label: 'water', value: 1500 },
-// ];
-
 const Statistic = ({ list }) => {
   const [arr, setArr] = useState([]);
 
   useEffect(() => {
-    const data = Object.entries(list).reduce((acc, el) => {
-      let label = el[0].split(' ')[0];
+    const data = list.reduce((acc, el) => {
+      let label = el.description.split(' ')[0];
       if (label.length > 8) {
         label = label.slice(0, 8);
       }
       return [
         {
           label: label,
-          value: el[1],
+          value: el.value,
         },
         ...acc,
       ];
     }, []);
-    console.log(data);
     setArr(data);
   }, [list]);
 

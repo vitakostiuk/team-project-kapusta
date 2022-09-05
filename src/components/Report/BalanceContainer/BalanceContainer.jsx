@@ -2,18 +2,17 @@ import React from 'react';
 import ButtonGoMain from './ButtonGoMain';
 import BalanceComp from '../../common/BalanceComp';
 import Period from './Period';
-import * as Styled from './BalanceContainer.styled';
+import s from './BalanceContainer.module.css';
 
 const BalanceContainer = () => {
   return (
-    <Styled.Container>
+    <div className={s.container}>
       <ButtonGoMain />
-      <Styled.Balance>
+      <div className={s.balance}>
         <Period />
         <BalanceComp />
-        {/* <BalanceSum /> */}
-      </Styled.Balance>
-    </Styled.Container>
+      </div>
+    </div>
   );
 };
 

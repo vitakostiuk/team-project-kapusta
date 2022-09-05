@@ -34,6 +34,8 @@ export const Login = () => {
   const [registration] = useRegisterMutation();
   const [google] = useGoogleLoginMutation();
 
+  let submitAction = undefined;
+
   return (
     <div className={styles.loginDiv}>
       <div className={styles.logoDiv}>
@@ -48,21 +50,36 @@ export const Login = () => {
         }}
         validationSchema={SignupSchema}
         onSubmit={async values => {
-          try {
-            const user = await login({
-              email: values.email,
-              password: values.password,
-            });
-            dispatch(logIn(user));
-          } catch (err) {
-            console.log(err);
-            alert(
-              'check your password or email or register in the application',
-            );
+          console.log('submitAction', submitAction);
+          if (submitAction === 'registration') {
+            try {
+              const user = await registration({
+                email: values.email,
+                password: values.password,
+              });
+              if (user.data.status === 'success') alert(user.data.message);
+              console.log(user);
+            } catch (err) {
+              console.log(err);
+              alert('check the fields');
+            }
+          } else {
+            try {
+              const user = await login({
+                email: values.email,
+                password: values.password,
+              });
+              dispatch(logIn(user));
+            } catch (err) {
+              console.log(err);
+              alert(
+                'check your password or email or register in the application',
+              );
+            }
           }
         }}
       >
-        {({ errors, touched, isValid, dirty }) => (
+        {({ errors, touched, isValid, dirty, handleSubmit }) => (
           <Form className={styles.forma}>
             <div className={styles.topTextDiv}>
               <p className={styles.topGoogleRegText}>
@@ -75,7 +92,6 @@ export const Login = () => {
               onClick={async () => {
                 try {
                   const user = await google();
-                  // dispatch(registerUser(user));
                 } catch (err) {
                   console.log(err);
                 }
@@ -105,27 +121,24 @@ export const Login = () => {
             ) : null}
             <div className={styles.divButton}>
               <button
-                type="submit"
+                type="button"
                 disabled={errors.email && errors.password}
                 className={styles.Btn}
+                onClick={() => {
+                  submitAction = 'login';
+                  handleSubmit();
+                }}
               >
                 Log in
               </button>
+
               <button
                 type="button"
                 disabled={errors.email && errors.password}
                 className={styles.Btn}
-                onClick={async values => {
-                  try {
-                    const user = await registration({
-                      email: values.email,
-                      password: values.password,
-                    });
-                    dispatch(registerUser(user));
-                  } catch (err) {
-                    console.log(err);
-                    alert('check the fields');
-                  }
+                onClick={() => {
+                  submitAction = 'registration';
+                  handleSubmit();
                 }}
               >
                 Registration

@@ -58,7 +58,7 @@
   justify-content: center;
   align-items: center;
 
-  width: 149px;
+  width: 138px;
   height: 53px;
   background-color: #f5f6fb;
 }
@@ -77,11 +77,26 @@
     border-radius: 16px 16px 0 0;
     background-color: #fafbfd;
   }
+
+  .tabThambActive {
+    background-color: #fefefe;
+    color: #ff751d;
+  }
+
+  .tabActive {
+    color: #ff751d;
+    font-size: 12px;
+  }
 }
 
 .tabThambActive {
-  background-color: #fefefe;
-  color: #ff751d;
+  background-color: #ff751d;
+  color: #fff;
+}
+
+.tabActive {
+  color: #fff;
+  font-size: 12px;
 }
 
 .tab {
@@ -103,8 +118,4 @@
   .tab:hover {
     color: #ff751d;
   }
-}
-
-.tabActive {
-  color: #ff751d;
 }

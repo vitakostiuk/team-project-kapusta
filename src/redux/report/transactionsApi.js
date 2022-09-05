@@ -63,4 +63,9 @@ export const {
   useSetTransactionIncomeMutation,
   useDeleteTransactionMutation,
   useGetSummaryTransactionsQuery,
+  useGetTransactionsByExpenseAndDataQuery,
 } = transactionsApi;
+
+// ::-webkit-scrollbar {
+//   width: 0px;
+//   background: transparent;
