@@ -29,6 +29,10 @@
 }
 
 .tabsBlock {
+  display: none;
+}
+
+.tabsBlockMobile {
   margin-top: 12px;
 }
 
@@ -85,8 +89,14 @@
 
 @media screen and (min-width: 768px) {
   .tabsBlock {
+    display: block;
     margin-top: 60px;
   }
+
+  .tabsBlockMobile {
+    display: none;
+  }
+
   .tabThamb {
     width: 138px;
     height: 40px;

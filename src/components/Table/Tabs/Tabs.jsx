@@ -50,6 +50,28 @@ const Tabs = () => {
           </NavLink>
         </nav>
       </div>
+
+      <div className={style.tabsBlockMobile}>
+        <nav className={style.tabs}>
+          <NavLink
+            to="/expenses/input"
+            className={({ isActive }) =>
+              isActive ? style.tabActive : style.tab
+            }
+          >
+            <div className={style.tabThamb}>expenses</div>
+          </NavLink>
+          <NavLink
+            replace
+            to="/income/input"
+            className={({ isActive }) =>
+              isActive ? style.tabActive : style.tab
+            }
+          >
+            <div className={style.tabThamb}>income</div>
+          </NavLink>
+        </nav>
+      </div>
     </>
   );
 };
