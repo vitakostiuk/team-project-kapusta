@@ -17,6 +17,7 @@ import { userApi } from './user/userApi';
 import { transactionsApi } from './report/transactionsApi';
 import balanceReducer from './Balance/balanceSlice';
 import sumReducer from './Balance/sumSlice';
+import reportReducer from './feature/report/reportSlice';
 import expensesReducer from './report/expensesSlice';
 import reportDateSlice from './report/reportDateSlice';
 import logger from 'redux-logger';
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
   [authApi.reducerPath]: authApi.reducer,
   balance: balanceReducer,
   sum: sumReducer,
+  summary: reportReducer,
   expenses: expensesReducer,
   dateReport: reportDateSlice,
   [userApi.reducerPath]: userApi.reducer,
