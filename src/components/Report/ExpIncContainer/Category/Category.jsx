@@ -2,13 +2,7 @@ import React from 'react';
 import s from './Category.module.css';
 import Icons from '../../../../images/report/sprite-icons.svg';
 
-const Category = ({
-  details,
-  categories,
-  onChange,
-  active,
-  nameOfCategory,
-}) => {
+const Category = ({ details, categories, onChange, active }) => {
   const handleBtnClick = () => {
     onChange(categories);
   };
@@ -22,11 +16,11 @@ const Category = ({
         onClick={handleBtnClick}
       >
         <svg className={s.picture}>
-          <use xlinkHref={`${Icons}#icon-${nameOfCategory}`} />
+          <use xlinkHref={`${Icons}#icon-${categories}`} />
         </svg>
       </button>
 
-      <p className={s.nameOfCategory}>{nameOfCategory}</p>
+      <p className={s.nameOfCategory}>{categories}</p>
     </li>
   );
 };
