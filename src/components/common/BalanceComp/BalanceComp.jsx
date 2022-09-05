@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PopUp from 'components/common/PopUp';
+import BtnConfirm from '../BtnConfirm';
 import {
   useGetBalanceQuery,
   useChangeBalanceMutation,
@@ -82,13 +83,7 @@ const BalanceComp = () => {
             }}
             readOnly={data !== 0}
           />
-          <button
-            type="submit"
-            className={!isDisabledBtn ? s.button : s.buttonDisabled}
-            disabled={isDisabledBtn}
-          >
-            Confirm
-          </button>
+          <BtnConfirm isDisabledBtn={isDisabledBtn} />
         </div>
       </form>
       {data === 0 && isShowPopUp && <PopUp />}

@@ -12,14 +12,22 @@
   overflow-y: scroll;
 } */
 
-.tableThamb {
+.table {
   height: 382px;
   width: 624px;
   background-color: #f5f6fb;
   border-radius: 16px 16px 0 0;
 }
+/* 
+.tableThamb {
+  height: 382px;
+  width: 624px;
+  background-color: #f5f6fb;
+  border-radius: 16px 16px 0 0;
+} */
 
 .tableBody {
+  display: block;
   height: 342px;
   width: 624px;
   overflow-y: scroll;

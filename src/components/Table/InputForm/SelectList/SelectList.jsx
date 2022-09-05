@@ -31,7 +31,7 @@ const SelectList = ({ onChangeCategory, onChangeId }) => {
       if (findId) {
         setId(findId.id);
         onChangeId(findId.id);
-        console.log('findId', findId.id);
+        // console.log('findId', findId.id);
       }
     }
   }, [data, id, onChangeId, value]);

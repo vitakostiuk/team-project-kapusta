@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as CalendarPic } from '../../../images/calendar.svg';
@@ -10,7 +10,6 @@ import {
   useSetTransactionExpenseMutation,
   useSetTransactionIncomeMutation,
 } from 'redux/report/transactionsApi';
-import { useGetBalanceQuery } from 'redux/user/userApi';
 import { setSumValue } from 'redux/Balance/sumSlice';
 import style from './InputForm.module.css';
 import { nanoid } from '@reduxjs/toolkit';
@@ -21,14 +20,17 @@ const InputForm = ({ onFillTable }) => {
   const [sum, setSum] = useState('');
   const [category, setCategory] = useState('');
   const [idOfCategory, setIdOfCategory] = useState('');
+  const [isDisabledBtn, setIsDisabledBtn] = useState(true);
   const [addExpense] = useSetTransactionExpenseMutation();
   const [addIncome] = useSetTransactionIncomeMutation();
-  const {
-    data,
-    // error,
-    // isLoading
-  } = useGetBalanceQuery();
-  console.log('balance from api', data);
+
+  useEffect(() => {
+    if (!description || !sum || !category) {
+      setIsDisabledBtn(true);
+    } else {
+      setIsDisabledBtn(false);
+    }
+  }, [category, description, sum]);
 
   const dispatch = useDispatch();
   const type = useLocation().pathname;
@@ -59,6 +61,8 @@ const InputForm = ({ onFillTable }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
+    reset();
+
     const year = String(startDate.getFullYear());
     const month = String(startDate.getMonth() + 1).padStart(2, '0');
     const day = String(startDate.getDate()).padStart(2, '0');
@@ -74,7 +78,14 @@ const InputForm = ({ onFillTable }) => {
       id: nanoid(),
     };
 
-    onFillTable(normalizedDate, description, category, sum, tableValues);
+    onFillTable(
+      normalizedDate,
+      description,
+      category,
+      sum,
+      tableValues,
+      isDisabledBtn,
+    );
     const requestBody = {
       date: {
         day,
@@ -91,8 +102,6 @@ const InputForm = ({ onFillTable }) => {
     if (type === '/income') {
       return addIncome(requestBody);
     }
-
-    reset();
   };
 
   const reset = () => {
@@ -157,27 +166,14 @@ const InputForm = ({ onFillTable }) => {
         </div>
 
         <div className={style.btnThamb}>
-          {description === '' &&
-          sum === '' &&
-          category === 'Product category' ? (
-            <button
-              type="input"
-              disabled
-              className={style.inputBtn}
-              onClick={handleSubmit}
-            >
-              Input
-            </button>
-          ) : (
-            <button
-              type="input"
-              className={style.inputBtn}
-              onClick={handleSubmit}
-            >
-              Input
-            </button>
-          )}
-
+          <button
+            type="input"
+            className={style.inputBtn}
+            onClick={handleSubmit}
+            disabled={isDisabledBtn}
+          >
+            Input
+          </button>
           <button type="button" onClick={reset} className={style.clearBtn}>
             Clear
           </button>

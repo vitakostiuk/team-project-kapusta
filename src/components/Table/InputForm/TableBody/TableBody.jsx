@@ -84,9 +84,8 @@ const TableBody = ({ dataTable }) => {
             <th className={style.tableHeaderCell}></th>
           </tr>
         </thead>
-        <tbody>
-          <div className={style.tableBody}>
-            {expenseArr.length !== 0 ? (
+        <tbody className={style.tableBody}>
+          {expenseArr.length !== 0 ? (
               type === '/expenses' &&
               expenseArr.map(
                 ({ date, description, category, sum, id }, index) => (
@@ -142,7 +141,6 @@ const TableBody = ({ dataTable }) => {
             ) : (
               <span className={style.text}>There are no transactions yet.</span>
             )}
-          </div>
         </tbody>
       </table>
     </div>

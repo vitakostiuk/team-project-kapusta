@@ -13,8 +13,6 @@ const Tabs = () => {
     setDataTable(prevDataTable => [tableValues, ...prevDataTable]);
   };
 
-  console.log(dataTable);
-
   const onChangeDate = date => {
     setStartDate(date);
   };
