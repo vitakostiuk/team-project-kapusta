@@ -13,14 +13,15 @@ import {
 import storage from 'redux-persist/lib/storage';
 import authReducer from './feature/authSlice';
 import { authApi } from './authorization/authApi';
-import { userApi } from './user/userApi';
-import { transactionsApi } from './report/transactionsApi';
+// import { userApi } from './user/userApi';
+// import { transactionsApi } from './report/transactionsApi';
+import { baseApi } from './baseApi';
 import balanceReducer from './Balance/balanceSlice';
 import sumReducer from './Balance/sumSlice';
 import reportReducer from './feature/report/reportSlice';
 import expensesReducer from './report/expensesSlice';
 import reportDateSlice from './report/reportDateSlice';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 
 const authPersistConfig = {
   key: 'auth',
@@ -36,8 +37,8 @@ const rootReducer = combineReducers({
   summary: reportReducer,
   expenses: expensesReducer,
   dateReport: reportDateSlice,
-  [userApi.reducerPath]: userApi.reducer,
-  [transactionsApi.reducerPath]: transactionsApi.reducer,
+  // [userApi.reducerPath]: userApi.reducer,
+  [baseApi.reducerPath]: baseApi.reducer,
 });
 
 export const store = configureStore({
@@ -50,8 +51,8 @@ export const store = configureStore({
       },
     })
       .concat(authApi.middleware)
-      .concat(userApi.middleware)
-      .concat(transactionsApi.middleware),
+      // .concat(userApi.middleware)
+      .concat(baseApi.middleware),
   // .concat(logger),
 });
 

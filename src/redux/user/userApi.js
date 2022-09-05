@@ -1,22 +1,11 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+// import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { baseApi } from 'redux/baseApi';
 
-export const userApi = createApi({
-  reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://team-project-kapusta.herokuapp.com',
-    prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.token;
-
-      if (token) {
-        headers.set('authorization', `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
-  tagTypes: ['user'],
+export const userApi = baseApi.injectEndpoints({
   endpoints: builder => ({
     getBalance: builder.query({
       query: () => '/api/users/balance',
+      providesTags: ['transactions'],
     }),
     changeBalance: builder.mutation({
       query: newBalance => ({

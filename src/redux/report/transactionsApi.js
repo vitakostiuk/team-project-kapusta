@@ -1,19 +1,7 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
+// import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
+import { baseApi } from 'redux/baseApi';
 
-export const transactionsApi = createApi({
-  reducerPath: 'transactionsApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://team-project-kapusta.herokuapp.com',
-    prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.token;
-
-      if (token) {
-        headers.set('authorization', `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
-  tagTypes: ['transactions'],
+export const transactionsApi = baseApi.injectEndpoints({
   endpoints: builder => ({
     getTransactions: builder.query({
       query: () => '/api/categories/',
@@ -30,6 +18,7 @@ export const transactionsApi = createApi({
     }),
     getSummaryTransactions: builder.query({
       query: type => `/api/transactions/reports/${type}`,
+      providesTags: ['transactions'],
     }),
     setTransactionExpense: builder.mutation({
       query: newTransaction => ({
@@ -37,6 +26,7 @@ export const transactionsApi = createApi({
         method: 'POST',
         body: newTransaction,
       }),
+      invalidatesTags: ['transactions'],
     }),
     setTransactionIncome: builder.mutation({
       query: newTransaction => ({
@@ -44,12 +34,14 @@ export const transactionsApi = createApi({
         method: 'POST',
         body: newTransaction,
       }),
+      invalidatesTags: ['transactions'],
     }),
     deleteTransaction: builder.mutation({
       query: id => ({
         url: `/api/transactions/${id}`,
         method: 'DELETE',
       }),
+      invalidatesTags: ['transactions'],
     }),
   }),
 });
@@ -65,7 +57,3 @@ export const {
   useGetSummaryTransactionsQuery,
   useGetTransactionsByExpenseAndDataQuery,
 } = transactionsApi;
-
-// ::-webkit-scrollbar {
-//   width: 0px;
-//   background: transparent;
