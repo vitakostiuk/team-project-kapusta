@@ -1,17 +1,24 @@
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 import { ReactComponent as CalendarPic } from '../../../images/calendar.svg';
 import Calendar from '../InputForm/Calendar/Calendar';
 import TransactionsListMobile from '../InputForm/TransactionsListMobile/TransactionsListMobile';
 import style from './Tabs.module.css';
 
 const Tabs = () => {
+  const [startDate, setStartDate] = useState(new Date());
+  console.log(new Date());
+
+  const onChangeDate = date => {
+    setStartDate(date);
+  };
   return (
     <>
       <div className={style.calendarBox}>
         <div className={style.calendarPic}>
           <CalendarPic />
         </div>
-        <Calendar />
+        <Calendar onChangeDate={onChangeDate} startDate={startDate} />
       </div>
 
       <div className={style.list}>
