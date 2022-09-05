@@ -86,7 +86,8 @@ const TableBody = ({ dataTable }) => {
         </thead>
         <tbody>
           <div className={style.tableBody}>
-            {type === '/expenses' &&
+            {expenseArr.length !== 0 ? (
+              type === '/expenses' &&
               expenseArr.map(
                 ({ date, description, category, sum, id }, index) => (
                   <tr key={index} className={style.tableRow}>
@@ -109,9 +110,12 @@ const TableBody = ({ dataTable }) => {
                     </td>
                   </tr>
                 ),
-              )}
-
-            {type === '/income' &&
+              )
+            ) : (
+              <span className={style.text}>There are no transactions yet.</span>
+            )}
+            {incomeArr.length !== 0 ? (
+              type === '/income' &&
               incomeArr.map(
                 ({ date, description, category, sum, id }, index) => (
                   <tr key={index} className={style.tableRow}>
@@ -134,7 +138,10 @@ const TableBody = ({ dataTable }) => {
                     </td>
                   </tr>
                 ),
-              )}
+              )
+            ) : (
+              <span className={style.text}>There are no transactions yet.</span>
+            )}
           </div>
         </tbody>
       </table>

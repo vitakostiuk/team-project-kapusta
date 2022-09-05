@@ -126,6 +126,8 @@ const InputForm = ({ onFillTable }) => {
               title="Product description may contain only letters, apostrophe, dash and spaces"
               required
               placeholder="Product description"
+              minlength={1}
+              maxLength={50}
               className={style.inputArea}
               value={description}
               onChange={handleChange}
@@ -155,13 +157,26 @@ const InputForm = ({ onFillTable }) => {
         </div>
 
         <div className={style.btnThamb}>
-          <button
-            type="input"
-            className={style.inputBtn}
-            onClick={handleSubmit}
-          >
-            Input
-          </button>
+          {description === '' &&
+          sum === '' &&
+          category === 'Product category' ? (
+            <button
+              type="input"
+              disabled
+              className={style.inputBtn}
+              onClick={handleSubmit}
+            >
+              Input
+            </button>
+          ) : (
+            <button
+              type="input"
+              className={style.inputBtn}
+              onClick={handleSubmit}
+            >
+              Input
+            </button>
+          )}
 
           <button type="button" onClick={reset} className={style.clearBtn}>
             Clear

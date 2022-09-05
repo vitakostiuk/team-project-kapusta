@@ -7,7 +7,13 @@ import style from './Tabs.module.css';
 
 const Tabs = () => {
   const [startDate, setStartDate] = useState(new Date());
-  console.log(new Date());
+  const [dataTable, setDataTable] = useState([]);
+
+  const onFillTable = tableValues => {
+    setDataTable(prevDataTable => [tableValues, ...prevDataTable]);
+  };
+
+  console.log(dataTable);
 
   const onChangeDate = date => {
     setStartDate(date);
@@ -22,7 +28,7 @@ const Tabs = () => {
       </div>
 
       <div className={style.list}>
-        <TransactionsListMobile />
+        <TransactionsListMobile dataTable={dataTable} />
       </div>
 
       <div className={style.tabsBlock}>

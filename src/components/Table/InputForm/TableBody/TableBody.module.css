@@ -186,3 +186,12 @@
   background-color: #f5f6fb;
   border-radius: 50%;
 }
+
+.text {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  color: rgba(82, 85, 95, 0.3);
+  font-size: 18px;
+  font-weight: 500;
+}

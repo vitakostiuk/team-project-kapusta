@@ -62,13 +62,6 @@ function App() {
               }
             />
 
-            <Route
-              path="/home"
-              element={
-                !isLoggedIn ? <PrivateRoute redirectTo="/" /> : <HomePage />
-              }
-            />
-
             <Route element={<PrivateRoute redirectTo="/" />}>
               <Route path="/expenses" element={<ExpensesPage />} />
             </Route>
@@ -77,8 +70,15 @@ function App() {
               <Route path="/income" element={<IncomePage />} />
             </Route>
 
+            <Route
+              path="/home"
+              element={
+                !isLoggedIn ? <PrivateRoute redirectTo="/" /> : <HomePage />
+              }
+            />
+
             <Route element={<PrivateRoute redirectTo="/" />}>
-              <Route path="/report" element={<ReportPage />} />
+              <Route path="/home/report" element={<ReportPage />} />
             </Route>
 
             <Route element={<PublicRoute redirectTo="/expenses" />}>
