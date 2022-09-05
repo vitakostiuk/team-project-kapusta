@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import {
   useLoginMutation,
   useRegisterMutation,
-  useGoogleLoginMutation,
+  // useGoogleLoginMutation,
 } from 'redux/authorization/authApi';
 import { logIn, registerUser } from '../../redux/feature/authSlice';
 
@@ -17,7 +17,7 @@ import { logIn, registerUser } from '../../redux/feature/authSlice';
 
 import { Form, Field, Formik } from 'formik';
 import * as Yup from 'yup';
-import { Label } from 'recharts';
+// import { Label } from 'recharts';
 import { serializeStyles } from '@emotion/serialize';
 
 const SignupSchema = Yup.object().shape({
@@ -32,14 +32,14 @@ export const Login = () => {
   const dispatch = useDispatch();
   const [login] = useLoginMutation();
   const [registration] = useRegisterMutation();
-  const [google] = useGoogleLoginMutation();
+  // const [google] = useGoogleLoginMutation();
 
   let submitAction = undefined;
 
   return (
     <div className={styles.loginDiv}>
       <div className={styles.logoDiv}>
-        <img className={styles.logo} src={kapustaSvg}></img>
+        <img className={styles.logo} src={kapustaSvg} alt="kapusta"></img>
         <p className={styles.textunderLogo}>Smart Finance</p>
       </div>
 
@@ -87,20 +87,17 @@ export const Login = () => {
               </p>
               <span className={styles.topGoogleRegTextspan}> Account:</span>
             </div>
-            <button
-              type="button"
-              onClick={async () => {
-                try {
-                  const user = await google();
-                } catch (err) {
-                  console.log(err);
-                }
-              }}
+            <a
+              href="https://team-project-kapusta.herokuapp.com/api/auth/google"
               className={styles.GoogleBtn}
             >
-              <img src={GoogleEmbl} className={serializeStyles.GoogleEmblem} />
+              <img
+                src={GoogleEmbl}
+                className={serializeStyles.GoogleEmblem}
+                alt="google"
+              />
               Google
-            </button>
+            </a>
             <p className={styles.buttonGoogleRegText}>
               Or log in using an email and password, after registering:
             </p>
