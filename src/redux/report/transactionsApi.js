@@ -11,26 +11,28 @@ export const transactionsApi = baseApi.injectEndpoints({
         `/api/transactions/?month=${params.month}&year=${params.year}`,
     }),
     getTransactionsByExpense: builder.query({
-      query: () => '/api/transactions/expense',
+      query: params =>
+        `/api/transactions/expense/?day=${params.day}month=${params.month}&year=${params.year}`,
     }),
     getTransactionsByIncome: builder.query({
-      query: () => '/api/transactions/income',
+      query: params =>
+        `/api/transactions/income/?day=${params.day}month=${params.month}&year=${params.year}`,
     }),
     getSummaryTransactions: builder.query({
       query: type => `/api/transactions/reports/${type}`,
       providesTags: ['transactions'],
     }),
     setTransactionExpense: builder.mutation({
-      query: (newTransaction, params) => ({
-        url: `/api/transactions/expense/?day=${params.day}month=${params.month}&year=${params.year}`,
+      query: newTransaction => ({
+        url: `/api/transactions/expense`,
         method: 'POST',
         body: newTransaction,
       }),
       invalidatesTags: ['transactions'],
     }),
     setTransactionIncome: builder.mutation({
-      query: (newTransaction, params) => ({
-        url: `/api/transactions/income/?day=${params.day}month=${params.month}&year=${params.year}`,
+      query: newTransaction => ({
+        url: `/api/transactions/income`,
         method: 'POST',
         body: newTransaction,
       }),

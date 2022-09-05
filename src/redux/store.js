@@ -17,7 +17,7 @@ import { authApi } from './authorization/authApi';
 // import { transactionsApi } from './report/transactionsApi';
 import { baseApi } from './baseApi';
 import balanceReducer from './Balance/balanceSlice';
-import sumReducer from './Balance/sumSlice';
+import calendarReducer from './calendar/calendarSlice';
 import reportReducer from './feature/report/reportSlice';
 import expensesReducer from './report/expensesSlice';
 import reportDateSlice from './report/reportDateSlice';
@@ -33,7 +33,7 @@ const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   [authApi.reducerPath]: authApi.reducer,
   balance: balanceReducer,
-  sum: sumReducer,
+  date: calendarReducer,
   summary: reportReducer,
   expenses: expensesReducer,
   dateReport: reportDateSlice,

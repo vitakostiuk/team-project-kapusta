@@ -1,6 +1,6 @@
 import style from './TableBody.module.css';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { ReactComponent as DeletePic } from '../../../../images/delete.svg';
 import EllipsisText from 'react-ellipsis-text';
@@ -16,8 +16,12 @@ const TableBody = ({ dataTable }) => {
   const [incomeArr, setIncomeArr] = useState([]);
   const [deleteTransaction] = useDeleteTransactionMutation();
   const type = useLocation().pathname;
-  const expense = useGetTransactionsByExpenseQuery();
-  const income = useGetTransactionsByIncomeQuery();
+
+  const date = useSelector(state => state.date);
+  const expense = useGetTransactionsByExpenseQuery(date);
+  console.log('expense', expense);
+  const income = useGetTransactionsByIncomeQuery(date);
+  console.log('income', income);
 
   useEffect(() => {
     setExpenseArr(dataTable.filter(({ income }) => income === false));

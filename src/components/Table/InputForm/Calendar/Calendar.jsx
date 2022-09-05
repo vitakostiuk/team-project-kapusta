@@ -1,11 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import DatePicker from 'react-datepicker';
+import { getDate } from 'redux/calendar/calendarSlice';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import style from './Calendar.module.css';
 
 const Calendar = ({ onChangeDate, startDate }) => {
-  const handleDateSelect = e => {};
+  const dispatch = useDispatch();
+
+  const handleDateSelect = e => {
+    const year = String(e.getFullYear());
+    const month = String(e.getMonth() + 1);
+    const day = String(e.getDate());
+
+    const date = {
+      day,
+      month,
+      year,
+    };
+    dispatch(getDate(date));
+  };
 
   return (
     <DatePicker

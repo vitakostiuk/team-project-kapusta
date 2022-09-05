@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as CalendarPic } from '../../../images/calendar.svg';
 import { ReactComponent as CalcPic } from '../../../images/calculator.svg';
@@ -10,7 +9,7 @@ import {
   useSetTransactionExpenseMutation,
   useSetTransactionIncomeMutation,
 } from 'redux/report/transactionsApi';
-import { setSumValue } from 'redux/Balance/sumSlice';
+// import { setSumValue } from 'redux/Balance/sumSlice';
 import style from './InputForm.module.css';
 import { nanoid } from '@reduxjs/toolkit';
 
@@ -32,7 +31,7 @@ const InputForm = ({ onFillTable }) => {
     }
   }, [category, description, sum]);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const type = useLocation().pathname;
 
   const onChangeDate = date => {
@@ -54,7 +53,7 @@ const InputForm = ({ onFillTable }) => {
     }
     if (name === 'sum') {
       setSum(value);
-      dispatch(setSumValue(value));
+      // dispatch(setSumValue(value));
     }
   };
 
