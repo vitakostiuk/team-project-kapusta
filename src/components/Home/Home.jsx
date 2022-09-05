@@ -18,7 +18,7 @@ const Home = () => {
     setTableDescription(description);
     setTableSum(sum);
     setTableCategory(category);
-    setDataTable(prevDataTable => [tableValues, ...prevDataTable]);
+    setDataTable(prevDataTable => [...prevDataTable, tableValues]);
   };
   return (
     <>

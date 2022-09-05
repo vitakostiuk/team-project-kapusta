@@ -26,7 +26,8 @@ const TableBody = ({ dataTable }) => {
     if (expense) {
       expense?.data?.transactions.forEach(
         ({ categories, description, value, date: { day, month, year }, _id }) =>
-          setExpenseArr(prevDataTable => [
+          setExpenseArr(prevExpenseArr => [
+            ...prevExpenseArr,
             {
               date: `${day}.${month}.${year}`,
               description,
@@ -35,7 +36,6 @@ const TableBody = ({ dataTable }) => {
               income: false,
               id: _id,
             },
-            ...prevDataTable,
           ]),
       );
     }
@@ -43,7 +43,8 @@ const TableBody = ({ dataTable }) => {
     if (income) {
       income?.data?.transactions.forEach(
         ({ categories, description, value, date: { day, month, year }, _id }) =>
-          setIncomeArr(prevDataTable => [
+          setIncomeArr(prevIncomeArr => [
+            ...prevIncomeArr,
             {
               date: `${day}.${month}.${year}`,
               description,
@@ -52,7 +53,6 @@ const TableBody = ({ dataTable }) => {
               income: true,
               id: _id,
             },
-            ...prevDataTable,
           ]),
       );
     }

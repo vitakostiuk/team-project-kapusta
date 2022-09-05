@@ -14,7 +14,10 @@ function changeMonthNumberToName(array) {
   }
 
   array?.forEach(element => {
-    const summaryObj = { name: months[element.month - 1], ...element };
+    const summaryObj = {
+      name: months[element.month - 1],
+      ...element,
+    };
 
     newData.push(summaryObj);
   });
