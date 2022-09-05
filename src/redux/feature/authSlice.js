@@ -22,6 +22,11 @@ const authSlice = createSlice({
       state.token = token;
       state.isLoggedIn = true;
     },
+    loginGoogle: (state, action) => {
+      const { token } = action.payload;
+      state.token = token;
+      state.isLoggedIn = true;
+    },
     logOut: state => {
       state.user = { name: null, email: null };
       state.token = null;
@@ -35,5 +40,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { registerUser, logIn, logOut, refreshUser } = authSlice.actions;
+export const { registerUser, logIn, logOut, refreshUser, loginGoogle } =
+  authSlice.actions;
 export default authSlice.reducer;
