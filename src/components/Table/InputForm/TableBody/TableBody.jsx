@@ -19,9 +19,9 @@ const TableBody = ({ dataTable }) => {
 
   const date = useSelector(state => state.date);
   const expense = useGetTransactionsByExpenseQuery(date);
-  console.log('expense', expense);
+  // console.log('expense', expense);
   const income = useGetTransactionsByIncomeQuery(date);
-  console.log('income', income);
+  //console.log('income', income);
 
   useEffect(() => {
     setExpenseArr(dataTable.filter(({ income }) => income === false));
