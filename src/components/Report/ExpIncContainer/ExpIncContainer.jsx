@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import s from './ExpIncContainer.module.css';
 import IncomeExpensesChange from './IncomeExpensesChange';
 import Expenses from './Expenses';
+import Statistic from '../Statistic';
 import { useFullTransactionsQuery } from 'redux/report/transactionsApi';
 import { setExpenses, setIncome } from 'redux/report/expensesSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const ExpIncContainer = () => {
   const [incExp, setIncExp] = useState('EXPENSES');
   const [data, setData] = useState([]);
+  const [subs, setSubs] = useState([]);
   const dispatch = useDispatch();
   const period = useSelector(state => state.dateReport);
   const { data: expensesByData } = useFullTransactionsQuery(period);
@@ -42,12 +44,26 @@ const ExpIncContainer = () => {
       : setData(expensesByData.transactions[expensesIdx]?.reports);
   }, [expensesByData, dispatch, incExp]);
 
+  const handleChange = subs => {
+    setSubs(subs);
+  };
+
+  console.log(subs);
+
   return (
     <>
       <div className={s.container}>
         <IncomeExpensesChange onChange={incExpChange} incExp={incExp} />
-        {expensesByData && <Expenses data={data} />}
+        {expensesByData && <Expenses data={data} onChange={handleChange} />}
       </div>
+
+      {subs?.length > 0 ? (
+        <Statistic list={subs} />
+      ) : (
+        <div className={s.noData}>
+          There are no transactions for selected period.
+        </div>
+      )}
     </>
   );
 };

@@ -10,11 +10,6 @@
   margin-right: -20px;
 }
 
-.noData {
-  text-align: center;
-  padding: 4em;
-}
-
 @media screen and (min-width: 772px) {
   .container {
     padding: 20px 40px 20px 40px;
