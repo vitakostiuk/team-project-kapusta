@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import s from './Expenses.module.css';
 import Category from '../Category';
-import Statistic from '../../Statistic';
 
-const Expenses = ({ data }) => {
+const Expenses = ({ data, onChange }) => {
   const [category, setCategory] = useState('');
   const [sorted, setSorted] = useState([]);
   const [subs, setSubs] = useState([]);
@@ -15,11 +14,12 @@ const Expenses = ({ data }) => {
       setCategory(arr[0]._id);
       setSorted(arr);
     }
-  }, [data]);
+  }, [data, subs]);
 
   useEffect(() => {
     const arr = [...data]?.find(el => el.categories === category);
     setSubs(arr?.data || []);
+    onChange(subs);
   }, [category]);
 
   return (
@@ -36,13 +36,6 @@ const Expenses = ({ data }) => {
             />
           ))}
         </ul>
-      )}
-      {data?.length > 0 ? (
-        <Statistic list={subs} />
-      ) : (
-        <div className={s.noData}>
-          There are no transactions for selected period.
-        </div>
       )}
     </>
   );
