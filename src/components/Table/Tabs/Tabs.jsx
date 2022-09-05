@@ -7,7 +7,7 @@ import style from './Tabs.module.css';
 
 const Tabs = () => {
   const [startDate, setStartDate] = useState(new Date());
-  console.log(new Date());
+  // console.log(new Date());
 
   const onChangeDate = date => {
     setStartDate(date);
