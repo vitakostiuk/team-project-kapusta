@@ -6,15 +6,14 @@
 @media screen and (min-width: 772px) {
   .container {
     margin-bottom: 0px;
-    margin-left: 100px;
   }
 }
 
-@media screen and (min-width: 1280px) {
+/* @media screen and (min-width: 1280px) {
   .container {
     margin-left: 210px;
   }
-}
+} */
 
 .period {
   font-weight: 400;
@@ -34,9 +33,7 @@
   display: flex;
   font-weight: 700;
   font-size: 14px;
-  margin-left: 5px;
-  margin-right: 5px;
-  width: 10em;
+  width: 9em;
   justify-content: center;
 }
 
@@ -48,5 +45,6 @@
   border: none;
   background-color: inherit;
   cursor: pointer;
-  padding: 0.5em 1em;
+  /* padding: 0.5em 1em; */
+  padding: 5px;
 }
