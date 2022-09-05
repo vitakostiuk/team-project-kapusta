@@ -3,8 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 export const transactionsApi = createApi({
   reducerPath: 'transactionsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:3000',
-    // baseUrl: 'https://team-project-kapusta.herokuapp.com',
+    baseUrl: 'https://team-project-kapusta.herokuapp.com',
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
 
