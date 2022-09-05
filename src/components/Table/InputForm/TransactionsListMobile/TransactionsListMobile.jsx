@@ -1,6 +1,7 @@
 import style from './TransactionsListMobile.module.css';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { ReactComponent as DeletePic } from '../../../../images/delete.svg';
 import EllipsisText from 'react-ellipsis-text';
@@ -17,9 +18,11 @@ const TransactionsListMobile = ({ dataTable }) => {
   // const [transArr, setTransArr] = useState([]);
   const [deleteTransaction] = useDeleteTransactionMutation();
   const type = useLocation().pathname;
-  const expense = useGetTransactionsByExpenseQuery();
+
+  const date = useSelector(state => state.date);
+  const expense = useGetTransactionsByExpenseQuery(date);
   // console.log('my expense transactions', expense.data);
-  const income = useGetTransactionsByIncomeQuery();
+  const income = useGetTransactionsByIncomeQuery(date);
   // console.log('my income transactions', income.data);
 
   useEffect(() => {
