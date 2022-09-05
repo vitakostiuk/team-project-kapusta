@@ -18,9 +18,9 @@ const TransactionsListMobile = () => {
   const [deleteTransaction] = useDeleteTransactionMutation();
   const type = useLocation().pathname;
   const expense = useGetTransactionsByExpenseQuery();
-  console.log('my expense transactions', expense.data);
+  // console.log('my expense transactions', expense.data);
   const income = useGetTransactionsByIncomeQuery();
-  console.log('my income transactions', income.data);
+  // console.log('my income transactions', income.data);
 
   useEffect(() => {
     // setExpenseArr(dataTable.filter(({ income }) => income === false));

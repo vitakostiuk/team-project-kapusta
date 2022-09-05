@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PopUp from 'components/common/PopUp';
 import {
   useGetBalanceQuery,
@@ -22,13 +22,21 @@ const BalanceComp = () => {
   const [isShowPopUp, setIsShowPopUp] = useState(true);
   const dispatch = useDispatch();
   const [changeBalance] = useChangeBalanceMutation();
+  const sum = useSelector(state => state.sum);
 
   useEffect(() => {
-    if (isSuccess) {
+    if (sum) {
+      const changedBalance = data - Number(sum);
+      dispatch(setBalance(getNormalizedSum(changedBalance)));
+      setValue(getNormalizedSum(changedBalance));
+      return;
+    }
+
+    if (isSuccess && !sum) {
       dispatch(setBalance(getNormalizedSum(data)));
       setValue(getNormalizedSum(data));
     }
-  }, [data, dispatch, isSuccess]);
+  }, [data, dispatch, isSuccess, sum]);
 
   const handleChange = e => {
     setValue(e.target.value);
