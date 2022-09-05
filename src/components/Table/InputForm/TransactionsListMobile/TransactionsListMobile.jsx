@@ -11,7 +11,7 @@ import {
 } from 'redux/report/transactionsApi';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
 
-const TransactionsListMobile = () => {
+const TransactionsListMobile = ({ dataTable }) => {
   const [expenseArr, setExpenseArr] = useState([]);
   const [incomeArr, setIncomeArr] = useState([]);
   // const [transArr, setTransArr] = useState([]);
@@ -23,8 +23,10 @@ const TransactionsListMobile = () => {
   // console.log('my income transactions', income.data);
 
   useEffect(() => {
-    // setExpenseArr(dataTable.filter(({ income }) => income === false));
-    // setIncomeArr(dataTable.filter(({ income }) => income === true));
+    if (dataTable) {
+      setExpenseArr(dataTable.filter(({ income }) => income === false));
+      setIncomeArr(dataTable.filter(({ income }) => income === true));
+    }
 
     if (expense) {
       expense?.data?.transactions.forEach(
@@ -59,7 +61,7 @@ const TransactionsListMobile = () => {
           ]),
       );
     }
-  }, [expense, income]);
+  }, [dataTable, expense, income]);
 
   const handleDelete = id => {
     if (type === '/expenses') {

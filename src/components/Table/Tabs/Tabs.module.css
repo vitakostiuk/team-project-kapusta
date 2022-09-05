@@ -32,18 +32,6 @@
   margin-top: 12px;
 }
 
-@media screen and (min-width: 768px) {
-  .tabsBlock {
-    margin-top: 60px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .tabsBlock {
-    margin-top: 8px;
-  }
-}
-
 .tabs {
   display: flex;
   font-family: 'Roboto';
@@ -63,46 +51,20 @@
   background-color: #f5f6fb;
 }
 
-@media screen and (max-width: 767px) {
-  .tabThamb:hover,
-  .tabThamb:focus {
-    background-color: #ff751d;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .tabThamb {
-    width: 138px;
-    height: 40px;
-    border-radius: 16px 16px 0 0;
-    background-color: #fafbfd;
-  }
-
-  .tabThambActive {
-    background-color: #fefefe;
-    color: #ff751d;
-  }
-
-  .tabActive {
-    color: #ff751d;
-    font-size: 12px;
-  }
-}
-
 .tabThambActive {
   background-color: #ff751d;
   color: #fff;
-}
-
-.tabActive {
-  color: #fff;
-  font-size: 12px;
 }
 
 .tab {
   color: #000000;
   font-size: 12px;
   text-decoration: none;
+}
+
+.tabActive {
+  color: #fff;
+  font-size: 12px;
 }
 
 .tab:first-child {
@@ -114,8 +76,39 @@
   color: #fff;
 }
 
+@media screen and (max-width: 767px) {
+  .tabThamb:hover,
+  .tabThamb:focus {
+    background-color: #ff751d;
+  }
+}
+
 @media screen and (min-width: 768px) {
+  .tabsBlock {
+    margin-top: 60px;
+  }
+  .tabThamb {
+    width: 138px;
+    height: 40px;
+    border-radius: 16px 16px 0 0;
+    background-color: #fafbfd;
+  }
+  .tabThambActive {
+    background-color: #fefefe;
+    color: #ff751d;
+  }
+
+  .tabActive {
+    color: #ff751d;
+    font-size: 12px;
+  }
   .tab:hover {
     color: #ff751d;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .tabsBlock {
+    margin-top: 8px;
   }
 }
