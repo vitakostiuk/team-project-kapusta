@@ -1,0 +1,29 @@
+.buttonDisabled {
+  width: 142px;
+  height: 44px;
+  border-radius: 0px 22px 22px 0px;
+  border: 2px solid #ffffff;
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(82, 85, 95, 0.7);
+  background-color: #f2f5fc;
+  cursor: pointer;
+}
+
+.button {
+  composes: buttonDisabled;
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .buttonDisabled {
+    width: 123px;
+    height: 42px;
+    border-radius: 16px;
+  }
+}
