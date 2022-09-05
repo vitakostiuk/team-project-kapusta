@@ -73,13 +73,13 @@ const Statistic = ({ list }) => {
   if (window.innerWidth < 768) {
     return (
       <Styled.Container>
-        <ResponsiveContainer width={'130%'} height={440}>
+        <ResponsiveContainer width={'100%'} height={440}>
           <BarChart
             data={arr.sort((a, b) => b.value - a.value)}
             layout="vertical"
             barSize={15}
             barCategoryGap={200}
-            margin={{ bottom: 0, left: 0, top: 10 }}
+            margin={{ bottom: 0, left: 0, top: 0 }}
           >
             <XAxis type="number" hide />
             <YAxis
