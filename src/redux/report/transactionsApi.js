@@ -21,16 +21,16 @@ export const transactionsApi = baseApi.injectEndpoints({
       providesTags: ['transactions'],
     }),
     setTransactionExpense: builder.mutation({
-      query: newTransaction => ({
-        url: '/api/transactions/expense',
+      query: (newTransaction, params) => ({
+        url: `/api/transactions/expense/?day=${params.day}month=${params.month}&year=${params.year}`,
         method: 'POST',
         body: newTransaction,
       }),
       invalidatesTags: ['transactions'],
     }),
     setTransactionIncome: builder.mutation({
-      query: newTransaction => ({
-        url: '/api/transactions/income',
+      query: (newTransaction, params) => ({
+        url: `/api/transactions/income/?day=${params.day}month=${params.month}&year=${params.year}`,
         method: 'POST',
         body: newTransaction,
       }),
