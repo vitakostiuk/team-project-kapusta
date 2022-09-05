@@ -12,7 +12,9 @@ const Summary = () => {
   const dispatch = useDispatch();
   const currentLocation = useLocation();
   const type = currentLocation?.pathname.slice(1);
-  const { data } = useGetSummaryTransactionsQuery(type);
+  const { data } = useGetSummaryTransactionsQuery(type, {
+    refetchOnMountOrArgChange: true,
+  });
 
   const summarySelectorExp = useSelector(state => state.summary?.summaryExp);
   const summarySelectorInc = useSelector(state => state.summary?.summaryInc);

@@ -16,28 +16,21 @@ const BalanceComp = () => {
     isSuccess,
     // error,
     // isLoading
-  } = useGetBalanceQuery();
+  } = useGetBalanceQuery({}, { refetchOnMountOrArgChange: true });
   // console.log('balance from api', data);
   const [value, setValue] = useState('');
   const [isDisabledBtn, setIsDisabledBtn] = useState(true);
   const [isShowPopUp, setIsShowPopUp] = useState(true);
   const dispatch = useDispatch();
   const [changeBalance] = useChangeBalanceMutation();
-  const sum = useSelector(state => state.sum);
+  // const sum = useSelector(state => state.sum);
 
   useEffect(() => {
-    if (sum) {
-      const changedBalance = data - Number(sum);
-      dispatch(setBalance(getNormalizedSum(changedBalance)));
-      setValue(getNormalizedSum(changedBalance));
-      return;
-    }
-
-    if (isSuccess && !sum) {
+    if (isSuccess) {
       dispatch(setBalance(getNormalizedSum(data)));
       setValue(getNormalizedSum(data));
     }
-  }, [data, dispatch, isSuccess, sum]);
+  }, [data, dispatch, isSuccess]);
 
   const handleChange = e => {
     setValue(e.target.value);
