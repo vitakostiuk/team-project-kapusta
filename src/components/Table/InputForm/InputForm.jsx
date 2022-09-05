@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as CalendarPic } from '../../../images/calendar.svg';
@@ -10,6 +10,8 @@ import {
   useSetTransactionExpenseMutation,
   useSetTransactionIncomeMutation,
 } from 'redux/report/transactionsApi';
+import { useGetBalanceQuery } from 'redux/user/userApi';
+import { setSumValue } from 'redux/Balance/sumSlice';
 import style from './InputForm.module.css';
 import { nanoid } from '@reduxjs/toolkit';
 
@@ -21,7 +23,14 @@ const InputForm = ({ onFillTable }) => {
   const [idOfCategory, setIdOfCategory] = useState('');
   const [addExpense] = useSetTransactionExpenseMutation();
   const [addIncome] = useSetTransactionIncomeMutation();
+  const {
+    data,
+    // error,
+    // isLoading
+  } = useGetBalanceQuery();
+  console.log('balance from api', data);
 
+  const dispatch = useDispatch();
   const type = useLocation().pathname;
 
   const onChangeDate = date => {
@@ -43,6 +52,7 @@ const InputForm = ({ onFillTable }) => {
     }
     if (name === 'sum') {
       setSum(value);
+      dispatch(setSumValue(value));
     }
   };
 
