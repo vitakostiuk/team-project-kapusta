@@ -113,7 +113,7 @@ const InputForm = ({ onFillTable }) => {
           </div>
 
           <div className={style.backBtnThamb}>
-            <Link to="/" className={style.backBtn} type="button">
+            <Link to="/home" className={style.backBtn} type="button">
               <BackPic />
             </Link>
           </div>

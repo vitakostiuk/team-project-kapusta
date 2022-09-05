@@ -7,10 +7,11 @@ import style from './Calendar.module.css';
 const Calendar = ({ onChangeDate, startDate }) => {
   return (
     <DatePicker
+      closeOnScroll={true}
       selected={startDate}
       onChange={date => onChangeDate(date)}
-      dateFormat="dd.MM.yyyy"
       className={style.calendar}
+      dateFormat="dd.MM.yyyy"
     />
   );
 };

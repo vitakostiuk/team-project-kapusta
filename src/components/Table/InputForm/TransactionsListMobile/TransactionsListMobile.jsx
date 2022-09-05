@@ -8,8 +8,8 @@ import { useDeleteTransactionMutation } from 'redux/report/transactionsApi';
 import {
   useGetTransactionsByExpenseQuery,
   useGetTransactionsByIncomeQuery,
-  useFullTransactionsQuery,
 } from 'redux/report/transactionsApi';
+import { getNormalizedSum } from 'helpers/getNormalizedSum';
 
 const TransactionsListMobile = () => {
   const [expenseArr, setExpenseArr] = useState([]);
@@ -109,13 +109,13 @@ const TransactionsListMobile = () => {
         {expenseArr &&
           expenseArr.map(({ sum, id }, index) => (
             <li className={style.itemSum} key={index}>
-              <span className={style.sum}>{sum}</span>
+              <span className={style.sum}>{`-${getNormalizedSum(sum)}`}</span>
             </li>
           ))}
         {incomeArr &&
           incomeArr.map(({ sum, id }, index) => (
             <li className={style.itemSum} key={index}>
-              <span className={style.sum}>{sum}</span>
+              <span className={style.sum}>{getNormalizedSum(sum)}</span>
             </li>
           ))}
       </ul>
