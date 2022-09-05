@@ -3,18 +3,6 @@
   margin-bottom: 32px;
 }
 
-@media screen and (min-width: 772px) {
-  .container {
-    margin-bottom: 0px;
-  }
-}
-
-/* @media screen and (min-width: 1280px) {
-  .container {
-    margin-left: 210px;
-  }
-} */
-
 .period {
   font-weight: 400;
   font-size: 12px;
@@ -47,4 +35,17 @@
   cursor: pointer;
   /* padding: 0.5em 1em; */
   padding: 5px;
+}
+
+@media screen and (min-width: 772px) {
+  .container {
+    margin-bottom: 0px;
+    margin-left: 100px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    margin-left: 215px;
+  }
 }

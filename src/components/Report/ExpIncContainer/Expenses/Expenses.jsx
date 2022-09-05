@@ -18,7 +18,7 @@ const Expenses = ({ data }) => {
   }, [data]);
 
   useEffect(() => {
-    const arr = [...data]?.find(el => el._id === category);
+    const arr = [...data]?.find(el => el.categories === category);
     setSubs(arr?.data || []);
   }, [category]);
 
@@ -31,8 +31,7 @@ const Expenses = ({ data }) => {
               key={idx}
               active={el.categories === category ? true : false}
               details={el.summary}
-              categories={el._id}
-              nameOfCategory={el.categories}
+              categories={el.categories}
               onChange={setCategory}
             />
           ))}
