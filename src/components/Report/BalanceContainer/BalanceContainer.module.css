@@ -1,17 +1,42 @@
+.balance form div {
+  display: block;
+  text-align: center;
+}
+
+.balance input {
+  border-radius: 22px;
+}
+
+.balance form div button {
+  display: none;
+}
+
+.balance form {
+  margin-bottom: 32px;
+}
+
 @media screen and (min-width: 772px) {
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 40px;
+    padding-top: 40px;
     margin-bottom: 32px;
   }
-}
 
-@media screen and (min-width: 772px) {
   .balance {
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
+  }
+
+  .balance form {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .balance form div button {
+    display: inline-block;
   }
 }

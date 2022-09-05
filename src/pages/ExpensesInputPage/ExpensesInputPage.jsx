@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import InputForm from 'components/Table/InputForm/InputForm';
-import Home from '../../components/Home';
-import style from './IncomePage.module.css';
+import style from './ExpensesInputPage.module.css';
 
-const IncomePage = () => {
+const ExpensesInputPage = () => {
   const [tableDate, setTableDate] = useState('');
   const [tableDescription, setTableDescription] = useState('');
   const [tableSum, setTableSum] = useState('');
@@ -21,12 +20,8 @@ const IncomePage = () => {
       <div className={style.mobile}>
         <InputForm onFillTable={onFillTable} />
       </div>
-
-      <div className={style.desktop}>
-        <Home />
-      </div>
     </>
   );
 };
 
-export default IncomePage;
+export default ExpensesInputPage;

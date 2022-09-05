@@ -19,13 +19,19 @@ const ReportPage = lazy(() =>
   import('../../pages/ReportPage' /* webpackChunkName: 'ReportPage' */),
 );
 const ExpensesPage = lazy(() =>
-  import(
-    '../../pages/ExpensesPage/ExpensesPage' /* webpackChunkName: 'ExpensesPage' */
-  ),
+  import('../../pages/ExpensesPage' /* webpackChunkName: 'ExpensesPage' */),
 );
 const IncomePage = lazy(() =>
+  import('../../pages/IncomePage' /* webpackChunkName: 'IncomePage' */),
+);
+const ExpensesInputPage = lazy(() =>
   import(
-    '../../pages/IncomePage/IncomePage' /* webpackChunkName: 'IncomePage' */
+    '../../pages/ExpensesInputPage/ExpensesInputPage' /* webpackChunkName: 'ExpensesInputPage' */
+  ),
+);
+const IncomeInputPage = lazy(() =>
+  import(
+    '../../pages/IncomeInputPage/IncomeInputPage' /* webpackChunkName: 'IncomeInputPage' */
   ),
 );
 
@@ -60,25 +66,26 @@ function App() {
               element={
                 !isLoggedIn ? <PrivateRoute redirectTo="/" /> : <HomePage />
               }
-            />
+            >
+              <Route element={<PrivateRoute redirectTo="/" />}>
+                <Route path="/expenses" element={<ExpensesPage />} />
+              </Route>
 
-            <Route element={<PrivateRoute redirectTo="/" />}>
-              <Route path="/expenses" element={<ExpensesPage />} />
+              <Route element={<PrivateRoute redirectTo="/" />}>
+                <Route path="/income" element={<IncomePage />} />
+              </Route>
             </Route>
 
             <Route element={<PrivateRoute redirectTo="/" />}>
-              <Route path="/income" element={<IncomePage />} />
+              <Route path="/income/input" element={<IncomeInputPage />} />
             </Route>
 
-            <Route
-              path="/home"
-              element={
-                !isLoggedIn ? <PrivateRoute redirectTo="/" /> : <HomePage />
-              }
-            />
+            <Route element={<PrivateRoute redirectTo="/" />}>
+              <Route path="/expenses/input" element={<ExpensesInputPage />} />
+            </Route>
 
             <Route element={<PrivateRoute redirectTo="/" />}>
-              <Route path="/home/report" element={<ReportPage />} />
+              <Route path="/report" element={<ReportPage />} />
             </Route>
 
             <Route element={<PublicRoute redirectTo="/expenses" />}>

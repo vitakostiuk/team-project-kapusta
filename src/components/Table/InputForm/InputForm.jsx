@@ -121,7 +121,7 @@ const InputForm = ({ onFillTable }) => {
           </div>
 
           <div className={style.backBtnThamb}>
-            <Link to="/home" className={style.backBtn} type="button">
+            <Link to="/" className={style.backBtn} type="button">
               <BackPic />
             </Link>
           </div>
@@ -134,7 +134,7 @@ const InputForm = ({ onFillTable }) => {
               title="Product description may contain only letters, apostrophe, dash and spaces"
               required
               placeholder="Product description"
-              minlength={1}
+              minLength={1}
               maxLength={50}
               className={style.inputArea}
               value={description}
