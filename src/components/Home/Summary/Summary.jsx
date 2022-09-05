@@ -1,47 +1,49 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useGetSummaryTransactionsQuery } from 'redux/report/transactionsApi';
+import {
+  summaryTransExp,
+  summaryTransInc,
+} from 'redux/feature/report/reportSlice';
 import s from './Summary.module.css';
 
-function changeMonthNumberToName(array) {
-  const months = [];
-  const newData = [];
-
-  for (let i = 0; i < 12; i++) {
-    months.push(
-      new Date(2000, i, 1).toLocaleDateString('en-US', { month: 'long' }),
-    );
-  }
-
-  array?.forEach(element => {
-    const summaryObj = { name: months[element.month - 1], ...element };
-
-    newData.push(summaryObj);
-  });
-
-  return newData;
-}
-
 const Summary = () => {
+  const dispatch = useDispatch();
   const currentLocation = useLocation();
   const type = currentLocation?.pathname.slice(1);
   const { data } = useGetSummaryTransactionsQuery(type);
-  const [summary, setSummary] = useState(null);
+
+  const summarySelectorExp = useSelector(state => state.summary?.summaryExp);
+  const summarySelectorInc = useSelector(state => state.summary?.summaryInc);
 
   useEffect(() => {
-    setSummary(() => changeMonthNumberToName(data?.transactions));
-  }, [data]);
+    if (type === 'expenses') {
+      dispatch(summaryTransExp(data));
+    } else {
+      dispatch(summaryTransInc(data));
+    }
+  }, [data, dispatch, type]);
 
   return (
     <div className={s.container}>
       <p className={s.title}>Summary</p>
       <ul className={s.list}>
-        {summary?.map(({ name, month, total }) => (
-          <li key={month} className={s.item}>
-            <p className={s.month}>{name}</p>
-            <p className={s.sum}>{total}</p>
-          </li>
-        ))}
+        {type === 'expenses'
+          ? summarySelectorExp &&
+            summarySelectorExp.map(({ monthName, month, total }, index) => (
+              <li key={index} className={s.item}>
+                <p className={s.month}>{monthName}</p>
+                <p className={s.sum}>{total}</p>
+              </li>
+            ))
+          : summarySelectorInc &&
+            summarySelectorInc.map(({ monthName, month, total }, index) => (
+              <li key={index} className={s.item}>
+                <p className={s.month}>{monthName}</p>
+                <p className={s.sum}>{total}</p>
+              </li>
+            ))}
       </ul>
     </div>
   );
