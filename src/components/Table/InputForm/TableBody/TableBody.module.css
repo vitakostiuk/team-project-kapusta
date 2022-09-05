@@ -1,17 +1,40 @@
-.tableThamb {
+/* .tableThamb {
   height: 130px;
   width: 280px;
+  
   background-color: transparent;
   border: none;
 }
 
-@media screen and (min-width: 768px) {
-  .tableThamb {
-    height: 382px;
-    width: 624px;
-    background-color: #f5f6fb;
-    border-radius: 16px 16px 0 0;
-  }
+.tableBody {
+  height: 90px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+} */
+
+.tableThamb {
+  height: 382px;
+  width: 624px;
+  background-color: #f5f6fb;
+  border-radius: 16px 16px 0 0;
+}
+
+.tableBody {
+  height: 342px;
+  width: 624px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-weight: 400;
+}
+
+.tableBody::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f6fb;
+}
+.tableBody::-webkit-scrollbar-thumb {
+  height: 130px;
+  border-radius: 2px;
+  background-color: #ff751d;
 }
 
 @media screen and (min-width: 1280px) {
@@ -21,14 +44,16 @@
     background-color: #f5f6fb;
     border-radius: 16px;
   }
+  .tableBody {
+    height: 360px;
+    width: 746px;
+  }
 }
 
 .table {
-  font-family: 'Roboto';
-  font-style: normal;
   font-size: 12px;
   line-height: 1.17;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   border-collapse: collapse;
 }
 
@@ -43,8 +68,8 @@
 @media screen and (min-width: 768px) {
   .tableHeader {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -60,7 +85,6 @@
 @media screen and (min-width: 768px) {
   .tableRow {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     width: 624px;
     border-bottom: 2px solid #f5f6fb;
@@ -80,75 +104,73 @@
 .tableHeaderCell {
   text-align: left;
   padding: 0;
-  padding-left: 20px;
 }
 
 .tableCell:first-child,
 .tableHeaderCell:first-child {
-  width: 111px;
-  padding-right: 5px;
+  width: 130px;
+  padding-left: 20px;
 }
 
 .tableHeaderCell:first-child {
-  padding-left: 28px;
+  padding-left: 20px;
 }
 
 .tableCell:nth-child(2),
 .tableHeaderCell:nth-child(2) {
-  width: 198px;
+  width: 175px;
+  padding-right: 7px;
+}
+
+.tableCell:nth-child(3),
+.tableHeaderCell:nth-child(3) {
+  width: 125px;
+  text-align: center;
+}
+
+.tableCellSumExpense,
+.tableCellSumIncome,
+.tableHeaderCell:nth-child(4) {
+  width: 104px;
+  text-align: right;
+  margin-right: 30px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.tableCellSumExpense {
+  color: #e7192e;
+}
+
+.tableCellSumIncome {
+  color: #407946;
 }
 
 @media screen and (min-width: 1280px) {
   .tableCell:nth-child(2),
   .tableHeaderCell:nth-child(2) {
     width: 223px;
-    padding-right: 15px;
+    padding-right: 35px;
   }
-}
 
-.tableCell:nth-child(3),
-.tableHeaderCell:nth-child(3) {
-  width: 124px;
-  padding-left: 0;
-  text-align: center;
-}
+  .tableHeaderCell:first-child {
+    padding-left: 28px;
+  }
 
-@media screen and (min-width: 1280px) {
   .tableCell:nth-child(3),
   .tableHeaderCell:nth-child(3) {
-    width: 167px;
-    padding-right: 31px;
+    width: 140px;
+    padding-right: 15px;
     text-align: center;
   }
-}
 
-.tableCellSum,
-.tableCellSumIncome,
-.tableHeaderCell:nth-child(4) {
-  width: 114px;
-  padding: 0;
-  text-align: center;
-}
-
-@media screen and (min-width: 1280px) {
-  .tableCellSum,
+  .tableCellSumExpense,
   .tableCellSumIncome,
   .tableHeaderCell:nth-child(4) {
-    width: 147px;
-    padding-right: 23px;
+    width: 116px;
     text-align: center;
+    margin-right: 43px;
   }
-}
-
-.tableCellSum {
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #e7192e;
-}
-
-.tableCellSumIncome {
-  composes: tableCellSum;
-  color: #407946;
 }
 
 .deleteBtn {
@@ -156,6 +178,7 @@
   height: 32px;
   border: none;
   background-color: transparent;
+  margin: 0 auto;
 }
 
 .deleteBtn:hover,

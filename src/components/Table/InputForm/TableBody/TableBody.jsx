@@ -75,14 +75,18 @@ const TableBody = ({ dataTable }) => {
   return (
     <div className={style.tableThamb}>
       <table className={style.table}>
-        <tbody>
+        <thead>
           <tr className={style.tableHeader}>
             <th className={style.tableHeaderCell}>Date</th>
             <th className={style.tableHeaderCell}>Description</th>
             <th className={style.tableHeaderCell}>category</th>
             <th className={style.tableHeaderCell}>Sum</th>
+            <th className={style.tableHeaderCell}></th>
           </tr>
-          {type === '/expenses' &&
+        </thead>
+        <tbody>
+          <div className={style.tableBody}>
+            {type === '/expenses' &&
             expenseArr.map(
               ({ date, description, category, sum, id }, index) => (
                 <tr key={index} className={style.tableRow}>
@@ -91,7 +95,7 @@ const TableBody = ({ dataTable }) => {
                     <EllipsisText text={`${description}`} length={'29'} />
                   </td>
                   <td className={style.tableCell}>{category}</td>
-                  <td className={style.tableCellSum}>{`-${getNormalizedSum(
+                  <td className={style.tableCellSumExpense}>{`-${getNormalizedSum(
                     sum,
                   )}`}</td>
                   <td className={style.tableCell}>
@@ -129,6 +133,7 @@ const TableBody = ({ dataTable }) => {
                 </td>
               </tr>
             ))}
+          </div>
         </tbody>
       </table>
     </div>

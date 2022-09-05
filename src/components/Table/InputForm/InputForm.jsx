@@ -82,7 +82,7 @@ const InputForm = ({ onFillTable }) => {
       return addIncome(requestBody);
     }
 
-    // reset();
+    reset();
   };
 
   const reset = () => {
@@ -146,7 +146,7 @@ const InputForm = ({ onFillTable }) => {
 
         <div className={style.btnThamb}>
           <button
-            type="submit"
+            type="input"
             className={style.inputBtn}
             onClick={handleSubmit}
           >
