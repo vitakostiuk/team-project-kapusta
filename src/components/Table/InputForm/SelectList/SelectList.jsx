@@ -11,7 +11,7 @@ const SelectList = ({ onChangeCategory, onChangeId }) => {
   const { data } = useGetTransactionsQuery();
 
   const type = useLocation().pathname;
-  // console.log('type', type);
+  console.log('type', type);
 
   useEffect(() => {
     if (data) {
@@ -52,13 +52,13 @@ const SelectList = ({ onChangeCategory, onChangeId }) => {
       <option className={style.selectItem} value="Product category">
         Product category
       </option>
-      {type === '/expenses' &&
+      {(type === '/expenses' || type === '/expenses/input') &&
         categoriesExpense.map(({ _id, title }) => (
           <option key={title} value={title} className={style.selectItem}>
             {title}
           </option>
         ))}
-      {type === '/income' &&
+      {(type === '/income' || type === '/income/input') &&
         categoriesIncome.map(({ _id, title }) => (
           <option key={title} value={title} className={style.selectItem}>
             {title}

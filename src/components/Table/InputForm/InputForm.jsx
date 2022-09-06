@@ -155,7 +155,7 @@ const InputForm = ({ onFillTable }) => {
 
           <label className={style.sum}>
             <input
-              type="number"
+              type="text"
               name="sum"
               title="Sum may contain only numbers"
               required
