@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/team-project-kapusta/static/css/main.829d47ec.css",
-    "main.js": "/team-project-kapusta/static/js/main.46f188bf.js",
+    "main.css": "/team-project-kapusta/static/css/main.cb834773.css",
+    "main.js": "/team-project-kapusta/static/js/main.178672b7.js",
     "LoginPage.css": "/team-project-kapusta/static/css/LoginPage.4706c205.chunk.css",
-    "LoginPage.js": "/team-project-kapusta/static/js/LoginPage.b8334c27.chunk.js",
+    "LoginPage.js": "/team-project-kapusta/static/js/LoginPage.9cc05733.chunk.js",
     "HomePage.js": "/team-project-kapusta/static/js/HomePage.9ee39213.chunk.js",
     "ReportPage.css": "/team-project-kapusta/static/css/ReportPage.55d7f31f.chunk.css",
-    "ReportPage.js": "/team-project-kapusta/static/js/ReportPage.d9b74051.chunk.js",
+    "ReportPage.js": "/team-project-kapusta/static/js/ReportPage.1e0903ea.chunk.js",
     "ExpensesPage.js": "/team-project-kapusta/static/js/ExpensesPage.85362098.chunk.js",
     "IncomePage.js": "/team-project-kapusta/static/js/IncomePage.879c9343.chunk.js",
     "ExpensesInputPage.css": "/team-project-kapusta/static/css/ExpensesInputPage.4cc3ae69.chunk.css",
@@ -19,9 +19,9 @@
     "static/js/981.7c6a4afb.chunk.js": "/team-project-kapusta/static/js/981.7c6a4afb.chunk.js",
     "static/js/712.4a57dd2a.chunk.js": "/team-project-kapusta/static/js/712.4a57dd2a.chunk.js",
     "static/js/668.1dc918c0.chunk.js": "/team-project-kapusta/static/js/668.1dc918c0.chunk.js",
-    "static/js/556.be6f406c.chunk.js": "/team-project-kapusta/static/js/556.be6f406c.chunk.js",
-    "static/css/345.a312dea6.chunk.css": "/team-project-kapusta/static/css/345.a312dea6.chunk.css",
-    "static/js/345.aa85c1a9.chunk.js": "/team-project-kapusta/static/js/345.aa85c1a9.chunk.js",
+    "static/js/556.109ce572.chunk.js": "/team-project-kapusta/static/js/556.109ce572.chunk.js",
+    "static/css/345.106278d3.chunk.css": "/team-project-kapusta/static/css/345.106278d3.chunk.css",
+    "static/js/345.37a60664.chunk.js": "/team-project-kapusta/static/js/345.37a60664.chunk.js",
     "static/media/sprite-icons.svg": "/team-project-kapusta/static/media/sprite-icons.f211b3d267a1875dff4651062c262fc2.svg",
     "static/media/kapusta_background.png": "/team-project-kapusta/static/media/kapusta_background.8d475dd61cb62ca1a1b1.png",
     "static/media/two.svg": "/team-project-kapusta/static/media/two.3e9b51598196b0d57182023e239ab7d2.svg",
@@ -39,13 +39,13 @@
     "static/media/diagram.svg": "/team-project-kapusta/static/media/diagram.01eb2c99257cab8967a7fa04c508be1d.svg",
     "static/media/arrow-left.svg": "/team-project-kapusta/static/media/arrow-left.420a10fd9c9a52c9b30cbb0be1b001bf.svg",
     "static/media/arrow-small-left.svg": "/team-project-kapusta/static/media/arrow-small-left.ed65ae738f78a2df12fa63ecf435fb95.svg",
-    "main.829d47ec.css.map": "/team-project-kapusta/static/css/main.829d47ec.css.map",
-    "main.46f188bf.js.map": "/team-project-kapusta/static/js/main.46f188bf.js.map",
+    "main.cb834773.css.map": "/team-project-kapusta/static/css/main.cb834773.css.map",
+    "main.178672b7.js.map": "/team-project-kapusta/static/js/main.178672b7.js.map",
     "LoginPage.4706c205.chunk.css.map": "/team-project-kapusta/static/css/LoginPage.4706c205.chunk.css.map",
-    "LoginPage.b8334c27.chunk.js.map": "/team-project-kapusta/static/js/LoginPage.b8334c27.chunk.js.map",
+    "LoginPage.9cc05733.chunk.js.map": "/team-project-kapusta/static/js/LoginPage.9cc05733.chunk.js.map",
     "HomePage.9ee39213.chunk.js.map": "/team-project-kapusta/static/js/HomePage.9ee39213.chunk.js.map",
     "ReportPage.55d7f31f.chunk.css.map": "/team-project-kapusta/static/css/ReportPage.55d7f31f.chunk.css.map",
-    "ReportPage.d9b74051.chunk.js.map": "/team-project-kapusta/static/js/ReportPage.d9b74051.chunk.js.map",
+    "ReportPage.1e0903ea.chunk.js.map": "/team-project-kapusta/static/js/ReportPage.1e0903ea.chunk.js.map",
     "ExpensesPage.85362098.chunk.js.map": "/team-project-kapusta/static/js/ExpensesPage.85362098.chunk.js.map",
     "IncomePage.879c9343.chunk.js.map": "/team-project-kapusta/static/js/IncomePage.879c9343.chunk.js.map",
     "ExpensesInputPage.4cc3ae69.chunk.css.map": "/team-project-kapusta/static/css/ExpensesInputPage.4cc3ae69.chunk.css.map",
@@ -58,12 +58,12 @@
     "981.7c6a4afb.chunk.js.map": "/team-project-kapusta/static/js/981.7c6a4afb.chunk.js.map",
     "712.4a57dd2a.chunk.js.map": "/team-project-kapusta/static/js/712.4a57dd2a.chunk.js.map",
     "668.1dc918c0.chunk.js.map": "/team-project-kapusta/static/js/668.1dc918c0.chunk.js.map",
-    "556.be6f406c.chunk.js.map": "/team-project-kapusta/static/js/556.be6f406c.chunk.js.map",
-    "345.a312dea6.chunk.css.map": "/team-project-kapusta/static/css/345.a312dea6.chunk.css.map",
-    "345.aa85c1a9.chunk.js.map": "/team-project-kapusta/static/js/345.aa85c1a9.chunk.js.map"
+    "556.109ce572.chunk.js.map": "/team-project-kapusta/static/js/556.109ce572.chunk.js.map",
+    "345.106278d3.chunk.css.map": "/team-project-kapusta/static/css/345.106278d3.chunk.css.map",
+    "345.37a60664.chunk.js.map": "/team-project-kapusta/static/js/345.37a60664.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.829d47ec.css",
-    "static/js/main.46f188bf.js"
+    "static/css/main.cb834773.css",
+    "static/js/main.178672b7.js"
   ]
 }
