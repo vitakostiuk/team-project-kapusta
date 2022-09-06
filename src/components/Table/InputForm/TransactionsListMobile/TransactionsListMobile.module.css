@@ -30,6 +30,14 @@
   width: 40px;
 }
 
+.sumIncome {
+  color: #407946;
+}
+
+.sumExpense {
+  color: #e7192e;
+}
+
 .item,
 .itemSum,
 .itemDel {
@@ -64,11 +72,6 @@
   display: flex;
   justify-content: end;
   align-items: center;
-  color: #e7192e;
-}
-
-.itemSum:last-child {
-  color: #407946;
 }
 
 .deleteBtn {
