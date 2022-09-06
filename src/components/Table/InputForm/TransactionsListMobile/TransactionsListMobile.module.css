@@ -60,14 +60,22 @@
   width: 280px;
 }
 
-.itemSum {
+/* .itemSum {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  color: #e7192e;
+} */
+
+.itemSumExpence {
   display: flex;
   justify-content: end;
   align-items: center;
   color: #e7192e;
 }
 
-.itemSum:last-child {
+.itemSumIncome {
+  composes: itemSumExpence;
   color: #407946;
 }
 
