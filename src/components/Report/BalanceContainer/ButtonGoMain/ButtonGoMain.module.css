@@ -18,22 +18,6 @@
   width: 7em;
 }
 
-/* @media screen and (min-width: 772px) {
-  .container {
-    margin-right: 155px;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .container {
-    margin-right: 250px;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-} */
-
 @media screen and (max-width: 771px) {
   .text {
     display: none;
