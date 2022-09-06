@@ -1,14 +1,8 @@
 import { useEffect } from 'react';
 import { ReactComponent as CloseModal } from 'images/close.svg';
-import s from './Modal.module.css';
-import { useDispatch } from 'react-redux';
-import { useLogoutMutation } from 'redux/authorization/authApi';
-import { logOut } from 'redux/feature/authSlice';
+import s from './ModalDelete.module.css';
 
-const Modal = ({ onClick, text, isShowModal }) => {
-  const [logout] = useLogoutMutation();
-  const dispatch = useDispatch();
-
+const ModalDelete = ({ onClick, text, onClikBtnDelete }) => {
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
@@ -27,15 +21,9 @@ const Modal = ({ onClick, text, isShowModal }) => {
     }
   };
 
-  const handleLogOut = async () => {
-    try {
-      const result = await logout();
-      console.log(result);
-      dispatch(logOut());
-      isShowModal();
-    } catch (err) {
-      console.log(err);
-    }
+  const handleClickBtnDelete = () => {
+    onClikBtnDelete();
+    onClick();
   };
 
   return (
@@ -46,10 +34,14 @@ const Modal = ({ onClick, text, isShowModal }) => {
         </button>
         <p className={s.text}>{text}</p>
         <div className={s.btnContainer}>
-          <button className={s.btn} type="button" onClick={handleLogOut}>
+          <button className={s.btn} type="button" onClick={onClick}>
             yes
           </button>
-          <button className={s.btn} type="button" onClick={onClick}>
+          <button
+            className={s.btn}
+            type="button"
+            onClick={handleClickBtnDelete}
+          >
             no
           </button>
         </div>
@@ -58,4 +50,4 @@ const Modal = ({ onClick, text, isShowModal }) => {
   );
 };
 
-export default Modal;
+export default ModalDelete;
