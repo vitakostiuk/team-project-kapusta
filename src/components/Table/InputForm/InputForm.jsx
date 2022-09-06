@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import Notifications, { notify } from 'react-notify-toast';
 import { ReactComponent as CalendarPic } from '../../../images/calendar.svg';
 import { ReactComponent as CalcPic } from '../../../images/calculator.svg';
 import { ReactComponent as BackPic } from '../../../images/arrow-left.svg';
@@ -23,6 +25,8 @@ const InputForm = ({ onFillTable }) => {
   const [isDisabledBtn, setIsDisabledBtn] = useState(true);
   const [addExpense] = useSetTransactionExpenseMutation();
   const [addIncome] = useSetTransactionIncomeMutation();
+
+  const balance = useSelector(state => state.balanceNum);
 
   useEffect(() => {
     if (!description || !sum || !category) {
@@ -62,6 +66,18 @@ const InputForm = ({ onFillTable }) => {
     e.preventDefault();
 
     reset();
+
+    if (sum.length > 10) {
+      let myColor = { background: 'red', text: '#FFFFFF' };
+      notify.show('Amount must not exceed 11 digits', 'custom', 5000, myColor);
+      return;
+    }
+
+    if (balance - Number(sum) < 0) {
+      let myColor = { background: 'red', text: '#FFFFFF' };
+      notify.show('The balance cannot be negative', 'custom', 5000, myColor);
+      return;
+    }
 
     const year = String(startDate.getFullYear());
     const month = String(startDate.getMonth() + 1).padStart(2, '0');
@@ -186,6 +202,7 @@ const InputForm = ({ onFillTable }) => {
           </button>
         </div>
       </form>
+      <Notifications />
     </>
   );
 };
