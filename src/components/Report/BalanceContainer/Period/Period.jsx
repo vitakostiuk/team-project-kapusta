@@ -26,9 +26,10 @@ const Period = () => {
   ];
 
   useEffect(() => {
+    const number = (month + 1).toString().padStart(2, '0');
     dispatch(
       setData({
-        month,
+        month: number,
         year,
       }),
     );

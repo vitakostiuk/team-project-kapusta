@@ -7,8 +7,6 @@ const Category = ({ details, categories, onChange, active }) => {
     onChange(categories);
   };
 
-  // console.log(categories)
-
   return (
     <li className={s.category}>
       <p className={s.sum}>{details}</p>
