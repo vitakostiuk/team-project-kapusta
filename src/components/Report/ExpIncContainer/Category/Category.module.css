@@ -12,6 +12,7 @@
   position: relative;
   border: none;
   background-color: #ffffff;
+  cursor: pointer;
 }
 
 .btn::before,
