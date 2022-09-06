@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { ReactComponent as CalendarPic } from '../../../images/calendar.svg';
 import { ReactComponent as CalcPic } from '../../../images/calculator.svg';
 import { ReactComponent as BackPic } from '../../../images/arrow-left.svg';
@@ -76,6 +77,7 @@ const InputForm = ({ onFillTable }) => {
       income: type === '/expenses' ? false : true,
       id: nanoid(),
     };
+    toast.success('Transaction was added');
 
     onFillTable(
       normalizedDate,
