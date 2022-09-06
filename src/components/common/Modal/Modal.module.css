@@ -5,6 +5,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(29, 29, 29, 0.6);
+  z-index: 20;
 }
 
 .modal {
@@ -38,6 +39,7 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  /* z-index: 999; */
 }
 
 .text {

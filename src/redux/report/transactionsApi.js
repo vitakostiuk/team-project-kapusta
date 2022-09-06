@@ -12,11 +12,11 @@ export const transactionsApi = baseApi.injectEndpoints({
     }),
     getTransactionsByExpense: builder.query({
       query: params =>
-        `/api/transactions/expense/?day=${params.day}month=${params.month}&year=${params.year}`,
+        `/api/transactions/expense?day=${params.day}&month=${params.month}&year=${params.year}`,
     }),
     getTransactionsByIncome: builder.query({
       query: params =>
-        `/api/transactions/income/?day=${params.day}month=${params.month}&year=${params.year}`,
+        `/api/transactions/income?day=${params.day}&month=${params.month}&year=${params.year}`,
     }),
     getSummaryTransactions: builder.query({
       query: type => `/api/transactions/reports/${type}`,

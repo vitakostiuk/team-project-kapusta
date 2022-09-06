@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import authSelectors from '../../redux/feature/auth-selectors';
 import { useFetchCurrentUserQuery } from '../../redux/authorization/authApi';

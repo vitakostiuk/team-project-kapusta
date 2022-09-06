@@ -10,12 +10,12 @@ const Calendar = ({ onChangeDate, startDate }) => {
   const dispatch = useDispatch();
 
   const handleDateSelect = e => {
-    // const year = String(e.getFullYear());
-    // const month = String(e.getMonth() + 1);
-    // const day = String(e.getDate());
-    const year = e.getFullYear();
-    const month = e.getMonth() + 1;
-    const day = e.getDate();
+    const year = String(e.getFullYear());
+    const month = String(e.getMonth() + 1);
+    const day = String(e.getDate());
+    // const year = e.getFullYear();
+    // const month = e.getMonth() + 1;
+    // const day = e.getDate();
 
     const date = {
       day,

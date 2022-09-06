@@ -1,5 +1,8 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import s from './PopUp.module.css';
+
+// const popupRoot = document.querySelector('#popup-root');
 
 const PopUp = () => {
   return (

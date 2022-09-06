@@ -6,6 +6,7 @@ import {
   useGetBalanceQuery,
   useChangeBalanceMutation,
 } from 'redux/user/userApi';
+import { useGetTransactionsQuery } from 'redux/report/transactionsApi';
 import { setBalance } from 'redux/Balance/balanceSlice';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
 import s from './BalanceComp.module.css';
@@ -17,6 +18,8 @@ const BalanceComp = () => {
     // error,
     // isLoading
   } = useGetBalanceQuery({}, { refetchOnMountOrArgChange: true });
+  // const categories = useGetTransactionsQuery();
+  // console.log('categories', categories);
   // console.log('balance from api', data);
   const [value, setValue] = useState('');
   const [isDisabledBtn, setIsDisabledBtn] = useState(true);
