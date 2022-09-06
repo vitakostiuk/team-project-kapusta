@@ -6,9 +6,8 @@
 
 .sumWrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   position: relative;
   background-color: #ffffff;
   box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
@@ -39,8 +38,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
-
+  /* justify-content: flex-start; */
+  /* margin: 0 auto; */
+  flex-basis: calc(280px / 2);
   line-height: 16px;
 }
 
@@ -48,7 +48,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
+  /* justify-content: flex-end; */
+  /* margin: 0 auto; */
+  flex-basis: calc(280px / 2);
   line-height: 16px;
 }
 
@@ -76,12 +78,14 @@
     height: 36px;
   }
   .incrementWrapper {
-    margin-left: 20px;
+    padding-left: 20px;
+    flex-basis: calc(704px / 2);
     flex-direction: row;
     justify-content: left;
   }
   .decrementWrapper {
-    margin-right: 20px;
+    padding-right: 20px;
+    flex-basis: calc(704px / 2);
     flex-direction: row;
     justify-content: right;
   }

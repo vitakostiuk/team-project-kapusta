@@ -50,10 +50,12 @@ const ExpIncContainer = () => {
 
   return (
     <>
-      <div className={s.container}>
-        <IncomeExpensesChange onChange={incExpChange} incExp={incExp} />
-        {expensesByData && <Expenses data={data} onChange={handleChange} />}
-      </div>
+      {data && (
+        <div className={s.container}>
+          <IncomeExpensesChange onChange={incExpChange} incExp={incExp} />
+          {expensesByData && <Expenses data={data} onChange={handleChange} />}
+        </div>
+      )}
 
       {subs.length > 0 && <Statistic list={subs} />}
     </>
