@@ -16,7 +16,6 @@ const TableBody = ({ dataTable }) => {
   const [expenseArr, setExpenseArr] = useState([]);
   const [incomeArr, setIncomeArr] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
-  const [isDeleteTransaction, setIsDeleteTransaction] = useState(false);
   const [deleteTransaction] = useDeleteTransactionMutation();
   const type = useLocation().pathname;
 
@@ -67,7 +66,6 @@ const TableBody = ({ dataTable }) => {
 
   const handleDelete = id => {
     setIsShowModal(prevIsShowModal => !prevIsShowModal);
-    setIsDeleteTransaction(true);
 
     if (type === '/expenses') {
       setExpenseArr(prevExpenseArr =>
@@ -121,14 +119,13 @@ const TableBody = ({ dataTable }) => {
                       >
                         <DeletePic />
                       </button>
-                      {/* {isShowModal && (
+                      {isShowModal && (
                         <ModalDelete
                           onClick={handleClick}
                           text="Are you sure?"
-                          isShowModal={setIsShowModal}
-                          isDeleteTransaction={isDeleteTransaction}
+                          isShowModal={isShowModal}
                         />
-                      )} */}
+                      )}
                     </td>
                   </tr>
                 ),
@@ -159,13 +156,13 @@ const TableBody = ({ dataTable }) => {
                       >
                         <DeletePic />
                       </button>
-                      {/* {isShowModal && (
+                      {isShowModal && (
                         <ModalDelete
                           onClick={handleClick}
                           text="Are you sure?"
-                          isShowModal={setIsShowModal}
+                          isShowModal={isShowModal}
                         />
-                      )} */}
+                      )}
                     </td>
                   </tr>
                 ),
