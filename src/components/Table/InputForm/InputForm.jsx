@@ -101,6 +101,12 @@ const InputForm = ({ onFillTable }) => {
     if (type === '/income') {
       return addIncome(requestBody);
     }
+    if (type === '/expenses/input') {
+      return addExpense(requestBody);
+    }
+    if (type === '/income/input') {
+      return addIncome(requestBody);
+    }
   };
 
   const reset = () => {
