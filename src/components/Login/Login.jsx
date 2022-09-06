@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import kapustaSvg from '../../images/loginPageKAPUSTA.svg';
 import GoogleEmbl from '../../images/GoogleEmlem.svg';
 import styles from './Login.module.css';
+import { useLocation } from 'react-router-dom';
 // import Header from '../Header';
 
 import { useState } from 'react';
@@ -9,16 +10,17 @@ import { useDispatch } from 'react-redux';
 import {
   useLoginMutation,
   useRegisterMutation,
-  // useGoogleLoginMutation,
+  useFetchCurrentUserQuery,
 } from 'redux/authorization/authApi';
-import { logIn, registerUser } from '../../redux/feature/authSlice';
-
-//import { Button, Form } from 'react-bootstrap';
-
+import {
+  logIn,
+  registerUser,
+  loginGoogle,
+} from '../../redux/feature/authSlice';
 import { Form, Field, Formik } from 'formik';
 import * as Yup from 'yup';
-// import { Label } from 'recharts';
 import { serializeStyles } from '@emotion/serialize';
+import { enableMapSet } from 'immer';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -32,7 +34,17 @@ export const Login = () => {
   const dispatch = useDispatch();
   const [login] = useLoginMutation();
   const [registration] = useRegisterMutation();
+  //const [currentUser] = useFetchCurrentUserQuery();
   // const [google] = useGoogleLoginMutation();
+  let location = useLocation();
+  useEffect(() => {
+    if (location.search.length > 0) {
+      const token = location.search.slice(7);
+      dispatch(loginGoogle({ token: token }));
+      // const user = await currentUser();
+      // console.log(user);
+    }
+  }, [location.search]);
 
   let submitAction = undefined;
 
@@ -69,6 +81,7 @@ export const Login = () => {
                 email: values.email,
                 password: values.password,
               });
+              console.log('user', user);
               dispatch(logIn(user));
             } catch (err) {
               console.log(err);
