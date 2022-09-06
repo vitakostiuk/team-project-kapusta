@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Notifications, { notify } from 'react-notify-toast';
 import PopUp from 'components/common/PopUp';
 import BtnConfirm from '../BtnConfirm';
 import {
@@ -8,6 +9,7 @@ import {
 } from 'redux/user/userApi';
 import { useGetTransactionsQuery } from 'redux/report/transactionsApi';
 import { setBalance } from 'redux/Balance/balanceSlice';
+import { setNumBalance } from 'redux/Balance/BalanceNumberSlice';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
 import s from './BalanceComp.module.css';
 
@@ -31,6 +33,7 @@ const BalanceComp = () => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(setBalance(getNormalizedSum(data)));
+      dispatch(setNumBalance(data));
       setValue(getNormalizedSum(data));
     }
   }, [data, dispatch, isSuccess]);
@@ -43,14 +46,18 @@ const BalanceComp = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
+    if (value.length > 7) {
+      let myColor = { background: 'red', text: '#FFFFFF' };
+      notify.show('Amount must not exceed 7 digits', 'custom', 5000, myColor);
+      return;
+    }
+
     setValue(getNormalizedSum(value));
     setIsShowPopUp(false);
     try {
       const { data } = await changeBalance({ balance: Number(value) });
       dispatch(setBalance(getNormalizedSum(data.balance)));
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
     setIsDisabledBtn(true);
   };
 
@@ -82,6 +89,7 @@ const BalanceComp = () => {
           <BtnConfirm isDisabledBtn={isDisabledBtn} />
         </div>
       </form>
+      <Notifications />
       {data === 0 && isShowPopUp && <PopUp />}
     </>
   );

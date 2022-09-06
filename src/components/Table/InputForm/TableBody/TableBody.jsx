@@ -22,11 +22,20 @@ const TableBody = ({ dataTable }) => {
 
   const date = useSelector(state => state.date);
   const expense = useGetTransactionsByExpenseQuery(date);
-  // console.log('expense', expense);
+  console.log('expense', expense);
   const income = useGetTransactionsByIncomeQuery(date);
   //console.log('income', income);
 
   useEffect(() => {
+    if (!expense?.isSuccess && type === '/expenses') {
+      setExpenseArr([]);
+      return;
+    }
+    if (!income?.isSuccess && type === '/income') {
+      setIncomeArr([]);
+      return;
+    }
+
     setExpenseArr(dataTable.filter(({ income }) => income === false));
     setIncomeArr(dataTable.filter(({ income }) => income === true));
 
@@ -63,7 +72,7 @@ const TableBody = ({ dataTable }) => {
           ]),
       );
     }
-  }, [dataTable, expense, income]);
+  }, [dataTable, expense, income, type]);
 
   const handleDelete = id => {
     setIsShowModal(prevIsShowModal => !prevIsShowModal);
