@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useLogoutMutation } from 'redux/authorization/authApi';
 import { logOut } from 'redux/feature/authSlice';
 
-const modalRoot = document.querySelector('#modal-root');
+// const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ onClick, text, isShowModal }) => {
   const [logout] = useLogoutMutation();
@@ -41,7 +41,7 @@ const Modal = ({ onClick, text, isShowModal }) => {
     }
   };
 
-  return createPortal(
+  return (
     <div className={s.backdrop} onClick={handleBackdropClick}>
       <div className={s.modal}>
         <button type="button" className={s.closeModalBtn} onClick={onClick}>
@@ -57,8 +57,7 @@ const Modal = ({ onClick, text, isShowModal }) => {
           </button>
         </div>
       </div>
-    </div>,
-    modalRoot,
+    </div>
   );
 };
 
