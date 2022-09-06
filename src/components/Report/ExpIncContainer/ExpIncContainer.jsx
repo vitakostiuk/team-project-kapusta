@@ -48,8 +48,6 @@ const ExpIncContainer = () => {
     setSubs(subs);
   };
 
-  console.log(subs);
-
   return (
     <>
       <div className={s.container}>
@@ -57,13 +55,7 @@ const ExpIncContainer = () => {
         {expensesByData && <Expenses data={data} onChange={handleChange} />}
       </div>
 
-      {subs?.length > 0 ? (
-        <Statistic list={subs} />
-      ) : (
-        <div className={s.noData}>
-          There are no transactions for selected period.
-        </div>
-      )}
+      {subs.length > 0 && <Statistic list={subs} />}
     </>
   );
 };
