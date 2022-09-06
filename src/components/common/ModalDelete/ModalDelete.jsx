@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { ReactComponent as CloseModal } from 'images/close.svg';
 import s from './ModalDelete.module.css';
 
-const ModalDelete = ({ onClick, text, isShowModal }) => {
+const ModalDelete = ({ onClick, text, onClikBtnDelete }) => {
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
@@ -21,6 +21,11 @@ const ModalDelete = ({ onClick, text, isShowModal }) => {
     }
   };
 
+  const handleClickBtnDelete = () => {
+    onClikBtnDelete();
+    onClick();
+  };
+
   return (
     <div className={s.backdrop} onClick={handleBackdropClick}>
       <div className={s.modal}>
@@ -32,7 +37,11 @@ const ModalDelete = ({ onClick, text, isShowModal }) => {
           <button className={s.btn} type="button" onClick={onClick}>
             yes
           </button>
-          <button className={s.btn} type="button" onClick={onClick}>
+          <button
+            className={s.btn}
+            type="button"
+            onClick={handleClickBtnDelete}
+          >
             no
           </button>
         </div>

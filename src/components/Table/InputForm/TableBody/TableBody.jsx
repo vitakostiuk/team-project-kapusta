@@ -16,6 +16,7 @@ const TableBody = ({ dataTable }) => {
   const [expenseArr, setExpenseArr] = useState([]);
   const [incomeArr, setIncomeArr] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
+  const [isClikBtnDelete, setIsClikBtnDelete] = useState(false);
   const [deleteTransaction] = useDeleteTransactionMutation();
   const type = useLocation().pathname;
 
@@ -66,6 +67,7 @@ const TableBody = ({ dataTable }) => {
 
   const handleDelete = id => {
     setIsShowModal(prevIsShowModal => !prevIsShowModal);
+    if (isClikBtnDelete) return;
 
     if (type === '/expenses') {
       setExpenseArr(prevExpenseArr =>
@@ -83,6 +85,10 @@ const TableBody = ({ dataTable }) => {
 
   const handleClick = () => {
     setIsShowModal(prevIsShowModal => !prevIsShowModal);
+  };
+
+  const handleClickBtnDelete = () => {
+    setIsClikBtnDelete(prevIsClikBtnDelete => !prevIsClikBtnDelete);
   };
 
   return (
@@ -123,7 +129,8 @@ const TableBody = ({ dataTable }) => {
                         <ModalDelete
                           onClick={handleClick}
                           text="Are you sure?"
-                          isShowModal={isShowModal}
+                          isShowModal={setIsShowModal}
+                          onClikBtnDelete={handleClickBtnDelete}
                         />
                       )}
                     </td>
@@ -160,7 +167,8 @@ const TableBody = ({ dataTable }) => {
                         <ModalDelete
                           onClick={handleClick}
                           text="Are you sure?"
-                          isShowModal={isShowModal}
+                          isShowModal={setIsShowModal}
+                          onClikBtnDelete={handleClickBtnDelete}
                         />
                       )}
                     </td>
