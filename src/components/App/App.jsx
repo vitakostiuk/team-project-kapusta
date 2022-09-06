@@ -57,55 +57,6 @@ function App() {
       <MainPage>
         <Suspense>
           <Routes>
-            {/* PABLIC */}
-            <Route
-              path="/expenses"
-              element={
-                !isLoggedIn ? <Navigate to="/" replace /> : <ExpensesPage />
-              }
-            />
-            <Route
-              path="/income"
-              element={
-                !isLoggedIn ? <Navigate to="/" replace /> : <IncomePage />
-              }
-            />
-            <Route
-              path="/report"
-              element={
-                !isLoggedIn ? <Navigate to="/" replace /> : <ReportPage />
-              }
-            />
-            <Route
-              path="/income/input"
-              element={
-                !isLoggedIn ? <Navigate to="/" replace /> : <IncomeInputPage />
-              }
-            />
-            <Route
-              path="/expenses/input"
-              element={
-                !isLoggedIn ? (
-                  <Navigate to="/" replace />
-                ) : (
-                  <ExpensesInputPage />
-                )
-              }
-            />
-
-            {/* PRIVATE */}
-            <Route
-              path="/"
-              element={
-                isLoggedIn ? (
-                  <Navigate to="/expenses" replace />
-                ) : (
-                  <ExpensesPage />
-                )
-              }
-            />
-          </Routes>
-          {/* <Routes>
             <Route element={<PublicRoute redirectTo="/expenses" restricted />}>
               <Route index element={<LoginPage />} />
             </Route>
@@ -140,7 +91,7 @@ function App() {
             <Route element={<PublicRoute redirectTo="/expenses" />}>
               <Route path="*" element={<NotFoundPage />} />
             </Route>
-          </Routes> */}
+          </Routes>
         </Suspense>
       </MainPage>
     </>
