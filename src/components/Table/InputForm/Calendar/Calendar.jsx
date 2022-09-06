@@ -11,7 +11,7 @@ const Calendar = ({ onChangeDate, startDate }) => {
 
   const handleDateSelect = e => {
     const year = String(e.getFullYear());
-    const month = String(e.getMonth() + 1);
+    const month = String(e.getMonth());
     const day = String(e.getDate());
     // const year = e.getFullYear();
     // const month = e.getMonth() + 1;

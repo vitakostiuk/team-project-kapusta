@@ -10,10 +10,13 @@ import {
   useGetTransactionsByIncomeQuery,
 } from 'redux/report/transactionsApi';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
+import ModalDelete from 'components/common/ModalDelete';
 
 const TableBody = ({ dataTable }) => {
   const [expenseArr, setExpenseArr] = useState([]);
   const [incomeArr, setIncomeArr] = useState([]);
+  const [isShowModal, setIsShowModal] = useState(false);
+  const [isDeleteTransaction, setIsDeleteTransaction] = useState(false);
   const [deleteTransaction] = useDeleteTransactionMutation();
   const type = useLocation().pathname;
 
@@ -63,6 +66,9 @@ const TableBody = ({ dataTable }) => {
   }, [dataTable, expense, income]);
 
   const handleDelete = id => {
+    setIsShowModal(prevIsShowModal => !prevIsShowModal);
+    setIsDeleteTransaction(true);
+
     if (type === '/expenses') {
       setExpenseArr(prevExpenseArr =>
         prevExpenseArr.filter(expense => expense.id !== id),
@@ -76,6 +82,11 @@ const TableBody = ({ dataTable }) => {
       deleteTransaction(id);
     }
   };
+
+  const handleClick = () => {
+    setIsShowModal(prevIsShowModal => !prevIsShowModal);
+  };
+
   return (
     <div className={style.tableThamb}>
       <table className={style.table}>
@@ -110,6 +121,14 @@ const TableBody = ({ dataTable }) => {
                       >
                         <DeletePic />
                       </button>
+                      {/* {isShowModal && (
+                        <ModalDelete
+                          onClick={handleClick}
+                          text="Are you sure?"
+                          isShowModal={setIsShowModal}
+                          isDeleteTransaction={isDeleteTransaction}
+                        />
+                      )} */}
                     </td>
                   </tr>
                 ),
@@ -140,6 +159,13 @@ const TableBody = ({ dataTable }) => {
                       >
                         <DeletePic />
                       </button>
+                      {/* {isShowModal && (
+                        <ModalDelete
+                          onClick={handleClick}
+                          text="Are you sure?"
+                          isShowModal={setIsShowModal}
+                        />
+                      )} */}
                     </td>
                   </tr>
                 ),
