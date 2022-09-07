@@ -1,7 +1,6 @@
 import style from './TransactionsListMobile.module.css';
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { ReactComponent as DeletePic } from '../../../../images/delete.svg';
 import EllipsisText from 'react-ellipsis-text';
@@ -16,7 +15,6 @@ import ModalDelete from 'components/common/ModalDelete';
 const TransactionsListMobile = ({ dataTable }) => {
   const [expenseArr, setExpenseArr] = useState([]);
   const [incomeArr, setIncomeArr] = useState([]);
-  // const [transArr, setTransArr] = useState([]);
   const [isShowModal, setIsShowModal] = useState(false);
   const [isClikBtnDelete, setIsClikBtnDelete] = useState(false);
   const [deleteTransaction] = useDeleteTransactionMutation();
@@ -24,20 +22,26 @@ const TransactionsListMobile = ({ dataTable }) => {
 
   const date = useSelector(state => state.date);
   const expense = useGetTransactionsByExpenseQuery(date);
-  // console.log('my expense transactions', expense.data);
   const income = useGetTransactionsByIncomeQuery(date);
-  // console.log('my income transactions', income.data);
 
   useEffect(() => {
-    if (dataTable) {
-      setExpenseArr(dataTable.filter(({ income }) => income === false));
-      setIncomeArr(dataTable.filter(({ income }) => income === true));
+    if (!expense?.isSuccess && type === '/expenses') {
+      setExpenseArr([]);
+      return;
     }
+    if (!income?.isSuccess && type === '/income') {
+      setIncomeArr([]);
+      return;
+    }
+
+    setExpenseArr(dataTable.filter(({ income }) => income === false));
+    setIncomeArr(dataTable.filter(({ income }) => income === true));
 
     if (expense) {
       expense?.data?.transactions.forEach(
         ({ categories, description, value, date: { day, month, year }, _id }) =>
           setExpenseArr(prevDataTable => [
+            ...prevDataTable,
             {
               date: `${day}.${month}.${year}`,
               description,
@@ -46,7 +50,6 @@ const TransactionsListMobile = ({ dataTable }) => {
               income: false,
               id: _id,
             },
-            ...prevDataTable,
           ]),
       );
     }
@@ -55,6 +58,7 @@ const TransactionsListMobile = ({ dataTable }) => {
       income?.data?.transactions.forEach(
         ({ categories, description, value, date: { day, month, year }, _id }) =>
           setIncomeArr(prevDataTable => [
+            ...prevDataTable,
             {
               date: `${day}.${month}.${year}`,
               description,
@@ -63,11 +67,10 @@ const TransactionsListMobile = ({ dataTable }) => {
               income: true,
               id: _id,
             },
-            ...prevDataTable,
           ]),
       );
     }
-  }, [dataTable, expense, income]);
+  }, [dataTable, expense, income, type]);
 
   const handleDelete = id => {
     setIsShowModal(prevIsShowModal => !prevIsShowModal);
@@ -126,7 +129,7 @@ const TransactionsListMobile = ({ dataTable }) => {
 
       <ul className={style.expensesIncomeSum}>
         {expenseArr &&
-          expenseArr.map(({ sum, id }, index) => (
+          expenseArr.map(({ sum }, index) => (
             <li className={style.itemSum} key={index}>
               <span className={style.sumExpense}>{`-${getNormalizedSum(
                 sum,
@@ -134,7 +137,7 @@ const TransactionsListMobile = ({ dataTable }) => {
             </li>
           ))}
         {incomeArr &&
-          incomeArr.map(({ sum, id }, index) => (
+          incomeArr.map(({ sum }, index) => (
             <li className={style.itemSum} key={index}>
               <span className={style.sumIncome}>{getNormalizedSum(sum)}</span>
             </li>

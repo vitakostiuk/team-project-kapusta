@@ -61,6 +61,11 @@ const InputForm = ({ onFillTable }) => {
     }
   };
 
+  const getNotification = () => {
+    let myColor = { background: 'green', text: '#FFFFFF' };
+    notify.show('The Transaction added successfully', 'custom', 5000, myColor);
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -72,7 +77,7 @@ const InputForm = ({ onFillTable }) => {
       return;
     }
 
-    if (balance - Number(sum) < 0) {
+    if (type === '/expenses' && balance - Number(sum) < 0) {
       let myColor = { background: 'red', text: '#FFFFFF' };
       notify.show('The balance cannot be negative', 'custom', 5000, myColor);
       return;
@@ -111,6 +116,7 @@ const InputForm = ({ onFillTable }) => {
       categories: idOfCategory,
       value: sum,
     };
+
     if (type === '/expenses') {
       return addExpense(requestBody);
     }
@@ -118,9 +124,11 @@ const InputForm = ({ onFillTable }) => {
       return addIncome(requestBody);
     }
     if (type === '/expenses/input') {
+      getNotification();
       return addExpense(requestBody);
     }
     if (type === '/income/input') {
+      getNotification();
       return addIncome(requestBody);
     }
   };
@@ -143,7 +151,14 @@ const InputForm = ({ onFillTable }) => {
           </div>
 
           <div className={style.backBtnThamb}>
-            <Link to="/" className={style.backBtn} type="button">
+            <Link
+              to="/"
+              className={style.backBtn}
+              type="button"
+              onClick={e => {
+                window.location.reload();
+              }}
+            >
               <BackPic />
             </Link>
           </div>
@@ -180,6 +195,7 @@ const InputForm = ({ onFillTable }) => {
               value={sum}
               onChange={handleChange}
             />
+            <div className={style.hidenBox}></div>
             <div className={style.CalcPic}>
               <CalcPic />
             </div>
@@ -189,9 +205,9 @@ const InputForm = ({ onFillTable }) => {
         <div className={style.btnThamb}>
           <button
             type="input"
-            className={style.inputBtn}
             onClick={handleSubmit}
             disabled={isDisabledBtn}
+            className={isDisabledBtn ? style.inputBtnDisabled : style.inputBtn}
           >
             Input
           </button>
