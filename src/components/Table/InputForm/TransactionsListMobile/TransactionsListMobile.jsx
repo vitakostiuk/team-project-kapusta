@@ -105,7 +105,7 @@ const TransactionsListMobile = ({ dataTable }) => {
           expenseArr.map(({ date, description, category, sum, id }, index) => (
             <li className={style.item} key={index}>
               <span className={style.itemName}>
-                <EllipsisText text={`${description}`} length={'15'} />
+                <EllipsisText text={`${description}`} length={Number(15)} />
               </span>
               <br />
               <span className={style.itemDate}>{date}</span>
@@ -117,7 +117,7 @@ const TransactionsListMobile = ({ dataTable }) => {
           incomeArr.map(({ date, description, category, sum, id }, index) => (
             <li className={style.item} key={index}>
               <span className={style.itemName}>
-                <EllipsisText text={`${description}`} length={'15'} />
+                <EllipsisText text={`${description}`} length={Number(15)} />
               </span>
               <br />
               <span className={style.itemDate}>{date}</span>

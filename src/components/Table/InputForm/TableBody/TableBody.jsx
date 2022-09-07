@@ -22,9 +22,7 @@ const TableBody = ({ dataTable }) => {
 
   const date = useSelector(state => state.date);
   const expense = useGetTransactionsByExpenseQuery(date);
-  // console.log('expense', expense);
   const income = useGetTransactionsByIncomeQuery(date);
-  //console.log('income', income);
 
   useEffect(() => {
     if (!expense?.isSuccess && type === '/expenses') {
@@ -120,7 +118,10 @@ const TableBody = ({ dataTable }) => {
                   <tr key={index} className={style.tableRow}>
                     <td className={style.tableCell}>{date}</td>
                     <td className={style.tableCell}>
-                      <EllipsisText text={`${description}`} length={'29'} />
+                      <EllipsisText
+                        text={`${description}`}
+                        length={Number(29)}
+                      />
                     </td>
                     <td className={style.tableCell}>{category}</td>
                     <td
@@ -158,7 +159,10 @@ const TableBody = ({ dataTable }) => {
                   <tr key={index} className={style.tableRow}>
                     <td className={style.tableCell}>{date}</td>
                     <td className={style.tableCell}>
-                      <EllipsisText text={`${description}`} length={'29'} />
+                      <EllipsisText
+                        text={`${description}`}
+                        length={Number(29)}
+                      />
                     </td>
                     <td className={style.tableCell}>{category}</td>
                     <td className={style.tableCellSumIncome}>
