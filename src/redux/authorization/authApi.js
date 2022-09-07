@@ -43,9 +43,6 @@ export const authApi = createApi({
       query: () => ({
         url: 'api/auth/google',
         method: 'GET',
-        headers: {
-          authorization: '',
-        },
       }),
     }),
     fetchCurrentUser: builder.query({
@@ -65,6 +62,13 @@ export const authApi = createApi({
         return result;
       },
     }),
+    ForgotPassword: builder.mutation({
+      query: userInfo => ({
+        url: 'api/auth/forgot-password',
+        method: 'PATCH',
+        body: userInfo,
+      }),
+    }),
   }),
 });
 
@@ -74,4 +78,5 @@ export const {
   useLogoutMutation,
   useFetchCurrentUserQuery,
   useGoogleLoginMutation,
+  useForgotPasswordMutation,
 } = authApi;

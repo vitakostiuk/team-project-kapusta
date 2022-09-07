@@ -3,7 +3,11 @@ import kapustaSvg from '../../images/loginPageKAPUSTA.svg';
 import GoogleEmbl from '../../images/GoogleEmlem.svg';
 import styles from './Login.module.css';
 import { useLocation } from 'react-router-dom';
-// import Header from '../Header';
+import Modal from '../common/ModalForgetPasswodr';
+
+import 'react-toastify/dist/ReactToastify.css';
+
+import { toast, ToastContainer } from 'react-toastify';
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -23,10 +27,15 @@ import { serializeStyles } from '@emotion/serialize';
 import { enableMapSet } from 'immer';
 
 const SignupSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required'),
+  email: Yup.string()
+    .email('Invalid email')
+    .matches(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/, 'Invalid email')
+    .max(60, 'too long')
+    .required('Required'),
   password: Yup.string()
     .oneOf([Yup.ref('password'), null])
     .min(8, 'Error')
+    .max(60, 'too long')
     .required('Required'),
 });
 
@@ -34,15 +43,21 @@ export const Login = () => {
   const dispatch = useDispatch();
   const [login] = useLoginMutation();
   const [registration] = useRegisterMutation();
-  //const [currentUser] = useFetchCurrentUserQuery();
-  // const [google] = useGoogleLoginMutation();
+
+  const [isShowModal, setIsShowModal] = useState(false);
+
+  const handleClick = () => {
+    setIsShowModal(prevIsShowModal => !prevIsShowModal);
+  };
+
   let location = useLocation();
   useEffect(() => {
     if (location.search.length > 0) {
-      const token = location.search.slice(7);
-      dispatch(loginGoogle({ token: token }));
-      // const user = await currentUser();
-      // console.log(user);
+      const url = location.search;
+      const [tokenText, emailText] = url.split('&');
+      const token = tokenText.slice(7);
+      const email = emailText.slice(6);
+      dispatch(loginGoogle({ token: token, email: email }));
     }
   }, [location.search]);
 
@@ -54,7 +69,7 @@ export const Login = () => {
         <img className={styles.logo} src={kapustaSvg} alt="kapusta"></img>
         <p className={styles.textunderLogo}>Smart Finance</p>
       </div>
-
+      <ToastContainer />
       <Formik
         initialValues={{
           email: '',
@@ -62,18 +77,21 @@ export const Login = () => {
         }}
         validationSchema={SignupSchema}
         onSubmit={async values => {
-          console.log('submitAction', submitAction);
           if (submitAction === 'registration') {
             try {
               const user = await registration({
                 email: values.email,
                 password: values.password,
               });
-              if (user.data.status === 'success') alert(user.data.message);
-              console.log(user);
+              if (user.data.code === 201) {
+                toast.success(`${user.data.message}`, {
+                  position: toast.POSITION.TOP_RIGHT,
+                });
+              }
             } catch (err) {
-              console.log(err);
-              alert('check the fields');
+              toast.warn('check the fields!', {
+                position: toast.POSITION.TOP_RIGHT,
+              });
             }
           } else {
             try {
@@ -81,12 +99,13 @@ export const Login = () => {
                 email: values.email,
                 password: values.password,
               });
-              console.log('user', user);
               dispatch(logIn(user));
             } catch (err) {
-              console.log(err);
-              alert(
+              toast.warn(
                 'check your password or email or register in the application',
+                {
+                  position: toast.POSITION.TOP_RIGHT,
+                },
               );
             }
           }
@@ -154,9 +173,18 @@ export const Login = () => {
                 Registration
               </button>
             </div>
+            <p className={styles.ForgotPass} onClick={handleClick}>
+              forgot password
+            </p>
           </Form>
         )}
       </Formik>
+
+      <Modal
+        onClick={handleClick}
+        text="Enter your email "
+        isShowModal={isShowModal}
+      />
     </div>
   );
 };
