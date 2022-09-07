@@ -27,13 +27,17 @@ import { serializeStyles } from '@emotion/serialize';
 import { enableMapSet } from 'immer';
 
 const SignupSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required'),
+  email: Yup.string()
+    .email('Invalid email')
+    .matches(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/, 'Invalid email')
+    .max(60, 'too long')
+    .required('Required'),
   password: Yup.string()
     .oneOf([Yup.ref('password'), null])
     .min(8, 'Error')
+    .max(60, 'too long')
     .required('Required'),
 });
-//?token=ya29.a0AVA9y1vNFWznulIMHvWRgOIlIGggU_uPmkSouhqKtYqqNVESJYHE_eO0sWDcV9ZAxFbn2zE9jO2iwwIgo5EVPbNWWzrQYkgQBaJPgmIc-HEuUGWLUbD8yU4gQnE3Qhrm7He310I_FbbCXIZ0b5pI8TEssESMaCgYKATASAQASFQE65dr8YU5NLS5WSMubT6eYlLPgmg0163&email=dovgand887@gmail.com
 
 export const Login = () => {
   const dispatch = useDispatch();
