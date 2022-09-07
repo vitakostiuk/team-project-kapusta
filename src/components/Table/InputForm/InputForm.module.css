@@ -3,6 +3,10 @@
   padding-right: 10px;
 }
 
+.inputThamb {
+  padding-top: 16px;
+}
+
 @media screen and (min-width: 768px) {
   .inputForm {
     width: 704px;
@@ -158,7 +162,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 16px;
   width: 24px;
   height: 24px;
 }
@@ -217,6 +220,7 @@
 }
 
 .inputBtn,
+.inputBtnDisabled,
 .clearBtn {
   margin-right: 20px;
   width: 130px;
@@ -233,7 +237,12 @@
   cursor: pointer;
   color: #fff;
   background-color: rgb(255, 117, 29);
-  box-shadow: 1px 2px 5px rgba(255, 117, 29, 0.4);
+  box-shadow: 1px 2px 5px rgba(255, 117, 29, 0.5);
+}
+
+.inputBtnDisabled {
+  background-color: rgba(255, 117, 29, 0.5);
+  box-shadow: 1px 2px 5px rgba(255, 117, 29, 0.35);
 }
 
 .clearBtn {
@@ -245,6 +254,7 @@
 
 @media screen and (min-width: 768px) {
   .inputBtn,
+  .inputBtnDisabled,
   .clearBtn {
     margin-right: 16px;
     width: 136px;
