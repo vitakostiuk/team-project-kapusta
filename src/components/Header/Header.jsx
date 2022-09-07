@@ -11,7 +11,6 @@ import { deepOrange } from '@mui/material/colors';
 const Header = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const userEmail = useSelector(authSelectors.getUserEmail);
-
   const [isShowModal, setIsShowModal] = useState(false);
 
   const handleClick = () => {

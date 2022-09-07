@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import s from './Period.module.css';
-import Arrow from '../../Arrow';
+import Arrow from '../../../../images/report/sprite-icons.svg';
 import { useDispatch } from 'react-redux';
 import { setData } from 'redux/report/reportDateSlice';
 
@@ -26,9 +26,10 @@ const Period = () => {
   ];
 
   useEffect(() => {
+    const number = (month + 1).toString().padStart(2, '0');
     dispatch(
       setData({
-        month,
+        month: number,
         year,
       }),
     );
@@ -65,7 +66,9 @@ const Period = () => {
       <p className={s.period}>Current period:</p>
       <div className={s.periodWrapper}>
         <button className={s.btn} onClick={prevMonth}>
-          <Arrow />
+          <svg className={s.picture}>
+            <use xlinkHref={`${Arrow}#icon-arrow-left`} />
+          </svg>
         </button>
 
         <div className={s.date}>
@@ -74,7 +77,9 @@ const Period = () => {
         </div>
 
         <button className={s.btn} onClick={nextMonth}>
-          <Arrow rotate="true" />
+          <svg className={s.picture}>
+            <use xlinkHref={`${Arrow}#icon-arrow-right`} />
+          </svg>
         </button>
       </div>
     </div>

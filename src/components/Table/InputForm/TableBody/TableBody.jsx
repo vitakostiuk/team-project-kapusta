@@ -10,10 +10,13 @@ import {
   useGetTransactionsByIncomeQuery,
 } from 'redux/report/transactionsApi';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
+import ModalDelete from 'components/common/ModalDelete';
 
 const TableBody = ({ dataTable }) => {
   const [expenseArr, setExpenseArr] = useState([]);
   const [incomeArr, setIncomeArr] = useState([]);
+  const [isShowModal, setIsShowModal] = useState(false);
+  const [isClikBtnDelete, setIsClikBtnDelete] = useState(false);
   const [deleteTransaction] = useDeleteTransactionMutation();
   const type = useLocation().pathname;
 
@@ -24,6 +27,15 @@ const TableBody = ({ dataTable }) => {
   //console.log('income', income);
 
   useEffect(() => {
+    if (!expense?.isSuccess && type === '/expenses') {
+      setExpenseArr([]);
+      return;
+    }
+    if (!income?.isSuccess && type === '/income') {
+      setIncomeArr([]);
+      return;
+    }
+
     setExpenseArr(dataTable.filter(({ income }) => income === false));
     setIncomeArr(dataTable.filter(({ income }) => income === true));
 
@@ -60,9 +72,12 @@ const TableBody = ({ dataTable }) => {
           ]),
       );
     }
-  }, [dataTable, expense, income]);
+  }, [dataTable, expense, income, type]);
 
   const handleDelete = id => {
+    setIsShowModal(prevIsShowModal => !prevIsShowModal);
+    if (isClikBtnDelete) return;
+
     if (type === '/expenses') {
       setExpenseArr(prevExpenseArr =>
         prevExpenseArr.filter(expense => expense.id !== id),
@@ -76,6 +91,15 @@ const TableBody = ({ dataTable }) => {
       deleteTransaction(id);
     }
   };
+
+  const handleClick = () => {
+    setIsShowModal(prevIsShowModal => !prevIsShowModal);
+  };
+
+  const handleClickBtnDelete = () => {
+    setIsClikBtnDelete(prevIsClikBtnDelete => !prevIsClikBtnDelete);
+  };
+
   return (
     <div className={style.tableThamb}>
       <table className={style.table}>
@@ -110,6 +134,14 @@ const TableBody = ({ dataTable }) => {
                       >
                         <DeletePic />
                       </button>
+                      {isShowModal && (
+                        <ModalDelete
+                          onClick={handleClick}
+                          text="Are you sure?"
+                          isShowModal={setIsShowModal}
+                          onClikBtnDelete={handleClickBtnDelete}
+                        />
+                      )}
                     </td>
                   </tr>
                 ),
@@ -140,6 +172,14 @@ const TableBody = ({ dataTable }) => {
                       >
                         <DeletePic />
                       </button>
+                      {isShowModal && (
+                        <ModalDelete
+                          onClick={handleClick}
+                          text="Are you sure?"
+                          isShowModal={setIsShowModal}
+                          onClikBtnDelete={handleClickBtnDelete}
+                        />
+                      )}
                     </td>
                   </tr>
                 ),

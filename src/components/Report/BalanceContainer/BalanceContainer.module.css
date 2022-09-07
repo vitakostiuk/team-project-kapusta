@@ -15,6 +15,10 @@
   margin-bottom: 32px;
 }
 
+.container {
+  padding-top: 22px;
+}
+
 @media screen and (min-width: 772px) {
   .container {
     display: flex;
