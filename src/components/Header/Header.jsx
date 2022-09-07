@@ -18,33 +18,42 @@ const Header = () => {
   };
 
   return (
-    <Styled.MenuUl>
-      <Styled.StyleLink to="/" alt="homepage">
-        <Styled.Img src={logo} alt="logo" />
-      </Styled.StyleLink>
-      {isLoggedIn && (
-        <Styled.UserDiv>
-          <Styled.UserData>
-            <Avatar
-              sx={{ bgcolor: deepOrange[400] }}
-              alt={userEmail}
-              src="/broken-image.jpg"
-            ></Avatar>
-            <Styled.UserEmail>{userEmail}</Styled.UserEmail>
-          </Styled.UserData>
-          <Styled.Span></Styled.Span>
-          <Styled.LogoutSvg src={logoutSvg} onClick={handleClick} />
-          <Styled.ExitBtn onClick={handleClick}>Exit</Styled.ExitBtn>
-          {isShowModal && (
-            <Modal
-              onClick={handleClick}
-              text="Do you really want to leave?"
-              isShowModal={setIsShowModal}
-            />
-          )}
-        </Styled.UserDiv>
+    <>
+      {!isLoggedIn && (
+        <Styled.MenuUl>
+          <Styled.StyleLink to="/" alt="homepage">
+            <Styled.Img src={logo} alt="logo" />
+          </Styled.StyleLink>
+        </Styled.MenuUl>
       )}
-    </Styled.MenuUl>
+      {isLoggedIn && (
+        <Styled.MenuUl>
+          <Styled.StyleLink to="/" alt="homepage">
+            <Styled.Img src={logo} alt="logo" />
+          </Styled.StyleLink>
+          <Styled.UserDiv>
+            <Styled.UserData>
+              <Avatar
+                sx={{ bgcolor: deepOrange[400] }}
+                alt={userEmail}
+                src="/broken-image.jpg"
+              ></Avatar>
+              <Styled.UserEmail>{userEmail}</Styled.UserEmail>
+            </Styled.UserData>
+            <Styled.Span></Styled.Span>
+            <Styled.LogoutSvg src={logoutSvg} onClick={handleClick} />
+            <Styled.ExitBtn onClick={handleClick}>Exit</Styled.ExitBtn>
+            {isShowModal && (
+              <Modal
+                onClick={handleClick}
+                text="Do you really want to leave?"
+                isShowModal={setIsShowModal}
+              />
+            )}
+          </Styled.UserDiv>
+        </Styled.MenuUl>
+      )}
+    </>
   );
 };
 
