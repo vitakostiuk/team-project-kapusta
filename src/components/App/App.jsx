@@ -1,8 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import 'react-toastify/dist/ReactToastify.min.css';
-import { ToastContainer } from 'react-toastify';
 import authSelectors from '../../redux/feature/auth-selectors';
 import { useFetchCurrentUserQuery } from '../../redux/authorization/authApi';
 import { refreshUser } from '../../redux/feature/authSlice';
@@ -96,7 +94,6 @@ function App() {
           </Routes>
         </Suspense>
       </MainPage>
-      <ToastContainer autoClose={2000} position="top-center" />
     </>
   );
 }
