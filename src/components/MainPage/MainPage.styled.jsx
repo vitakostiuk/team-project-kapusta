@@ -15,7 +15,7 @@ export const MainSt = styled.div`
   @media screen and (min-width: 768px) {
     min-height: 1024px;
     background: url(${group}) top 30px left 5px repeat-x,
-      url(${two}) bottom 90px left 103px no-repeat;
+      url(${two}) bottom 300px left 353px no-repeat;
   }
 `;
 
