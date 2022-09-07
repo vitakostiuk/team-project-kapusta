@@ -11,6 +11,7 @@
   /* text-align: center; */
   letter-spacing: 0.04em;
 
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
   /* height: 500px;
   */
   color: #52555f;
@@ -93,13 +94,12 @@
   line-height: 12px;
   letter-spacing: 0.04em;
   color: red;
-  text-align: center;
 }
 
 .divButton {
   display: flex;
   margin-top: 40px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   justify-content: space-between;
 }
 
@@ -141,6 +141,12 @@
   justify-content: flex-start;
   padding-top: 86px;
   margin-bottom: 50px;
+}
+.ForgotPass {
+  display: flex;
+  justify-content: center;
+  color: #ff751d;
+  padding-bottom: 40px;
 }
 
 @media screen and (min-width: 768px) {
