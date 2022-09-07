@@ -22,7 +22,7 @@ const TableBody = ({ dataTable }) => {
 
   const date = useSelector(state => state.date);
   const expense = useGetTransactionsByExpenseQuery(date);
-  console.log('expense', expense);
+  // console.log('expense', expense);
   const income = useGetTransactionsByIncomeQuery(date);
   //console.log('income', income);
 
