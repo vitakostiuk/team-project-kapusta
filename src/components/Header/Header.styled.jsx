@@ -18,10 +18,25 @@ export const MenuUl = styled.ul`
   justify-content: space-between;
   background-color: #ffffff;
   height: 58px;
-  width: 100wh;
-  padding: 0 20px;
-  margin: 0;
+  width: 320px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
   list-style: none;
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    margin: 0 auto;
+    padding-left: 26px;
+    padding-right: 26px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+    margin: 0 auto;
+    padding-left: 26px;
+    padding-right: 26px;
+  }
 `;
 
 export const UserDiv = styled.div`
@@ -37,7 +52,7 @@ export const UserData = styled.div`
 
 export const UserEmail = styled.p`
   display: none;
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 14px;
     font-weight: 500;
@@ -52,7 +67,7 @@ export const UserEmail = styled.p`
 
 export const Span = styled.span`
   display: none;
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     height: 36px;
     border-right: 1px solid #e0e5eb;
     margin-left: 20px;
@@ -65,18 +80,18 @@ export const Span = styled.span`
 export const ExitBtn = styled.button`
   display: none;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     display: block;
     text-decoration: underline;
     border: none;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.17;
     letter-spacing: 0.04em;
     color: var(--text-color-gray);
     background-color: transparent;
     cursor: pointer;
-    margin-top: 18px;
+    margin-top: 21px;
   }
 `;
 
@@ -88,7 +103,7 @@ export const LogoutSvg = styled.img`
   width: 20px;
   height: 20px;
 
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     display: none;
   }
 `;
