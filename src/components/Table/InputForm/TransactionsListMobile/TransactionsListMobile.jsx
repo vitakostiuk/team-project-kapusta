@@ -11,11 +11,14 @@ import {
   useGetTransactionsByIncomeQuery,
 } from 'redux/report/transactionsApi';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
+import ModalDelete from 'components/common/ModalDelete';
 
 const TransactionsListMobile = ({ dataTable }) => {
   const [expenseArr, setExpenseArr] = useState([]);
   const [incomeArr, setIncomeArr] = useState([]);
   // const [transArr, setTransArr] = useState([]);
+  const [isShowModal, setIsShowModal] = useState(false);
+  const [isClikBtnDelete, setIsClikBtnDelete] = useState(false);
   const [deleteTransaction] = useDeleteTransactionMutation();
   const type = useLocation().pathname;
 
@@ -67,6 +70,9 @@ const TransactionsListMobile = ({ dataTable }) => {
   }, [dataTable, expense, income]);
 
   const handleDelete = id => {
+    setIsShowModal(prevIsShowModal => !prevIsShowModal);
+    if (isClikBtnDelete) return;
+
     if (type === '/expenses') {
       setExpenseArr(prevExpenseArr =>
         prevExpenseArr.filter(expense => expense.id !== id),
@@ -79,6 +85,14 @@ const TransactionsListMobile = ({ dataTable }) => {
       );
       deleteTransaction(id);
     }
+  };
+
+  const handleClick = () => {
+    setIsShowModal(prevIsShowModal => !prevIsShowModal);
+  };
+
+  const handleClickBtnDelete = () => {
+    setIsClikBtnDelete(prevIsClikBtnDelete => !prevIsClikBtnDelete);
   };
 
   return (
@@ -137,6 +151,14 @@ const TransactionsListMobile = ({ dataTable }) => {
               >
                 <DeletePic />
               </button>
+              {isShowModal && (
+                <ModalDelete
+                  onClick={handleClick}
+                  text="Are you sure?"
+                  isShowModal={setIsShowModal}
+                  onClikBtnDelete={handleClickBtnDelete}
+                />
+              )}
             </li>
           ))}
         {incomeArr &&
@@ -149,6 +171,14 @@ const TransactionsListMobile = ({ dataTable }) => {
               >
                 <DeletePic />
               </button>
+              {isShowModal && (
+                <ModalDelete
+                  onClick={handleClick}
+                  text="Are you sure?"
+                  isShowModal={setIsShowModal}
+                  onClikBtnDelete={handleClickBtnDelete}
+                />
+              )}
             </li>
           ))}
       </ul>
