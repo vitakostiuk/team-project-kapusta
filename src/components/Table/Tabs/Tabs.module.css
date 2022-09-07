@@ -33,6 +33,9 @@
 }
 
 .tabsBlockMobile {
+  position: absolute;
+  bottom: 0;
+
   margin-top: 12px;
 }
 
@@ -55,9 +58,8 @@
   background-color: #f5f6fb;
 }
 
-.tabThambActive {
-  background-color: #ff751d;
-  color: #fff;
+.tabActive .tabThamb {
+  background-color: #fefefe;
 }
 
 .tab {
@@ -71,16 +73,16 @@
   font-size: 12px;
 }
 
-.tab:first-child {
-  margin-right: 2px;
-}
-
 .tab:hover,
 .tab:focus {
   color: #fff;
 }
 
 @media screen and (max-width: 767px) {
+  .tab:first-child {
+    margin-right: 2px;
+  }
+
   .tabThamb:hover,
   .tabThamb:focus {
     background-color: #ff751d;

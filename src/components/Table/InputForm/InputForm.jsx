@@ -77,7 +77,7 @@ const InputForm = ({ onFillTable }) => {
       return;
     }
 
-    if (balance - Number(sum) < 0) {
+    if (type === '/expenses' && balance - Number(sum) < 0) {
       let myColor = { background: 'red', text: '#FFFFFF' };
       notify.show('The balance cannot be negative', 'custom', 5000, myColor);
       return;
@@ -195,6 +195,7 @@ const InputForm = ({ onFillTable }) => {
               value={sum}
               onChange={handleChange}
             />
+            <div className={style.hidenBox}></div>
             <div className={style.CalcPic}>
               <CalcPic />
             </div>
