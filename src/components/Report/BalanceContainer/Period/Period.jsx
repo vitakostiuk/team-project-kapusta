@@ -30,8 +30,6 @@ const Period = () => {
     'DECEMBER',
   ];
 
-  const number = (month + 1).toString().padStart(2, '0');
-
   useEffect(() => {
     const registerDate = data.user.createdAt.split('-')[1];
     if (period.month === registerDate) {
@@ -39,9 +37,7 @@ const Period = () => {
     } else {
       setIsDisabledBtnLeft(false);
     }
-  }, [data.user.createdAt, period.month]);
 
-  useEffect(() => {
     const currentMonth = (new Date().getMonth() + 1)
       .toString()
       .padStart(2, '0');
@@ -50,9 +46,7 @@ const Period = () => {
     } else {
       setIsDisabledBtnRight(false);
     }
-  }, [number, period.month]);
 
-  useEffect(() => {
     const number = (month + 1).toString().padStart(2, '0');
     dispatch(
       setData({
@@ -60,7 +54,7 @@ const Period = () => {
         year,
       }),
     );
-  }, [dispatch, month, year]);
+  }, [data.user.createdAt, dispatch, month, period.month, year]);
 
   useEffect(() => {
     const currentMonth = new Date().getMonth();
