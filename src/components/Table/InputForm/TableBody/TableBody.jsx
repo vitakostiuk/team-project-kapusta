@@ -13,6 +13,7 @@ import {
   getTransIncome,
 } from 'redux/transactions/transactionsSlice';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
+import { setScreenWidth } from 'redux/screen/screenSlice';
 import ModalDelete from 'components/common/ModalDelete';
 
 const TableBody = () => {
@@ -30,6 +31,9 @@ const TableBody = () => {
   const dispatch = useDispatch();
   const transExspenses = useSelector(state => state.transactions.expense);
   const transIncome = useSelector(state => state.transactions.income);
+
+  const screenWidth = document.documentElement.clientWidth;
+  dispatch(setScreenWidth(screenWidth));
 
   useEffect(() => {
     if (!expense?.isSuccess && type === '/expenses') {
