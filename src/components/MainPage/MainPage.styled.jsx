@@ -19,8 +19,10 @@ export const MainSt = styled.div`
     padding-left: 26px;
     padding-right: 26px;
     min-height: 1024px;
-    background: url(${group}) top 30px left 5px no-repeat,
-      url(${two}) bottom 90px left 103px no-repeat;
+
+    background: url(${group}) top 30px left 5px repeat-x,
+      url(${two}) bottom 300px left 353px no-repeat;
+
   }
   @media screen and (min-width: 1280px) {
     width: 1280px;

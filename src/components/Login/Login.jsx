@@ -133,7 +133,12 @@ export const Login = () => {
             <p className={styles.buttonGoogleRegText}>
               Or log in using an email and password, after registering:
             </p>
-            <label className={styles.emailLabel}>Email:</label>
+            <div className={styles.ErrorDiv}>
+              {errors.email && touched.email ? (
+                <p className={styles.star}>&#9733;</p>
+              ) : null}
+              <label className={styles.emailLabel}>Email:</label>
+            </div>
             <Field
               name="email"
               type="email"
@@ -143,7 +148,12 @@ export const Login = () => {
             {errors.email && touched.email ? (
               <div className={styles.error}>{errors.email}</div>
             ) : null}
-            <label className={styles.passwordLabel}>Password:</label>
+            <div className={styles.ErrorDiv}>
+              {errors.password && touched.password ? (
+                <p className={styles.star}>&#9733;</p>
+              ) : null}
+              <label className={styles.passwordLabel}>Password:</label>
+            </div>
             <Field name="password" type="password" className={styles.input} />
             {errors.password && touched.password ? (
               <div className={styles.error}>{errors.password}</div>

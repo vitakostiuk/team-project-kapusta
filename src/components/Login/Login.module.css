@@ -58,6 +58,14 @@
 .buttonGoogleRegText {
   margin-top: 32px;
 }
+.star {
+  color: red;
+  display: flex;
+  align-items: center;
+}
+.ErrorDiv {
+  display: flex;
+}
 
 .emailLabel {
   display: flex;
@@ -150,6 +158,13 @@
 }
 
 @media screen and (min-width: 768px) {
+  .textunderLogo {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
   .textunderLogo {
     font-size: 16px;
     line-height: 19px;

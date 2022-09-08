@@ -52,13 +52,20 @@ const Modal = ({ onClick, text, isShowModal }) => {
               }}
               validationSchema={SignupSchema}
               onSubmit={async values => {
-                const req = await awtorzation({ email: values.email });
+                try {
+                  const req = await awtorzation({ email: values.email });
 
-                if (req.data.message) {
-                  toast.success(req.data.message, {
+                  if (req.data.message) {
+                    toast.success(req.data.message, {
+                      position: toast.POSITION.TOP_CENTER,
+                    });
+                  }
+                } catch (error) {
+                  toast.warn('Check the email and try again later', {
                     position: toast.POSITION.TOP_CENTER,
                   });
                 }
+
                 // onClick();
               }}
             >
