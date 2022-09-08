@@ -16,10 +16,11 @@ import { authApi } from './authorization/authApi';
 // import { userApi } from './user/userApi';
 // import { transactionsApi } from './report/transactionsApi';
 import { baseApi } from './baseApi';
-import balanceReducer from './Balance/balanceSlice';
-import balanceNumReducer from './Balance/BalanceNumberSlice';
+import balanceReducer from './balance/balanceSlice';
+import balanceNumReducer from './balance/balanceNum';
 import calendarReducer from './calendar/calendarSlice';
 import reportReducer from './feature/report/reportSlice';
+import transactionsReducer from './transactions/transactionsSlice';
 import expensesReducer from './report/expensesSlice';
 import reportDateSlice from './report/reportDateSlice';
 // import logger from 'redux-logger';
@@ -36,6 +37,7 @@ const rootReducer = combineReducers({
   balance: balanceReducer,
   balanceNum: balanceNumReducer,
   date: calendarReducer,
+  transactions: transactionsReducer,
   summary: reportReducer,
   expenses: expensesReducer,
   dateReport: reportDateSlice,

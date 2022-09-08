@@ -4,12 +4,12 @@ const balanceNumSlice = createSlice({
   name: 'balanceNum',
   initialState: null,
   reducers: {
-    setNumBalance: (_, action) => {
+    setbalanceNum: (_, action) => {
       return action.payload;
     },
   },
 });
 
-export const { setNumBalance } = balanceNumSlice.actions;
+export const { setbalanceNum } = balanceNumSlice.actions;
 
 export default balanceNumSlice.reducer;

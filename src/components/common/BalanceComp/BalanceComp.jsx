@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Notifications, { notify } from 'react-notify-toast';
 import PopUp from 'components/common/PopUp';
 import BtnConfirm from '../BtnConfirm';
@@ -7,9 +7,8 @@ import {
   useGetBalanceQuery,
   useChangeBalanceMutation,
 } from 'redux/user/userApi';
-import { useGetTransactionsQuery } from 'redux/report/transactionsApi';
-import { setBalance } from 'redux/Balance/balanceSlice';
-import { setNumBalance } from 'redux/Balance/BalanceNumberSlice';
+import { setBalance } from 'redux/balance/balanceSlice';
+import { setbalanceNum } from 'redux/balance/balanceNum';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
 import s from './BalanceComp.module.css';
 
@@ -20,20 +19,16 @@ const BalanceComp = () => {
     // error,
     // isLoading
   } = useGetBalanceQuery({}, { refetchOnMountOrArgChange: true });
-  // const categories = useGetTransactionsQuery();
-  // console.log('categories', categories);
-  // console.log('balance from api', data);
   const [value, setValue] = useState('');
   const [isDisabledBtn, setIsDisabledBtn] = useState(true);
   const [isShowPopUp, setIsShowPopUp] = useState(true);
   const dispatch = useDispatch();
   const [changeBalance] = useChangeBalanceMutation();
-  // const sum = useSelector(state => state.sum);
 
   useEffect(() => {
     if (isSuccess) {
       dispatch(setBalance(getNormalizedSum(data)));
-      dispatch(setNumBalance(data));
+      dispatch(setbalanceNum(data));
       setValue(getNormalizedSum(data));
     }
   }, [data, dispatch, isSuccess]);

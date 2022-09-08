@@ -11,11 +11,9 @@ import {
   useSetTransactionExpenseMutation,
   useSetTransactionIncomeMutation,
 } from 'redux/report/transactionsApi';
-// import { setSumValue } from 'redux/Balance/sumSlice';
 import style from './InputForm.module.css';
-import { nanoid } from '@reduxjs/toolkit';
 
-const InputForm = ({ onFillTable }) => {
+const InputForm = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
@@ -35,7 +33,6 @@ const InputForm = ({ onFillTable }) => {
     }
   }, [category, description, sum]);
 
-  // const dispatch = useDispatch();
   const type = useLocation().pathname;
 
   const onChangeDate = date => {
@@ -57,7 +54,6 @@ const InputForm = ({ onFillTable }) => {
     }
     if (name === 'sum') {
       setSum(value);
-      // dispatch(setSumValue(value));
     }
   };
 
@@ -68,13 +64,18 @@ const InputForm = ({ onFillTable }) => {
 
     if (sum.length > 10) {
       let myColor = { background: 'red', text: '#FFFFFF' };
-      notify.show('Amount must not exceed 11 digits', 'custom', 5000, myColor);
+      notify.show(
+        'Value length should not exceed 9 numbers',
+        'custom',
+        5000,
+        myColor,
+      );
       return;
     }
 
     if (balance - Number(sum) < 0) {
       let myColor = { background: 'red', text: '#FFFFFF' };
-      notify.show('The balance cannot be negative', 'custom', 5000, myColor);
+      notify.show('Value must be positive', 'custom', 5000, myColor);
       return;
     }
 
@@ -82,25 +83,6 @@ const InputForm = ({ onFillTable }) => {
     const month = String(startDate.getMonth() + 1).padStart(2, '0');
     const day = String(startDate.getDate()).padStart(2, '0');
 
-    const normalizedDate = `${day}.${month}.${year}`;
-
-    const tableValues = {
-      date: normalizedDate,
-      description,
-      sum,
-      category,
-      income: type === '/expenses' ? false : true,
-      id: nanoid(),
-    };
-
-    onFillTable(
-      normalizedDate,
-      description,
-      category,
-      sum,
-      tableValues,
-      isDisabledBtn,
-    );
     const requestBody = {
       date: {
         day,
@@ -111,6 +93,7 @@ const InputForm = ({ onFillTable }) => {
       categories: idOfCategory,
       value: sum,
     };
+
     if (type === '/expenses') {
       return addExpense(requestBody);
     }
