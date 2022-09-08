@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { ReactComponent as DeletePic } from '../../../../images/delete.svg';
 import EllipsisText from 'react-ellipsis-text';
-import { useDeleteTransactionMutation } from 'redux/report/transactionsApi';
 import {
   useGetTransactionsByExpenseQuery,
   useGetTransactionsByIncomeQuery,
@@ -91,7 +90,10 @@ const TableBody = () => {
                       className={style.tableCell}
                     >{`${day}.${month}.${year}`}</td>
                     <td className={style.tableCell}>
-                      <EllipsisText text={`${description}`} length={'29'} />
+                      <EllipsisText
+                        text={`${description}`}
+                        length={Number(29)}
+                      />
                     </td>
                     <td className={style.tableCell}>{categories}</td>
                     <td
@@ -137,7 +139,10 @@ const TableBody = () => {
                       className={style.tableCell}
                     >{`${day}.${month}.${year}`}</td>
                     <td className={style.tableCell}>
-                      <EllipsisText text={`${description}`} length={'29'} />
+                      <EllipsisText
+                        text={`${description}`}
+                        length={Number(29)}
+                      />
                     </td>
                     <td className={style.tableCell}>{categories}</td>
                     <td className={style.tableCellSumIncome}>

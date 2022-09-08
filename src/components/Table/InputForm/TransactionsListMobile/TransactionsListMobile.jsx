@@ -70,7 +70,7 @@ const TransactionsListMobile = () => {
             ({ date: { day, month, year }, description, categories, _id }) => (
               <li className={style.item} key={_id}>
                 <span className={style.itemName}>
-                  <EllipsisText text={`${description}`} length={'15'} />
+                  <EllipsisText text={`${description}`} length={Number(15)} />
                 </span>
                 <br />
                 <span
@@ -87,7 +87,7 @@ const TransactionsListMobile = () => {
             ({ date: { day, month, year }, description, categories, _id }) => (
               <li className={style.item} key={_id}>
                 <span className={style.itemName}>
-                  <EllipsisText text={`${description}`} length={'15'} />
+                  <EllipsisText text={`${description}`} length={Number(15)} />
                 </span>
                 <br />
                 <span
