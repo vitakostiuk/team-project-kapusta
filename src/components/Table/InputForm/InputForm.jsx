@@ -12,9 +12,8 @@ import {
   useSetTransactionIncomeMutation,
 } from 'redux/report/transactionsApi';
 import style from './InputForm.module.css';
-import { nanoid } from '@reduxjs/toolkit';
 
-const InputForm = ({ onFillTable }) => {
+const InputForm = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
@@ -70,13 +69,18 @@ const InputForm = ({ onFillTable }) => {
 
     if (sum.length > 10) {
       let myColor = { background: 'red', text: '#FFFFFF' };
-      notify.show('Amount must not exceed 11 digits', 'custom', 5000, myColor);
+      notify.show(
+        'Value length should not exceed 9 numbers',
+        'custom',
+        5000,
+        myColor,
+      );
       return;
     }
 
     if (type === '/expenses' && balance - Number(sum) < 0) {
       let myColor = { background: 'red', text: '#FFFFFF' };
-      notify.show('The balance cannot be negative', 'custom', 5000, myColor);
+      notify.show('Value must be positive', 'custom', 5000, myColor);
       return;
     }
 
@@ -84,25 +88,6 @@ const InputForm = ({ onFillTable }) => {
     const month = String(startDate.getMonth() + 1).padStart(2, '0');
     const day = String(startDate.getDate()).padStart(2, '0');
 
-    const normalizedDate = `${day}.${month}.${year}`;
-
-    const tableValues = {
-      date: normalizedDate,
-      description,
-      sum,
-      category,
-      income: type === '/expenses' ? false : true,
-      id: nanoid(),
-    };
-
-    onFillTable(
-      normalizedDate,
-      description,
-      category,
-      sum,
-      tableValues,
-      isDisabledBtn,
-    );
     const requestBody = {
       date: {
         day,

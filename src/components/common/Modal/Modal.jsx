@@ -30,7 +30,7 @@ const Modal = ({ onClick, text, isShowModal }) => {
   const handleLogOut = async () => {
     try {
       const result = await logout();
-      console.log(result);
+      // console.log(result);
       dispatch(logOut());
       isShowModal();
     } catch (err) {

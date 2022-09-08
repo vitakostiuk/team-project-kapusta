@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import { ReactComponent as CloseModal } from 'images/close.svg';
+import { useDeleteTransactionMutation } from 'redux/report/transactionsApi';
 import s from './ModalDelete.module.css';
 
-const ModalDelete = ({ onClick, text, onClikBtnDelete }) => {
+const ModalDelete = ({ onClick, text, id }) => {
+  const [deleteTransaction] = useDeleteTransactionMutation();
+
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
@@ -21,8 +24,8 @@ const ModalDelete = ({ onClick, text, onClikBtnDelete }) => {
     }
   };
 
-  const handleClickBtnDelete = () => {
-    onClikBtnDelete();
+  const handleDelete = () => {
+    deleteTransaction(id);
     onClick();
   };
 
@@ -34,14 +37,10 @@ const ModalDelete = ({ onClick, text, onClikBtnDelete }) => {
         </button>
         <p className={s.text}>{text}</p>
         <div className={s.btnContainer}>
-          <button className={s.btn} type="button" onClick={onClick}>
+          <button className={s.btn} type="button" onClick={handleDelete}>
             yes
           </button>
-          <button
-            className={s.btn}
-            type="button"
-            onClick={handleClickBtnDelete}
-          >
+          <button className={s.btn} type="button" onClick={onClick}>
             no
           </button>
         </div>

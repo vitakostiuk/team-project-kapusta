@@ -4,98 +4,61 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { ReactComponent as DeletePic } from '../../../../images/delete.svg';
 import EllipsisText from 'react-ellipsis-text';
-import { useDeleteTransactionMutation } from 'redux/report/transactionsApi';
 import {
   useGetTransactionsByExpenseQuery,
   useGetTransactionsByIncomeQuery,
 } from 'redux/report/transactionsApi';
+import {
+  getTransExpenses,
+  getTransIncome,
+} from 'redux/transactions/transactionsSlice';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
 import ModalDelete from 'components/common/ModalDelete';
 
-const TableBody = ({ dataTable }) => {
-  const [expenseArr, setExpenseArr] = useState([]);
-  const [incomeArr, setIncomeArr] = useState([]);
+const TableBody = () => {
   const [isShowModal, setIsShowModal] = useState(false);
-  const [isClikBtnDelete, setIsClikBtnDelete] = useState(false);
-  const [deleteTransaction] = useDeleteTransactionMutation();
   const type = useLocation().pathname;
 
   const date = useSelector(state => state.date);
-  const expense = useGetTransactionsByExpenseQuery(date);
-  const income = useGetTransactionsByIncomeQuery(date);
+  const expense = useGetTransactionsByExpenseQuery(date, {
+    refetchOnMountOrArgChange: true,
+  });
+  const income = useGetTransactionsByIncomeQuery(date, {
+    refetchOnMountOrArgChange: true,
+  });
+
+  const dispatch = useDispatch();
+  const transExspenses = useSelector(state => state.transactions.expense);
+  const transIncome = useSelector(state => state.transactions.income);
 
   useEffect(() => {
     if (!expense?.isSuccess && type === '/expenses') {
-      setExpenseArr([]);
+      dispatch(getTransExpenses(null));
       return;
     }
     if (!income?.isSuccess && type === '/income') {
-      setIncomeArr([]);
+      dispatch(getTransIncome(null));
       return;
     }
 
-    setExpenseArr(dataTable.filter(({ income }) => income === false));
-    setIncomeArr(dataTable.filter(({ income }) => income === true));
-
-    if (expense) {
-      expense?.data?.transactions.forEach(
-        ({ categories, description, value, date: { day, month, year }, _id }) =>
-          setExpenseArr(prevExpenseArr => [
-            ...prevExpenseArr,
-            {
-              date: `${day}.${month}.${year}`,
-              description,
-              sum: value,
-              category: categories,
-              income: false,
-              id: _id,
-            },
-          ]),
-      );
-    }
-
-    if (income) {
-      income?.data?.transactions.forEach(
-        ({ categories, description, value, date: { day, month, year }, _id }) =>
-          setIncomeArr(prevIncomeArr => [
-            ...prevIncomeArr,
-            {
-              date: `${day}.${month}.${year}`,
-              description,
-              sum: value,
-              category: categories,
-              income: true,
-              id: _id,
-            },
-          ]),
-      );
-    }
-  }, [dataTable, expense, income, type]);
-
-  const handleDelete = id => {
-    setIsShowModal(prevIsShowModal => !prevIsShowModal);
-    if (isClikBtnDelete) return;
-
     if (type === '/expenses') {
-      setExpenseArr(prevExpenseArr =>
-        prevExpenseArr.filter(expense => expense.id !== id),
-      );
-      deleteTransaction(id);
+      dispatch(getTransExpenses(expense?.data?.transactions));
     }
+
     if (type === '/income') {
-      setIncomeArr(prevIncomeArr =>
-        prevIncomeArr.filter(income => income.id !== id),
-      );
-      deleteTransaction(id);
+      dispatch(getTransIncome(income?.data?.transactions));
     }
-  };
+  }, [
+    dispatch,
+    expense?.data?.transactions,
+    expense?.isSuccess,
+    income?.data?.transactions,
+    income?.isSuccess,
+    type,
+  ]);
 
   const handleClick = () => {
     setIsShowModal(prevIsShowModal => !prevIsShowModal);
-  };
-
-  const handleClickBtnDelete = () => {
-    setIsClikBtnDelete(prevIsClikBtnDelete => !prevIsClikBtnDelete);
   };
 
   return (
@@ -111,26 +74,35 @@ const TableBody = ({ dataTable }) => {
           </tr>
         </thead>
         <tbody className={style.tableBody}>
-          {expenseArr.length !== 0
+          {transExspenses?.length
             ? type === '/expenses' &&
-              expenseArr.map(
-                ({ date, description, category, sum, id }, index) => (
-                  <tr key={index} className={style.tableRow}>
-                    <td className={style.tableCell}>{date}</td>
+              !expense.isFetching &&
+              transExspenses?.map(
+                ({
+                  date: { day, month, year },
+                  description,
+                  categories,
+                  value,
+                  _id,
+                }) => (
+                  <tr key={_id} className={style.tableRow}>
+                    <td
+                      className={style.tableCell}
+                    >{`${day}.${month}.${year}`}</td>
                     <td className={style.tableCell}>
                       <EllipsisText
                         text={`${description}`}
                         length={Number(29)}
                       />
                     </td>
-                    <td className={style.tableCell}>{category}</td>
+                    <td className={style.tableCell}>{categories}</td>
                     <td
                       className={style.tableCellSumExpense}
-                    >{`-${getNormalizedSum(sum)}`}</td>
+                    >{`-${getNormalizedSum(value)}`}</td>
                     <td className={style.tableCell}>
                       <button
                         type="button"
-                        onClick={() => handleDelete(id)}
+                        onClick={handleClick}
                         className={style.deleteBtn}
                       >
                         <DeletePic />
@@ -139,8 +111,7 @@ const TableBody = ({ dataTable }) => {
                         <ModalDelete
                           onClick={handleClick}
                           text="Are you sure?"
-                          isShowModal={setIsShowModal}
-                          onClikBtnDelete={handleClickBtnDelete}
+                          id={_id}
                         />
                       )}
                     </td>
@@ -152,26 +123,35 @@ const TableBody = ({ dataTable }) => {
                   <td>There are no transactions yet.</td>
                 </tr>
               )}
-          {incomeArr.length !== 0
+          {transIncome?.length
             ? type === '/income' &&
-              incomeArr.map(
-                ({ date, description, category, sum, id }, index) => (
-                  <tr key={index} className={style.tableRow}>
-                    <td className={style.tableCell}>{date}</td>
+              !income.isFetching &&
+              transIncome?.map(
+                ({
+                  date: { day, month, year },
+                  description,
+                  categories,
+                  value,
+                  _id,
+                }) => (
+                  <tr key={_id} className={style.tableRow}>
+                    <td
+                      className={style.tableCell}
+                    >{`${day}.${month}.${year}`}</td>
                     <td className={style.tableCell}>
                       <EllipsisText
                         text={`${description}`}
                         length={Number(29)}
                       />
                     </td>
-                    <td className={style.tableCell}>{category}</td>
+                    <td className={style.tableCell}>{categories}</td>
                     <td className={style.tableCellSumIncome}>
-                      {getNormalizedSum(sum)}
+                      {getNormalizedSum(value)}
                     </td>
                     <td className={style.tableCell}>
                       <button
                         type="button"
-                        onClick={() => handleDelete(id)}
+                        onClick={handleClick}
                         className={style.deleteBtn}
                       >
                         <DeletePic />
@@ -180,8 +160,7 @@ const TableBody = ({ dataTable }) => {
                         <ModalDelete
                           onClick={handleClick}
                           text="Are you sure?"
-                          isShowModal={setIsShowModal}
-                          onClikBtnDelete={handleClickBtnDelete}
+                          id={_id}
                         />
                       )}
                     </td>

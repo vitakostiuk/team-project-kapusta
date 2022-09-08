@@ -22,7 +22,6 @@ export const MainSt = styled.div`
 
     background: url(${group}) top 30px left 5px repeat-x,
       url(${two}) bottom 300px left 353px no-repeat;
-
   }
   @media screen and (min-width: 1280px) {
     width: 1280px;
