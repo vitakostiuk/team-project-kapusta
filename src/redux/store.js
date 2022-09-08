@@ -23,6 +23,7 @@ import reportReducer from './feature/report/reportSlice';
 import transactionsReducer from './transactions/transactionsSlice';
 import expensesReducer from './report/expensesSlice';
 import reportDateSlice from './report/reportDateSlice';
+import screenReducer from './screen/screenSlice';
 // import logger from 'redux-logger';
 
 const authPersistConfig = {
@@ -41,6 +42,7 @@ const rootReducer = combineReducers({
   summary: reportReducer,
   expenses: expensesReducer,
   dateReport: reportDateSlice,
+  screenWidth: screenReducer,
   // [userApi.reducerPath]: userApi.reducer,
   [baseApi.reducerPath]: baseApi.reducer,
 });

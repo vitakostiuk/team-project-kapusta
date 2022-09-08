@@ -18,6 +18,7 @@ import ModalDelete from 'components/common/ModalDelete';
 const TransactionsListMobile = () => {
   const [isShowModal, setIsShowModal] = useState(false);
   const type = useLocation().pathname;
+  // const screenWidth = useSelector(state => state.screenWidth);
 
   const date = useSelector(state => state.date);
   const expense = useGetTransactionsByExpenseQuery(date, {
