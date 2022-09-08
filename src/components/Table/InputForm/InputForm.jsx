@@ -11,7 +11,6 @@ import {
   useSetTransactionExpenseMutation,
   useSetTransactionIncomeMutation,
 } from 'redux/report/transactionsApi';
-// import { setSumValue } from 'redux/Balance/sumSlice';
 import style from './InputForm.module.css';
 import { nanoid } from '@reduxjs/toolkit';
 
@@ -35,7 +34,6 @@ const InputForm = ({ onFillTable }) => {
     }
   }, [category, description, sum]);
 
-  // const dispatch = useDispatch();
   const type = useLocation().pathname;
 
   const onChangeDate = date => {
@@ -57,7 +55,6 @@ const InputForm = ({ onFillTable }) => {
     }
     if (name === 'sum') {
       setSum(value);
-      // dispatch(setSumValue(value));
     }
   };
 
