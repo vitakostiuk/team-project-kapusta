@@ -1,6 +1,7 @@
 .container {
   text-align: center;
   margin-bottom: 32px;
+  height: 100%;
 }
 
 .period {
@@ -19,10 +20,10 @@
 
 .date {
   display: flex;
+  justify-content: center;
   font-weight: 700;
   font-size: 14px;
   width: 9em;
-  justify-content: center;
 }
 
 .year {
@@ -30,15 +31,41 @@
 }
 
 .btn {
-  border: none;
+  border-radius: 40%;
+  border-style: none;
   background-color: inherit;
   cursor: pointer;
-  padding: 5px;
+  padding: 0.1em 0.2em;
+  color: #ff751d;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #ff751d;
+  border-radius: 40%;
+}
+
+.buttonDisabled .picture {
+  color: #f5f6fb;
+}
+
+.buttonDisabled {
+  background-color: inherit;
+  border: none;
+  color: #f5f6fb;
 }
 
 .picture {
   width: 10px;
   height: 10px;
+  stroke: currentColor;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover .picture,
+.btn:focus .picture {
+  color: #fff;
 }
 
 @media screen and (min-width: 772px) {

@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import s from './Period.module.css';
 import Arrow from '../../../../images/report/sprite-icons.svg';
-import { useDispatch } from 'react-redux';
 import { setData } from 'redux/report/reportDateSlice';
+import { useFetchCurrentUserQuery } from 'redux/authorization/authApi';
 
 const Period = () => {
   const [month, setMonth] = useState(0);
   const [year, setYear] = useState('');
+  const [isDisabledBtnLeft, setIsDisabledBtnLeft] = useState(false);
+  const [isDisabledBtnRight, setIsDisabledBtnRight] = useState(false);
 
+  const period = useSelector(state => state.dateReport);
+  const { data } = useFetchCurrentUserQuery();
   const dispatch = useDispatch();
 
   const months = [
@@ -24,6 +29,28 @@ const Period = () => {
     'NOVEMBER',
     'DECEMBER',
   ];
+
+  const number = (month + 1).toString().padStart(2, '0');
+
+  useEffect(() => {
+    const registerDate = data.user.createdAt.split('-')[1];
+    if (period.month === registerDate) {
+      setIsDisabledBtnLeft(true);
+    } else {
+      setIsDisabledBtnLeft(false);
+    }
+  }, [data.user.createdAt, period.month]);
+
+  useEffect(() => {
+    const currentMonth = (new Date().getMonth() + 1)
+      .toString()
+      .padStart(2, '0');
+    if (period.month === currentMonth) {
+      setIsDisabledBtnRight(true);
+    } else {
+      setIsDisabledBtnRight(false);
+    }
+  }, [number, period.month]);
 
   useEffect(() => {
     const number = (month + 1).toString().padStart(2, '0');
@@ -65,7 +92,11 @@ const Period = () => {
     <div className={s.container}>
       <p className={s.period}>Current period:</p>
       <div className={s.periodWrapper}>
-        <button className={s.btn} onClick={prevMonth}>
+        <button
+          className={!isDisabledBtnLeft ? s.btn : s.buttonDisabled}
+          onClick={prevMonth}
+          disabled={isDisabledBtnLeft}
+        >
           <svg className={s.picture}>
             <use xlinkHref={`${Arrow}#icon-arrow-left`} />
           </svg>
@@ -76,7 +107,11 @@ const Period = () => {
           <p className={s.year}>{year}</p>
         </div>
 
-        <button className={s.btn} onClick={nextMonth}>
+        <button
+          className={!isDisabledBtnRight ? s.btn : s.buttonDisabled}
+          onClick={nextMonth}
+          disabled={isDisabledBtnRight}
+        >
           <svg className={s.picture}>
             <use xlinkHref={`${Arrow}#icon-arrow-right`} />
           </svg>
