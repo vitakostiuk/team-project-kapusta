@@ -4,10 +4,10 @@
 <path d="M48 13.333h-37.787l9.547-9.573-3.76-3.76-16 16 16 16 3.76-3.76-9.547-9.573h37.787v-5.333z"></path>
 </symbol>
 <symbol id="icon-arrow-left" viewBox="0 0 19 32">
-<path fill="none" stroke="#ff751d" style="stroke: var(--color1, #ff751d)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="5.3333" d="M16 2.667l-10.667 13.333 10.667 13.333"></path>
+<path fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="5.3333" d="M16 2.667l-10.667 13.333 10.667 13.333"></path>
 </symbol>
 <symbol id="icon-arrow-right" viewBox="0 0 19 32">
-<path fill="none" stroke="#ff751d" style="stroke: var(--color1, #ff751d)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="5.3333" d="M2.667 2.667l10.667 13.333-10.667 13.333"></path>
+<path fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="5.3333" d="M2.667 2.667l10.667 13.333-10.667 13.333"></path>
 </symbol>
 <symbol id="icon-Additional income" viewBox="0 0 24 32">
 <path d="M7.536 19.179c0-0 0-0.001 0-0.002 0-0.254-0.206-0.461-0.46-0.461h-4.466c-0.254 0-0.46 0.208-0.46 0.463v2.992c0 0.256 0.206 0.463 0.46 0.463h4.466c0.254 0 0.46-0.208 0.46-0.463v-2.992zM6.615 21.709h-3.545v-2.067h3.545v2.067zM18.489 21.637h2.481c0.254 0 0.46-0.207 0.46-0.463 0-0 0-0.001 0-0.002 0-0.254-0.206-0.461-0.46-0.461h-2.481c-0.254 0-0.46 0.208-0.46 0.463s0.206 0.463 0.46 0.463zM18.489 19.642h2.481c0.254 0 0.46-0.208 0.46-0.463 0-0 0-0.001 0-0.001 0-0.254-0.206-0.461-0.46-0.461h-2.481c-0.254 0-0.46 0.208-0.46 0.463s0.206 0.463 0.46 0.463z"></path>

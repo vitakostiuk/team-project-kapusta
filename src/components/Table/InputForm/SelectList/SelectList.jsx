@@ -11,7 +11,6 @@ const SelectList = ({ onChangeCategory, onChangeId }) => {
   const { data } = useGetTransactionsQuery();
 
   const type = useLocation().pathname;
-  // console.log('type', type);
 
   useEffect(() => {
     if (data) {
@@ -20,7 +19,7 @@ const SelectList = ({ onChangeCategory, onChangeId }) => {
         title,
         type,
       }));
-      // console.log('categories', categories);
+
       setCategoriesExpense(
         categories.filter(category => category.type === 'expenses'),
       );
@@ -31,7 +30,6 @@ const SelectList = ({ onChangeCategory, onChangeId }) => {
       if (findId) {
         setId(findId.id);
         onChangeId(findId.id);
-        // console.log('findId', findId.id);
       }
     }
   }, [data, id, onChangeId, value]);

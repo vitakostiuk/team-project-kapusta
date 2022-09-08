@@ -3,7 +3,8 @@
   overflow-y: auto;
   display: flex;
   max-width: 280px;
-  height: 138px;
+  min-height: 138px;
+  max-height: 55vw;
   margin: 63px 0 0 0;
 }
 
@@ -45,6 +46,12 @@
   margin-bottom: 16px;
 }
 
+.itemSum {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
 .itemDate,
 .itemCategory {
   font-weight: 400;
@@ -66,19 +73,6 @@
   border: 1px solid #f5f6fb;
   margin: 8px 0;
   width: 280px;
-}
-
-/* .itemSum {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  color: #e7192e;
-} */
-
-.itemSumExpence {
-  display: flex;
-  justify-content: end;
-  align-items: center;
 }
 
 .deleteBtn {

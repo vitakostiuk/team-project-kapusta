@@ -1,0 +1,105 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(29, 29, 29, 0.6);
+  z-index: 20;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 380px;
+  height: 214px;
+
+  background-color: #ffffff;
+  box-shadow: 10px 10px 30px rgba(82, 85, 95, 0.4);
+  border-radius: 30px;
+  padding: 20px;
+}
+.input {
+  width: 240px;
+  height: 52px;
+  padding: 17px;
+  background: #f6f7fb;
+  border: none;
+  border-radius: 30px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+.passwordLabel {
+  /* display: flex; */
+  padding-top: 20px;
+  margin-bottom: 12px;
+  margin-left: 20px;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0.04em;
+  color: #000000;
+}
+
+.closeModalBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  /* z-index: 999; */
+}
+
+.text {
+  margin: 0;
+  margin-bottom: 20px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.02em;
+  color: var(--text-color-gray);
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.ErrorText {
+  color: red;
+  padding-left: 20px;
+}
+
+.btn {
+  display: block;
+  border: none;
+
+  width: 116px;
+  height: 44px;
+  background: #f5f6fb;
+  border-radius: 16px;
+  margin: 0 auto;
+  margin-top: 10px;
+
+  color: var(--text-color-gray);
+}
+
+.btn:hover,
+.btn:focus {
+  border: none;
+  background-color: var(--accent-color);
+  color: #fff;
+}

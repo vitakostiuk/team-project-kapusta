@@ -23,8 +23,9 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
     },
     loginGoogle: (state, action) => {
-      const { token } = action.payload;
+      const { token, email } = action.payload;
       state.token = token;
+      state.user.email = email;
       state.isLoggedIn = true;
     },
     logOut: state => {

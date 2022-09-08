@@ -3,17 +3,22 @@
   padding-right: 10px;
 }
 
+.inputThamb {
+  padding-top: 16px;
+}
+
 @media screen and (min-width: 768px) {
   .inputForm {
     width: 704px;
     padding: 24px 40px 0px;
     border-radius: 0 30px 0 0;
-    background-color: #fff;
+    background-color: #ffffff;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
   }
   .inputThamb {
     display: flex;
     border-radius: 0 30px 0 0;
-    background-color: #fff;
+    background-color: #ffffff;
   }
 }
 
@@ -42,6 +47,7 @@
 }
 
 .sum {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,7 +111,7 @@
 @media screen and (min-width: 768px) {
   .sumInputArea {
     width: 121px;
-    padding: 0 38px 0 0;
+    padding: 0 32px 0 0;
     border: 2px solid #f6f7fc;
     border-left: 0;
     border-radius: 0 16px 16px 0;
@@ -158,7 +164,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 16px;
   width: 24px;
   height: 24px;
 }
@@ -175,6 +180,15 @@
   }
 }
 
+.hidenBox {
+  position: absolute;
+  top: 12;
+  right: 117px;
+  background-color: #f5f6fb;
+  height: 15px;
+  width: 15px;
+}
+
 .CalcPic {
   display: flex;
   align-items: center;
@@ -187,6 +201,15 @@
 }
 
 @media screen and (min-width: 768px) {
+  .hidenBox {
+    position: absolute;
+    top: 12;
+    right: 34px;
+    background-color: #fff;
+    height: 15px;
+    width: 15px;
+  }
+
   .CalcPic {
     position: absolute;
     top: 50%;
@@ -217,6 +240,7 @@
 }
 
 .inputBtn,
+.inputBtnDisabled,
 .clearBtn {
   margin-right: 20px;
   width: 130px;
@@ -233,7 +257,12 @@
   cursor: pointer;
   color: #fff;
   background-color: rgb(255, 117, 29);
-  box-shadow: 1px 2px 5px rgba(255, 117, 29, 0.4);
+  box-shadow: 1px 2px 5px rgba(255, 117, 29, 0.5);
+}
+
+.inputBtnDisabled {
+  background-color: rgba(255, 117, 29, 0.5);
+  box-shadow: 1px 2px 5px rgba(255, 117, 29, 0.35);
 }
 
 .clearBtn {
@@ -245,6 +274,7 @@
 
 @media screen and (min-width: 768px) {
   .inputBtn,
+  .inputBtnDisabled,
   .clearBtn {
     margin-right: 16px;
     width: 136px;
