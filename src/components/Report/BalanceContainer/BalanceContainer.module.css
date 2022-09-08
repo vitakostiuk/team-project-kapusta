@@ -5,6 +5,8 @@
 
 .balance input {
   border-radius: 22px;
+  /* padding-top: 12px;
+  padding-bottom: 12px; */
 }
 
 .balance form div button {
