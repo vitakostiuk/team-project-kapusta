@@ -78,11 +78,11 @@ const InputForm = () => {
       return;
     }
 
-    if (type === '/expenses' && balance - Number(sum) < 0) {
-      let myColor = { background: 'red', text: '#FFFFFF' };
-      notify.show('Value must be positive', 'custom', 5000, myColor);
-      return;
-    }
+    // if (type === '/expenses' && balance - Number(sum) < 0) {
+    //   let myColor = { background: 'red', text: '#FFFFFF' };
+    //   notify.show('Value must be positive', 'custom', 5000, myColor);
+    //   return;
+    // }
 
     const year = String(startDate.getFullYear());
     const month = String(startDate.getMonth() + 1).padStart(2, '0');
