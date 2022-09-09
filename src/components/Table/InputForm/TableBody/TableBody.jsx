@@ -26,7 +26,6 @@ const TableBody = () => {
   const expense = useGetTransactionsByExpenseQuery(date, {
     refetchOnMountOrArgChange: true,
   });
-  console.log('expense', expense);
   const income = useGetTransactionsByIncomeQuery(date, {
     refetchOnMountOrArgChange: true,
   });
