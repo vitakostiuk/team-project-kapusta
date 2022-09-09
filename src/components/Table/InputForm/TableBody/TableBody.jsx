@@ -84,12 +84,12 @@ const TableBody = () => {
         <tbody className={style.tableBody}>
           {expense.status === 'pending' ? (
             <Box sx={{ margin: 0, padding: 0 }}>
-              <Skeleton animation="wave" width="100%" height={60} />
-              <Skeleton animation="wave" width="100%" height={60} />
-              <Skeleton animation="wave" width="100%" height={60} />
-              <Skeleton animation="wave" width="100%" height={60} />
-              <Skeleton animation="wave" width="100%" height={60} />
-              <Skeleton animation="wave" width="100%" height={60} />
+              <Skeleton animation="wave" width="100%" height={55} />
+              <Skeleton animation="wave" width="100%" height={55} />
+              <Skeleton animation="wave" width="100%" height={55} />
+              <Skeleton animation="wave" width="100%" height={55} />
+              <Skeleton animation="wave" width="100%" height={55} />
+              <Skeleton animation="wave" width="100%" height={55} />
             </Box>
           ) : transExspenses?.length ? (
             type === '/expenses' &&
@@ -141,7 +141,58 @@ const TableBody = () => {
             )
           )}
 
-          {expense.status === 'pending' ? (
+          {transIncome?.length
+            ? type === '/income' &&
+              !income.isFetching &&
+              transIncome?.map(
+                ({
+                  date: { day, month, year },
+                  description,
+                  categories,
+                  value,
+                  _id,
+                }) => (
+                  <tr key={_id} className={style.tableRow}>
+                    <td
+                      className={style.tableCell}
+                    >{`${day}.${month}.${year}`}</td>
+                    <td className={style.tableCell}>
+                      <EllipsisText
+                        text={`${description}`}
+                        length={Number(29)}
+                      />
+                    </td>
+                    <td className={style.tableCell}>{categories}</td>
+                    <td className={style.tableCellSumIncome}>
+                      {getNormalizedSum(value)}
+                    </td>
+                    <td className={style.tableCell}>
+                      <button
+                        type="button"
+                        onClick={handleClick}
+                        className={style.deleteBtn}
+                      >
+                        <DeletePic />
+                      </button>
+                      {isShowModal && (
+                        <ModalDelete
+                          onClick={handleClick}
+                          text="Are you sure?"
+                          id={_id}
+                        />
+                      )}
+                    </td>
+                  </tr>
+                ),
+              )
+            : type === '/income' &&
+              income.isError && (
+                <tr className={style.text}>
+                  <td>{expense.error.data.message}</td>
+                </tr>
+              )}
+
+          {/* {expense.status === 'pending' ? (
             <Box sx={{ margin: 0, padding: 0 }}>
               <Skeleton animation="wave" width="100%" height={60} />
               <Skeleton animation="wave" width="100%" height={60} />
@@ -198,7 +249,7 @@ const TableBody = () => {
                 <td>{expense.error.data.message}</td>
               </tr>
             )
-          )}
+          )} */}
         </tbody>
       </table>
     </div>
