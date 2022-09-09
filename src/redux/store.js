@@ -13,8 +13,6 @@ import {
 import storage from 'redux-persist/lib/storage';
 import authReducer from './feature/authSlice';
 import { authApi } from './authorization/authApi';
-// import { userApi } from './user/userApi';
-// import { transactionsApi } from './report/transactionsApi';
 import { baseApi } from './baseApi';
 import balanceReducer from './balance/balanceSlice';
 import balanceNumReducer from './balance/balanceNum';
@@ -24,6 +22,7 @@ import transactionsReducer from './transactions/transactionsSlice';
 import expensesReducer from './report/expensesSlice';
 import reportDateSlice from './report/reportDateSlice';
 import screenReducer from './screen/screenSlice';
+import { rtkQueryErrorLogger } from './middleware/rtkQueryErrorLogger';
 // import logger from 'redux-logger';
 
 const authPersistConfig = {
@@ -57,8 +56,7 @@ export const store = configureStore({
       },
     })
       .concat(authApi.middleware)
-      // .concat(userApi.middleware)
-      .concat(baseApi.middleware),
+      .concat([rtkQueryErrorLogger, baseApi.middleware]),
   // .concat(logger),
 });
 
