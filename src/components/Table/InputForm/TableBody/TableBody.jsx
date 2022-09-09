@@ -37,6 +37,8 @@ const TableBody = () => {
   const screenWidth = document.documentElement.clientWidth;
   dispatch(setScreenWidth(screenWidth));
 
+  // console.log(expense.error.data.message);
+
   useEffect(() => {
     if (!expense?.isSuccess && type === '/expenses') {
       dispatch(getTransExpenses(null));
@@ -131,9 +133,10 @@ const TableBody = () => {
               ),
             )
           ) : (
-            type === '/expenses' && (
+            type === '/expenses' &&
+            expense.isError && (
               <tr className={style.text}>
-                <td>There are no transactions yet.</td>
+                <td>{expense.error.data.message}</td>
               </tr>
             )
           )}
@@ -189,9 +192,10 @@ const TableBody = () => {
               ),
             )
           ) : (
-            type === '/income' && (
+            type === '/income' &&
+            income.isError && (
               <tr className={style.text}>
-                <td>There are no transactions yet.</td>
+                <td>{expense.error.data.message}</td>
               </tr>
             )
           )}

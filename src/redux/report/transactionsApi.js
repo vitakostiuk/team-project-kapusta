@@ -11,13 +11,42 @@ export const transactionsApi = baseApi.injectEndpoints({
         `/api/transactions/?month=${params.month}&year=${params.year}`,
     }),
     getTransactionsByExpense: builder.query({
-      query: params =>
-        `/api/transactions/expense?day=${params.day}&month=${params.month}&year=${params.year}`,
+      async queryFn(params, _api, _extraOptions, baseQuery) {
+        const result = await baseQuery({
+          url: `/api/transactions/expense?day=${params.day}&month=${params.month}&year=${params.year}`,
+          method: 'GET',
+        });
+
+        if (result.error?.status === 404) {
+          return { error: result.error };
+        }
+
+        if (!result.error) {
+          return { data: result.data ?? null };
+        }
+      },
       providesTags: ['transactions'],
     }),
     getTransactionsByIncome: builder.query({
-      query: params =>
-        `/api/transactions/income?day=${params.day}&month=${params.month}&year=${params.year}`,
+      async queryFn(params, _api, _extraOptions, baseQuery) {
+        const result = await baseQuery({
+          url: `/api/transactions/income?day=${params.day}&month=${params.month}&year=${params.year}`,
+          method: 'GET',
+        });
+
+        if (result.error?.status === 404) {
+          return { error: result.error };
+        }
+
+        if (!result.error) {
+          return {
+            data: result.data ?? null,
+            meta: result.meta,
+          };
+        }
+
+        // return { data: result.data};
+      },
       providesTags: ['transactions'],
     }),
     getSummaryTransactions: builder.query({
