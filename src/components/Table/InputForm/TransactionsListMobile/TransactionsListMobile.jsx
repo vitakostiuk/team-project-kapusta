@@ -1,5 +1,7 @@
 import style from './TransactionsListMobile.module.css';
 import { useState, useEffect } from 'react';
+import { Skeleton } from '@mui/material';
+import Box from '@mui/material/Box';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as DeletePic } from '../../../../images/delete.svg';
 import EllipsisText from 'react-ellipsis-text';
@@ -107,68 +109,86 @@ const TransactionsListMobile = () => {
 
   return (
     <div className={style.thamb}>
-      <ul className={style.expensesIncomeList}>
-        {transactionsArr &&
-          !transactionsArr.isFetching &&
-          transactionsArr?.map(
-            ({ date: { day, month, year }, description, categories, _id }) => (
-              <li className={style.item} key={_id}>
-                <span className={style.itemName}>
-                  <EllipsisText text={`${description}`} length={Number(15)} />
-                </span>
-                <br />
-                <span
-                  className={style.itemDate}
-                >{`${day}.${month}.${year}`}</span>
-                <span className={style.itemCategory}>{categories}</span>
-                <hr className={style.line} />
-              </li>
-            ),
-          )}
-      </ul>
-
-      <ul className={style.expensesIncomeSum}>
-        {transactionsArr &&
-          !transactionsArr.isFetching &&
-          transactionsArr?.map(({ value, _id, income }) =>
-            !income ? (
-              <li className={style.itemSum} key={_id}>
-                <span className={style.sumExpense}>{`-${getNormalizedSum(
-                  value,
-                )}`}</span>
-              </li>
-            ) : (
-              <li className={style.itemSum} key={_id}>
-                <span className={style.sumIncome}>
-                  {getNormalizedSum(value)}
-                </span>
-              </li>
-            ),
-          )}
-      </ul>
-
-      <ul className={style.expensesIncomeDel}>
-        {transactionsArr &&
-          !transactionsArr.isFetching &&
-          transactionsArr?.map(({ _id }) => (
-            <li className={style.itemDel} key={_id}>
-              <button
-                type="button"
-                className={style.deleteBtn}
-                onClick={handleClick}
-              >
-                <DeletePic />
-              </button>
-              {isShowModal && (
-                <ModalDelete
-                  onClick={handleClick}
-                  text="Are you sure?"
-                  id={_id}
-                />
+      {expense.status === 'pending' ? (
+        <Box sx={{ margin: 0, padding: 0 }}>
+          <Skeleton animation="wave" width={280} height={55} />
+          <Skeleton animation="wave" width={280} height={55} />
+          <Skeleton animation="wave" width={280} height={55} />
+        </Box>
+      ) : (
+        <>
+          <ul className={style.expensesIncomeList}>
+            {transactionsArr &&
+              !transactionsArr.isFetching &&
+              transactionsArr?.map(
+                ({
+                  date: { day, month, year },
+                  description,
+                  categories,
+                  _id,
+                }) => (
+                  <li className={style.item} key={_id}>
+                    <span className={style.itemName}>
+                      <EllipsisText
+                        text={`${description}`}
+                        length={Number(15)}
+                      />
+                    </span>
+                    <br />
+                    <span
+                      className={style.itemDate}
+                    >{`${day}.${month}.${year}`}</span>
+                    <span className={style.itemCategory}>{categories}</span>
+                    <hr className={style.line} />
+                  </li>
+                ),
               )}
-            </li>
-          ))}
-      </ul>
+          </ul>
+
+          <ul className={style.expensesIncomeSum}>
+            {transactionsArr &&
+              !transactionsArr.isFetching &&
+              transactionsArr?.map(({ value, _id, income }) =>
+                !income ? (
+                  <li className={style.itemSum} key={_id}>
+                    <span className={style.sumExpense}>{`-${getNormalizedSum(
+                      value,
+                    )}`}</span>
+                  </li>
+                ) : (
+                  <li className={style.itemSum} key={_id}>
+                    <span className={style.sumIncome}>
+                      {getNormalizedSum(value)}
+                    </span>
+                  </li>
+                ),
+              )}
+          </ul>
+
+          <ul className={style.expensesIncomeDel}>
+            {transactionsArr &&
+              !transactionsArr.isFetching &&
+              transactionsArr?.map(({ _id }) => (
+                <li className={style.itemDel} key={_id}>
+                  <button
+                    type="button"
+                    className={style.deleteBtn}
+                    onClick={handleClick}
+                  >
+                    <DeletePic />
+                  </button>
+                  {isShowModal && (
+                    <ModalDelete
+                      onClick={handleClick}
+                      text="Are you sure?"
+                      id={_id}
+                    />
+                  )}
+                </li>
+              ))}
+          </ul>
+        </>
+      )}
     </div>
   );
 };

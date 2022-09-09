@@ -41,12 +41,6 @@ const BalanceComp = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    if (value.length > 7) {
-      let myColor = { background: 'red', text: '#FFFFFF' };
-      notify.show('Amount must not exceed 7 digits', 'custom', 5000, myColor);
-      return;
-    }
-
     setValue(getNormalizedSum(value));
     setIsShowPopUp(false);
     try {
