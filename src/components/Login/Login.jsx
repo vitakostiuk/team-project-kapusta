@@ -5,9 +5,7 @@ import styles from './Login.module.css';
 import { useLocation } from 'react-router-dom';
 import Modal from '../common/ModalForgetPasswodr';
 
-import 'react-toastify/dist/ReactToastify.css';
-
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -59,7 +57,7 @@ export const Login = () => {
       const email = emailText.slice(6);
       dispatch(loginGoogle({ token: token, email: email }));
     }
-  }, [location.search]);
+  }, [dispatch, location.search]);
 
   let submitAction = undefined;
 
@@ -69,7 +67,7 @@ export const Login = () => {
         <img className={styles.logo} src={kapustaSvg} alt="kapusta"></img>
         <p className={styles.textunderLogo}>Smart Finance</p>
       </div>
-      <ToastContainer />
+
       <Formik
         initialValues={{
           email: '',
