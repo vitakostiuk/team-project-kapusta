@@ -17,8 +17,8 @@ export const transactionsApi = baseApi.injectEndpoints({
           method: 'GET',
         });
 
-        if (result.error?.status === 404) {
-          return { error: result.error };
+        if (result.data?.code === 404) {
+          return { error: result.data };
         }
 
         if (!result.error) {
@@ -34,8 +34,8 @@ export const transactionsApi = baseApi.injectEndpoints({
           method: 'GET',
         });
 
-        if (result.error?.status === 404) {
-          return { error: result.error };
+        if (result.data?.code === 404) {
+          return { error: result.data };
         }
 
         if (!result.error) {
