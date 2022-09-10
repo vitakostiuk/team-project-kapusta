@@ -43,7 +43,7 @@ const NotFoundPage = lazy(() =>
 );
 
 function App() {
-  const { data, isSuccess } = useFetchCurrentUserQuery();
+  const { data, isSuccess, isFetching } = useFetchCurrentUserQuery();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -56,47 +56,56 @@ function App() {
 
   return (
     <>
-      <Header />
-      <MainPage>
-        <Suspense>
-          <Routes>
-            <Route element={<PublicRoute redirectTo="/expenses" restricted />}>
-              <Route index element={<LoginPage />} />
-            </Route>
+      {!isFetching && (
+        <>
+          <Header />
+          <MainPage>
+            <Suspense>
+              <Routes>
+                <Route
+                  element={<PublicRoute redirectTo="/expenses" restricted />}
+                >
+                  <Route index element={<LoginPage />} />
+                </Route>
 
-            <Route
-              path="/"
-              element={
-                !isLoggedIn ? <PrivateRoute redirectTo="/" /> : <HomePage />
-              }
-            >
-              <Route element={<PrivateRoute redirectTo="/" />}>
-                <Route path="/expenses" element={<ExpensesPage />} />
-              </Route>
+                <Route
+                  path="/"
+                  element={
+                    !isLoggedIn ? <PrivateRoute redirectTo="/" /> : <HomePage />
+                  }
+                >
+                  <Route element={<PrivateRoute redirectTo="/" />}>
+                    <Route path="/expenses" element={<ExpensesPage />} />
+                  </Route>
 
-              <Route element={<PrivateRoute redirectTo="/" />}>
-                <Route path="/income" element={<IncomePage />} />
-              </Route>
-            </Route>
+                  <Route element={<PrivateRoute redirectTo="/" />}>
+                    <Route path="/income" element={<IncomePage />} />
+                  </Route>
+                </Route>
 
-            <Route element={<PrivateRoute redirectTo="/" />}>
-              <Route path="/income/input" element={<IncomeInputPage />} />
-            </Route>
+                <Route element={<PrivateRoute redirectTo="/" />}>
+                  <Route path="/income/input" element={<IncomeInputPage />} />
+                </Route>
 
-            <Route element={<PrivateRoute redirectTo="/" />}>
-              <Route path="/expenses/input" element={<ExpensesInputPage />} />
-            </Route>
+                <Route element={<PrivateRoute redirectTo="/" />}>
+                  <Route
+                    path="/expenses/input"
+                    element={<ExpensesInputPage />}
+                  />
+                </Route>
 
-            <Route element={<PrivateRoute redirectTo="/" />}>
-              <Route path="/report" element={<ReportPage />} />
-            </Route>
+                <Route element={<PrivateRoute redirectTo="/" />}>
+                  <Route path="/report" element={<ReportPage />} />
+                </Route>
 
-            <Route element={<PublicRoute redirectTo="/expenses" />}>
-              <Route path="*" element={<NotFoundPage />} />
-            </Route>
-          </Routes>
-        </Suspense>
-      </MainPage>
+                <Route element={<PublicRoute redirectTo="/expenses" />}>
+                  <Route path="*" element={<NotFoundPage />} />
+                </Route>
+              </Routes>
+            </Suspense>
+          </MainPage>
+        </>
+      )}
       <ToastContainer position="top-right" autoClose={3000} />
     </>
   );
