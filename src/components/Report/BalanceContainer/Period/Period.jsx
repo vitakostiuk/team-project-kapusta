@@ -31,7 +31,7 @@ const Period = () => {
   ];
 
   useEffect(() => {
-    const registerDate = data.user.createdAt.split('-')[1];
+    const registerDate = data?.user?.createdAt.split('-')[1];
     if (period.month === registerDate) {
       setIsDisabledBtnLeft(true);
     } else {
@@ -54,7 +54,7 @@ const Period = () => {
         year,
       }),
     );
-  }, [data.user.createdAt, dispatch, month, period.month, year]);
+  }, [data?.user?.createdAt, dispatch, month, period.month, year]);
 
   useEffect(() => {
     const currentMonth = new Date().getMonth();

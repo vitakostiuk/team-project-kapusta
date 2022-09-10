@@ -19,6 +19,7 @@ import balanceNumReducer from './balance/balanceNum';
 import calendarReducer from './calendar/calendarSlice';
 import reportReducer from './feature/report/reportSlice';
 import transactionsReducer from './transactions/transactionsSlice';
+import transactionsDaysReducer from './transactions/transactionsDaysSlice';
 import expensesReducer from './report/expensesSlice';
 import reportDateSlice from './report/reportDateSlice';
 import screenReducer from './screen/screenSlice';
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
   balance: balanceReducer,
   balanceNum: balanceNumReducer,
   date: calendarReducer,
+  transactionsDays: transactionsDaysReducer,
   transactions: transactionsReducer,
   summary: reportReducer,
   expenses: expensesReducer,

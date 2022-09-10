@@ -76,6 +76,10 @@ export const transactionsApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ['transactions'],
     }),
+    getTransactionsDates: builder.query({
+      query: () => '/api/transactions/dates',
+      providesTags: ['transactions'],
+    }),
   }),
 });
 
@@ -89,4 +93,5 @@ export const {
   useDeleteTransactionMutation,
   useGetSummaryTransactionsQuery,
   useGetTransactionsByExpenseAndDataQuery,
+  useGetTransactionsDatesQuery,
 } = transactionsApi;
