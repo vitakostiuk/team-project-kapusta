@@ -5,24 +5,20 @@ const transactionsDaysSlice = createSlice({
   initialState: { expense: [], income: [] },
   reducers: {
     getTransactionsDaysExpenses: (state, { payload }) => {
-      const normalizedDates = payload?.filter(
-        item => Number.isNaN(item) === false,
-      );
+      const normalizedDates = payload?.filter(item => item !== null);
       if (normalizedDates) {
         return {
           ...state,
-          expense: normalizedDates.map(date => new Date(date)),
+          expense: normalizedDates,
         };
       }
     },
     getTransactionsDaysIncome: (state, { payload }) => {
-      const normalizedDates = payload?.filter(
-        item => Number.isNaN(item) === false,
-      );
+      const normalizedDates = payload?.filter(item => item !== null);
       if (normalizedDates) {
         return {
           ...state,
-          income: normalizedDates.map(date => new Date(date)),
+          income: normalizedDates,
         };
       }
     },

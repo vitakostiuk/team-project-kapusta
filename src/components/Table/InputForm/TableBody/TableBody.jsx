@@ -136,7 +136,7 @@ const TableBody = () => {
             type === '/expenses' &&
             expense.isError && (
               <tr className={style.text}>
-                <td>{expense.error.message}</td>
+                <td>{expense?.error?.message}</td>
               </tr>
             )
           )}
@@ -188,7 +188,7 @@ const TableBody = () => {
             : type === '/income' &&
               income.isError && (
                 <tr className={style.text}>
-                  <td>{expense.error.message}</td>
+                  <td>{expense?.error?.message}</td>
                 </tr>
               )}
 
