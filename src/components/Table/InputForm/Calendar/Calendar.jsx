@@ -37,38 +37,34 @@ const Calendar = ({ onChangeDate, startDate }) => {
 export default Calendar;
 
 // // With highlites dates
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
+// import { useEffect, useState } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
 // import DatePicker from 'react-datepicker';
-// import { subDays, addDays } from 'date-fns';
+// import { useLocation } from 'react-router-dom';
+// import { subDays } from 'date-fns';
 // import { getDate } from 'redux/calendar/calendarSlice';
+// import { useGetTransactionsDatesQuery } from 'redux/report/transactionsApi';
+// import {
+//   getTransactionsDaysExpenses,
+//   getTransactionsDaysIncome,
+// } from 'redux/transactions/transactionsDaysSlice';
 // import 'react-datepicker/dist/react-datepicker.css';
 // import style from './Calendar.module.css';
 // import './Calendar.css';
 
 // const Calendar = ({ onChangeDate, startDate }) => {
-//   const dispatch = useDispatch();
+//   const [transactionsExpenses, setTransactionsExpenses] = useState([]);
+//   const [transactionsIncome, setTransactionsIncome] = useState([]);
+//   const { data } = useGetTransactionsDatesQuery();
+//   console.log(data);
 
-//   const dates = [
-//     {
-//       date: '09.01.2022',
-//     },
-//     {
-//       date: '09.03.2022',
-//     },
-//     {
-//       date: '08.31.2022',
-//     },
-//     {
-//       date: '08.28.2022',
-//     },
-//     {
-//       date: '07.10.2022',
-//     },
-//     {
-//       date: '06.12.2022',
-//     },
-//   ];
+//   const dispatch = useDispatch();
+//   const type = useLocation().pathname;
+
+//   const expensesDates = useSelector(state => state.transactionsDays.expense);
+//   console.log('expensesDates', expensesDates);
+//   const incomeDates = useSelector(state => state.transactionsDays.income);
+//   console.log('incomeDates', incomeDates);
 
 //   useEffect(() => {
 //     const year = String(startDate.getFullYear());
@@ -80,18 +76,48 @@ export default Calendar;
 //       month,
 //       year,
 //     };
-//     console.log(date);
 //     dispatch(getDate(date));
 //   }, [dispatch, startDate]);
+
+//   useEffect(() => {
+//     data?.transactions?.forEach(transaction => {
+//       if (transaction?.income) {
+//         setTransactionsIncome(transaction?.data);
+//       }
+//       if (!transaction?.income) {
+//         setTransactionsExpenses(transaction?.data);
+//       }
+//     });
+
+//     const expensesToDispatch = transactionsExpenses.map(
+//       ({ day, month, year }) => {
+//         return Date.parse(`${day}.${month}.${year}`);
+//       },
+//     );
+//     dispatch(getTransactionsDaysExpenses(expensesToDispatch));
+
+//     const incomeToDispatch = transactionsIncome.map(({ day, month, year }) => {
+//       return Date.parse(`${day}.${month}.${year}`);
+//     });
+//     dispatch(getTransactionsDaysIncome(incomeToDispatch));
+//   }, [data?.transactions, dispatch, transactionsExpenses, transactionsIncome]);
+
+//   const expenseNormalizedDate = expensesDates.map(item => {
+//     console.log(item.getFullYear());
+//     console.log(item.getMonth());
+//     console.log(item.getDay());
+//   });
+//   console.log(expenseNormalizedDate);
 
 //   return (
 //     <div>
 //       {(() => {
 //         let highlight = [];
 
-//         for (let i = 0; i < dates.length; i++) {
-//           highlight.push(subDays(new Date(`${dates[i].date}`), 0));
+//         for (let i = 0; i < expenseNormalizedDate.length; i++) {
+//           highlight.push(subDays(new Date(`${expenseNormalizedDate[i]}`), 0));
 //         }
+
 //         return (
 //           <DatePicker
 //             closeOnScroll={true}
