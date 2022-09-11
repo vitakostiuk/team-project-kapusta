@@ -9,6 +9,7 @@ export const transactionsApi = baseApi.injectEndpoints({
     fullTransactions: builder.query({
       query: params =>
         `/api/transactions/?month=${params.month}&year=${params.year}`,
+      providesTags: ['transactions'],
     }),
     getTransactionsByExpense: builder.query({
       async queryFn(params, _api, _extraOptions, baseQuery) {

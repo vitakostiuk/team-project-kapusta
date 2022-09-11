@@ -57,6 +57,7 @@ export const authApi = createApi({
           url: 'api/users/current',
           method: 'GET',
           headers: { authorization: `Bearer ${persistedState}` },
+          providesTags: ['user'],
         });
 
         return result;
