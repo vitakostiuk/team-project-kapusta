@@ -1,30 +1,209 @@
-/* .tableThamb {
-  height: 130px;
-  width: 280px;
-  
-  background-color: transparent;
-  border: none;
+@media screen and (min-width: 768px) {
+  .tableBodyThamb {
+    width: 624px;
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #f5f6fb;
+    border-left: 2px solid #f5f6fb;
+  }
+
+  .tableBodyThambFlex {
+    display: flex;
+  }
+
+  .tableBodyThamb::-webkit-scrollbar {
+    width: 8px;
+    background-color: #f5f6fb;
+  }
+
+  .tableBodyThamb::-webkit-scrollbar-thumb {
+    height: 130px;
+    border-radius: 2px;
+    background-color: #ff751d;
+  }
+
+  .header {
+    display: flex;
+  }
+
+  .dateHeader,
+  .descriptionHeader,
+  .categoriesHeader,
+  .sumHeader,
+  .deleteHeader {
+    display: flex;
+    align-items: center;
+    background-color: #f5f6fb;
+    height: 40px;
+    border-bottom: 2px solid #fff;
+
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .dateItem,
+  .descriptionItem,
+  .categoriesItem,
+  .sumItemExpense,
+  .sumItemIncome,
+  .deleteItem {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background-color: #fff;
+    border-bottom: 2px solid #f5f6fb;
+
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+  }
+
+  .categoriesHeader,
+  .categoriesItem,
+  .deleteItem {
+    justify-content: center;
+  }
+
+  .sumHeader,
+  .sumItemExpense,
+  .sumItemIncome {
+    justify-content: end;
+  }
+
+  .sumHeader {
+    padding-right: 4px;
+  }
+
+  .sumItemExpense {
+    font-weight: 700;
+    color: #e7192e;
+  }
+
+  .sumItemIncome {
+    font-weight: 700;
+    color: #407946;
+  }
+
+  .dateItem {
+    padding-left: 20px;
+  }
+
+  .date,
+  .dateHeader {
+    width: 130px;
+  }
+
+  .dateHeader {
+    padding-left: 20px;
+    border-radius: 16px 0 0 0;
+  }
+
+  .description,
+  .descriptionHeader {
+    width: 175px;
+  }
+
+  .categories,
+  .categoriesHeader {
+    width: 120px;
+    text-align: center;
+  }
+
+  .sum,
+  .sumHeader {
+    width: 104px;
+    text-align: right;
+  }
+
+  .delete,
+  .deleteHeader {
+    width: 95px;
+    text-align: center;
+  }
+
+  .deleteHeader {
+    border-radius: 0 16px 0 0;
+  }
+
+  .deleteBtn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: transparent;
+    margin: 0 auto;
+  }
+
+  .deleteBtn:hover,
+  .deleteBtn:focus {
+    background-color: #f5f6fb;
+    border-radius: 50%;
+  }
+
+  .errorMsg {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+    width: 624px;
+    height: 200px;
+    color: rgba(82, 85, 95, 0.3);
+    font-size: 18px;
+    font-weight: 500;
+  }
 }
 
-.tableBody {
-  height: 90px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-} */
+@media screen and (min-width: 1280px) {
+  .tableBodyThamb {
+    width: 746px;
+  }
 
-.table {
+  .dateHeader {
+    padding-left: 28px;
+  }
+
+  .description,
+  .descriptionHeader {
+    width: 223px;
+  }
+
+  .descriptionHeader {
+    padding-left: 5px;
+  }
+
+  .sum,
+  .sumHeader {
+    width: 154px;
+  }
+
+  .sumHeader {
+    padding-right: 0;
+    padding-right: 30px;
+  }
+
+  .delete,
+  .deleteHeader {
+    width: 119px;
+  }
+
+  .errorMsg {
+    width: 746px;
+  }
+}
+
+/* .table {
   height: 382px;
   width: 624px;
   background-color: #f5f6fb;
   border-radius: 16px 16px 0 0;
 }
-/* 
-.tableThamb {
-  height: 382px;
-  width: 624px;
-  background-color: #f5f6fb;
-  border-radius: 16px 16px 0 0;
-} */
 
 .tableBody {
   display: block;
@@ -203,4 +382,4 @@
   color: rgba(82, 85, 95, 0.3);
   font-size: 18px;
   font-weight: 500;
-}
+} */
