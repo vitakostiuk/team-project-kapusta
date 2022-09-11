@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Notifications, { notify } from 'react-notify-toast';
+import EllipsisText from 'react-ellipsis-text';
 import PopUp from 'components/common/PopUp';
 import BtnConfirm from '../BtnConfirm';
 import {
@@ -66,7 +67,7 @@ const BalanceComp = () => {
             onChange={handleChange}
             minLength="1"
             pattern="^[0-9]+$"
-            title="Field may contain only numbers from 0 to 9"
+            title={value}
             required
             onFocus={() => {
               if (data === 0) {

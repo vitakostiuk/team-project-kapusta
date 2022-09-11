@@ -42,6 +42,7 @@
   font-size: 14px;
   line-height: 16px;
   color: #000000;
+  box-shadow: 1px 3px 5px rgba(82, 85, 95, 0.15);
 }
 
 .topGoogleRegTextspan {
@@ -118,16 +119,15 @@
   background: #f5f6fb;
   border-radius: 16px;
   color: #52555f;
+  cursor: pointer;
+  box-shadow: 1px 3px 5px rgba(82, 85, 95, 0.15);
 }
 
+.Btn:hover,
 .Btn:focus {
   background: #ff751d;
   color: #ffffff;
-}
-
-.btn:hover {
-  background: #ff751d;
-  color: #ffffff;
+  box-shadow: 1px 3px 5px rgba(255, 107, 8, 0.35);
 }
 
 .textunderLogo {
@@ -155,6 +155,7 @@
   justify-content: center;
   color: #ff751d;
   padding-bottom: 40px;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {

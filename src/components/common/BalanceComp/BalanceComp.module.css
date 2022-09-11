@@ -42,6 +42,7 @@
   border-radius: 22px 0px 0px 22px;
   padding: 12px 0;
   text-align: center;
+  text-indent: 10px;
   outline: none;
 
   font-weight: 700;
@@ -49,6 +50,7 @@
   line-height: 1.17;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  text-overflow: ellipsis;
   color: #000000;
 }
 
