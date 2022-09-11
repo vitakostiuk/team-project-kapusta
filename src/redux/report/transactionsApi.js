@@ -41,11 +41,8 @@ export const transactionsApi = baseApi.injectEndpoints({
         if (!result.error) {
           return {
             data: result.data ?? null,
-            meta: result.meta,
           };
         }
-
-        // return { data: result.data};
       },
       providesTags: ['transactions'],
     }),

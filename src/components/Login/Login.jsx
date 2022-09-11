@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import kapustaSvg from '../../images/loginPageKAPUSTA.svg';
 import GoogleEmbl from '../../images/GoogleEmlem.svg';
 import styles from './Login.module.css';
@@ -41,6 +41,7 @@ export const Login = () => {
   const dispatch = useDispatch();
   const [login] = useLoginMutation();
   const [registration] = useRegisterMutation();
+  const toastId = useRef(null);
 
   const [isShowModal, setIsShowModal] = useState(false);
 
@@ -60,6 +61,18 @@ export const Login = () => {
   }, [dispatch, location.search]);
 
   let submitAction = undefined;
+
+  const notifyWarn = message => {
+    if (!toast.isActive(toastId.current)) {
+      toastId.current = toast.warn(message, { icon: '🙁' });
+    }
+  };
+
+  const notifySuccess = message => {
+    if (!toast.isActive(toastId.current)) {
+      toastId.current = toast.success(message, { icon: '😎' });
+    }
+  };
 
   return (
     <div className={styles.loginDiv}>
@@ -82,14 +95,12 @@ export const Login = () => {
                 password: values.password,
               });
               if (user.data.code === 201) {
-                toast.success(`${user.data.message}`, {
-                  position: toast.POSITION.TOP_RIGHT,
-                });
+                const message = `${user.data.message}`;
+                notifySuccess(message);
               }
             } catch (err) {
-              toast.warn('check the fields!', {
-                position: toast.POSITION.TOP_RIGHT,
-              });
+              const message = 'Check the fields!';
+              notifyWarn(message);
             }
           } else {
             try {
@@ -99,12 +110,9 @@ export const Login = () => {
               });
               dispatch(logIn(user));
             } catch (err) {
-              toast.warn(
-                'check your password or email or register in the application',
-                {
-                  position: toast.POSITION.TOP_RIGHT,
-                },
-              );
+              const message =
+                'Check your password or email or register in the application';
+              notifyWarn(message);
             }
           }
         }}

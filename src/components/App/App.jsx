@@ -106,7 +106,7 @@ function App() {
           </MainPage>
         </>
       )}
-      <ToastContainer position="top-right" autoClose={3000} />
+      <ToastContainer position="top-right" autoClose={3000} limit={1} />
     </>
   );
 }

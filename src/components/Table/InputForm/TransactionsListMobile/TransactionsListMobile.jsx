@@ -83,6 +83,8 @@ const TransactionsListMobile = () => {
   };
 
   const transactionsArr = transactions();
+  const isTransactionError = expense.isError || income.isError;
+  const isTransactionSuccess = expense.isSuccess || income.isSuccess;
 
   useEffect(() => {
     if (!expense?.isSuccess) {
@@ -109,83 +111,80 @@ const TransactionsListMobile = () => {
 
   return (
     <div className={style.thamb}>
-      {expense.status === 'pending' ? (
+      {isTransactionError && (
+        <span className={style.text}>{expense?.error?.message}</span>
+      )}
+
+      {expense.status === 'pending' && (
         <Box sx={{ margin: 0, padding: 0 }}>
           <Skeleton animation="wave" width={280} height={55} />
           <Skeleton animation="wave" width={280} height={55} />
           <Skeleton animation="wave" width={280} height={55} />
         </Box>
-      ) : (
+      )}
+
+      {transactionsArr && isTransactionSuccess && (
         <>
           <ul className={style.expensesIncomeList}>
-            {transactionsArr &&
-              !transactionsArr.isFetching &&
-              transactionsArr?.map(
-                ({
-                  date: { day, month, year },
-                  description,
-                  categories,
-                  _id,
-                }) => (
-                  <li className={style.item} key={_id}>
-                    <span className={style.itemName}>
-                      <EllipsisText
-                        text={`${description}`}
-                        length={Number(15)}
-                      />
-                    </span>
-                    <br />
-                    <span
-                      className={style.itemDate}
-                    >{`${day}.${month}.${year}`}</span>
-                    <span className={style.itemCategory}>{categories}</span>
-                    <hr className={style.line} />
-                  </li>
-                ),
-              )}
+            {transactionsArr?.map(
+              ({
+                date: { day, month, year },
+                description,
+                categories,
+                _id,
+              }) => (
+                <li className={style.item} key={_id}>
+                  <span className={style.itemName}>
+                    <EllipsisText text={`${description}`} length={Number(15)} />
+                  </span>
+                  <br />
+                  <span
+                    className={style.itemDate}
+                  >{`${day}.${month}.${year}`}</span>
+                  <span className={style.itemCategory}>{categories}</span>
+                  <hr className={style.line} />
+                </li>
+              ),
+            )}
           </ul>
 
           <ul className={style.expensesIncomeSum}>
-            {transactionsArr &&
-              !transactionsArr.isFetching &&
-              transactionsArr?.map(({ value, _id, income }) =>
-                !income ? (
-                  <li className={style.itemSum} key={_id}>
-                    <span className={style.sumExpense}>{`-${getNormalizedSum(
-                      value,
-                    )}`}</span>
-                  </li>
-                ) : (
-                  <li className={style.itemSum} key={_id}>
-                    <span className={style.sumIncome}>
-                      {getNormalizedSum(value)}
-                    </span>
-                  </li>
-                ),
-              )}
+            {transactionsArr?.map(({ value, _id, income }) =>
+              !income ? (
+                <li className={style.itemSum} key={_id}>
+                  <span className={style.sumExpense}>{`-${getNormalizedSum(
+                    value,
+                  )}`}</span>
+                </li>
+              ) : (
+                <li className={style.itemSum} key={_id}>
+                  <span className={style.sumIncome}>
+                    {getNormalizedSum(value)}
+                  </span>
+                </li>
+              ),
+            )}
           </ul>
 
           <ul className={style.expensesIncomeDel}>
-            {transactionsArr &&
-              !transactionsArr.isFetching &&
-              transactionsArr?.map(({ _id }) => (
-                <li className={style.itemDel} key={_id}>
-                  <button
-                    type="button"
-                    className={style.deleteBtn}
+            {transactionsArr?.map(({ _id }) => (
+              <li className={style.itemDel} key={_id}>
+                <button
+                  type="button"
+                  className={style.deleteBtn}
+                  onClick={handleClick}
+                >
+                  <DeletePic />
+                </button>
+                {isShowModal && (
+                  <ModalDelete
                     onClick={handleClick}
-                  >
-                    <DeletePic />
-                  </button>
-                  {isShowModal && (
-                    <ModalDelete
-                      onClick={handleClick}
-                      text="Are you sure?"
-                      id={_id}
-                    />
-                  )}
-                </li>
-              ))}
+                    text="Are you sure?"
+                    id={_id}
+                  />
+                )}
+              </li>
+            ))}
           </ul>
         </>
       )}

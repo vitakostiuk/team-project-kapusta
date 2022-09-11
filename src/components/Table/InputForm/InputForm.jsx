@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { ReactComponent as CalendarPic } from '../../../images/calendar.svg';
 import { ReactComponent as CalcPic } from '../../../images/calculator.svg';
 import { ReactComponent as BackPic } from '../../../images/arrow-left.svg';
@@ -20,6 +21,7 @@ const InputForm = () => {
   const [isDisabledBtn, setIsDisabledBtn] = useState(true);
   const [addExpense] = useSetTransactionExpenseMutation();
   const [addIncome] = useSetTransactionIncomeMutation();
+  const toastId = useRef(null);
 
   useEffect(() => {
     if (!description || !sum || !category) {
@@ -53,10 +55,17 @@ const InputForm = () => {
     }
   };
 
-  // const getNotification = () => {
-  //   let myColor = { background: 'green', text: '#FFFFFF' };
-  //   notify.show('The Transaction added successfully', 'custom', 5000, myColor);
-  // };
+  const notifyError = message => {
+    if (!toast.isActive(toastId.current)) {
+      toastId.current = toast.error(message, { icon: '😤' });
+    }
+  };
+
+  const notifySuccess = message => {
+    if (!toast.isActive(toastId.current)) {
+      toastId.current = toast.success(message, { icon: '😎' });
+    }
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -79,15 +88,26 @@ const InputForm = () => {
     };
 
     if (type === '/expenses') {
-      return addExpense(requestBody);
+      return addExpense(requestBody)
+        .unwrap()
+        .then(payload => {
+          if (payload?.code === 409) return notifyError(payload?.message);
+
+          return payload;
+        })
+        .catch(error => console.log('rejected', error));
     }
     if (type === '/income') {
       return addIncome(requestBody);
     }
     if (type === '/expenses/input') {
+      const message = 'The Transaction added successfully';
+      notifySuccess(message);
       return addExpense(requestBody);
     }
     if (type === '/income/input') {
+      const message = 'The Transaction added successfully';
+      notifySuccess(message);
       return addIncome(requestBody);
     }
   };
