@@ -58,7 +58,6 @@ const Statistic = ({ list }) => {
     const axis = y / maxValue;
     const delta = maxValue - payload.value;
     const position = y + delta * axis * 7;
-    const data = payload.value + ' uah.';
     return (
       <Text
         type={type}
@@ -162,14 +161,13 @@ const Statistic = ({ list }) => {
                   const activeLabel = props.value === active;
                   props = {
                     ...props,
-                    display: activeLabel ? 'block' : 'none',
                     y: '5%',
                     x: '50%',
                   };
 
-                  activeLabel && console.log(props);
+                  const data = props.value + ' uah.';
 
-                  return <text {...props}>{props.value} uah.</text>;
+                  if (activeLabel) return <text {...props}>{data}</text>;
                 }}
               />
             </BarChart>
