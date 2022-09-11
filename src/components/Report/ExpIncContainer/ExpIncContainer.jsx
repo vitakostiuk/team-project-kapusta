@@ -8,14 +8,33 @@ import { setExpenses, setIncome } from 'redux/report/expensesSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const ExpIncContainer = () => {
-  const [incExp, setIncExp] = useState('EXPENSES');
+  const [incExp, setIncExp] = useState('');
   const [data, setData] = useState([]);
   const [subs, setSubs] = useState([]);
   const dispatch = useDispatch();
   const period = useSelector(state => state.dateReport);
-  const { data: expensesByData } = useFullTransactionsQuery(period);
+  const { data: expensesByData } = useFullTransactionsQuery(period, {
+    refetchOnMountOrArgChange: true,
+  });
 
-  const incExpChange = () => {
+  const income = useSelector(state => state.expenses.income);
+  const expenses = useSelector(state => state.expenses.expenses);
+
+  useEffect(() => {
+    const incExpChange = () => {
+      if (expenses) {
+        return setIncExp('EXPENSES');
+      } else if (income) {
+        return setIncExp('INCOME');
+      } else {
+        return setIncExp('');
+      }
+    };
+
+    incExpChange(expenses, income);
+  }, [expenses, income]);
+
+  const onClickChange = () => {
     switch (incExp) {
       case 'EXPENSES':
         setIncExp('INCOME');
@@ -52,7 +71,14 @@ const ExpIncContainer = () => {
     <>
       {data && (
         <div className={s.container}>
-          <IncomeExpensesChange onChange={incExpChange} incExp={incExp} />
+          {incExp && (
+            <IncomeExpensesChange
+              incExp={incExp}
+              onChange={onClickChange}
+              income={income}
+              expenses={expenses}
+            />
+          )}
           {expensesByData && <Expenses data={data} onChange={handleChange} />}
         </div>
       )}

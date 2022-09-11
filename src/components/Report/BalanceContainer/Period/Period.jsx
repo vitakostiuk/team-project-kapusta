@@ -12,7 +12,10 @@ const Period = () => {
   const [isDisabledBtnRight, setIsDisabledBtnRight] = useState(false);
 
   const period = useSelector(state => state.dateReport);
-  const { data } = useFetchCurrentUserQuery();
+  const { data } = useFetchCurrentUserQuery(
+    {},
+    { refetchOnMountOrArgChange: true },
+  );
   const dispatch = useDispatch();
 
   const months = [
