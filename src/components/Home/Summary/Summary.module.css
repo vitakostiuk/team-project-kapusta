@@ -64,3 +64,13 @@
 .sum {
   composes: month;
 }
+
+.text {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding-top: 20px;
+  color: rgba(82, 85, 95, 0.3);
+  font-size: 18px;
+  font-weight: 500;
+}

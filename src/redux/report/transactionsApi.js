@@ -48,7 +48,22 @@ export const transactionsApi = baseApi.injectEndpoints({
       providesTags: ['transactions'],
     }),
     getSummaryTransactions: builder.query({
-      query: type => `/api/transactions/reports/${type}`,
+      async queryFn(type, _api, _extraOptions, baseQuery) {
+        const result = await baseQuery({
+          url: `/api/transactions/reports/${type}`,
+          method: 'GET',
+        });
+
+        if (result.data?.code === 404) {
+          return { error: result.data };
+        }
+
+        if (!result.error) {
+          return {
+            data: result.data ?? null,
+          };
+        }
+      },
       providesTags: ['transactions'],
     }),
     setTransactionExpense: builder.mutation({

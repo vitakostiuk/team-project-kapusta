@@ -83,7 +83,7 @@ const TransactionsListMobile = () => {
   };
 
   const transactionsArr = transactions();
-  const isTransactionError = expense.isError || income.isError;
+  const isTransactionError = expense.isError && income.isError;
   const isTransactionSuccess = expense.isSuccess || income.isSuccess;
 
   useEffect(() => {
