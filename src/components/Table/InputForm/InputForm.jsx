@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Notifications, { notify } from 'react-notify-toast';
+import { toast } from 'react-toastify';
 import { ReactComponent as CalendarPic } from '../../../images/calendar.svg';
 import { ReactComponent as CalcPic } from '../../../images/calculator.svg';
 import { ReactComponent as BackPic } from '../../../images/arrow-left.svg';
@@ -22,6 +22,7 @@ const InputForm = () => {
   const [isDisabledBtn, setIsDisabledBtn] = useState(true);
   const [addExpense] = useSetTransactionExpenseMutation();
   const [addIncome] = useSetTransactionIncomeMutation();
+  const toastId = useRef(null);
 
   const balance = useSelector(state => state.balanceNum);
 
@@ -57,32 +58,22 @@ const InputForm = () => {
     }
   };
 
-  const getNotification = () => {
-    let myColor = { background: 'green', text: '#FFFFFF' };
-    notify.show('The Transaction added successfully', 'custom', 5000, myColor);
+  const notifyError = message => {
+    if (!toast.isActive(toastId.current)) {
+      toastId.current = toast.error(message, { icon: '😤' });
+    }
+  };
+
+  const notifySuccess = message => {
+    if (!toast.isActive(toastId.current)) {
+      toastId.current = toast.success(message, { icon: '😎' });
+    }
   };
 
   const handleSubmit = e => {
     e.preventDefault();
 
     reset();
-
-    if (sum.length > 10) {
-      let myColor = { background: 'red', text: '#FFFFFF' };
-      notify.show(
-        'Value length should not exceed 9 numbers',
-        'custom',
-        5000,
-        myColor,
-      );
-      return;
-    }
-
-    // if (type === '/expenses' && balance - Number(sum) < 0) {
-    //   let myColor = { background: 'red', text: '#FFFFFF' };
-    //   notify.show('Value must be positive', 'custom', 5000, myColor);
-    //   return;
-    // }
 
     const year = String(startDate.getFullYear());
     const month = String(startDate.getMonth() + 1).padStart(2, '0');
@@ -100,17 +91,26 @@ const InputForm = () => {
     };
 
     if (type === '/expenses') {
-      return addExpense(requestBody);
+      return addExpense(requestBody)
+        .unwrap()
+        .then(payload => {
+          if (payload?.code === 409) return notifyError(payload?.message);
+
+          return payload;
+        })
+        .catch(error => console.log('rejected', error));
     }
     if (type === '/income') {
       return addIncome(requestBody);
     }
     if (type === '/expenses/input') {
-      getNotification();
+      const message = 'The Transaction added successfully';
+      notifySuccess(message);
       return addExpense(requestBody);
     }
     if (type === '/income/input') {
-      getNotification();
+      const message = 'The Transaction added successfully';
+      notifySuccess(message);
       return addIncome(requestBody);
     }
   };
@@ -198,7 +198,6 @@ const InputForm = () => {
           </button>
         </div>
       </form>
-      <Notifications />
     </>
   );
 };
