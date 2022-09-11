@@ -1,24 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import InputForm from 'components/Table/InputForm/InputForm';
 import style from './ExpensesInputPage.module.css';
 
 const ExpensesInputPage = () => {
-  const [tableDate, setTableDate] = useState('');
-  const [tableDescription, setTableDescription] = useState('');
-  const [tableSum, setTableSum] = useState('');
-  const [tableCategory, setTableCategory] = useState('');
+  const date = useSelector(state => state.date);
+  console.log('date in ExpensesInputPage', date);
+  const [mobileDate, setMobileDate] = useState(null);
+  console.log('mobileDate', mobileDate);
 
-  const onFillTable = (date, description, sum, category) => {
-    setTableDate(date);
-    setTableDescription(description);
-    setTableSum(sum);
-    setTableCategory(category);
-  };
+  useEffect(() => {
+    setMobileDate(date);
+  }, []);
 
   return (
     <>
       <div className={style.mobile}>
-        <InputForm onFillTable={onFillTable} />
+        <InputForm mobileDate={mobileDate} />
       </div>
     </>
   );

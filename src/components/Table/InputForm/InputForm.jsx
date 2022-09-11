@@ -12,7 +12,7 @@ import {
 } from 'redux/report/transactionsApi';
 import style from './InputForm.module.css';
 
-const InputForm = () => {
+const InputForm = ({ mobileDate }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [description, setDescription] = useState('');
   const [sum, setSum] = useState('');
@@ -76,11 +76,24 @@ const InputForm = () => {
     const month = String(startDate.getMonth() + 1).padStart(2, '0');
     const day = String(startDate.getDate()).padStart(2, '0');
 
+    // request body for desktop
     const requestBody = {
       date: {
         day,
         month,
         year,
+      },
+      description,
+      categories: idOfCategory,
+      value: sum,
+    };
+
+    // request body for mobile
+    const requestBodyMob = {
+      date: {
+        day: mobileDate.day,
+        month: mobileDate.month,
+        year: mobileDate.year,
       },
       description,
       categories: idOfCategory,
@@ -103,12 +116,12 @@ const InputForm = () => {
     if (type === '/expenses/input') {
       const message = 'The Transaction added successfully';
       notifySuccess(message);
-      return addExpense(requestBody);
+      return addExpense(requestBodyMob);
     }
     if (type === '/income/input') {
       const message = 'The Transaction added successfully';
       notifySuccess(message);
-      return addIncome(requestBody);
+      return addIncome(requestBodyMob);
     }
   };
 
@@ -134,9 +147,9 @@ const InputForm = () => {
               to="/"
               className={style.backBtn}
               type="button"
-              onClick={e => {
-                window.location.reload();
-              }}
+              // onClick={e => {
+              //   window.location.reload();
+              // }}
             >
               <BackPic />
             </Link>
