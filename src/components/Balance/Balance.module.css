@@ -43,3 +43,8 @@
   background-color: transparent;
   border: none;
 }
+
+.reportLink:hover,
+.reportLink:focus {
+  color: var(--accent-color);
+}

@@ -41,11 +41,8 @@ export const transactionsApi = baseApi.injectEndpoints({
         if (!result.error) {
           return {
             data: result.data ?? null,
-            meta: result.meta,
           };
         }
-
-        // return { data: result.data};
       },
       providesTags: ['transactions'],
     }),
@@ -59,11 +56,6 @@ export const transactionsApi = baseApi.injectEndpoints({
         method: 'POST',
         body: newTransaction,
       }),
-      // transformResponse: (response) => {
-      //   if (response?.status === "success") return response;
-
-      //   if (response?.status === "error") return {error: response};
-      // },
       invalidatesTags: ['transactions'],
     }),
     setTransactionIncome: builder.mutation({

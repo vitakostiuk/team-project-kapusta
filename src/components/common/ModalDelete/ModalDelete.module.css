@@ -4,7 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(29, 29, 29, 0.6);
+  background-color: rgba(29, 29, 29, 0.1);
   z-index: 20;
 }
 
@@ -73,6 +73,7 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--text-color-gray);
+  box-shadow: 1px 3px 5px rgba(82, 85, 95, 0.15);
 }
 
 .btn:hover,
@@ -80,4 +81,5 @@
   border: none;
   background-color: var(--accent-color);
   color: #fff;
+  box-shadow: 1px 3px 5px rgba(255, 107, 8, 0.35);
 }

@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { ReactComponent as CalendarPic } from '../../../images/calendar.svg';
 import { ReactComponent as CalcPic } from '../../../images/calculator.svg';
@@ -23,8 +22,6 @@ const InputForm = () => {
   const [addExpense] = useSetTransactionExpenseMutation();
   const [addIncome] = useSetTransactionIncomeMutation();
   const toastId = useRef(null);
-
-  const balance = useSelector(state => state.balanceNum);
 
   useEffect(() => {
     if (!description || !sum || !category) {
@@ -175,6 +172,7 @@ const InputForm = () => {
               placeholder="00.00 UAH"
               className={style.sumInputArea}
               value={sum}
+              pattern="^[0-9]+$"
               onChange={handleChange}
             />
             <div className={style.hidenBox}></div>
