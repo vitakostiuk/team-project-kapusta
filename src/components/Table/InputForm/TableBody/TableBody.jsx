@@ -37,8 +37,6 @@ const TableBody = () => {
   const screenWidth = document.documentElement.clientWidth;
   dispatch(setScreenWidth(screenWidth));
 
-  // console.log(expense.error.data.message);
-
   useEffect(() => {
     if (!expense?.isSuccess && type === '/expenses') {
       dispatch(getTransExpenses(null));
