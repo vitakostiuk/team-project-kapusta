@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Notifications, { notify } from 'react-notify-toast';
-import EllipsisText from 'react-ellipsis-text';
+import Notifications from 'react-notify-toast';
 import PopUp from 'components/common/PopUp';
 import BtnConfirm from '../BtnConfirm';
 import {
   useGetBalanceQuery,
   useChangeBalanceMutation,
 } from 'redux/user/userApi';
-import { setBalance } from 'redux/balance/balanceSlice';
-import { setbalanceNum } from 'redux/balance/balanceNum';
+import { setBalance } from 'redux/Balance/balanceSlice';
+import { setbalanceNum } from 'redux/Balance/balanceNum';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
 import s from './BalanceComp.module.css';
 
