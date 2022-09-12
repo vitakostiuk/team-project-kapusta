@@ -5,7 +5,7 @@ import style from './IncomeInputPage.module.css';
 
 const IncomeInputPage = () => {
   const date = useSelector(state => state.date);
-  console.log('date in ExpensesInputPage', date);
+  // console.log('date in ExpensesInputPage', date);
   const [mobileDate, setMobileDate] = useState(null);
   // console.log('mobileDate', mobileDate);
 

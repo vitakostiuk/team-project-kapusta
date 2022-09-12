@@ -20,6 +20,7 @@ import ModalDelete from 'components/common/ModalDelete';
 
 const TableBody = () => {
   const [isShowModal, setIsShowModal] = useState(false);
+  const [idForDelete, setIdForDelete] = useState('');
   const type = useLocation().pathname;
 
   const date = useSelector(state => state.date);
@@ -68,18 +69,21 @@ const TableBody = () => {
   };
 
   return (
-    <div className={style.tableThamb}>
-      <ul className={style.header}>
-        <li className={style.dateHeader}>Date</li>
-        <li className={style.descriptionHeader}>Description</li>
-        <li className={style.categoriesHeader}>categories</li>
-        <li className={style.sumHeader}>Sum</li>
-        <li className={style.deleteHeader}> </li>
-      </ul>
-
-      <div className={style.tableBodyThamb}>
-        {expense.status === 'pending' ? (
-          <Box sx={{ margin: 0, padding: 0 }}>
+    <>
+      {expense.isLoading && (
+        <div className={style.tableThamb}>
+          <table className={style.tableSceleton}>
+            <thead>
+              <tr className={style.tableHeader}>
+                <th className={style.tableHeaderCell}>Date</th>
+                <th className={style.tableHeaderCell}>Description</th>
+                <th className={style.tableHeaderCell}>category</th>
+                <th className={style.tableHeaderCell}>Sum</th>
+                <th className={style.tableHeaderCell}></th>
+              </tr>
+            </thead>
+          </table>
+          <Box>
             <Skeleton animation="wave" width="100%" height={55} />
             <Skeleton animation="wave" width="100%" height={55} />
             <Skeleton animation="wave" width="100%" height={55} />
@@ -87,349 +91,177 @@ const TableBody = () => {
             <Skeleton animation="wave" width="100%" height={55} />
             <Skeleton animation="wave" width="100%" height={55} />
           </Box>
-        ) : (
-          <div className={style.tableBodyThambFlex}>
-            <ul className={style.date}>
-              {transExspenses?.length
-                ? type === '/expenses' &&
-                  !expense.isFetching &&
-                  transExspenses?.map(({ date: { day, month, year }, _id }) => (
-                    <li className={style.dateItem} key={_id}>
-                      {`${day}.${month}.${year}`}
-                    </li>
-                  ))
-                : type === '/expenses' &&
-                  expense.isError && (
-                    <li className={style.errorMsg}>
-                      {expense?.error?.message}
-                    </li>
-                  )}
-            </ul>
+        </div>
+      )}
 
-            <ul className={style.description}>
-              {type === '/expenses' &&
-                !expense.isFetching &&
-                transExspenses?.map(({ description, _id }) => (
-                  <li className={style.descriptionItem} key={_id} id={_id}>
-                    <EllipsisText text={`${description}`} length={Number(29)} />
-                  </li>
-                ))}
-            </ul>
-
-            <ul className={style.categories}>
-              {type === '/expenses' &&
-                !expense.isFetching &&
-                transExspenses?.map(({ categories, _id }) => (
-                  <li className={style.categoriesItem} key={_id}>
-                    {categories}
-                  </li>
-                ))}
-            </ul>
-
-            <ul className={style.sum}>
-              {type === '/expenses' &&
-                !expense.isFetching &&
-                transExspenses?.map(({ value, _id }) => (
-                  <li className={style.sumItemExpense} key={_id}>
-                    {`-${getNormalizedSum(value)}`}
-                  </li>
-                ))}
-            </ul>
-
-            <ul className={style.delete}>
-              {type === '/expenses' &&
-                !expense.isFetching &&
-                transExspenses?.map(({ _id }) => (
-                  <li className={style.deleteItem} key={_id} id={_id}>
-                    <button
-                      type="button"
-                      onClick={handleClick}
-                      className={style.deleteBtn}
-                    >
-                      <DeletePic />
-                    </button>
-                    {isShowModal && (
-                      <ModalDelete
-                        onClick={handleClick}
-                        text="Are you sure?"
-                        id={_id}
+      {transExspenses?.length && type === '/expenses' && expense.isSuccess && (
+        <div className={style.tableThamb}>
+          <table className={style.table}>
+            <thead>
+              <tr className={style.tableHeader}>
+                <th className={style.tableHeaderCell}>Date</th>
+                <th className={style.tableHeaderCell}>Description</th>
+                <th className={style.tableHeaderCell}>category</th>
+                <th className={style.tableHeaderCell}>Sum</th>
+                <th className={style.tableHeaderCell}></th>
+              </tr>
+            </thead>
+            <tbody className={style.tableBody}>
+              {transExspenses?.map(
+                ({
+                  date: { day, month, year },
+                  description,
+                  categories,
+                  value,
+                  _id,
+                }) => (
+                  <tr key={_id} className={style.tableRow}>
+                    <td
+                      className={style.tableCell}
+                    >{`${day}.${month}.${year}`}</td>
+                    <td className={style.tableCell}>
+                      <EllipsisText
+                        text={`${description}`}
+                        length={Number(29)}
                       />
-                    )}
-                  </li>
-                ))}
-            </ul>
-          </div>
-        )}
+                    </td>
+                    <td className={style.tableCell}>{categories}</td>
+                    <td
+                      className={style.tableCellSumExpense}
+                    >{`-${getNormalizedSum(value)}`}</td>
+                    <td className={style.tableCell}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          handleClick();
+                          setIdForDelete(_id);
+                          console.log('id in button', _id);
+                        }}
+                        className={style.deleteBtn}
+                      >
+                        <DeletePic />
+                      </button>
+                      {isShowModal && (
+                        <ModalDelete
+                          onClick={handleClick}
+                          text="Are you sure?"
+                          id={idForDelete}
+                        />
+                      )}
+                    </td>
+                  </tr>
+                ),
+              )}
+            </tbody>
+          </table>
+        </div>
+      )}
 
-        {income.status === 'pending' ? (
-          <Box sx={{ margin: 0, padding: 0 }}>
-            <Skeleton animation="wave" width="100%" height={55} />
-            <Skeleton animation="wave" width="100%" height={55} />
-            <Skeleton animation="wave" width="100%" height={55} />
-            <Skeleton animation="wave" width="100%" height={55} />
-            <Skeleton animation="wave" width="100%" height={55} />
-            <Skeleton animation="wave" width="100%" height={55} />
-          </Box>
-        ) : (
-          <div className={style.tableBodyThambFlex}>
-            <ul className={style.date}>
-              {transIncome?.length
-                ? type === '/income' &&
-                  !income.isFetching &&
-                  transIncome?.map(({ date: { day, month, year }, _id }) => (
-                    <li className={style.dateItem} key={_id}>
-                      {`${day}.${month}.${year}`}
-                    </li>
-                  ))
-                : type === '/income' &&
-                  income.isError && (
-                    <li className={style.errorMsg}>{income?.error?.message}</li>
-                  )}
-            </ul>
+      {type === '/expenses' && expense.isError && (
+        <div className={style.tableThamb}>
+          <table className={style.table}>
+            <thead>
+              <tr className={style.tableHeader}>
+                <th className={style.tableHeaderCell}>Date</th>
+                <th className={style.tableHeaderCell}>Description</th>
+                <th className={style.tableHeaderCell}>category</th>
+                <th className={style.tableHeaderCell}>Sum</th>
+                <th className={style.tableHeaderCell}></th>
+              </tr>
+            </thead>
+            <tbody className={style.tableBody}>
+              <tr className={style.text}>
+                <td>{expense?.error?.message}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
 
-            <ul className={style.description}>
-              {type === '/income' &&
-                !income.isFetching &&
-                transIncome?.map(({ description, _id }) => (
-                  <li className={style.descriptionItem} key={_id}>
-                    <EllipsisText text={`${description}`} length={Number(29)} />
-                  </li>
-                ))}
-            </ul>
-
-            <ul className={style.categories}>
-              {type === '/income' &&
-                !income.isFetching &&
-                transIncome?.map(({ categories, _id }) => (
-                  <li className={style.categoriesItem} key={_id}>
-                    {categories}
-                  </li>
-                ))}
-            </ul>
-
-            <ul className={style.sum}>
-              {type === '/income' &&
-                !income.isFetching &&
-                transIncome?.map(({ value, _id }) => (
-                  <li className={style.sumItemIncome} key={_id}>
-                    {`-${getNormalizedSum(value)}`}
-                  </li>
-                ))}
-            </ul>
-
-            <ul className={style.delete}>
-              {type === '/income' &&
-                !income.isFetching &&
-                transIncome?.map(({ _id }) => (
-                  <li className={style.deleteItem} key={_id}>
-                    <button
-                      type="button"
-                      onClick={handleClick}
-                      className={style.deleteBtn}
-                    >
-                      <DeletePic />
-                    </button>
-                    {isShowModal && (
-                      <ModalDelete
-                        onClick={handleClick}
-                        text="Are you sure?"
-                        id={_id}
+      {transIncome?.length && type === '/income' && income.isSuccess && (
+        <div className={style.tableThamb}>
+          <table className={style.table}>
+            <thead>
+              <tr className={style.tableHeader}>
+                <th className={style.tableHeaderCell}>Date</th>
+                <th className={style.tableHeaderCell}>Description</th>
+                <th className={style.tableHeaderCell}>category</th>
+                <th className={style.tableHeaderCell}>Sum</th>
+                <th className={style.tableHeaderCell}></th>
+              </tr>
+            </thead>
+            <tbody className={style.tableBody}>
+              {transIncome?.map(
+                ({
+                  date: { day, month, year },
+                  description,
+                  categories,
+                  value,
+                  _id,
+                }) => (
+                  <tr key={_id} className={style.tableRow}>
+                    <td
+                      className={style.tableCell}
+                    >{`${day}.${month}.${year}`}</td>
+                    <td className={style.tableCell}>
+                      <EllipsisText
+                        text={`${description}`}
+                        length={Number(29)}
                       />
-                    )}
-                  </li>
-                ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    </div>
+                    </td>
+                    <td className={style.tableCell}>{categories}</td>
+                    <td
+                      className={style.tableCellSumExpense}
+                    >{`-${getNormalizedSum(value)}`}</td>
+                    <td className={style.tableCell}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          handleClick();
+                          setIdForDelete(_id);
+                          console.log('id in button', _id);
+                        }}
+                        className={style.deleteBtn}
+                      >
+                        <DeletePic />
+                      </button>
+                      {isShowModal && (
+                        <ModalDelete
+                          onClick={handleClick}
+                          text="Are you sure?"
+                          id={idForDelete}
+                        />
+                      )}
+                    </td>
+                  </tr>
+                ),
+              )}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {type === '/income' && income.isError && (
+        <div className={style.tableThamb}>
+          <table className={style.table}>
+            <thead>
+              <tr className={style.tableHeader}>
+                <th className={style.tableHeaderCell}>Date</th>
+                <th className={style.tableHeaderCell}>Description</th>
+                <th className={style.tableHeaderCell}>category</th>
+                <th className={style.tableHeaderCell}>Sum</th>
+                <th className={style.tableHeaderCell}></th>
+              </tr>
+            </thead>
+            <tbody className={style.tableBody}>
+              <tr className={style.text}>
+                <td>{income?.error?.message}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
+    </>
   );
 };
-
 export default TableBody;
-
-// return (
-//     <div className={style.tableThamb}>
-//       <table className={style.table}>
-//         <thead>
-//           <tr className={style.tableHeader}>
-//             <th className={style.tableHeaderCell}>Date</th>
-//             <th className={style.tableHeaderCell}>Description</th>
-//             <th className={style.tableHeaderCell}>category</th>
-//             <th className={style.tableHeaderCell}>Sum</th>
-//             <th className={style.tableHeaderCell}></th>
-//           </tr>
-//         </thead>
-//         <tbody className={style.tableBody}>
-//           {expense.status === 'pending' ? (
-//             <Box sx={{ margin: 0, padding: 0 }}>
-//               <Skeleton animation="wave" width="100%" height={55} />
-//               <Skeleton animation="wave" width="100%" height={55} />
-//               <Skeleton animation="wave" width="100%" height={55} />
-//               <Skeleton animation="wave" width="100%" height={55} />
-//               <Skeleton animation="wave" width="100%" height={55} />
-//               <Skeleton animation="wave" width="100%" height={55} />
-//             </Box>
-//           ) : transExspenses?.length ? (
-//             type === '/expenses' &&
-//             !expense.isFetching &&
-//             transExspenses?.map(
-//               ({
-//                 date: { day, month, year },
-//                 description,
-//                 categories,
-//                 value,
-//                 _id,
-//               }) => (
-//                 <tr key={_id} className={style.tableRow}>
-//                   <td
-//                     className={style.tableCell}
-//                   >{`${day}.${month}.${year}`}</td>
-//                   <td className={style.tableCell}>
-//                     <EllipsisText text={`${description}`} length={Number(29)} />
-//                   </td>
-//                   <td className={style.tableCell}>{categories}</td>
-//                   <td
-//                     className={style.tableCellSumExpense}
-//                   >{`-${getNormalizedSum(value)}`}</td>
-//                   <td className={style.tableCell}>
-//                     <button
-//                       type="button"
-//                       onClick={handleClick}
-//                       className={style.deleteBtn}
-//                     >
-//                       <DeletePic />
-//                     </button>
-//                     {isShowModal && (
-//                       <ModalDelete
-//                         onClick={handleClick}
-//                         text="Are you sure?"
-//                         id={_id}
-//                       />
-//                     )}
-//                   </td>
-//                 </tr>
-//               ),
-//             )
-//           ) : (
-//             type === '/expenses' &&
-//             expense.isError && (
-//               <tr className={style.text}>
-//                 <td>{expense?.error?.message}</td>
-//               </tr>
-//             )
-//           )}
-
-//           {transIncome?.length
-//             ? type === '/income' &&
-//               !income.isFetching &&
-//               transIncome?.map(
-//                 ({
-//                   date: { day, month, year },
-//                   description,
-//                   categories,
-//                   value,
-//                   _id,
-//                 }) => (
-//                   <tr key={_id} className={style.tableRow}>
-//                     <td
-//                       className={style.tableCell}
-//                     >{`${day}.${month}.${year}`}</td>
-//                     <td className={style.tableCell}>
-//                       <EllipsisText
-//                         text={`${description}`}
-//                         length={Number(29)}
-//                       />
-//                     </td>
-//                     <td className={style.tableCell}>{categories}</td>
-//                     <td className={style.tableCellSumIncome}>
-//                       {getNormalizedSum(value)}
-//                     </td>
-//                     <td className={style.tableCell}>
-//                       <button
-//                         type="button"
-//                         onClick={handleClick}
-//                         className={style.deleteBtn}
-//                       >
-//                         <DeletePic />
-//                       </button>
-//                       {isShowModal && (
-//                         <ModalDelete
-//                           onClick={handleClick}
-//                           text="Are you sure?"
-//                           id={_id}
-//                         />
-//                       )}
-//                     </td>
-//                   </tr>
-//                 ),
-//               )
-//             : type === '/income' &&
-//               income.isError && (
-//                 <tr className={style.text}>
-//                   <td>{income?.error?.message}</td>
-//                 </tr>
-//               )}
-
-//           {/* {expense.status === 'pending' ? (
-//             <Box sx={{ margin: 0, padding: 0 }}>
-//               <Skeleton animation="wave" width="100%" height={60} />
-//               <Skeleton animation="wave" width="100%" height={60} />
-//               <Skeleton animation="wave" width="100%" height={60} />
-//               <Skeleton animation="wave" width="100%" height={60} />
-//               <Skeleton animation="wave" width="100%" height={60} />
-//               <Skeleton animation="wave" width="100%" height={60} />
-//             </Box>
-//           ) : transIncome?.length ? (
-//             type === '/income' &&
-//             !income.isFetching &&
-//             transIncome?.map(
-//               ({
-//                 date: { day, month, year },
-//                 description,
-//                 categories,
-//                 value,
-//                 _id,
-//               }) => (
-//                 <tr key={_id} className={style.tableRow}>
-//                   <td
-//                     className={style.tableCell}
-//                   >{`${day}.${month}.${year}`}</td>
-//                   <td className={style.tableCell}>
-//                     <EllipsisText text={`${description}`} length={Number(29)} />
-//                   </td>
-//                   <td className={style.tableCell}>{categories}</td>
-//                   <td className={style.tableCellSumIncome}>
-//                     {getNormalizedSum(value)}
-//                   </td>
-//                   <td className={style.tableCell}>
-//                     <button
-//                       type="button"
-//                       onClick={handleClick}
-//                       className={style.deleteBtn}
-//                     >
-//                       <DeletePic />
-//                     </button>
-//                     {isShowModal && (
-//                       <ModalDelete
-//                         onClick={handleClick}
-//                         text="Are you sure?"
-//                         id={_id}
-//                       />
-//                     )}
-//                   </td>
-//                 </tr>
-//               ),
-//             )
-//           ) : (
-//             type === '/income' &&
-//             income.isError && (
-//               <tr className={style.text}>
-//                 <td>{expense.error.data.message}</td>
-//               </tr>
-//             )
-//           )} */}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
