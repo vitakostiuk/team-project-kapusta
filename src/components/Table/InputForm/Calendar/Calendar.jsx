@@ -10,6 +10,7 @@ import {
   getTransactionsDaysExpenses,
   getTransactionsDaysIncome,
 } from 'redux/transactions/transactionsDaysSlice';
+import { useFetchCurrentUserQuery } from 'redux/authorization/authApi';
 import 'react-datepicker/dist/react-datepicker.css';
 import style from './Calendar.module.css';
 import './Calendar.css';
@@ -17,15 +18,25 @@ import './Calendar.css';
 const Calendar = ({ onChangeDate, startDate }) => {
   const [transactionsExpenses, setTransactionsExpenses] = useState([]);
   const [transactionsIncome, setTransactionsIncome] = useState([]);
+  const [currentUser, setCurrentUser] = useState('');
   const { data } = useGetTransactionsDatesQuery();
 
   const dispatch = useDispatch();
   const type = useLocation().pathname;
 
+  const {
+    data: { user },
+  } = useFetchCurrentUserQuery();
+  console.log(user);
+
   const expensesDates = useSelector(state => state.transactionsDays.expense);
   const incomeDates = useSelector(state => state.transactionsDays.income);
 
   const userRegisterDate = useSelector(state => state.auth.user.createdAt);
+
+  useEffect(() => {
+    setCurrentUser(user);
+  }, [user]);
 
   useEffect(() => {
     const year = String(startDate.getFullYear());
@@ -87,7 +98,7 @@ const Calendar = ({ onChangeDate, startDate }) => {
             onChange={startDate => onChangeDate(startDate)}
             className={style.calendar}
             dateFormat="dd.MM.yyyy"
-            minDate={new Date(userRegisterDate)}
+            minDate={new Date(currentUser?.createdAt)}
             maxDate={new Date()}
             highlightDates={highlight}
             disabledKeyboardNavigation
