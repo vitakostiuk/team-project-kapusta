@@ -2,17 +2,10 @@ import style from './TransactionsListMobile.module.css';
 import { useState, useEffect } from 'react';
 import { Skeleton } from '@mui/material';
 import Box from '@mui/material/Box';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { ReactComponent as DeletePic } from '../../../../images/delete.svg';
 import EllipsisText from 'react-ellipsis-text';
-import {
-  useGetTransactionsByExpenseQuery,
-  useGetTransactionsByIncomeQuery,
-} from 'redux/report/transactionsApi';
-import {
-  getTransExpenses,
-  getTransIncome,
-} from 'redux/transactions/transactionsSlice';
+import { useGetAllTransactionsOnMobQuery } from 'redux/report/transactionsApi';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
 import ModalDelete from 'components/common/ModalDelete';
 
@@ -21,90 +14,11 @@ const TransactionsListMobile = () => {
   const [idForDelete, setIdForDelete] = useState('');
 
   const date = useSelector(state => state.date);
-  const expense = useGetTransactionsByExpenseQuery(date, {
-    refetchOnMountOrArgChange: true,
-  });
-  const income = useGetTransactionsByIncomeQuery(date, {
-    refetchOnMountOrArgChange: true,
-  });
 
-  const dispatch = useDispatch();
-  const transExspenses = useSelector(state => state.transactions.expense);
-  const transIncome = useSelector(state => state.transactions.income);
-
-  const transactions = () => {
-    let transArr = [];
-
-    transIncome?.map(
-      ({
-        date: { day, month, year },
-        description,
-        categories,
-        _id,
-        value,
-        income,
-        updatedAt,
-      }) =>
-        transArr.push({
-          date: { day, month, year },
-          description,
-          categories,
-          _id,
-          value,
-          income,
-          updatedAt: Date.parse(updatedAt),
-        }),
-    );
-    transExspenses?.map(
-      ({
-        date: { day, month, year },
-        description,
-        categories,
-        _id,
-        value,
-        income,
-        updatedAt,
-      }) =>
-        transArr.push({
-          date: { day, month, year },
-          description,
-          categories,
-          _id,
-          value,
-          income,
-          updatedAt: Date.parse(updatedAt),
-        }),
-    );
-
-    transArr.sort(
-      (firstItem, secondItem) => secondItem.updatedAt - firstItem.updatedAt,
-    );
-
-    return transArr;
-  };
-
-  const transactionsArr = transactions();
-  const isTransactionError = expense.isError && income.isError;
-  const isTransactionSuccess = expense.isSuccess || income.isSuccess;
-
-  useEffect(() => {
-    if (!expense?.isSuccess) {
-      dispatch(getTransExpenses(null));
-      return;
-    }
-    if (!income?.isSuccess) {
-      dispatch(getTransIncome(null));
-      return;
-    }
-
-    if (expense) {
-      dispatch(getTransExpenses(expense?.data?.transactions));
-    }
-
-    if (income) {
-      dispatch(getTransIncome(income?.data?.transactions));
-    }
-  }, [dispatch, expense, income]);
+  const { data, isError, isSuccess, isFetching, error } =
+    useGetAllTransactionsOnMobQuery(date, {
+      refetchOnMountOrArgChange: true,
+    });
 
   const handleClick = () => {
     setIsShowModal(prevIsShowModal => !prevIsShowModal);
@@ -112,11 +26,9 @@ const TransactionsListMobile = () => {
 
   return (
     <div className={style.thamb}>
-      {isTransactionError && (
-        <span className={style.text}>{expense?.error?.message}</span>
-      )}
+      {isError && <span className={style.text}>{error?.message}</span>}
 
-      {expense.status === 'pending' && (
+      {isFetching && (
         <Box sx={{ margin: 0, padding: 0 }}>
           <Skeleton animation="wave" width={280} height={55} />
           <Skeleton animation="wave" width={280} height={55} />
@@ -124,10 +36,10 @@ const TransactionsListMobile = () => {
         </Box>
       )}
 
-      {transactionsArr && isTransactionSuccess && (
+      {isSuccess && (
         <>
           <ul className={style.expensesIncomeList}>
-            {transactionsArr?.map(
+            {data?.transactions?.map(
               ({
                 date: { day, month, year },
                 description,
@@ -150,7 +62,7 @@ const TransactionsListMobile = () => {
           </ul>
 
           <ul className={style.expensesIncomeSum}>
-            {transactionsArr?.map(({ value, _id, income }) =>
+            {data?.transactions?.map(({ value, _id, income }) =>
               !income ? (
                 <li className={style.itemSum} key={_id}>
                   <span className={style.sumExpense}>{`-${getNormalizedSum(
@@ -168,7 +80,7 @@ const TransactionsListMobile = () => {
           </ul>
 
           <ul className={style.expensesIncomeDel}>
-            {transactionsArr?.map(({ _id }) => (
+            {data?.transactions?.map(({ _id }) => (
               <li className={style.itemDel} key={_id}>
                 <button
                   type="button"

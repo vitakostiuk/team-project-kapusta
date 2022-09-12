@@ -47,6 +47,25 @@ export const transactionsApi = baseApi.injectEndpoints({
       },
       providesTags: ['transactions'],
     }),
+    getAllTransactionsOnMob: builder.query({
+      async queryFn(params, _api, _extraOptions, baseQuery) {
+        const result = await baseQuery({
+          url: `/api/transactions/mobile?day=${params.day}&month=${params.month}&year=${params.year}`,
+          method: 'GET',
+        });
+
+        if (result.data?.code === 404) {
+          return { error: result.data };
+        }
+
+        if (!result.error) {
+          return {
+            data: result.data ?? null,
+          };
+        }
+      },
+      providesTags: ['transactions'],
+    }),
     getSummaryTransactions: builder.query({
       async queryFn(type, _api, _extraOptions, baseQuery) {
         const result = await baseQuery({
@@ -107,4 +126,5 @@ export const {
   useGetSummaryTransactionsQuery,
   useGetTransactionsByExpenseAndDataQuery,
   useGetTransactionsDatesQuery,
+  useGetAllTransactionsOnMobQuery,
 } = transactionsApi;
