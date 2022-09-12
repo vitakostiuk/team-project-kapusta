@@ -18,6 +18,7 @@ import ModalDelete from 'components/common/ModalDelete';
 
 const TransactionsListMobile = () => {
   const [isShowModal, setIsShowModal] = useState(false);
+  const [idForDelete, setIdForDelete] = useState('');
 
   const date = useSelector(state => state.date);
   const expense = useGetTransactionsByExpenseQuery(date, {
@@ -172,7 +173,10 @@ const TransactionsListMobile = () => {
                 <button
                   type="button"
                   className={style.deleteBtn}
-                  onClick={handleClick}
+                  onClick={() => {
+                    handleClick();
+                    setIdForDelete(_id);
+                  }}
                 >
                   <DeletePic />
                 </button>
@@ -180,7 +184,7 @@ const TransactionsListMobile = () => {
                   <ModalDelete
                     onClick={handleClick}
                     text="Are you sure?"
-                    id={_id}
+                    id={idForDelete}
                   />
                 )}
               </li>

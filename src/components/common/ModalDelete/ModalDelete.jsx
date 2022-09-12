@@ -5,6 +5,7 @@ import s from './ModalDelete.module.css';
 
 const ModalDelete = ({ onClick, text, id }) => {
   const [deleteTransaction] = useDeleteTransactionMutation();
+  console.log('props id ModalDelete', id);
 
   useEffect(() => {
     const handleKeyDown = e => {

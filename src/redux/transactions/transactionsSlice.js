@@ -12,12 +12,12 @@ const transactionsSlice = createSlice({
     },
     deleteTransExpenses: (state, action) => {
       return state.expense.filter(
-        transaction => transaction.id !== action.payload,
+        transaction => transaction._id !== action.payload,
       );
     },
     deleteTransIncome: (state, action) => {
       return state.income.filter(
-        transaction => transaction.id !== action.payload,
+        transaction => transaction._id !== action.payload,
       );
     },
   },
