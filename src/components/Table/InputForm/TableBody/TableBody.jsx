@@ -211,8 +211,8 @@ const TableBody = () => {
                     </td>
                     <td className={style.tableCell}>{categories}</td>
                     <td
-                      className={style.tableCellSumExpense}
-                    >{`-${getNormalizedSum(value)}`}</td>
+                      className={style.tableCellSumIncome}
+                    >{`${getNormalizedSum(value)}`}</td>
                     <td className={style.tableCell}>
                       <button
                         type="button"

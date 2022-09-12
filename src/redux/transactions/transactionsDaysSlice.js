@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const transactionsDaysSlice = createSlice({
   name: 'transactionsDays',
-  initialState: { expense: [], income: [] },
+  initialState: { expense: [], income: [], allTransactions: [] },
   reducers: {
     getTransactionsDaysExpenses: (state, { payload }) => {
       const normalizedDates = payload?.filter(item => item !== null);
@@ -22,10 +22,22 @@ const transactionsDaysSlice = createSlice({
         };
       }
     },
+    getAllTransactionsDays: (state, { payload }) => {
+      const normalizedDates = payload?.filter(item => item !== null);
+      if (normalizedDates) {
+        return {
+          ...state,
+          allTransactions: normalizedDates,
+        };
+      }
+    },
   },
 });
 
-export const { getTransactionsDaysExpenses, getTransactionsDaysIncome } =
-  transactionsDaysSlice.actions;
+export const {
+  getTransactionsDaysExpenses,
+  getTransactionsDaysIncome,
+  getAllTransactionsDays,
+} = transactionsDaysSlice.actions;
 
 export default transactionsDaysSlice.reducer;
