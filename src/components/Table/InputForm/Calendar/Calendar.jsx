@@ -9,8 +9,8 @@ import { useGetTransactionsDatesQuery } from 'redux/report/transactionsApi';
 import {
   getTransactionsDaysExpenses,
   getTransactionsDaysIncome,
+  getAllTransactionsDays,
 } from 'redux/transactions/transactionsDaysSlice';
-import { useFetchCurrentUserQuery } from 'redux/authorization/authApi';
 import 'react-datepicker/dist/react-datepicker.css';
 import style from './Calendar.module.css';
 import './Calendar.css';
@@ -18,25 +18,28 @@ import './Calendar.css';
 const Calendar = ({ onChangeDate, startDate }) => {
   const [transactionsExpenses, setTransactionsExpenses] = useState([]);
   const [transactionsIncome, setTransactionsIncome] = useState([]);
-  const [currentUser, setCurrentUser] = useState('');
+  const [allTransactions, setAllTransactions] = useState([]);
   const { data } = useGetTransactionsDatesQuery();
 
   const dispatch = useDispatch();
   const type = useLocation().pathname;
 
-  const {
-    data: { user },
-  } = useFetchCurrentUserQuery();
-  console.log(user);
+  // const {
+  //   data: { user },
+  // } = useFetchCurrentUserQuery();
+  // // console.log(user);
 
   const expensesDates = useSelector(state => state.transactionsDays.expense);
   const incomeDates = useSelector(state => state.transactionsDays.income);
+  const allDates = useSelector(state => state.transactionsDays.allTransactions);
+
+  const screenWidth = useSelector(state => state.screenWidth);
 
   const userRegisterDate = useSelector(state => state.auth.user.createdAt);
 
-  useEffect(() => {
-    setCurrentUser(user);
-  }, [user]);
+  // useEffect(() => {
+  //   setCurrentUser(user);
+  // }, [user]);
 
   useEffect(() => {
     const year = String(startDate.getFullYear());
@@ -60,6 +63,7 @@ const Calendar = ({ onChangeDate, startDate }) => {
         setTransactionsExpenses(transaction?.data);
       }
     });
+    setAllTransactions([...transactionsExpenses, ...transactionsIncome]);
 
     const expensesToDispatch = transactionsExpenses.map(
       ({ day, month, year }) => {
@@ -72,7 +76,20 @@ const Calendar = ({ onChangeDate, startDate }) => {
       return `${month}.${day}.${year}`;
     });
     dispatch(getTransactionsDaysIncome(incomeToDispatch));
-  }, [data?.transactions, dispatch, transactionsExpenses, transactionsIncome]);
+
+    const allTransactionsToDispatch = allTransactions.map(
+      ({ day, month, year }) => {
+        return `${month}.${day}.${year}`;
+      },
+    );
+    dispatch(getAllTransactionsDays(allTransactionsToDispatch));
+  }, [
+    allTransactions,
+    data?.transactions,
+    dispatch,
+    transactionsExpenses,
+    transactionsIncome,
+  ]);
 
   return (
     <div>
@@ -91,6 +108,12 @@ const Calendar = ({ onChangeDate, startDate }) => {
           }
         }
 
+        if (screenWidth < 768) {
+          for (let i = 0; i < allDates.length; i++) {
+            highlight.push(subDays(new Date(`${allDates[i]}`), 0));
+          }
+        }
+
         return (
           <DatePicker
             closeOnScroll={true}
@@ -98,7 +121,7 @@ const Calendar = ({ onChangeDate, startDate }) => {
             onChange={startDate => onChangeDate(startDate)}
             className={style.calendar}
             dateFormat="dd.MM.yyyy"
-            minDate={new Date(currentUser?.createdAt)}
+            minDate={new Date(userRegisterDate)}
             maxDate={new Date()}
             highlightDates={highlight}
             disabledKeyboardNavigation
