@@ -11,6 +11,7 @@ import {
   getTransactionsDaysIncome,
   getAllTransactionsDays,
 } from 'redux/transactions/transactionsDaysSlice';
+import { useFetchCurrentUserQuery } from 'redux/authorization/authApi';
 import 'react-datepicker/dist/react-datepicker.css';
 import style from './Calendar.module.css';
 import './Calendar.css';
