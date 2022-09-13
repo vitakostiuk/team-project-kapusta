@@ -25,11 +25,6 @@ const Calendar = ({ onChangeDate, startDate }) => {
   const dispatch = useDispatch();
   const type = useLocation().pathname;
 
-  // const {
-  //   data: { user },
-  // } = useFetchCurrentUserQuery();
-  // // console.log(user);
-
   const expensesDates = useSelector(state => state.transactionsDays.expense);
   const incomeDates = useSelector(state => state.transactionsDays.income);
   const allDates = useSelector(state => state.transactionsDays.allTransactions);
@@ -37,10 +32,6 @@ const Calendar = ({ onChangeDate, startDate }) => {
   const screenWidth = useSelector(state => state.screenWidth);
 
   const userRegisterDate = useSelector(state => state.auth.user.createdAt);
-
-  // useEffect(() => {
-  //   setCurrentUser(user);
-  // }, [user]);
 
   useEffect(() => {
     const year = String(startDate.getFullYear());
@@ -68,19 +59,19 @@ const Calendar = ({ onChangeDate, startDate }) => {
 
     const expensesToDispatch = transactionsExpenses.map(
       ({ day, month, year }) => {
-        return `${month}.${day}.${year}`;
+        return `${month}/${day}/${year}`;
       },
     );
     dispatch(getTransactionsDaysExpenses(expensesToDispatch));
 
     const incomeToDispatch = transactionsIncome.map(({ day, month, year }) => {
-      return `${month}.${day}.${year}`;
+      return `${month}/${day}/${year}`;
     });
     dispatch(getTransactionsDaysIncome(incomeToDispatch));
 
     const allTransactionsToDispatch = allTransactions.map(
       ({ day, month, year }) => {
-        return `${month}.${day}.${year}`;
+        return `${month}/${day}/${year}`;
       },
     );
     dispatch(getAllTransactionsDays(allTransactionsToDispatch));
@@ -99,19 +90,19 @@ const Calendar = ({ onChangeDate, startDate }) => {
 
         if (type === '/expenses') {
           for (let i = 0; i < expensesDates.length; i++) {
-            highlight.push(subDays(new Date(`${expensesDates[i]}`), 0));
+            highlight.push(new Date(`${expensesDates[i]}`.replace(/-/g, '/')));
           }
         }
 
         if (type === '/income') {
           for (let i = 0; i < incomeDates.length; i++) {
-            highlight.push(subDays(new Date(`${incomeDates[i]}`), 0));
+            highlight.push(new Date(`${incomeDates[i]}`.replace(/-/g, '/')));
           }
         }
 
         if (screenWidth < 768) {
           for (let i = 0; i < allDates.length; i++) {
-            highlight.push(subDays(new Date(`${allDates[i]}`), 0));
+            highlight.push(new Date(`${allDates[i]}`.replace(/-/g, '/')));
           }
         }
 
