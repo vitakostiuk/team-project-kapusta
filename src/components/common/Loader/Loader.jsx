@@ -7,7 +7,7 @@ const Loader = () => {
       <BallTriangle
         height="70"
         width="70"
-        color="#ff868e"
+        color="#ff751d"
         ariaLabel="loading"
       />
     </div>

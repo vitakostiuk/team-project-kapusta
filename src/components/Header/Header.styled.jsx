@@ -99,8 +99,11 @@ export const Exit = styled.p`
   line-height: 1.17;
   letter-spacing: 0.04em;
   color: var(--text-color-gray);
+  &:hover,
+  &:focus {
+    color: var(--accent-color);
+  }
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
 `;
 
 export const LogoutSvg = styled.img`
