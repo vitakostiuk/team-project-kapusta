@@ -68,6 +68,7 @@ const SelectList = ({ onChangeCategory, onChangeId }) => {
 
 export default SelectList;
 
+// // WITH MATERIAL UI // //
 // import { useState, useEffect } from 'react';
 // import { useLocation } from 'react-router-dom';
 // import style from './SelectList.module.css';
@@ -77,6 +78,7 @@ export default SelectList;
 // import MenuItem from '@mui/material/MenuItem';
 // import FormControl from '@mui/material/FormControl';
 // import InputLabel from '@mui/material/InputLabel';
+// import TextField from '@mui/material/TextField';
 
 // const SelectList = ({ onChangeCategory, onChangeId }) => {
 //   const [categoriesExpense, setCategoriesExpense] = useState([]);
@@ -115,44 +117,48 @@ export default SelectList;
 //   };
 
 //   return (
-//     <Box sx={{ borderColor: 'red' }}>
-//       <FormControl fullWidth>
-//         <InputLabel id="demo-simple-select-label" className={style.inputLabel}>
+//     <FormControl>
+//       {/* <InputLabel id="demo-simple-select-label" className={style.inputLabel}>
 //           Product category
-//         </InputLabel>
-//         <Select
-//           labelId="demo-simple-select-label"
-//           id="demo-simple-select"
-//           className={style.selectList}
-//           sx={{
-//             '& .MuiInputBase-root, .MuiOutlinedInput-root, MuiSelect-root': {
-//               borderColor: 'red',
-//             },
-//           }}
-//           name="category"
-//           value={value}
-//           title="Select an item from the list"
-//           onChange={handleChangeCategory}
-//           required
-//         >
-//           {/* <MenuItem value="" disabled>
-//             Product category
-//           </MenuItem> */}
-//           {(type === '/expenses' || type === '/expenses/input') &&
-//             categoriesExpense.map(({ _id, title }) => (
-//               <MenuItem key={title} value={title} className={style.selectItem}>
-//                 {title}
-//               </MenuItem>
-//             ))}
-//           {(type === '/income' || type === '/income/input') &&
-//             categoriesIncome.map(({ _id, title }) => (
-//               <MenuItem key={title} value={title} className={style.selectItem}>
-//                 {title}
-//               </MenuItem>
-//             ))}
-//         </Select>
-//       </FormControl>
-//     </Box>
+//         </InputLabel> */}
+//       <InputLabel
+//         variant="filled"
+//         htmlFor="uncontrolled-native"
+//         className={style.inputLabel}
+//       >
+//         Product category
+//       </InputLabel>
+//       <Select
+//         labelId="demo-simple-select-label"
+//         id="demo-simple-select"
+//         className={style.selectList}
+//         sx={{
+//           '& .MuiInputBase-root, .MuiOutlinedInput-root, MuiSelect-root': {
+//             outline: 'none',
+//             border: '2px solid #f6f7fc',
+//           },
+//         }}
+//         name="category"
+//         value={value}
+//         title="Select an item from the list"
+//         onChange={handleChangeCategory}
+//         displayEmpty={false}
+//         required
+//       >
+//         {(type === '/expenses' || type === '/expenses/input') &&
+//           categoriesExpense.map(({ _id, title }) => (
+//             <MenuItem key={title} value={title} className={style.selectItem}>
+//               {title}
+//             </MenuItem>
+//           ))}
+//         {(type === '/income' || type === '/income/input') &&
+//           categoriesIncome.map(({ _id, title }) => (
+//             <MenuItem key={title} value={title} className={style.selectItem}>
+//               {title}
+//             </MenuItem>
+//           ))}
+//       </Select>
+//     </FormControl>
 //   );
 // };
 
