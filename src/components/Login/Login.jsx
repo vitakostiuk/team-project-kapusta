@@ -28,12 +28,12 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid email')
     .matches(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/, 'Invalid email')
-    .max(60, 'too long')
+    .max(60, 'Too long')
     .required('Required'),
   password: Yup.string()
     .oneOf([Yup.ref('password'), null])
-    .min(8, 'Error')
-    .max(60, 'too long')
+    .min(8, 'Minimum password length is 8 characters')
+    .max(60, 'Too long')
     .required('Required'),
 });
 
@@ -44,6 +44,7 @@ export const Login = () => {
   const toastId = useRef(null);
 
   const [isShowModal, setIsShowModal] = useState(false);
+  const [isShowForgotPassword, setForgotPassword] = useState(false);
 
   const handleClick = () => {
     setIsShowModal(prevIsShowModal => !prevIsShowModal);
@@ -110,6 +111,7 @@ export const Login = () => {
               });
               dispatch(logIn(user));
             } catch (err) {
+              setForgotPassword(true);
               const message =
                 'Check your password or email or register in the application';
               notifyWarn(message);
@@ -189,9 +191,11 @@ export const Login = () => {
                 Registration
               </button>
             </div>
-            <p className={styles.ForgotPass} onClick={handleClick}>
-              forgot password
-            </p>
+            {isShowForgotPassword && (
+              <p className={styles.ForgotPass} onClick={handleClick}>
+                forgot password
+              </p>
+            )}
           </Form>
         )}
       </Formik>

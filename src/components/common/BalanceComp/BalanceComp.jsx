@@ -8,11 +8,11 @@ import {
   useGetBalanceQuery,
   useChangeBalanceMutation,
 } from 'redux/user/userApi';
-import { setBalance } from 'redux/balance/balanceSlice';
-import { setbalanceNum } from 'redux/balance/balanceNum';
+import { setBalance } from 'redux/Balance/balanceSlice';
+import { setbalanceNum } from 'redux/Balance/balanceNum';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
 import s from './BalanceComp.module.css';
-
+//ev-team-project-kapusta.netlify.app/?token=ya29.a0AVA9y1sV8jJuU4xkx8q42gGTJh4j7F5jMKo0Yhm0VGAkpyBLKHzTxuT5aqM9ogvo4O7z613t1-NFEdXEtxfb3SSIU6wPdZ9UaKlBrn4lTksBT71GyB91Y4vN1r6vpdB5OLICSbr4DdMJ4kTmrnFaKWtWg5LFaCgYKATASARISFQE65dr88BWkp_IxJ6Y7RkbIs-Kuyw0163&email=dovgand887@gmail.com
 const BalanceComp = () => {
   const {
     data,
