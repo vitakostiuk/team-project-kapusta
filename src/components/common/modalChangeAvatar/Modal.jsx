@@ -64,6 +64,7 @@ const ModalAvatar = ({ onClick, text, isShowModal }) => {
           avatarURL: cloudinariAnsver.data.url,
         });
         dispatch(updateAvatarUser({ AvatarUrl: cloudinariAnsver.data.url }));
+        onClick();
       } catch (error) {
         console.log(error);
       }
