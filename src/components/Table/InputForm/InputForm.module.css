@@ -83,12 +83,6 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
-  .inputArea {
-    width: 290px;
-  }
-}
-
 .sumInputArea {
   width: 125px;
   height: 44px;
@@ -235,7 +229,7 @@
 
 @media screen and (min-width: 1280px) {
   .btnThamb {
-    margin-top: 0;
+    margin-top: 15px;
   }
 }
 

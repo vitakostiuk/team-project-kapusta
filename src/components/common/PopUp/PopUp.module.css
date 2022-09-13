@@ -1,8 +1,6 @@
 .popUpContainer {
   position: absolute;
-  top: 87px;
-  /* top: 100%;
-  left: -5px; */
+  top: 163px;
   z-index: 10;
 
   padding-top: 40px;
@@ -18,7 +16,7 @@
 @media screen and (min-width: 768px) {
   .popUpContainer {
     top: 87px;
-    left: 0;
+    left: 20%;
     padding-left: 29.6px;
     width: 288px;
     height: 163px;
@@ -27,7 +25,28 @@
 
 @media screen and (min-width: 1280px) {
   .popUpContainer {
-    left: 40%;
+    left: 42%;
+  }
+}
+
+.popUpContainerReport {
+  composes: popUpContainer;
+  top: 200px;
+}
+
+@media screen and (min-width: 768px) {
+  .popUpContainerReport {
+    top: 87px;
+    left: 45%;
+    padding-left: 29.6px;
+    width: 288px;
+    height: 163px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .popUpContainerReport {
+    left: 42%;
   }
 }
 

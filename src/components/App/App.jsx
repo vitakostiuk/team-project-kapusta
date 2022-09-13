@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
+import Loader from 'components/common/Loader';
 import { Routes, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
@@ -61,7 +62,7 @@ function App() {
         <>
           <Header />
           <MainPage>
-            <Suspense>
+            <Suspense fallback={<Loader />}>
               <Routes>
                 <Route
                   element={<PublicRoute redirectTo="/expenses" restricted />}

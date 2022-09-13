@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const Div = styled.div`
+  position: relative;
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
   max-width: 320px;
-  /* border: 1px solid green; */
 
   @media screen and (min-width: 768px) {
     padding-left: 32px;
