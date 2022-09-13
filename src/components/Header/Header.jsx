@@ -42,7 +42,9 @@ const Header = () => {
             </Styled.UserData>
             <Styled.Span></Styled.Span>
             <Styled.LogoutSvg src={logoutSvg} onClick={handleClick} />
-            <Styled.ExitBtn onClick={handleClick}>Exit</Styled.ExitBtn>
+            <Styled.ExitBtn onClick={handleClick}>
+              <Styled.Exit>Exit</Styled.Exit>
+            </Styled.ExitBtn>
             {isShowModal && (
               <Modal
                 onClick={handleClick}

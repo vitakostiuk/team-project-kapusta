@@ -18,21 +18,22 @@ export const MenuUl = styled.ul`
   justify-content: space-between;
   background-color: #ffffff;
   height: 58px;
-  width: 320px;
+  // width: 320px;
+  width: 100%;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
   list-style: none;
 
   @media screen and (min-width: 768px) {
-    width: 768px;
+    // width: 768px;
     margin: 0 auto;
     padding-left: 26px;
     padding-right: 26px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 1280px;
+    // width: 1280px;
     margin: 0 auto;
     padding-left: 26px;
     padding-right: 26px;
@@ -82,17 +83,24 @@ export const ExitBtn = styled.button`
 
   @media screen and (min-width: 768px) {
     display: block;
-    text-decoration: underline;
+    // text-decoration: underline;
     border: none;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.17;
-    letter-spacing: 0.04em;
-    color: var(--text-color-gray);
     background-color: transparent;
     cursor: pointer;
     margin-top: 21px;
   }
+`;
+
+export const Exit = styled.p`
+  position: relative;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: var(--text-color-gray);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 `;
 
 export const LogoutSvg = styled.img`
