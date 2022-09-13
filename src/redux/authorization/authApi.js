@@ -70,6 +70,13 @@ export const authApi = createApi({
         body: userInfo,
       }),
     }),
+    avatarChange: builder.mutation({
+      query: data => ({
+        url: '/api/users/avatars',
+        method: 'PATCH',
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -80,4 +87,5 @@ export const {
   useFetchCurrentUserQuery,
   useGoogleLoginMutation,
   useForgotPasswordMutation,
+  useAvatarChangeMutation,
 } = authApi;

@@ -7,11 +7,21 @@ import logo from '../../images/logo.svg';
 import logoutSvg from '../../images/logout.svg';
 import Avatar from '@mui/material/Avatar';
 import { deepOrange } from '@mui/material/colors';
+import ModalAvatar from '../common/modalChangeAvatar';
+import { authSlice } from 'redux/feature';
 
 const Header = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const userEmail = useSelector(authSelectors.getUserEmail);
+  const avatarUrl = useSelector(authSelectors.getUserAvatar);
   const [isShowModal, setIsShowModal] = useState(false);
+
+  const [isShowAvatarModal, setShowAvatarModal] = useState(false);
+
+  const hendelAvatarModal = () => {
+    setShowAvatarModal(prevIsShowModal => !prevIsShowModal);
+    console.log('avatarUrl', avatarUrl);
+  };
 
   const handleClick = () => {
     setIsShowModal(prevIsShowModal => !prevIsShowModal);
@@ -36,7 +46,8 @@ const Header = () => {
               <Avatar
                 sx={{ bgcolor: deepOrange[400] }}
                 alt={userEmail}
-                src="/broken-image.jpg"
+                src={avatarUrl}
+                onClick={hendelAvatarModal}
               ></Avatar>
               <Styled.UserEmail>{userEmail}</Styled.UserEmail>
             </Styled.UserData>
@@ -50,6 +61,13 @@ const Header = () => {
                 onClick={handleClick}
                 text="Do you really want to leave?"
                 isShowModal={setIsShowModal}
+              />
+            )}
+            {isShowAvatarModal && (
+              <ModalAvatar
+                onClick={hendelAvatarModal}
+                text="You really want to upload a new avatar photo?"
+                isShowModal={isShowAvatarModal}
               />
             )}
           </Styled.UserDiv>
