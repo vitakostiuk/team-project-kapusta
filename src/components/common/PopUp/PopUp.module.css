@@ -1,7 +1,8 @@
 .popUpContainer {
   position: absolute;
-  top: 100%;
-  left: -5px;
+  top: 87px;
+  /* top: 100%;
+  left: -5px; */
   z-index: 10;
 
   padding-top: 40px;
@@ -16,7 +17,8 @@
 
 @media screen and (min-width: 768px) {
   .popUpContainer {
-    left: 11.5%;
+    top: 87px;
+    left: 0;
     padding-left: 29.6px;
     width: 288px;
     height: 163px;

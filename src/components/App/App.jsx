@@ -44,6 +44,7 @@ const NotFoundPage = lazy(() =>
 
 function App() {
   const { data, isSuccess, isFetching } = useFetchCurrentUserQuery();
+  // console.log('user', data);
   const dispatch = useDispatch();
 
   useEffect(() => {
