@@ -78,34 +78,6 @@ export const Span = styled.span`
   }
 `;
 
-export const ExitBtn = styled.button`
-  display: none;
-
-  @media screen and (min-width: 768px) {
-    display: block;
-    // text-decoration: underline;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    margin-top: 21px;
-  }
-`;
-
-export const Exit = styled.p`
-  position: relative;
-  border: none;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.17;
-  letter-spacing: 0.04em;
-  color: var(--text-color-gray);
-  &:hover,
-  &:focus {
-    color: var(--accent-color);
-  }
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-`;
-
 export const LogoutSvg = styled.img`
   display: flex;
   fill: #b5b5b6;

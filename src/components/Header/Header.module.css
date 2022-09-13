@@ -1,0 +1,46 @@
+.btn {
+  display: none;
+}
+
+.text {
+  position: relative;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: var(--text-color-gray);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  height: 3px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: var(--accent-color);
+
+  transform: scaleX(0);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media screen and (min-width: 768px) {
+  .btn {
+    display: block;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    height: 56px;
+  }
+
+  .btn:hover .text::after,
+  .btn:focus .text::after {
+    transform: scaleX(1);
+  }
+  .btn:hover .text,
+  .btn:focus .text {
+    color: var(--accent-color);
+  }
+}
