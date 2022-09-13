@@ -7,8 +7,8 @@ import {
   useGetBalanceQuery,
   useChangeBalanceMutation,
 } from 'redux/user/userApi';
-import { setBalance } from 'redux/balance/balanceSlice';
-import { setbalanceNum } from 'redux/balance/balanceNum';
+import { setBalance } from 'redux/Balance/balanceSlice';
+import { setbalanceNum } from 'redux/Balance/balanceNum';
 import { getNormalizedSum } from 'helpers/getNormalizedSum';
 import s from './BalanceComp.module.css';
 

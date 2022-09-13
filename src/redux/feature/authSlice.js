@@ -38,9 +38,21 @@ const authSlice = createSlice({
       state.user = user;
       state.isLoggedIn = true;
     },
+    updateAvatarUser: (state, action) => {
+      const { AvatarUrl } = action.payload;
+      console.log('slice', AvatarUrl);
+
+      state.user.avatarURL = AvatarUrl;
+    },
   },
 });
 
-export const { registerUser, logIn, logOut, refreshUser, loginGoogle } =
-  authSlice.actions;
+export const {
+  registerUser,
+  logIn,
+  logOut,
+  refreshUser,
+  loginGoogle,
+  updateAvatarUser,
+} = authSlice.actions;
 export default authSlice.reducer;
