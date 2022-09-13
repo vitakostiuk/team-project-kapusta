@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import style from './SelectList.module.css';
 import { useGetTransactionsQuery } from 'redux/report/transactionsApi';
+import Select from 'react-select';
+import { alertTitleClasses } from '@mui/material';
+import './SelectList.css';
 
 const SelectList = ({ onChangeCategory, onChangeId }) => {
   const [categoriesExpense, setCategoriesExpense] = useState([]);
@@ -26,47 +29,84 @@ const SelectList = ({ onChangeCategory, onChangeId }) => {
       setCategoriesIncome(
         categories.filter(category => category.type === 'income'),
       );
+
       const findId = categories.find(category => category.title === value);
       if (findId) {
         setId(findId.id);
         onChangeId(findId.id);
       }
     }
-  }, [data, id, onChangeId, value]);
+  }, [data, onChangeId, value]);
 
   const handleChangeCategory = e => {
-    setValue(e.target.value);
-    onChangeCategory(e.target.value);
+    console.log(e);
+    setValue(e.value);
+    onChangeCategory(e.value);
   };
 
+  const optionsExpense = categoriesExpense.map(({ title }) => ({
+    value: `${title}`,
+    label: `${title}`,
+  }));
+
+  const optionsIncome = categoriesIncome.map(({ title }) => ({
+    value: `${title}`,
+    label: `${title}`,
+  }));
+
   return (
-    <select
-      className={style.selectList}
-      name="category"
-      title="Select an item from the list"
-      onChange={handleChangeCategory}
-      required
-    >
-      <option className={style.selectItem} value="Product category">
-        Product category
-      </option>
-      {(type === '/expenses' || type === '/expenses/input') &&
-        categoriesExpense.map(({ _id, title }) => (
-          <option key={title} value={title} className={style.selectItem}>
-            {title}
-          </option>
-        ))}
-      {(type === '/income' || type === '/income/input') &&
-        categoriesIncome.map(({ _id, title }) => (
-          <option key={title} value={title} className={style.selectItem}>
-            {title}
-          </option>
-        ))}
-    </select>
+    <>
+      {(type === '/expenses' || type === '/expenses/input') && (
+        <Select
+          name="category"
+          onChange={handleChangeCategory}
+          required
+          options={optionsExpense}
+          placeholder="Product category"
+        />
+      )}
+
+      {(type === '/income' || type === '/income/input') && (
+        <Select
+          name="category"
+          onChange={handleChangeCategory}
+          required
+          options={optionsIncome}
+          placeholder="Product category"
+        />
+      )}
+    </>
   );
 };
 
 export default SelectList;
+
+//   return (
+//     <select
+//       className={style.selectList}
+//       name="category"
+//       title="Select an item from the list"
+//       onChange={handleChangeCategory}
+//       required
+//     >
+//       <option className={style.selectItem} value="Product category">
+//         Product category
+//       </option>
+//       {(type === '/expenses' || type === '/expenses/input') &&
+//         categoriesExpense.map(({ _id, title }) => (
+//           <option key={title} value={title} className={style.selectItem}>
+//             {title}
+//           </option>
+//         ))}
+//       {(type === '/income' || type === '/income/input') &&
+//         categoriesIncome.map(({ _id, title }) => (
+//           <option key={title} value={title} className={style.selectItem}>
+//             {title}
+//           </option>
+//         ))}
+//     </select>
+//   );
+// };
 
 // // WITH MATERIAL UI // //
 // import { useState, useEffect } from 'react';

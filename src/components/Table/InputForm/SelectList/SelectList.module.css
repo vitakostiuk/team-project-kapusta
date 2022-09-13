@@ -1,14 +1,3 @@
-.inputLabel {
-  display: block;
-  background-color: #fff;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  background-color: transparent;
-  color: #c7ccdc;
-}
-
 .selectList {
   width: 280px;
   height: 44px;
@@ -44,7 +33,8 @@
   .selectList {
     width: 186px;
     color: #c7ccdc;
-    border: 2px solid #f6f7fc;
+
+    /* border: 2px solid #f6f7fc; */
     border-radius: 0;
     border-left: none;
   }

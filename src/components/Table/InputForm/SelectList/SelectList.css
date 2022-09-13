@@ -1,0 +1,90 @@
+.css-b62m3t-container {
+  width: 280px;
+  height: 44px;
+  border: 1px solid red;
+}
+
+.css-tlfecz-indicatorContainer {
+  background-color: transparent;
+  transition: none;
+}
+
+@media screen and (min-width: 768px) {
+  .css-b62m3t-container {
+    width: 169px;
+    height: 44px;
+  }
+}
+
+.css-1pahdxg-control {
+  border: none;
+  transition: none;
+  width: 280px;
+  height: 44px;
+  box-shadow: 0 0 0 1px #f6f7fc;
+}
+
+.css-1pahdxg-control:focus {
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .css-1pahdxg-control {
+    width: 169px;
+  }
+}
+
+.css-1s2u09g-control {
+  width: 280px;
+  height: 44px;
+  padding-left: 20px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  background-color: transparent;
+  color: #c7ccdc;
+  border: 2px solid #fff;
+  border-radius: 0 0 16px 0;
+  border-top: none;
+  transition: none;
+}
+
+.css-1s2u09g-control:hover,
+.css-1s2u09g-control:focus {
+  border-color: #fff;
+  outline: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .css-1s2u09g-control {
+    border: 2px solid #f6f7fc;
+    width: 169px;
+    height: 44px;
+    border-radius: 0;
+    border-left: none;
+  }
+
+  .css-1s2u09g-control:hover,
+  .css-1s2u09g-control:focus {
+    border-color: #f6f7fc;
+    outline: 0;
+  }
+}
+
+.css-319lph-ValueContainer {
+  padding: 0;
+  margin: 0;
+}
+
+.css-14el2xx-placeholder {
+  color: #c7ccdc;
+}
+
+.css-1okebmr-indicatorSeparator {
+  display: none;
+}
+
+.css-26l3qy-menu {
+  /* border: 1px solid red; */
+}
