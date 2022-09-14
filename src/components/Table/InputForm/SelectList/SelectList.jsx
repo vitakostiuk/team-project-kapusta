@@ -39,74 +39,54 @@ const SelectList = ({ onChangeCategory, onChangeId }) => {
   }, [data, onChangeId, value]);
 
   const handleChangeCategory = e => {
-    console.log(e);
-    setValue(e.value);
-    onChangeCategory(e.value);
+    setValue(e.target.value);
+    onChangeCategory(e.target.value);
   };
 
-  const optionsExpense = categoriesExpense.map(({ title }) => ({
-    value: `${title}`,
-    label: `${title}`,
-  }));
+  // const handleChangeCategory = e => {
+  //   console.log(e);
+  //   setValue(e.value);
+  //   onChangeCategory(e.value);
+  // };
 
-  const optionsIncome = categoriesIncome.map(({ title }) => ({
-    value: `${title}`,
-    label: `${title}`,
-  }));
+  // const optionsExpense = categoriesExpense.map(({ title }) => ({
+  //   value: `${title}`,
+  //   label: `${title}`,
+  // }));
+
+  // const optionsIncome = categoriesIncome.map(({ title }) => ({
+  //   value: `${title}`,
+  //   label: `${title}`,
+  // }));
 
   return (
-    <>
-      {(type === '/expenses' || type === '/expenses/input') && (
-        <Select
-          name="category"
-          onChange={handleChangeCategory}
-          required
-          options={optionsExpense}
-          placeholder="Product category"
-        />
-      )}
-
-      {(type === '/income' || type === '/income/input') && (
-        <Select
-          name="category"
-          onChange={handleChangeCategory}
-          required
-          options={optionsIncome}
-          placeholder="Product category"
-        />
-      )}
-    </>
+    <select
+      className={style.selectList}
+      name="category"
+      title="Select an item from the list"
+      onChange={handleChangeCategory}
+      required
+    >
+      <option className={style.selectItem} value="Product category">
+        Product category
+      </option>
+      {(type === '/expenses' || type === '/expenses/input') &&
+        categoriesExpense.map(({ _id, title }) => (
+          <option key={title} value={title} className={style.selectItem}>
+            {title}
+          </option>
+        ))}
+      {(type === '/income' || type === '/income/input') &&
+        categoriesIncome.map(({ _id, title }) => (
+          <option key={title} value={title} className={style.selectItem}>
+            {title}
+          </option>
+        ))}
+    </select>
   );
 };
 
 export default SelectList;
-
-//   return (
-//     <select
-//       className={style.selectList}
-//       name="category"
-//       title="Select an item from the list"
-//       onChange={handleChangeCategory}
-//       required
-//     >
-//       <option className={style.selectItem} value="Product category">
-//         Product category
-//       </option>
-//       {(type === '/expenses' || type === '/expenses/input') &&
-//         categoriesExpense.map(({ _id, title }) => (
-//           <option key={title} value={title} className={style.selectItem}>
-//             {title}
-//           </option>
-//         ))}
-//       {(type === '/income' || type === '/income/input') &&
-//         categoriesIncome.map(({ _id, title }) => (
-//           <option key={title} value={title} className={style.selectItem}>
-//             {title}
-//           </option>
-//         ))}
-//     </select>
-//   );
-// };
 
 // // WITH MATERIAL UI // //
 // import { useState, useEffect } from 'react';
@@ -203,3 +183,22 @@ export default SelectList;
 // };
 
 // export default SelectList;
+
+// {(type === '/expenses' || type === '/expenses/input') && (
+//   <Select
+//     onChange={handleChangeCategory}
+//     required
+//     options={optionsExpense}
+//     placeholder="Product category"
+//   />
+// )}
+
+// {(type === '/income' || type === '/income/input') && (
+//   <Select
+//     name="category"
+//     onChange={handleChangeCategory}
+//     required
+//     options={optionsIncome}
+//     placeholder="Product category"
+//   />
+// )}
