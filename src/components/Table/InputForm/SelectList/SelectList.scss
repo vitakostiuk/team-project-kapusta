@@ -1,0 +1,100 @@
+.custom-select {
+  &__control {
+    background-color: transparent !important;
+    border: 2px solid #f6f7fc !important;
+    border-left: none !important;
+    border-radius: 0 !important;
+    box-shadow: 0 !important;
+    width: 169px !important;
+    height: 44px !important;
+
+    &--menu-is-open {
+      background-color: transparent !important;
+    }
+
+    &--is-focused {
+      background-color: transparent !important;
+    }
+  }
+
+  &__value-container, &__input-container {
+    padding-left: 20px;
+  }
+
+  &__placeholder {
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    color: #c7ccdc !important;
+  }
+
+  &__indicator-separator {
+    display: none !important;
+  }
+
+  &__indicator {
+    color: #C7CCDC !important;
+    cursor: pointer;
+  }
+
+  &__indicator:hover, &__indicator:focus {
+    transform: rotate(-90deg) !important;
+    cursor: pointer;
+  }
+
+  &__single-value {
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    color: #c7ccdc !important;
+  }
+
+  &__menu {
+    top: 36px;
+    width: 182px !important;
+    background-color: #fff !important;
+    border: 2px solid #F5F6FB !important;
+    border-top: none !important;
+    box-shadow: 0px 3px 4px rgba(170, 178, 197, 0.4) !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 12px !important;
+    color: #c7ccdc !important;
+  }
+
+  &__option {
+    cursor: pointer !important;
+    padding-left: 20px;
+    &--is-focused {
+      background-color: #F5F6FB !important;
+    }
+    &--is-selected {
+      background-color: #F5F6FB !important;
+      color: #c7ccdc !important;
+    }
+  }
+}
+
+.css-1pahdxg-control {
+  background-color: transparent !important;
+  box-shadow: 0 0 0 0 !important;
+  border-width: 2px !important;
+  border-color: #f6f7fc !important;
+  border-style: solid !important;
+}
+
+.css-1gtu0rj-indicatorContainer:hover {
+color: #C7CCDC !important;
+}
+
+*{
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  // width: 3px;
+  // background-color: #f6f7fc;
+  // border-radius: 1px;
+  display: none;
+}
+
+
