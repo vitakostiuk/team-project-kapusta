@@ -1,11 +1,11 @@
 .custom-select {
   &__control {
     background-color: transparent !important;
-    border: 2px solid #f6f7fc !important;
-    border-left: none !important;
-    border-radius: 0 !important;
+    border: 2px solid #fff !important;
+    border-radius: 0 0 16px 0 !important;
+    border-top: none !important;
     box-shadow: 0 !important;
-    width: 169px !important;
+    width: 280px !important;
     height: 44px !important;
 
     &--menu-is-open {
@@ -14,6 +14,16 @@
 
     &--is-focused {
       background-color: transparent !important;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    &__control {
+      width: 169px !important;
+      background-color: transparent !important;
+      border: 2px solid #f6f7fc !important;
+      border-radius: 0 !important;
+      border-left: none !important;
     }
   }
 
@@ -50,8 +60,8 @@
   }
 
   &__menu {
-    top: 36px;
-    width: 182px !important;
+    top: 38px;
+    width: 280px !important;
     background-color: #fff !important;
     border: 2px solid #F5F6FB !important;
     border-top: none !important;
@@ -60,6 +70,14 @@
     font-weight: 400 !important;
     font-size: 12px !important;
     color: #c7ccdc !important;
+  }
+
+  @media screen and (min-width: 768px) {
+    &__menu {
+      top: 36px;
+      width: 182px !important;
+
+    }
   }
 
   &__option {
@@ -78,23 +96,28 @@
 .css-1pahdxg-control {
   background-color: transparent !important;
   box-shadow: 0 0 0 0 !important;
-  border-width: 2px !important;
-  border-color: #f6f7fc !important;
-  border-style: solid !important;
+  border: 2px solid #fff !important;
+  border-top: none !important;
+}
+
+@media screen and (min-width: 768px) {
+  .css-1pahdxg-control {
+    background-color: transparent !important;
+    box-shadow: 0 0 0 0 !important;
+    border: 2px solid #f6f7fc !important;
+    border-left: none !important;
+  }
 }
 
 .css-1gtu0rj-indicatorContainer:hover {
 color: #C7CCDC !important;
 }
 
-*{
-  -ms-overflow-style: none;
-}
+// *{
+//   -ms-overflow-style: none;
+// }
 ::-webkit-scrollbar {
-  // width: 3px;
-  // background-color: #f6f7fc;
-  // border-radius: 1px;
-  display: none;
+  width: 4px !important;
+  background-color: #f6f7fc !important;
+  border-radius: 5px !important;
 }
-
-
