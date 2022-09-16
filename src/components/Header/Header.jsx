@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import authSelectors from '../../redux/feature/auth-selectors';
 import { useState } from 'react';
 import * as Styled from './Header.styled';
+import s from './Header.module.css';
 import Modal from 'components/common/Modal';
 import logo from '../../images/logo.svg';
 import logoutSvg from '../../images/logout.svg';
@@ -53,9 +54,9 @@ const Header = () => {
             </Styled.UserData>
             <Styled.Span></Styled.Span>
             <Styled.LogoutSvg src={logoutSvg} onClick={handleClick} />
-            <Styled.ExitBtn onClick={handleClick}>
-              <Styled.Exit>Exit</Styled.Exit>
-            </Styled.ExitBtn>
+            <button className={s.btn} onClick={handleClick}>
+              <p className={s.text}>Exit</p>
+            </button>
             {isShowModal && (
               <Modal
                 onClick={handleClick}
