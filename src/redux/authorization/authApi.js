@@ -4,7 +4,8 @@ export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
     // baseUrl: 'http://localhost:3000',
-    baseUrl: 'https://team-project-kapusta.herokuapp.com/',
+    // baseUrl: 'https://team-project-kapusta.herokuapp.com/',
+    baseUrl: 'https://team-project-kapusta.onrender.com/',
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
 

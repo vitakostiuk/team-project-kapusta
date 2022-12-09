@@ -128,7 +128,8 @@ export const Login = () => {
               <span className={styles.topGoogleRegTextspan}> Account:</span>
             </div>
             <a
-              href="https://team-project-kapusta.herokuapp.com/api/auth/google"
+              // href="https://team-project-kapusta.herokuapp.com/api/auth/google"
+              href="https://team-project-kapusta.onrender.com/api/auth/google"
               className={styles.GoogleBtn}
             >
               <img

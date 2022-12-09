@@ -4,7 +4,8 @@ export const baseApi = createApi({
   reducerPath: 'baseApi',
   tagTypes: ['transactions', 'balance'],
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://team-project-kapusta.herokuapp.com',
+    // baseUrl: 'https://team-project-kapusta.herokuapp.com',
+    baseUrl: 'https://team-project-kapusta.onrender.com',
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
 
